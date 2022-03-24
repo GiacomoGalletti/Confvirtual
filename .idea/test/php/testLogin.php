@@ -1,21 +1,28 @@
 <?php
 function login(){
-    /**
-     * metodo test per il login
-     */
-    $pdo = new PDO('mysql:host=localhost;dbname=confvirtual;charset=utf8','root','root');
-    $pdo -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    try{
+        $pdo = new PDO('mysql:host=localhost;dbname=confvirtual;charset=utf8','root','root');
+        $pdo -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-    $sql = 'CALL login(\'a\',\'b\');';
+        $sql = 'CALL login(\'o chiatt\',\'bellaNapoli32\');';
+        //$sql = 'CALL login(\'giggi\',\'bellaNapoli32\');';
 
-    $res = $pdo -> exec($sql);
+        $res = $pdo -> query($sql);
 
-    if ($res == 0){
-        $res = "credenziali errate";
-    } else {
-        $res = "benvenuto";
+        while($row = $res -> fetch()) {
+            $user[] = $row['res'];
+        }
+
+        if ($user[0] == 0){
+            $res = "credenziali errate";
+        } else {
+            $res = "benvenuto ";
+        }
+        echo("RISULTATO DELL' ACCESSO: " . $res);
+        exit;
+    } catch (PDOException $e) {
+        echo ($e);
     }
-    echo("RISULTATO DELL' ACCESSO: " . $res);
-    exit;
 }
+login();
 ?>
