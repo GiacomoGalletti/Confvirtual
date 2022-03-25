@@ -1,11 +1,18 @@
 <?php
 function login(){
+    $username = $_GET["username"];
+    $password = $_GET["password"];
+
     try{
         $pdo = new PDO('mysql:host=localhost;dbname=confvirtual;charset=utf8','root','root');
         $pdo -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        echo("ACCESSO FALLITO");
+        echo ($e);
+    }
 
-        $sql = 'CALL login(\'o chiatt\',\'bellaNapoli32\');';
-        //$sql = 'CALL login(\'giggi\',\'bellaNapoli32\');';
+    try{
+        $sql = 'CALL login(\'' . $username . '\',\'' . $password . '\');';
 
         $res = $pdo -> query($sql);
 
@@ -18,11 +25,10 @@ function login(){
         } else {
             $res = "benvenuto ";
         }
-        echo("RISULTATO DELL' ACCESSO: " . $res);
+        echo("<p>RISULTATO DELL' ACCESSO: " . $res . "</p>");
         exit;
     } catch (PDOException $e) {
         echo ($e);
     }
 }
-login();
 ?>
