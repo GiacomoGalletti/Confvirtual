@@ -1,6 +1,7 @@
 <?php
 function login(){
-    $username = $_GET["username"];
+    //echo ("<p>FIODENA</p>");
+    $username = $_GET["userName"];
     $password = $_GET["password"];
 
     try{
@@ -25,7 +26,7 @@ function login(){
         } else {
             $res = "benvenuto ";
         }
-        echo("<p>RISULTATO DELL' ACCESSO: " . $res . "</p>");
+        echo("RISULTATO DELL' ACCESSO: " . $res);
         exit;
     } catch (PDOException $e) {
         echo ($e);
