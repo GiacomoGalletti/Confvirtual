@@ -1,8 +1,8 @@
 <?php
 function login(){
-    //echo ("<p>FIODENA</p>");
-    $username = $_GET["userName"];
-    $password = $_GET["password"];
+
+    $username = $_POST["userName"];
+    $password = $_POST["password"];
 
     try{
         $pdo = new PDO('mysql:host=localhost;dbname=confvirtual;charset=utf8','root','root');
@@ -27,6 +27,17 @@ function login(){
             $res = "benvenuto ";
         }
         echo("RISULTATO DELL' ACCESSO: " . $res);
+
+        if ($res == "benvenuto ") {
+            sleep(4);
+            header("Location: https://example.com/myOtherPage.php");
+            die();
+        } else {
+            sleep(4);
+            header("Location: https://example.com/myOtherPage.php");
+            die();
+        }
+
         exit;
     } catch (PDOException $e) {
         echo ($e);
