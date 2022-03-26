@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../style/Login.css"/>
-    <title>Title</title>
+    <title>Login</title>
 </head>
 <body>
 <?php

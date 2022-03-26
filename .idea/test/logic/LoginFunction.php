@@ -2,15 +2,10 @@
 function login(){
 
     $username = $_POST["uname"];
-    $password = $_POST["psw"];
+    $password = $_POST["psw"]; //TODO: RICORDARSI DI CRIPTARE CON md5()
+    include ("DbConn.php");
 
-    try{
-        $pdo = new PDO('mysql:host=localhost;dbname=confvirtual;charset=utf8','root','root');
-        $pdo -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-        echo("ACCESSO FALLITO");
-        echo ($e);
-    }
+    $pdo = connect();
 
     try{
         $sql = 'CALL login(\'' . $username . '\',\'' . $password . '\');';
@@ -22,7 +17,7 @@ function login(){
         }
 
         if ($user[0] == 0){
-            echo ("credenziali errate");
+            echo ("<p style='color: crimson'>credenziali errate</p>");
             $page = file_get_contents("../pages/LoginPage.php");
             echo ($page);
         } else {
