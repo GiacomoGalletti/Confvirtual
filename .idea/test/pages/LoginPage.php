@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="Login.css"/>
+    <link rel="stylesheet" type="text/css" href="../style/Login.css"/>
     <title>Title</title>
 </head>
 <body>
 <?php
-    include '../php/LoginFunction.php';
+    include '../logic/LoginFunction.php';
     if(isset($_POST['submit'])){
         login();
     }
 ?>
-<form method="post" >
+<form action="LoginPage.php" method="post" >
 
     <div class="imgcontainer">
-        <img src="confvirtualTitle.png" alt="Avatar" class="avatar">
+        <img src="../resources/confvirtualTitle.png" alt="Avatar" class="avatar">
     </div>
 
     <div class="container">

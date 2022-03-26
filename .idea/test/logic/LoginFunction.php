@@ -1,8 +1,8 @@
 <?php
 function login(){
 
-    $username = $_POST["userName"];
-    $password = $_POST["password"];
+    $username = $_POST["uname"];
+    $password = $_POST["psw"];
 
     try{
         $pdo = new PDO('mysql:host=localhost;dbname=confvirtual;charset=utf8','root','root');
@@ -22,20 +22,12 @@ function login(){
         }
 
         if ($user[0] == 0){
-            $res = "credenziali errate";
+            echo ("credenziali errate");
+            $page = file_get_contents("../pages/LoginPage.php");
+            echo ($page);
         } else {
-            $res = "benvenuto ";
-        }
-        echo("RISULTATO DELL' ACCESSO: " . $res);
-
-        if ($res == "benvenuto ") {
-            sleep(4);
-            header("Location: https://example.com/myOtherPage.php");
-            die();
-        } else {
-            sleep(4);
-            header("Location: https://example.com/myOtherPage.php");
-            die();
+            $page = file_get_contents("../pages/UserMainPage.php");
+            echo ($page);
         }
 
         exit;
