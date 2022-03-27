@@ -6,13 +6,7 @@
     <title>Login</title>
 </head>
 <body>
-<?php
-    include '../logic/LoginFunction.php';
-    if(isset($_POST['submit'])){
-        login();
-    }
-?>
-<form action="LoginPage.php" method="post" >
+<form action="../logic/LoginFunction.php" method="post" >
 
     <div class="imgcontainer">
         <img src="../resources/confvirtualTitle.png" alt="Avatar" class="avatar">

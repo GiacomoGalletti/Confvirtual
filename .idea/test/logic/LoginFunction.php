@@ -1,4 +1,7 @@
 <?php
+if(isset($_POST['submit'])){
+    login();
+}
 function login(){
 
     $username = $_POST["uname"];
@@ -17,15 +20,17 @@ function login(){
         }
 
         if ($user[0] == 0){
-            echo ("<p style='color: crimson'>credenziali errate</p>");
-            $page = file_get_contents("../pages/LoginPage.php");
-            echo ($page);
+//            echo ("<p style='color: crimson'>credenziali errate</p>");
+//            $page = file_get_contents("../pages/LoginPage.html");
+//            echo ($page);
+            header("Location: ../pages/LoginPage.html");
         } else {
-            $page = file_get_contents("../pages/UserMainPage.php");
-            echo ($page);
+//            $page = file_get_contents("../pages/UserMainPage.php");
+//            echo ($page);
+            header("Location: ../pages/UserMainPage.php");
         }
 
-        exit;
+        exit();
     } catch (PDOException $e) {
         echo ($e);
     }

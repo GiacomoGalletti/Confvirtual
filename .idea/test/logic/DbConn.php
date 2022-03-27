@@ -1,4 +1,7 @@
 <?php
+/**
+ * Questo script stabilisce la connessione con il DB
+ */
 function connect(){
     try {
         $pdo = new PDO('mysql:host=localhost;dbname=confvirtual;charset=utf8','root','root');
