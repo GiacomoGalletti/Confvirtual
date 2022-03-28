@@ -1,4 +1,5 @@
 <?php
+include('init.php');
 if(isset($_POST['submit'])){
     login();
 }
@@ -20,13 +21,11 @@ function login(){
         }
 
         if ($user[0] == 0){
-//            echo ("<p style='color: crimson'>credenziali errate</p>");
-//            $page = file_get_contents("../pages/LoginPage.html");
-//            echo ($page);
             header("Location: ../pages/LoginPage.html");
         } else {
-//            $page = file_get_contents("../pages/UserMainPage.php");
-//            echo ($page);
+            /*
+             * TODO: settare le variabili di sessione
+             */
             header("Location: ../pages/UserMainPage.php");
         }
 
