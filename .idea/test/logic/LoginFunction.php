@@ -26,7 +26,7 @@ function login(){
             /*
              * TODO: settare le variabili di sessione
              */
-            header("Location: ../pages/UserMainPage.php");
+            header("Location: ../pages/UserMainPage.html");
         }
 
         exit();
