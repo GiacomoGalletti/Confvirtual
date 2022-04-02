@@ -7,11 +7,16 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../css/Login.css"/>
+
     <title>Login</title>
 </head>
 <body>
-<form action="../logic/LoginFunction.php" method="post" >
+<form>
+    <?php
+        if(isset($_POST['logout'])){
+            session_abort();
+        }
+    ?>
     <div class="container">
         <div class="row justify-content-between">
             <div class="imgcontainer">
@@ -28,27 +33,28 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item active"><a href="UserMainPage.html" class="nav-link">Home</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Conferenze</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
                             <a class="dropdown-item" href="#">Prossime confereze</a>
                             <a class="dropdown-item" href="#">Conferenze passate</a>
+                            <a class="dropdown-item" href="#">Iscrizioni</a>
                         </div>
                     </li>
-                    <li class="nav-item"><a href="Info.html" class="nav-link">Informazioni</a></li>
-                    <li class="nav-item active"><a href="LoginPage.html" class="nav-link">accedi</a></li>
+                    <li class="nav-item" name="logout"><a href="LoginPage.php" class="nav-link">logout</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input id = "userName" type="text" placeholder="Enter Username" name="uname" required>
-        <label for="psw"><b>Password</b></label>
-        <input id = "password" type="password" placeholder="Enter Password" name="psw" required>
-        <button name = "submit" type="submit">Login</button>
+        <h2>Benvenuto <?php echo($_SESSION['userName'])?></h2>
+        <h3>QUESTO MENÙ DEVE CAMBIARE IN BASE AL TIPO DI UTENTE LOGGATO</h3>
+        <p>
+            questa è la tua dashboard. qui è possibile trovare le tue informazioni e magari le conferenze che
+            stanno per iniziare, così puoi avere l'ultima possibilità di iscriverti ;)
+        </p>
     </div>
 
 </form>
@@ -58,9 +64,6 @@
 <script src="../js/main.js"></script>
 </body>
 <footer>
-    <div class="container">
-        <span class="psw"><p>Register new account <a href="Register.html">here</a>.</p><a href="https://www.iubenda.com/privacy-policy/39459755" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Privacy Policy ">Privacy Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
-        </span>
-    </div>
+
 </footer>
 </html>
