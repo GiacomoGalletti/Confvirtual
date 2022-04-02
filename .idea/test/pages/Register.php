@@ -27,7 +27,7 @@
 
     <div class="container">
         <h1>Registrazione</h1>
-        <p>Riempire tutti i campi per creare l' account.</p>
+        <p>Riempire tutti i campi per creare l'account.</p>
         <hr>
 
         <label for="userName"><b>UserName <sup>*</sup></b></label>

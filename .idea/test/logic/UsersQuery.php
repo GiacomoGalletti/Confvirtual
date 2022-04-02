@@ -5,30 +5,28 @@ function login()
         $password = $_POST["psw"];
         include ('DbConn.php');
 
-
         try
         {
             $sql = 'CALL checkUserExists(\'' . $username . '\',\'' . $password . '\');';
 
-            $reflection = new ReflectionClass('DbConn');
-            var_dump($reflection -> getMethod(ReflectionMethod::IS_STATIC));
-            $res = getInstance() -> query($sql);
+            $res = DbConn::getInstance()::getPDO() -> query($sql);
 
             while ($row = $res->fetch())
             {
                 session_start();
                 $_SESSION['userName'] = $row['userName'];
                 $message = $_SESSION['userName'];
-                echo "<script type='text/javascript'>alert('$message');</script>";
-                close();
-
+                $res -> closeCursor();
                 $sql = 'CALL checkUserType(\'' . $username . '\');';
-                $res = getInstance() -> query($sql);
+                $res = DbConn::getInstance()::getPDO() -> query($sql);
                 while ($row = $res -> fetch())
                 {
                     $_SESSION['type'] = $row['res_type'];
+                    $res -> closeCursor();
                     if ($_SESSION['type'] == 'utente' || $_SESSION['type'] == 'presenter' || $_SESSION['type'] == 'speaker') {
-                       // header("Location: ../pages/UserMainPage.php");
+                       header("Location: ../pages/UserMainPage.php");
+                    } else {
+                        header("Location: ../pages/AdminMainPage.php");
                     }
                     exit();
                 }
@@ -53,16 +51,18 @@ function userExists()
         $username = $_POST["userName"];
         $password = md5($_POST["psw"]);
         include("DbConn.php");
-        $pdo = connect();
+
 
         try
         {
             $sql = 'CALL checkUserExists(\'' . $username . '\',\'' . $password . '\');';
-            $res = $pdo->query($sql);
+            $res = DbConn::getInstance()::getPDO() -> query($sql);
             while ($row = $res->fetch())
             {
+                $res -> closeCursor();
                 return true;
             }
+            $res -> closeCursor();
             return false;
         } catch (PDOException $e)
         {

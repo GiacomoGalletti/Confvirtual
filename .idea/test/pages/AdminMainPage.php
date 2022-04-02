@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>User-HomePage</title>
+    <title>Admin-HomePage</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -13,11 +13,11 @@
 <body>
 <form>
     <?php
-        session_start();
+    session_start();
 
-        if(isset($_POST['logout'])){
-            session_abort();
-        }
+    if(isset($_POST['logout'])){
+        session_abort();
+    }
     ?>
     <div class="container">
         <div class="row justify-content-between">
@@ -52,10 +52,10 @@
 
     <div class="container">
         <h2>Benvenuto <?php echo($_SESSION['userName'])?></h2>
-        <h3>QUESTO MENÙ DEVE CAMBIARE IN BASE AL TIPO DI UTENTE LOGGATO</h3>
+        <h3>Menu amministratore</h3>
         <p>
-            questa è la tua dashboard. qui è possibile trovare le tue informazioni e magari le conferenze che
-            stanno per iniziare, così puoi avere l'ultima possibilità di iscriverti ;)
+            questa è la tua dashboard.
+            qui puoi creare e modificare le conferenze e gli utenti iscritti alla piattaforma
         </p>
     </div>
 
