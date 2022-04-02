@@ -42,6 +42,7 @@
                             <a class="dropdown-item" href="#">Prossime confereze</a>
                             <a class="dropdown-item" href="#">Conferenze passate</a>
                             <a class="dropdown-item" href="#">Iscrizioni</a>
+                            <a class="dropdown-item" href="#">Crea Conferenza</a>
                         </div>
                     </li>
                     <li class="nav-item" name="logout"><a href="LoginPage.php" class="nav-link">logout</a></li>
