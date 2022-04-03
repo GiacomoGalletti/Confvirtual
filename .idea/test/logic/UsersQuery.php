@@ -3,7 +3,7 @@ function login()
 {
         $username = $_POST["uname"];
         $password = $_POST["psw"];
-        include ('DbConn.php');
+        include_once ('DbConn.php');
 
         try
         {
@@ -50,7 +50,7 @@ function userExists()
     {
         $username = $_POST["userName"];
         $password = md5($_POST["psw"]);
-        include("DbConn.php");
+        include_once("DbConn.php");
 
 
         try

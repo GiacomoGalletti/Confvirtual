@@ -1,7 +1,7 @@
 <?php
 function registerUser()
 {
-    include ('UsersQuery.php');
+    include_once('UsersQuery.php');
     if(isset($_POST['submit']))
     {
         if (!userExists())
@@ -12,13 +12,12 @@ function registerUser()
             $password = $_POST["psw"];
             $luogoNascita = $_POST["luogoNascita"];
             $dataNascita = $_POST["dataNascita"];
-            include("DbConn.php");
-            $pdo = connect();
+            include_once("DbConn.php");
 
             try
             {
                 $sql = 'CALL register(\'' . $username . '\',\'' . $name . '\',\'' . $surname . '\',\'' . $password . '\',\'' . $luogoNascita . '\',\'' . $dataNascita . '\');';
-                $res = $pdo->query($sql);
+                $res = DbConn::getInstance()::getPDO() -> query($sql);
                 header("refresh:2;url= " . "../pages/LoginPage.php");
                 echo '<link rel="stylesheet" href="../css/style.css">
               <div class="container"> </div>

@@ -13,7 +13,7 @@
 <body>
 <?php
 if(isset($_POST['submit'])) {
-    include ('../logic/UsersQuery.php');
+    include_once ('../logic/UsersQuery.php');
     login();
 }
 ?>
