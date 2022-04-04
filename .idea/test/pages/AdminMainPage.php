@@ -45,6 +45,13 @@ if(isset($_POST['logout'])){
                             <a class="dropdown-item" href="../pages/AdminCreateConference.php">Crea una conferenza</a>
                         </div>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Utenti</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="#">Registra utente Speaker</a>
+                            <a class="dropdown-item" href="#">Registra utente Presenter</a>
+                        </div>
+                    </li>
                     <li class="nav-item" name="logout"><a href="LoginPage.php" class="nav-link">logout</a></li>
                 </ul>
             </div>
