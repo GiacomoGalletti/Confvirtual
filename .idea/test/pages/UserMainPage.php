@@ -39,7 +39,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Conferenze</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="#">Prossime confereze</a>
+                            <a class="dropdown-item" href="UserFutureConferences.php">Prossime confereze</a>
                             <a class="dropdown-item" href="UserPastConferences.php">Conferenze passate</a>
                             <a class="dropdown-item" href="#">Iscrizioni</a>
                         </div>

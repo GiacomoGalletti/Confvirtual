@@ -38,7 +38,7 @@ if(isset($_POST['submit'])) {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Conferenze</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="#">Prossime confereze</a>
+                            <a class="dropdown-item" href="NotLoggedFutureConferences.php">Prossime confereze</a>
                             <a class="dropdown-item" href="NotLoggedPastConferences.php">Conferenze passate</a>
                         </div>
                     </li>

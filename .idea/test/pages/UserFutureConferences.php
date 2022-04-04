@@ -9,7 +9,7 @@ if(isset($_POST['logout'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>PastConferences</title>
+    <title>FutureConferences</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -37,8 +37,8 @@ if(isset($_POST['logout'])){
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Conferenze</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="UserFutureConferences.php">Prossime confereze</a>
-                        <a class="dropdown-item active" href="UserPastConferences.php">Conferenze passate</a>
+                        <a class="dropdown-item active" href="UserFutureConferences.php">Prossime confereze</a>
+                        <a class="dropdown-item" href="UserPastConferences.php">Conferenze passate</a>
                         <a class="dropdown-item" href="#">Iscrizioni</a>
                     </div>
                 </li>
@@ -52,7 +52,7 @@ if(isset($_POST['logout'])){
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h4 class="text-center mb-4">Conferenze Passate</h4>
+                <h4 class="text-center mb-4">Programmazione Conferenze</h4>
                 <div class="table-wrap">
                     <table class="table">
                         <thead class="thead-primary">
@@ -61,7 +61,6 @@ if(isset($_POST['logout'])){
                             <th>Nome</th>
                             <th>Anno</th>
                             <th>Giorni</th>
-                            <th>Valutazione</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -70,7 +69,6 @@ if(isset($_POST['logout'])){
                             <td>Informatica-1</td>
                             <td>2022</td>
                             <td>05/04 - 07/04</td>
-                            <td>0/10</td>
                         </tr>
 
                         </tbody>
