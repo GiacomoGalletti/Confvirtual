@@ -1,8 +1,11 @@
 <?php
 session_start();
-
+include_once("../logic/CreateConference.php");
 if(isset($_POST['logout'])){
     session_abort();
+}
+if(isset($_POST['submit'])){
+    createConference();
 }
 ?>
 <!DOCTYPE html>
@@ -18,7 +21,7 @@ if(isset($_POST['logout'])){
     <link rel="stylesheet" type="text/css" href="../css/CreationConference.css"/>
 </head>
 <body>
-<form>
+<form action="AdminCreateConference.php" method="post" autocomplete="off">
     <div class="container">
         <div class="row justify-content-between">
             <div class="imgcontainer">
@@ -64,9 +67,6 @@ if(isset($_POST['logout'])){
             <p>Riempire i campi per creare la conferenza.</p>
             <hr>
 
-            <label for="annoEdizione"><b>Anno Edizione <sup>*</sup></b></label>
-            <input type="text" placeholder="anno di svolgimento" name="annoEdizione" id="annoEdizione" required>
-
             <label for="name"><b>Nome Conferenza <sup>*</sup></b></label>
             <input type="text" placeholder="nome della conferenza" name="name" id="name" required>
 
@@ -76,9 +76,14 @@ if(isset($_POST['logout'])){
             <label for="immagine"><b>Immagine Conferenza </b></label>
             <input type="text" placeholder="inserisci il percorso dell'immagine" name="immagine" id="immagine">
 
+<!--            <form action="upload.php" method="post" enctype="multipart/form-data">-->
+<!--                Select image to upload:-->
+<!--                <input type="file" name="fileToUpload" id="fileToUpload">-->
+<!--                <input type="submit" value="Upload Image" name="submit">-->
+<!--            </form>-->
 
-            <label><b>Date di svolgimento <sup>*</sup></b></label>
-            <input type="text" class="form-control date" placeholder="Inserisci tutte le date in cui si svolgerà">
+            <label for="date"><b>Date di svolgimento <sup>*</sup></b></label>
+            <input type="text" class="form-control date" placeholder="Inserisci tutte le date in cui si svolgerà" name="date" id="date">
 
             <hr>
             <p><sup>*</sup> campi obbligatori</p>

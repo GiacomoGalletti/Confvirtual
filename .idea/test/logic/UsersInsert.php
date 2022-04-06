@@ -18,6 +18,7 @@ function registerUser()
             {
                 $sql = 'CALL register(\'' . $username . '\',\'' . $name . '\',\'' . $surname . '\',\'' . $password . '\',\'' . $luogoNascita . '\',\'' . $dataNascita . '\');';
                 $res = DbConn::getInstance()::getPDO() -> query($sql);
+                $res -> closeCursor();
                 header("refresh:2;url= " . "../pages/LoginPage.php");
                 echo '<link rel="stylesheet" href="../css/style.css">
               <div class="container"> </div>
