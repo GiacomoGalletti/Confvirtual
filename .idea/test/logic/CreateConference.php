@@ -16,7 +16,7 @@ function createConference(){
         array_push($arrayYears,$date -> format("Y"));
     }
 
-    if (!in_array($arrayYears[0], $arrayYears, true)) {
+    if(count(array_unique($arrayYears)) !== 1) {
         header("refresh:3;url= " . "../pages/AdminCreateConference.php");
         echo '<link rel="stylesheet" href="../css/style.css">
               <div class="container"> </div>
