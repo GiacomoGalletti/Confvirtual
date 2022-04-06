@@ -102,7 +102,7 @@ if(isset($_POST['submit'])){
 <script>
     $('.date').datepicker({
         multidate: true,
-        format: 'dd-mm-yyyy'
+        format: 'yyyy-mm-dd'
     });
 </script>
 </body>
