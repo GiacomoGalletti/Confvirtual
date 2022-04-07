@@ -10,13 +10,9 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<div class="container">
-    <div class="row justify-content-between">
-        <div class="imgcontainer">
-            <img src="../resources/images/confvirtualTitle.png" alt="Avatar" class="avatar">
-        </div>
-    </div>
-</div>
+<?php
+include ('../templates/titleimg.html');
+?>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
 
@@ -26,7 +22,7 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="../index.php" class="nav-link">Home</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Conferenze</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">

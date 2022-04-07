@@ -1,13 +1,3 @@
-<?php
-session_start();
-include_once("../logic/CreateConference.php");
-if(isset($_POST['logout'])){
-    session_abort();
-}
-if(isset($_POST['submit'])){
-    createConference();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,14 +11,20 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" type="text/css" href="../css/CreationConference.css"/>
 </head>
 <body>
+
+<?php
+session_start();
+include_once("../logic/CreateConference.php");
+if(isset($_POST['logout'])){
+    session_abort();
+}
+if(isset($_POST['submit'])){
+    createConference();
+}
+
+include ('../templates/titleimg.html');
+?>
 <form action="AdminCreateConference.php" method="post" autocomplete="off">
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="imgcontainer">
-                <img src="../resources/images/confvirtualTitle.png" alt="Avatar" class="avatar">
-            </div>
-        </div>
-    </div>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
 
