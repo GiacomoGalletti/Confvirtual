@@ -23,7 +23,7 @@ class DbConn {
         return self::$currentDbConn;
     }
 
-    public function getPDO(){
+    public static function getPDO(){
         return  self::$pdo;
     }
     public function close(){
