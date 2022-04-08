@@ -1,11 +1,3 @@
-<?php
-session_start();
-
-if(isset($_POST['logout'])){
-    session_abort();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,14 +8,15 @@ if(isset($_POST['logout'])){
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
+<?php
+session_start();
+
+if(isset($_POST['logout'])){
+    session_abort();
+}
+include ('../templates/titleimg.html');
+?>
 <body>
-<div class="container">
-    <div class="row justify-content-between">
-        <div class="imgcontainer">
-            <img src="../resources/images/confvirtualTitle.png" alt="Avatar" class="avatar">
-        </div>
-    </div>
-</div>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
 

@@ -10,21 +10,13 @@
     <link rel="stylesheet" type="text/css" href="../css/Login.css"/>
     <title>Login</title>
 </head>
-<body>
 <?php
- include ('../logic/UsersInsert.php');
- registerUser();
+include ('../logic/UsersInsert.php');
+registerUser();
+include ('../templates/titleimg.html');
 ?>
+<body>
 <form action="Register.php" method="post" >
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="imgcontainer">
-                <img src="../resources/images/confvirtualTitle.png" alt="Avatar" class="avatar">
-            </div>
-        </div>
-    </div>
-
-
     <div class="container">
         <h1>Registrazione</h1>
         <p>Riempire tutti i campi per creare l'account.</p>

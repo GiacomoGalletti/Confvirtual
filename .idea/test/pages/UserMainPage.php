@@ -11,21 +11,15 @@
     <title>Login</title>
 </head>
 <body>
-<form>
-    <?php
-        session_start();
+<?php
+session_start();
 
-        if(isset($_POST['logout'])){
-            session_abort();
-        }
-    ?>
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="imgcontainer">
-                <img src="../resources/images/confvirtualTitle.png" alt="Avatar" class="avatar">
-            </div>
-        </div>
-    </div>
+if(isset($_POST['logout'])){
+    session_abort();
+}
+include ('../templates/titleimg.html');
+?>
+<form>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
 

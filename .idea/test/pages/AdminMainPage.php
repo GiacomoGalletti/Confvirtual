@@ -1,10 +1,3 @@
-<?php
-session_start();
-
-if(isset($_POST['logout'])){
-    session_abort();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,15 +10,16 @@ if(isset($_POST['logout'])){
 
     <title>Login</title>
 </head>
+<?php
+session_start();
+
+if(isset($_POST['logout'])){
+    session_abort();
+}
+include ('../templates/titleimg.html');
+?>
 <body>
 <form>
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="imgcontainer">
-                <img src="../resources/images/confvirtualTitle.png" alt="Avatar" class="avatar">
-            </div>
-        </div>
-    </div>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
 
