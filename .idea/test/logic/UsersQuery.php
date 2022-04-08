@@ -1,6 +1,7 @@
 <?php
 include_once ('DbConn.php');
 include_once ('Session.php');
+Session::start();
 
 function login()
 {
@@ -22,8 +23,9 @@ function login()
                     $res -> closeCursor();
                     $type = Session::read('type');
                     Session::write('loggedIN','loggedIN');
+                    Session::commit();
                     if ($type == 'utente' || $type == 'presenter' || $type == 'speaker') {
-                       //header("Location: ../pages/UserMainPage.php");
+                       header("Location: ../pages/UserMainPage.php");
                     } else {
                         header("Location: ../pages/AdminMainPage.php");
                     }

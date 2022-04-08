@@ -1,16 +1,13 @@
 <?php
     include_once ('../logic/UsersQuery.php');
-
-    if(empty($_SESSION['userName'])){
-        //header('Location:../pages/LoginPage.php');
-        echo ('<h1>NON POSSO ACCEDERE</h1> <br>');
-        Session::dump();
-        exit();
-    } else {
-        echo ('<h1>ACCEDO ALLA PAGINA</h1> <br>');
+    include_once '../logic/Session.php';
+    Session::start();
+    if(!Session::isSet('userName') || Session::read('type')!='amministratore'){
+        header('Location:../pages/LoginPage.php');
         Session::dump();
         exit();
     }
+Session::dump();
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +23,9 @@
     <title>Login</title>
 </head>
 <?php
-if(empty($_POST['logout'])){
-    session_abort();
+if(isset($_POST['logout'])){
+    Session::start();
+    Session::destroy();
 }
 include ('../templates/titleimg.html');
 ?>
@@ -66,7 +64,7 @@ include ('../templates/titleimg.html');
     </nav>
 
     <div class="container">
-        <h2>Benvenuto <?php echo($_SESSION['userName'])?></h2>
+        <h2>Benvenuto <?php echo(Session::read('userName'))?></h2>
         <h3>Menu amministratore</h3>
         <p>
             questa è la tua dashboard.

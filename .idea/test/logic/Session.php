@@ -1,24 +1,7 @@
 <?php
 
-#namespace test\logic;
-
 class Session
 {
-    private static $currentSession = null;
-
-    private function __construct()
-    {
-        self::start();
-    }
-    public static function getIstance(){
-        if (self::$currentSession == null) {
-            self::$currentSession = new Session();
-            return self::$currentSession;
-        } else {
-            return self::$currentSession;
-        }
-    }
-
     protected static $SESSION_AGE = 1800;
 
     public static function write($key, $value)

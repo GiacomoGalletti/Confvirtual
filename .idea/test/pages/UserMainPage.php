@@ -1,3 +1,14 @@
+<?php
+include_once '../logic/Session.php';
+Session::start();
+Session::dump();
+if(!Session::isSet('userName') || Session::read('type')!='utente'){
+    header('Location:../pages/LoginPage.php');
+    Session::dump();
+    exit();
+}
+Session::dump();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +23,9 @@
 </head>
 <body>
 <?php
-session_start();
 
 if(isset($_POST['logout'])){
-    session_abort();
+    Session::destroy();
 }
 include ('../templates/titleimg.html');
 ?>
