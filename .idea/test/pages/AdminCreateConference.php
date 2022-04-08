@@ -1,10 +1,3 @@
-<?php
-session_start();
-
-if(isset($_POST['logout'])){
-    session_abort();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,14 +11,20 @@ if(isset($_POST['logout'])){
     <link rel="stylesheet" type="text/css" href="../css/CreationConference.css"/>
 </head>
 <body>
-<form>
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="imgcontainer">
-                <img src="../resources/images/confvirtualTitle.png" alt="Avatar" class="avatar">
-            </div>
-        </div>
-    </div>
+
+<?php
+session_start();
+include_once("../logic/CreateConference.php");
+if(isset($_POST['logout'])){
+    session_abort();
+}
+if(isset($_POST['submit'])){
+    createConference();
+}
+
+include ('../templates/titleimg.html');
+?>
+<form action="AdminCreateConference.php" method="post" autocomplete="off">
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
 
@@ -64,9 +63,6 @@ if(isset($_POST['logout'])){
             <p>Riempire i campi per creare la conferenza.</p>
             <hr>
 
-            <label for="annoEdizione"><b>Anno Edizione <sup>*</sup></b></label>
-            <input type="text" placeholder="anno di svolgimento" name="annoEdizione" id="annoEdizione" required>
-
             <label for="name"><b>Nome Conferenza <sup>*</sup></b></label>
             <input type="text" placeholder="nome della conferenza" name="name" id="name" required>
 
@@ -76,9 +72,14 @@ if(isset($_POST['logout'])){
             <label for="immagine"><b>Immagine Conferenza </b></label>
             <input type="text" placeholder="inserisci il percorso dell'immagine" name="immagine" id="immagine">
 
+<!--            <form action="upload.php" method="post" enctype="multipart/form-data">-->
+<!--                Select image to upload:-->
+<!--                <input type="file" name="fileToUpload" id="fileToUpload">-->
+<!--                <input type="submit" value="Upload Image" name="submit">-->
+<!--            </form>-->
 
-            <label><b>Date di svolgimento <sup>*</sup></b></label>
-            <input type="text" class="form-control date" placeholder="Inserisci tutte le date in cui si svolgerà">
+            <label for="date"><b>Date di svolgimento <sup>*</sup></b></label>
+            <input type="text" class="form-control date" placeholder="Inserisci tutte le date in cui si svolgerà" name="date" id="date">
 
             <hr>
             <p><sup>*</sup> campi obbligatori</p>
@@ -97,7 +98,7 @@ if(isset($_POST['logout'])){
 <script>
     $('.date').datepicker({
         multidate: true,
-        format: 'dd-mm-yyyy'
+        format: 'yyyy-mm-dd'
     });
 </script>
 </body>
