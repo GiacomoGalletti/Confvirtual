@@ -1,3 +1,18 @@
+<?php
+    include_once ('../logic/UsersQuery.php');
+
+    if(empty($_SESSION['userName'])){
+        //header('Location:../pages/LoginPage.php');
+        echo ('<h1>NON POSSO ACCEDERE</h1> <br>');
+        Session::dump();
+        exit();
+    } else {
+        echo ('<h1>ACCEDO ALLA PAGINA</h1> <br>');
+        Session::dump();
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +26,7 @@
     <title>Login</title>
 </head>
 <?php
-session_start();
-
-if(isset($_POST['logout'])){
+if(empty($_POST['logout'])){
     session_abort();
 }
 include ('../templates/titleimg.html');
