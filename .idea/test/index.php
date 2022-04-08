@@ -1,3 +1,8 @@
+<?php
+	include_once 'logic/Session.php';
+	Session::getIstance();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
