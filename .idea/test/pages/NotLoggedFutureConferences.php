@@ -1,3 +1,6 @@
+<?php
+include_once '../logic/DbConn.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,13 +55,22 @@ include ('../templates/titleimg.html');
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row" class="scope" >inf1</th>
-                            <td>Informatica-1</td>
-                            <td>2022</td>
-                            <td>05/04 - 07/04</td>
-                        </tr>
-
+                        <?php
+                        $sql = 'CALL ritornaConferenzeFuture(\'' . date('dd-mm-YYYY') . '\');';
+                        $res = DbConn::getInstance()::getPDO() -> query($sql);
+                        $array = array();
+                        while ($row = $res -> fetch()) {
+                            $array = $row;
+                            echo '
+                            <tr>
+                                <th scope="row" class="scope" >'.$array[1].'</th> <!-- sigla -->
+                                <td>'.$array[5].'</td> <!-- nome -->
+                                <td>'.$array[0].'</td> <!--annoedizione-->
+                                <td>05/04 - 07/04</td><!-- giorni -->
+                            </tr>';
+                        }
+                        $res -> closeCursor();
+                        ?>
                         </tbody>
                     </table>
                 </div>

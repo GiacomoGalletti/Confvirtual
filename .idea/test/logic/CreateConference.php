@@ -1,5 +1,6 @@
 <?php
-
+include_once '../logic/Session.php';
+Session::start();
 function createConference(){
 
     $nome = $_POST["name"];
@@ -26,7 +27,7 @@ function createConference(){
     }
 
     try{
-        $sql = 'CALL createConference(\''.$arrayYears[0].'\',\''.$acronimo.'\',\''.$immagine.'\',\''. $nome .'\');';
+        $sql = 'CALL createConference(\''.$arrayYears[0].'\',\''.$acronimo.'\',\''.$immagine.'\',\''. $nome .'\',\''.Session::read('userName').'\');';
         $res = DbConn::getInstance()::getPDO() -> query($sql);
         $res -> closeCursor();
 

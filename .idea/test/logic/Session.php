@@ -72,11 +72,6 @@ class Session
         $_SESSION['LAST_ACTIVE'] = time();
     }
 
-    /**
-     * Closes the current session and releases session file lock.
-     *
-     * @return boolean Returns true upon success and false upon failure.
-     */
     public static function close()
     {
         if ( '' !== session_id() )
