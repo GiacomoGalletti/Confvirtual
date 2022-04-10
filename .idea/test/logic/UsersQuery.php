@@ -1,29 +1,30 @@
 <?php
+include_once ('DbConn.php');
+include_once ('Session.php');
+Session::start();
+
 function login()
 {
         $username = $_POST["uname"];
         $password = $_POST["psw"];
-        include_once ('DbConn.php');
-
         try
         {
             $sql = 'CALL checkUserExists(\'' . $username . '\',\'' . $password . '\');';
-
             $res = DbConn::getInstance()::getPDO() -> query($sql);
-
             while ($row = $res->fetch())
             {
-                session_start();
-                $_SESSION['userName'] = $row['userName'];
-                $message = $_SESSION['userName'];
+                Session::write('userName',$row['userName']);
                 $res -> closeCursor();
                 $sql = 'CALL checkUserType(\'' . $username . '\');';
                 $res = DbConn::getInstance()::getPDO() -> query($sql);
                 while ($row = $res -> fetch())
                 {
-                    $_SESSION['type'] = $row['res_type'];
+                    Session::write('type',$row['res_type']);
                     $res -> closeCursor();
-                    if ($_SESSION['type'] == 'utente' || $_SESSION['type'] == 'presenter' || $_SESSION['type'] == 'speaker') {
+                    $type = Session::read('type');
+                    Session::write('loggedIN','loggedIN');
+                    Session::commit();
+                    if ($type == 'utente' || $type == 'presenter' || $type == 'speaker') {
                        header("Location: ../pages/UserMainPage.php");
                     } else {
                         header("Location: ../pages/AdminMainPage.php");
@@ -31,7 +32,6 @@ function login()
                     exit();
                 }
             }
-
             header("refresh:2;url= " . "../pages/LoginPage.php");
             echo '<link rel="stylesheet" href="../css/style.css">
               <h1>credenziali errate</h1>
@@ -50,9 +50,6 @@ function userExists()
     {
         $username = $_POST["userName"];
         $password = md5($_POST["psw"]);
-        include_once("DbConn.php");
-
-
         try
         {
             $sql = 'CALL checkUserExists(\'' . $username . '\',\'' . $password . '\');';
