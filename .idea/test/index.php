@@ -1,6 +1,7 @@
 <?php
-	include_once 'logic/Session.php';
-	Session::getIstance();
+include_once ('logic/Session.php');
+Session::start();
+Session::dump();
 ?>
 
 <!DOCTYPE html>
