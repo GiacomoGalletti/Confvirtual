@@ -2,7 +2,7 @@
 
 #namespace test\logic;
 
-class Session
+class OldSession
 {
     private static $currentSession = null;
 
