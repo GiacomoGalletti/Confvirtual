@@ -37,6 +37,8 @@ Session::dump();
 						<div class="dropdown-menu" aria-labelledby="dropdown04">
 							<a class="dropdown-item" href="pages/NotLoggedFutureConferences.php">Prossime confereze</a>
 							<a class="dropdown-item" href="pages/NotLoggedPastConferences.php">Conferenze passate</a>
+							<a class="dropdown-item" href="pages/ConferenceSelection.php">Aggiungi sessione</a>
+							<!-- <a class="dropdown-item" href="pages/NotLoggedPastConferences.php">Aggiungi presentazione</a> -->
 						</div>
 					</li>
 					<li class="nav-item"><a href="pages/Info.html" class="nav-link">Informazioni</a></li>
