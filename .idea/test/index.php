@@ -3,7 +3,6 @@ include_once ('logic/Session.php');
 Session::start();
 Session::dump();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
