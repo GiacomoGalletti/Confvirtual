@@ -59,8 +59,8 @@ include ('../templates/titleimg.html');
         <label for="orafin"><b>Orario di fine sessione</b></label>
         <input type="time" id="appt2" name="appt2" min="07:00" max="23:00" required>
         <small>Inserire un orario tra le 7:00 e le 23:00</small>
-        <label for="stanza"><b>Link della stanza</b></label>
         <br>
+        <label for="stanza"><b>Link della stanza</b></label>
         <input id = "linkstanza" type="text" placeholder="Inserisci link della stanza" name="stanza" required>
     </div>
 
