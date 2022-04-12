@@ -14,30 +14,8 @@
 <form action="AddSession.php" method="post" >
 <?php
 include ('../templates/titleimg.html');
+include ('../templates/ConferenceSelectionNavBar.html');
 ?>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-        <div class="container">
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="fa fa-bars"></span> Menu
-            </button>
-
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a href="../index.php" class="nav-link">Home</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Conferenze</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="NotLoggedFutureConferences.php">Prossime confereze</a>
-                            <a class="dropdown-item" href="NotLoggedPastConferences.php">Conferenze passate</a>
-                        </div>
-                    </li>
-                    <li class="nav-item"><a href="../pages/Info.html" class="nav-link">Informazioni</a></li>
-                    <li class="nav-item active"><a href="LoginPage.php" class="nav-link">accedi</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
     <div class="container">
         <!-- Per poter aggiungere una sessione bisogna prima aver selezionato una conferenza -->
