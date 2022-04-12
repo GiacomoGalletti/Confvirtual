@@ -13,7 +13,7 @@ class DbConn {
         if(self::$currentDbConn == null)
         {
             try {
-                self::$currentDbConn = new DbConn(new PDO('mysql:host=localhost;dbname=confvirtual;charset=utf8','root','root'));
+                self::$currentDbConn = new DbConn(new PDO('mysql:host=127.0.0.1;dbname=confvirtual;charset=utf8','root','root'));
                 return self::$currentDbConn;
             } catch (PDOException $e) {
                 echo("<h1>ACCESSO FALLITO</h1> <br>");
@@ -23,10 +23,10 @@ class DbConn {
         return self::$currentDbConn;
     }
 
-    public function getPDO(){
+    public static function getPDO(){
         return  self::$pdo;
     }
-    public function close(){
+    public static function close(){
         self::$pdo = null;
     }
 }

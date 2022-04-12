@@ -42,6 +42,7 @@ include ('../templates/titleimg.html');
                             <a class="dropdown-item" href="#">Conferenze passate</a>
                             <a class="dropdown-item" href="#">Iscrizioni</a>
                             <a class="dropdown-item active" href="AdminCreateConference.php" >Crea una conferenza</a>
+                            <a class="dropdown-item" href="../pages/ConferenceSelection.php">Aggiungi sessione</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

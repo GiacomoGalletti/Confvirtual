@@ -1,3 +1,15 @@
+<?php
+    include_once ('../logic/UsersQuery.php');
+    include_once '../logic/Session.php';
+    Session::start();
+    if(!Session::isSet('userName') || Session::read('type')!='amministratore'){
+        header('Location:../pages/LoginPage.php');
+        Session::dump();
+        exit();
+    }
+Session::dump();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,10 +23,9 @@
     <title>Login</title>
 </head>
 <?php
-session_start();
-
 if(isset($_POST['logout'])){
-    session_abort();
+    Session::start();
+    Session::destroy();
 }
 include ('../templates/titleimg.html');
 ?>
@@ -37,6 +48,7 @@ include ('../templates/titleimg.html');
                             <a class="dropdown-item" href="#">Conferenze passate</a>
                             <a class="dropdown-item" href="#">Iscrizioni</a>
                             <a class="dropdown-item" href="../pages/AdminCreateConference.php">Crea una conferenza</a>
+                            <a class="dropdown-item" href="../pages/ConferenceSelection.php">Aggiungi sessione</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -53,7 +65,7 @@ include ('../templates/titleimg.html');
     </nav>
 
     <div class="container">
-        <h2>Benvenuto <?php echo($_SESSION['userName'])?></h2>
+        <h2>Benvenuto <?php echo(Session::read('userName'))?></h2>
         <h3>Menu amministratore</h3>
         <p>
             questa è la tua dashboard.

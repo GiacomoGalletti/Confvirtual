@@ -1,12 +1,7 @@
-<?php
-    include_once '../logic/Session.php';
-    Session::start();
-    Session::dump();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login Page</title>
+    <title>Add Presentation</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -16,12 +11,8 @@
     <title>Login</title>
 </head>
 <body>
-<form action="LoginPage.php" method="post" >
+<form action="AddSession.php" method="post" >
 <?php
-if(isset($_POST['submit'])) {
-    include_once ('../logic/UsersQuery.php');
-    login();
-}
 include ('../templates/titleimg.html');
 ?>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -49,11 +40,28 @@ include ('../templates/titleimg.html');
     </nav>
 
     <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input id = "userName" type="text" placeholder="Enter Username" name="uname" required>
-        <label for="psw"><b>Password</b></label>
-        <input id = "password" type="password" placeholder="Enter Password" name="psw" required>
-        <button name = "submit" type="submit">Login</button>
+        <!-- Per poter aggiungere una sessione bisogna prima aver selezionato una conferenza -->
+        <label for="ttl"><b>Titolo sessione</b></label>
+        <input id = "titolo" type="text" placeholder="Inserisci titolo" name="ttl" required>
+        <!-- I giorni da poter selezionare devono essere quelli della conferenza -->
+        <label for="giorno"><b>Selezionare giorno della conferenza: </b></label>
+        <select Name="lb_selezione_giorno" Size="Number_of_options">
+            <option> Giorno 1 </option>
+            <option> Giorno 2 </option>
+            <option> Giorno 3 </option>
+            <option> Giorno N </option>
+        </select>
+        <br>
+        <label for="oraini"><b>Orario di inizio sessione</b></label>
+        <input type="time" id="appt1" name="appt1" min="07:00" max="23:00" required>
+        <small>Inserire un orario tra le 7:00 e le 23:00</small>
+        <br>
+        <label for="orafin"><b>Orario di fine sessione</b></label>
+        <input type="time" id="appt2" name="appt2" min="07:00" max="23:00" required>
+        <small>Inserire un orario tra le 7:00 e le 23:00</small>
+        <br>
+        <label for="stanza"><b>Link della stanza</b></label>
+        <input id = "linkstanza" type="text" placeholder="Inserisci link della stanza" name="stanza" required>
     </div>
 
 </form>
@@ -63,9 +71,5 @@ include ('../templates/titleimg.html');
 <script src="../js/main.js"></script>
 </body>
 <footer>
-    <div class="container">
-        <span class="psw"><p>Registra un<a href="../pages/Register.php"> nuovo account</a>.</p><a href="https://www.iubenda.com/privacy-policy/39459755" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Privacy Policy ">Privacy Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
-        </span>
-    </div>
 </footer>
 </html>

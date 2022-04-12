@@ -1,4 +1,7 @@
-
+<?php
+include_once '../logic/DbConn.php';
+include_once '../logic/ConferenceQueryController.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,14 +57,21 @@ include ('../templates/titleimg.html');
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row" class="scope" >inf1</th>
-                            <td>Informatica-1</td>
-                            <td>2022</td>
-                            <td>05/04 - 07/04</td>
-                            <td>0/10</td>
-                        </tr>
-
+                        <?php
+                        foreach ($row = ConferenceQueryController::conferencePassed() as $r) {
+                            echo '
+                                <tr>
+                                <th scope="row" class="scope" >' . $r['acronimo'] . '</th> 
+                                <td>' . $r['nome'] . '</td>
+                                <td>' . $r['annoEdizione'] . '</td>
+                            ';
+                            $string = '';
+                            foreach ($row = ConferenceQueryController::daysConference($r['acronimo'],$r['annoEdizione']) as $r) {
+                                $string .= date_format(date_create($r['giorno']),"d/m") . ' - ';
+                            }
+                            echo '<td>' . $string . '</td>';
+                        }
+                        ?>
                         </tbody>
                     </table>
                 </div>
