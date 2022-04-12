@@ -1,5 +1,7 @@
 <?php
 include_once '../logic/DbConn.php';
+include_once '../logic/UtilityFunctions.php';
+include_once '../logic/ConferenceQueryController.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,26 +52,25 @@ include ('../templates/titleimg.html');
                         <tr>
                             <th>Acronimo</th>
                             <th>Nome</th>
-                            <th>Anno</th>
+                            <th>Edizione</th>
                             <th>Giorni</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php
-                        $sql = 'CALL ritornaConferenzeFuture(\'' . date('dd-mm-YYYY') . '\');';
-                        $res = DbConn::getInstance()::getPDO() -> query($sql);
-                        $array = array();
-                        while ($row = $res -> fetch()) {
-                            $array = $row;
+                        foreach ($row = ConferenceQueryController::conferenceFuture() as $r) {
                             echo '
-                            <tr>
-                                <th scope="row" class="scope" >'.$array[1].'</th> <!-- sigla -->
-                                <td>'.$array[5].'</td> <!-- nome -->
-                                <td>'.$array[0].'</td> <!--annoedizione-->
-                                <td>05/04 - 07/04</td><!-- giorni -->
-                            </tr>';
+                                <tr>
+                                <th scope="row" class="scope" >' . $r['acronimo'] . '</th> 
+                                <td>' . $r['nome'] . '</td>
+                                <td>' . $r['annoEdizione'] . '</td>
+                            ';
+                            $string = '';
+                            foreach ($row = ConferenceQueryController::daysConference($r['acronimo'],$r['annoEdizione']) as $r) {
+                                $string .= date_format(date_create($r['giorno']),"d/m") . ' - ';
+                            }
+                            echo '<td>' . $string . '</td>';
                         }
-                        $res -> closeCursor();
                         ?>
                         </tbody>
                     </table>
