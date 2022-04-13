@@ -10,12 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
 <?php
-include ('../templates/titleimg.html');
-include ('../templates/ConferenceSelectionNavBar.html');
+include('../templates/titleimg.html');
+include('../templates/ConferenceSelectionNavBar.html');
 ?>
 
 <form class="ftco-section">
@@ -49,7 +49,7 @@ include ('../templates/ConferenceSelectionNavBar.html');
                                 $string .= date_format(date_create($r['giorno']),"d/m") . ' - ';
                             }
                             echo '<td>' . $string . '</td>';
-                            echo '<td> <a href="AddSession.php" class="btn btn-primary">Seleziona</a> </td>';
+                            echo '<td> <a href="../AddSession.php" class="btn btn-primary">Seleziona</a> </td>';
                         }
                         ?>
                         </tbody>
@@ -60,10 +60,10 @@ include ('../templates/ConferenceSelectionNavBar.html');
     </div>
 </form>
 
-<script src="../js/jquery.min.js"></script>
-<script src="../js/popper.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/main.js"></script>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/popper.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/main.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>

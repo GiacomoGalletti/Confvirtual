@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="../css/CreationConference.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/CreationConference.css"/>
 </head>
 <body>
 
@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
     createConference();
 }
 
-include ('../templates/titleimg.html');
+include('../templates/titleimg.html');
 ?>
 <form action="AdminCreateConference.php" method="post" autocomplete="off">
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -34,7 +34,7 @@ include ('../templates/titleimg.html');
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a href="AdminMainPage.php" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="../AdminMainPage.php" class="nav-link">Home</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Conferenze</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
@@ -42,7 +42,7 @@ include ('../templates/titleimg.html');
                             <a class="dropdown-item" href="#">Conferenze passate</a>
                             <a class="dropdown-item" href="#">Iscrizioni</a>
                             <a class="dropdown-item active" href="AdminCreateConference.php" >Crea una conferenza</a>
-                            <a class="dropdown-item" href="../pages/ConferenceSelection.php">Aggiungi sessione</a>
+                            <a class="dropdown-item" href="../ConferenceSelection.php">Aggiungi sessione</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -52,7 +52,7 @@ include ('../templates/titleimg.html');
                             <a class="dropdown-item" href="#">Registra utente Presenter</a>
                         </div>
                     </li>
-                    <li class="nav-item" name="logout"><a href="LoginPage.php" class="nav-link">logout</a></li>
+                    <li class="nav-item" name="logout"><a href="../LoginPage.php" class="nav-link">logout</a></li>
                 </ul>
             </div>
         </div>
@@ -90,10 +90,10 @@ include ('../templates/titleimg.html');
     </div>
 
 </form>
-<script src="../js/jquery.min.js"></script>
-<script src="../js/popper.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/main.js"></script>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/popper.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 <script>
