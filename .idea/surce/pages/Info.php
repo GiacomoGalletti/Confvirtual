@@ -1,11 +1,15 @@
+<!DOCTYPE html>
+<html>
+<?php
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/templates/head.html');
+?>
 <body>
 <title>Info</title>
-<form action="../index.php" method="get">
+<form>
     <?php
-    include ($_SERVER["DOCUMENT_ROOT"] . '/surce/templates/titleimg.html');
-    include ($_SERVER["DOCUMENT_ROOT"] . '/surce/templates/navbar.html');
+    include_once ($_SERVER["DOCUMENT_ROOT"] . '/templates/navbar.php');
     ?>
-    
+
     <div class="container">
         <h2>Confvirtual</h2>
         <h3>progetto basi di dati creato da:</h3>
@@ -18,7 +22,7 @@
 
 </form>
 <?php
-include ($_SERVER["DOCUMENT_ROOT"] . '/surce/templates/navbarScriptReference.html');
+include ($_SERVER["DOCUMENT_ROOT"] . '/templates/navbarScriptReference.html');
 ?>
 </body>
-
+</html>

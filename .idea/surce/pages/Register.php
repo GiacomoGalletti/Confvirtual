@@ -1,19 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Register Page</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../css/Login.css"/>
-    <title>Login</title>
-</head>
+<html lang="it">
 <?php
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/logic/Session.php');
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/templates/head.html');
 include ('../logic/UsersInsert.php');
 registerUser();
-include ('../templates/titleimg.html');
 ?>
 <body>
 <form action="Register.php" method="post" >
@@ -48,25 +39,8 @@ include ('../templates/titleimg.html');
         <p>Hai già un account? <a href="LoginPage.php">Accedi</a>.</p>
     </div>
 </form>
-<script src="../js/jquery.min.js"></script>
-<script src="../js/popper.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/main.js"></script>
+<?php
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/templates/navbarScriptReference.html');
+?>
 </body>
-<footer>
-    <a href="https://www.iubenda.com/privacy-policy/39459755"
-       class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe "
-       title="Privacy Policy ">Privacy Policy</a><script type="text/javascript">
-        (function (w,d) {var loader = function () {
-            var s = d.createElement("script"),
-            tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js";
-            tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);
-        }else if(w.attachEvent){
-                w.attachEvent("onload", loader);
-        }else{
-                w.onload = loader;
-        }
-        })
-        (window, document);</script>
-</footer>
 </html>

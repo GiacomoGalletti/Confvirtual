@@ -2,7 +2,6 @@
 include_once '../logic/Session.php';
 Session::start();
 function createConference(){
-
     $nome = $_POST["name"];
     $acronimo = $_POST["acronimo"];
     $immagine = $_POST["immagine"];
