@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-include_once ($_SERVER["DOCUMENT_ROOT"] . '/logic/Session.php');
-include_once ($_SERVER["DOCUMENT_ROOT"] . '/templates/head.html');
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/.idea/surce/logic/Session.php');
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/.idea/surce/templates/head.html');
 ?>
 <body>
 <title>Conferenze Future</title>
 <?php
-include_once ($_SERVER["DOCUMENT_ROOT"] . '/templates/navbar.php');
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/.idea/surce/templates/navbar.php');
 switch(Session::read('type')){
     case 'amministratore': ?>
         <form class="ftco-section">
@@ -101,7 +101,7 @@ switch(Session::read('type')){
 }
 ?>
 <?php
-include_once ($_SERVER["DOCUMENT_ROOT"] . '/templates/navbarScriptReference.html');
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/.idea/surce/templates/navbarScriptReference.html');
 ?>
 </body>
 </html>

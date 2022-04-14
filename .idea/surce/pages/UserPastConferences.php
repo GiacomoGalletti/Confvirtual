@@ -10,10 +10,6 @@
 </head>
 <?php
 session_start();
-
-if(isset($_POST['logout'])){
-    session_abort();
-}
 include ('../templates/titleimg.html');
 ?>
 <body>

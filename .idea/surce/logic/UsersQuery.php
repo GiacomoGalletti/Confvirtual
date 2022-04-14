@@ -1,20 +1,16 @@
 <?php
 include_once ('DbConn.php');
 include_once ('Session.php');
-Session::start();
 
-function login()
+
+function login($username, $password)
 {
-        $username = $_POST["uname"];
-        $password = $_POST["psw"];
+        Session::start();
         try
         {
-            $sql = 'CALL checkUserExists(\'' . $username . '\',\'' . $password . '\');';
-            $res = DbConn::getInstance()::getPDO() -> query($sql);
-            while ($row = $res->fetch())
+            if (userExists($username, $password))
             {
-                Session::write('userName',$row['userName']);
-                $res -> closeCursor();
+                Session::write('userName',$username);
                 $sql = 'CALL checkUserType(\'' . $username . '\');';
                 $res = DbConn::getInstance()::getPDO() -> query($sql);
                 while ($row = $res -> fetch())
@@ -24,18 +20,12 @@ function login()
                     $type = Session::read('type');
                     Session::write('loggedIN','loggedIN');
                     Session::commit();
-                    if ($type == 'utente' || $type == 'presenter' || $type == 'speaker') {
-                       header("Location: ../pages/UserMainPage.php");
-                    } else {
-                        header("Location: ../pages/AdminMainPage.php");
-                    }
+                    header("Location: /.idea/surce/index.php");
                     exit();
                 }
             }
-            header("refresh:2;url= " . "../pages/LoginPage.php");
-            echo '<link rel="stylesheet" href="../css/style.css">
-              <h1>credenziali errate</h1>
-              <img src="https://dm0qx8t0i9gc9.cloudfront.net/watermarks/image/rDtN98Qoishumwih/graphicstock-exhausted-and-tired-office-worker-in-the-office-to-much-work-and-no-motivation-place-your-own-text-on-the-notes_HOrinLsGog_SB_PM.jpg" alt="wrong credential imag" class="avatar">';
+            header("Location: /.idea/surce/pages/LoginPage.php");
+            include $_SERVER["DOCUMENT_ROOT"] . '/.idea/surce/templates/incorrectcredentials.html';
 
             exit();
         } catch (PDOException $e)
@@ -44,27 +34,22 @@ function login()
         }
 
 }
-function userExists()
-{
-    if(isset($_POST['submit']))
+function userExists($username, $password)
+{   
+    try
     {
-        $username = $_POST["userName"];
-        $password = md5($_POST["psw"]);
-        try
+        $sql = 'CALL checkUserExists(\'' . $username . '\',\'' . $password . '\');';
+        $res = DbConn::getInstance()::getPDO() -> query($sql);
+        while ($row = $res->fetch())
         {
-            $sql = 'CALL checkUserExists(\'' . $username . '\',\'' . $password . '\');';
-            $res = DbConn::getInstance()::getPDO() -> query($sql);
-            while ($row = $res->fetch())
-            {
-                $res -> closeCursor();
-                return true;
-            }
             $res -> closeCursor();
-            return false;
-        } catch (PDOException $e)
-        {
-            echo($e);
+            return true;
         }
+        $res -> closeCursor();
+        return false;
+    } catch (PDOException $e)
+    {
+        echo($e);
     }
 }
 ?>

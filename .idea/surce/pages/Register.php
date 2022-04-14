@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="it">
 <?php
-include_once ($_SERVER["DOCUMENT_ROOT"] . '/logic/Session.php');
-include_once ($_SERVER["DOCUMENT_ROOT"] . '/templates/head.html');
-include ('../logic/UsersInsert.php');
-registerUser();
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/.idea/surce/logic/Session.php');
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/.idea/surce/templates/head.html');
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/.idea/surce/logic/UsersInsert.php');
+if(isset($_POST['submit'])) {
+    registerUser($_POST["uname"], $_POST["name"], $_POST["surname"], $_POST["psw"], $_POST["luogoNascita"], $_POST["dataNascita"]);
+}
 ?>
 <body>
 <form action="Register.php" method="post" >
@@ -40,7 +42,7 @@ registerUser();
     </div>
 </form>
 <?php
-include_once ($_SERVER["DOCUMENT_ROOT"] . '/templates/navbarScriptReference.html');
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/.idea/surce/templates/navbarScriptReference.html');
 ?>
 </body>
 </html>

@@ -23,10 +23,6 @@ Session::dump();
 </head>
 <body>
 <?php
-
-if(isset($_POST['logout'])){
-    Session::destroy();
-}
 include ('../templates/titleimg.html');
 ?>
 <form>

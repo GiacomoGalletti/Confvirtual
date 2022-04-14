@@ -25,7 +25,7 @@
         <small>Inserire un orario tra le 7:00 e le 23:00</small>
         <br>
         <label for="stanza"><b>Link della stanza</b></label>
-        <input id = "linkstanza" type="text" placeholder="Inserisci link della stanza" name="stanza" required>
+        <input id="linkstanza" type="text" placeholder="Inserisci link della stanza" name="stanza" required>
     </div>
 
 </form>
