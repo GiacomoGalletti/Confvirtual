@@ -26,13 +26,21 @@ switch(Session::read('type')){
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <?php
+                                foreach ($row = ConferenceQueryController::conferenceFuture() as $r) {
+                                    echo '
                                 <tr>
-                                    <th scope="row" class="scope" >inf1</th>
-                                    <td>Informatica-1</td>
-                                    <td>2022</td>
-                                    <td>05/04 - 07/04</td>
-                                </tr>
-
+                                <th scope="row" class="scope" >' . $r['acronimo'] . '</th> 
+                                <td>' . $r['nome'] . '</td>
+                                <td>' . $r['annoEdizione'] . '</td>
+                            ';
+                                    $string = '';
+                                    foreach ($row = ConferenceQueryController::daysConference($r['acronimo'],$r['annoEdizione']) as $r) {
+                                        $string .= date_format(date_create($r['giorno']),"d/m") . ' - ';
+                                    }
+                                    echo '<td>' . $string . '</td>';
+                                }
+                                ?>
                                 </tbody>
                             </table>
                         </div>
@@ -67,13 +75,21 @@ switch(Session::read('type')){
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <?php
+                                foreach ($row = ConferenceQueryController::conferenceFuture() as $r) {
+                                    echo '
                                 <tr>
-                                    <th scope="row" class="scope" >inf1</th>
-                                    <td>Informatica-1</td>
-                                    <td>2022</td>
-                                    <td>05/04 - 07/04</td>
-                                </tr>
-
+                                <th scope="row" class="scope" >' . $r['acronimo'] . '</th> 
+                                <td>' . $r['nome'] . '</td>
+                                <td>' . $r['annoEdizione'] . '</td>
+                            ';
+                                    $string = '';
+                                    foreach ($row = ConferenceQueryController::daysConference($r['acronimo'],$r['annoEdizione']) as $r) {
+                                        $string .= date_format(date_create($r['giorno']),"d/m") . ' - ';
+                                    }
+                                    echo '<td>' . $string . '</td>';
+                                }
+                                ?>
                                 </tbody>
                             </table>
                         </div>

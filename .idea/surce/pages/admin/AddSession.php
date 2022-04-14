@@ -1,22 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Add Session</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../../css/Login.css"/>
-    <title>Login</title>
-</head>
+
 <body>
 <form action="AddSession.php" method="post" >
-<?php
-include('../templates/titleimg.html');
-include('../templates/ConferenceSelectionNavBar.html');
-?>
-
     <div class="container">
         <!-- Per poter aggiungere una sessione bisogna prima aver selezionato una conferenza -->
         <label for="ttl"><b>Titolo sessione</b></label>
