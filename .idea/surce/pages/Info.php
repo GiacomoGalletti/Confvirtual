@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <?php
-include_once ($_SERVER["DOCUMENT_ROOT"] . '/templates/head.html');
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/.idea/surce/templates/head.html');
 ?>
 <body>
 <title>Info</title>
 <form>
     <?php
-    include_once ($_SERVER["DOCUMENT_ROOT"] . '/templates/navbar.php');
+    include_once ($_SERVER["DOCUMENT_ROOT"] . '/.idea/surce/templates/navbar.php');
     ?>
 
     <div class="container">
@@ -22,7 +22,7 @@ include_once ($_SERVER["DOCUMENT_ROOT"] . '/templates/head.html');
 
 </form>
 <?php
-include ($_SERVER["DOCUMENT_ROOT"] . '/templates/navbarScriptReference.html');
+include ($_SERVER["DOCUMENT_ROOT"] . '/.idea/surce/templates/navbarScriptReference.html');
 ?>
 </body>
 </html>

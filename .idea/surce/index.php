@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <?php
-include_once ($_SERVER["DOCUMENT_ROOT"] . '/logic/Session.php');
-include_once ($_SERVER["DOCUMENT_ROOT"] . '/templates/head.html');
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/.idea/surce/logic/Session.php');
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/.idea/surce/templates/head.html');
 ?>
 <body>
 <title>Home</title>
-<form>
+<form method="post">
     <?php
-    include_once ($_SERVER["DOCUMENT_ROOT"] . '/templates/navbar.php');
+    include_once ($_SERVER["DOCUMENT_ROOT"] . '/.idea/surce/templates/navbar.php');
     switch(Session::read('type')){
         case 'amministratore': ?>
             <div class="container">
@@ -56,14 +56,14 @@ include_once ($_SERVER["DOCUMENT_ROOT"] . '/templates/head.html');
                 </p>
             </div>
             <div class="container">
-                <img src="/resources/images/laptop-screen-webcam-view-diverse-people-engaged-in-group-videocall-picture-id1220226068.jpg">
+                <img src="/.idea/surce/resources/images/laptop-screen-webcam-view-diverse-people-engaged-in-group-videocall-picture-id1220226068.jpg">
             </div>
         <?php
     }
     ?>
 </form>
 <?php
-include_once ($_SERVER["DOCUMENT_ROOT"] . '/templates/navbarScriptReference.html');
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/.idea/surce/templates/navbarScriptReference.html');
 ?>
 </body>
 </html>

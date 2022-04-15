@@ -15,9 +15,6 @@
 <?php
 session_start();
 include_once("../logic/CreateConference.php");
-if(isset($_POST['logout'])){
-    session_abort();
-}
 if(isset($_POST['submit'])){
     createConference();
 }
