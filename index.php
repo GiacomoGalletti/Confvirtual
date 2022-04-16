@@ -5,7 +5,6 @@ include_once(sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once(sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 ?>
 <body>
-<title>Home</title>
 <form method="post">
     <?php
     include_once(sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
@@ -43,6 +42,17 @@ include_once(sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
             </div>
             <?php
             break;
+        case 'utente': ?>
+            <div class="container">
+                <h2>Benvenuto <?php echo(Session::read('userName'))?></h2>
+                <h3>Menu utente</h3>
+                <p>
+                    questa è la tua dashboard.
+                    qui puoi iscriverti alle conferenze più interessanti del momento
+                </p>
+            </div>
+            <?php
+            break;
         default: ?>
             <div class="container">
                 <h1>COSA È CONFVIRTUAL?</h1>
@@ -62,8 +72,5 @@ include_once(sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
     }
     ?>
 </form>
-<?php
-include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"]));
-?>
 </body>
 </html>

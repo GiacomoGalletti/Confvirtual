@@ -107,7 +107,7 @@ switch(Session::read('type')){
                             <a class="nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Conferenze</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
                                 <a class="dropdown-item" href="/pages/futureconferences.php">Prossime confereze</a>
-                                <a class="dropdown-item" href="/pages/NotLoggedPastConferences.php">Conferenze passate</a>
+                                <a class="dropdown-item" href="/pages/pastconferences.php">Conferenze passate</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -120,4 +120,6 @@ switch(Session::read('type')){
         </nav>
     <?php
 }
+include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"]));
+
 ?>

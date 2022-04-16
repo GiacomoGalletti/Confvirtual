@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Creazione Conferenza</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -49,7 +48,7 @@ include('../templates/titleimg.html');
                             <a class="dropdown-item" href="#">Registra utente Presenter</a>
                         </div>
                     </li>
-                    <li class="nav-item" name="logout"><a href="/pages/login.php" class="nav-link">logout</a></li>
+                    <li class="nav-item" name="logout"><a href="/.idea/pages/pages/login.php" class="nav-link">logout</a></li>
                 </ul>
             </div>
         </div>

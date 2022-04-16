@@ -8,5 +8,5 @@ insert into UTENTE(userName,nome,cognome,pswd,luogoNascita,dataNascita) values (
     'Bologna',
     '31/12/2000'
     );
-    
-    insert into amministratore(userNameUtente) values ('admin1');
+
+insert into amministratore(userNameUtente) values ('admin1');

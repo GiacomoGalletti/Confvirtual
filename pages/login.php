@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
 <?php
-include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
+//include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/UsersQuery.php", $_SERVER["DOCUMENT_ROOT"]));
-Session::start();
+
+//Session::start();
 ?>
 <body>
-<title>Login</title>
 <form method="post" >
 <?php
 if(isset($_POST['submit'])) {

@@ -6,7 +6,7 @@ function createConference(){
     $acronimo = $_POST["acronimo"];
     $immagine = $_POST["immagine"];
     $date = $_POST["date"];
-    include_once ('DbConn.php');
+    include_once('DbConn.php');
 
     $arrayDate = explode(",",$date);
     $arrayYears = array();

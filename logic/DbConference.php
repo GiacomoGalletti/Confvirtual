@@ -1,5 +1,5 @@
 <?php
-include_once ('../logic/DbConn.php');
+include_once('../logic/DbConn.php');
 include_once('Conference.php');
 
 // TODO: le conferenze future e passate devono essere selezionate tramite lo stato della conferenza e non la data

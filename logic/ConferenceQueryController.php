@@ -13,4 +13,9 @@ class ConferenceQueryController
         return DbConference::conferenceActive();
     }
 
+    static function getDaysConference($acronimo,$anno)
+    {
+        return DbConference::daysConference($acronimo,$anno);
+    }
+
 }

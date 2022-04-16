@@ -12,7 +12,7 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 
 function getConferences()
 {
-    foreach ($row = ConferenceQueryController::getConferenceFuture() as $r) {
+    foreach (ConferenceQueryController::getConferenceFuture() as $r) {
         rowConferenceInfo($r);
     }
 }
@@ -26,7 +26,7 @@ function rowConferenceInfo($r)
                                 <td>' . $r['annoEdizione'] . '</td>
                             ';
     $string = '';
-    foreach ($row = ConferenceQueryController::daysConference($r['acronimo'], $r['annoEdizione']) as $r) {
+    foreach (ConferenceQueryController::getDaysConference($r['acronimo'], $r['annoEdizione']) as $r) {
         $string .= date_format(date_create($r['giorno']), "d/m") . ' - ';
     }
     echo '<td>' . $string . '</td>';

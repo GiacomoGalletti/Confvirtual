@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Add Presentation</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" type="text/css" href="../../css/Login.css"/>
-    <title>Login</title>
 </head>
 <body>
 <form action="../AddSession.php" method="post" >
@@ -29,11 +27,11 @@ include('../templates/titleimg.html');
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Conferenze</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
                             <a class="dropdown-item" href="../NotLoggedFutureConferences.php">Prossime confereze</a>
-                            <a class="dropdown-item" href="../NotLoggedPastConferences.php">Conferenze passate</a>
+                            <a class="dropdown-item" href="../pastconferences.php">Conferenze passate</a>
                         </div>
                     </li>
-                    <li class="nav-item"><a href="/pages/Info.html" class="nav-link">Informazioni</a></li>
-                    <li class="nav-item active"><a href="/pages/login.php" class="nav-link">accedi</a></li>
+                    <li class="nav-item"><a href="/.idea/pages/Info.html" class="nav-link">Informazioni</a></li>
+                    <li class="nav-item active"><a href="/.idea/pages/pages/login.php" class="nav-link">accedi</a></li>
                 </ul>
             </div>
         </div>

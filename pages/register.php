@@ -38,7 +38,7 @@ if(isset($_POST['submit'])) {
     </div>
 
     <div class="container signin">
-        <p>Hai già un account? <a href="/pages/login.php">Accedi</a>.</p>
+        <p>Hai già un account? <a href="/.idea/pages/pages/login.php">Accedi</a>.</p>
     </div>
 </form>
 <?php

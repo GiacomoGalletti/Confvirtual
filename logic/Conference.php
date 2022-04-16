@@ -1,5 +1,5 @@
 <?php
-include_once ('../logic/DbConn.php');
+include_once('../logic/DbConn.php');
 
 // TODO: aggiungere dati relativi ai giorni della conferenza
 
