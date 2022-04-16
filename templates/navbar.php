@@ -28,7 +28,7 @@ switch(Session::read('type')){
                                 <a class="dropdown-item" href="/pages/futureconferences.php">Prossime confereze</a>
                                 <a class="dropdown-item" href="#">Conferenze passate</a>
                                 <a class="dropdown-item" href="#">Iscrizioni</a>
-                                <a class="dropdown-item" href="/pages/admin/AdminCreateConference.php">Crea una conferenza</a>
+                                <a class="dropdown-item" href="/pages/admin/createconference.php">Crea una conferenza</a>
                                 <a class="dropdown-item" href="/pages/admin/ConferenceSelection.php">Aggiungi sessione</a>
                             </div>
                         </li>

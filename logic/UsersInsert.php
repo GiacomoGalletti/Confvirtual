@@ -1,6 +1,6 @@
 <?php
-include_once($_SERVER["DOCUMENT_ROOT"] . "/source/logic/DbConn.php");
-include_once($_SERVER["DOCUMENT_ROOT"] . "/source/logic/UsersQuery.php");
+include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/DbConn.php");
+include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/UsersQuery.php");
 
     function registerUser($username, $name, $surname, $password, $luogoNascita, $dataNascita)
     {

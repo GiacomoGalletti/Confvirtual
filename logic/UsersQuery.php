@@ -20,17 +20,13 @@ function login($username, $password)
                     Session::read('type');
                     Session::commit();
                     Session::dump();
-                    echo 'ciao';
-                    //header("Location: /index.php");
+                    header("Location: /index.php");
                     exit();
                 }
             }
-            echo 'non acceduto';
             Session::dump();
-
-            //header("Location: /pages/login.php");
-           // include sprintf("%s/templates/incorrectcredentials.html", $_SERVER["DOCUMENT_ROOT"]);
-
+            header("Location: /pages/login.php");
+            include sprintf("%s/templates/incorrectcredentials.html", $_SERVER["DOCUMENT_ROOT"]);
             exit();
         } catch (PDOException $e)
         {
