@@ -51,4 +51,3 @@ function createConference(){
               </div> <div class="container" </div>';
 
 }
-?>

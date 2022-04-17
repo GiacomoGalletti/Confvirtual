@@ -1,13 +1,11 @@
 <?php
-include_once('../logic/DbConn.php');
-include_once('Conference.php');
-
-// TODO: le conferenze future e passate devono essere selezionate tramite lo stato della conferenza e non la data
+include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/DbConn.php");
+include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/Conference.php");
 
 class DbConference
 {
-
-    static function getConference($acronimo, $anno_edizione) {
+    static function getConference($acronimo, $anno_edizione): Conference
+    {
         $sql = 'CALL ritornaConferenza(\'' . $acronimo . '\', \'' . $anno_edizione . '\');';
         $res = DbConn::getInstance()::getPDO() -> query($sql);
         foreach ($res -> fetch() as $key) {
@@ -53,6 +51,13 @@ class DbConference
         }
     }
 
+    static function getAdminConferences($nomeUtente)
+    {
+        $sql = 'CALL getAdminConferences(\'' . $nomeUtente . '\');';
+        $res = DbConn::getInstance()::getPDO()->query($sql);
+        $output = $res -> fetchAll(PDO::FETCH_ASSOC);
+        $res -> closeCursor();
+        return $output;
+    }
 }
 
-?>

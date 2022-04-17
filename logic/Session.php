@@ -1,9 +1,13 @@
 <?php
+include_once (sprintf("%s/logic/ExpiredSessionException.php", $_SERVER["DOCUMENT_ROOT"]));
 
 class Session
 {
     protected static $SESSION_AGE = 1800;
 
+    /**
+     * @throws ExpiredSessionException
+     */
     public static function write($key, $value)
     {
         if ( !is_string($key) ) {
@@ -15,8 +19,9 @@ class Session
         return $value;
     }
 
-    public static function isSet($key){
-        if (empty($_SESSION[$key]) || $_SESSION[$key] == '' || !isset($_SESSION[$key]))
+    public static function isSet($key): bool
+    {
+        if (empty($_SESSION[$key]) || $_SESSION[$key] == '')
         {
             return false;
         } else {
@@ -24,6 +29,9 @@ class Session
         }
     }
 
+    /**
+     * @throws ExpiredSessionException
+     */
     public static function read($key)
     {
         if ( !is_string($key) ) {
@@ -38,6 +46,9 @@ class Session
         return false;
     }
 
+    /**
+     * @throws ExpiredSessionException
+     */
     public static function delete($key)
     {
         if ( !is_string($key) )
@@ -55,14 +66,17 @@ class Session
         echo nl2br(print_r($_SESSION));
     }
 
-    public static function start()
+    public static function start(): bool
     {
         return self::_init();
     }
 
+    /**
+     * @throws ExpiredSessionException
+     */
     private static function _age()
     {
-        $last = isset($_SESSION['LAST_ACTIVE']) ? $_SESSION['LAST_ACTIVE'] : false ;
+        $last = $_SESSION['LAST_ACTIVE'] ?? false;
 
         if (false !== $last && (time() - $last > self::$SESSION_AGE))
         {
@@ -72,6 +86,7 @@ class Session
         $_SESSION['LAST_ACTIVE'] = time();
     }
 
+    /** @noinspection PhpVoidFunctionResultUsedInspection */
     public static function close()
     {
         if ( '' !== session_id() )
@@ -95,17 +110,10 @@ class Session
         }
     }
 
-    private static function _init()
+    private static function _init(): bool
     {
-        if (function_exists('session_status'))
-        {
-            if (session_status() == PHP_SESSION_DISABLED)
-                throw new SessionDisabledException();
-        }
         if ( '' === session_id() )
         {
-            $secure = true;
-            $httponly = true;
             return session_start();
         }
         return session_regenerate_id(true);

@@ -2,6 +2,7 @@
 <html lang="it">
 <?php
 include_once(sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
+Session::start();
 include_once(sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 ?>
 <body>

@@ -1,3 +1,4 @@
+use confvirtual;
 DELIMITER //
 drop procedure if exists checkUserType //
 CREATE PROCEDURE checkUserType(
@@ -155,6 +156,21 @@ CREATE PROCEDURE createPresentation(IN in_codice int,IN in_codiceSessione int,IN
 BEGIN  
 	insert into presentazione(codice,codiceSessione,oraInizio,oraFine) values (in_codice,in_codiceSessione,in_oraInizio,in_oraFine);
 END; 
+//
+DELIMITER ;
+
+DELIMITER //
+drop procedure if exists getAdminConferences //
+CREATE PROCEDURE getAdminConferences(IN userName int)
+BEGIN
+    select *
+    from conferenza
+    where conferenza.acronimo in (
+        SELECT creatoriconferenza.acronimoConferenza
+        from creatoriconferenza
+        where creatoriconferenza.userNameUtente = userName
+        );
+END;
 //
 DELIMITER ;
 

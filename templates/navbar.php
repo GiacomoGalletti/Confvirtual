@@ -29,7 +29,7 @@ switch(Session::read('type')){
                                 <a class="dropdown-item" href="#">Conferenze passate</a>
                                 <a class="dropdown-item" href="#">Iscrizioni</a>
                                 <a class="dropdown-item" href="/pages/admin/createconference.php">Crea una conferenza</a>
-                                <a class="dropdown-item" href="/pages/admin/ConferenceSelection.php">Aggiungi sessione</a>
+                                <a class="dropdown-item" href="/pages/admin/myconferences.php">Aggiungi sessione</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">

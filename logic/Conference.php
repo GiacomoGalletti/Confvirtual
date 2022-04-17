@@ -1,5 +1,5 @@
 <?php
-include_once('../logic/DbConn.php');
+include_once('DbConn.php');
 
 // TODO: aggiungere dati relativi ai giorni della conferenza
 
@@ -67,6 +67,14 @@ class Conference
     public function getNome()
     {
         return $this->nome;
+    }
+
+    /**
+     * alias of getNome
+     */
+    public function getName()
+    {
+        return getNome();
     }
 }
 
