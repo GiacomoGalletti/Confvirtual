@@ -8365,3 +8365,13 @@ h1, h2, h3, h4, h5,
   border: 1px solid rgba(0, 0, 0, 0.1); }
   .form-control:focus, .form-control:active {
     border-color: #000; }
+.modifica {
+  background-color: #202040;
+  border: none;
+  color: white;
+  padding: 0px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}

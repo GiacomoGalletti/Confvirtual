@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
+?>
 <body>
-<form action="AddSession.php" method="post" >
+<?php
+include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+?>
+<form action="addsession.php" method="post" >
     <div class="container">
         <!-- Per poter aggiungere una sessione bisogna prima aver selezionato una conferenza -->
         <label for="ttl"><b>Titolo sessione</b></label>
@@ -29,11 +35,8 @@
     </div>
 
 </form>
-<script src="../../js/jquery.min.js"></script>
-<script src="../../js/popper.js"></script>
-<script src="../../js/bootstrap.min.js"></script>
-<script src="../../js/main.js"></script>
+<?php
+include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"]));
+?>
 </body>
-<footer>
-</footer>
 </html>

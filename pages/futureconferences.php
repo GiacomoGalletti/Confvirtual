@@ -7,9 +7,9 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
 ?>
 <body>
 <title>Conferenze Future</title>
+<form class="ftco-section" method="post">
 <?php
 include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
-
 function getConferences()
 {
     foreach (ConferenceQueryController::getConferenceFuture() as $r) {
@@ -34,7 +34,6 @@ function rowConferenceInfo($r)
 
 switch(Session::read('type')){
     case 'amministratore': ?>
-        <form class="ftco-section">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -59,7 +58,6 @@ switch(Session::read('type')){
                     </div>
                 </div>
             </div>
-        </form>
         <?php
         break;
     case 'speaker':?>
@@ -71,7 +69,6 @@ switch(Session::read('type')){
         <?php
         break;
     default: ?>
-        <form class="ftco-section">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -96,12 +93,12 @@ switch(Session::read('type')){
                     </div>
                 </div>
             </div>
-        </form>
     <?php
 }
 ?>
 <?php
 include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"]));
 ?>
+</form>
 </body>
 </html>
