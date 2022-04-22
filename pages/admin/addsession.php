@@ -8,7 +8,14 @@ include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 <?php
 include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 ?>
-<form action="addsession.php" method="post" >
+<form class="ftco-section" method="post">
+    <h4>Conferenza selezionata: </h4>
+    <p><?php print (
+            $_POST['acronimo']
+            . ' edizione ' .
+            $_POST['annoEdizione']);
+    $arrayDate = array();
+    $arrayDate = explode("%", $_POST['dates'])?></p>
     <div class="container">
         <!-- Per poter aggiungere una sessione bisogna prima aver selezionato una conferenza -->
         <label for="ttl"><b>Titolo sessione</b></label>
@@ -16,10 +23,18 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
         <!-- I giorni da poter selezionare devono essere quelli della conferenza -->
         <label for="giorno"><b>Selezionare giorno della conferenza: </b></label>
         <select Name="lb_selezione_giorno" Size="Number_of_options">
-            <option> Giorno 1 </option>
-            <option> Giorno 2 </option>
-            <option> Giorno 3 </option>
-            <option> Giorno N </option>
+            <?php
+                for ($i = 0; $i<sizeof($arrayDate); $i++)
+                {
+                    ?>
+                    <option>
+                        <?php
+                            print $arrayDate[$i];
+                        ?>
+                    </option>
+            <?php
+                }
+            ?>
         </select>
         <br>
         <label for="oraini"><b>Orario di inizio sessione</b></label>

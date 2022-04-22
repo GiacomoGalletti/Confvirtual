@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html lang="it">
 <?php
-if(isset($_POST['chiusa'])){
-    header("Location: /pages/admin/addrate.php");
-}
-if(isset($_POST['attiva'])){
-    header("Location: /pages/admin/addsession.php");
-}
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 ?>
 <body>
-<form class="ftco-section" method="post">
+<form name="myform" class="ftco-section" method="post" onsubmit="return OnSubmitForm();">
     <?php
     include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     $uName = Session::read('userName');
@@ -29,17 +23,22 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
     function rowConferenceInfo($r)
     {?>
             <tr>
-            <th scope="row" class="scope" ><?php  print $r['acronimo']  ?></th>
+            <th scope="row" class="scope" ><?php  print ($acronimo = $r['acronimo'])  ?></th>
             <td><?php print $r['nome'] ?></td>
-            <td><?php print $r['annoEdizione'] ?></td>
+            <td><?php print ($annoEdizione = $r['annoEdizione']) ?></td>
             <td><?php  print ($stato = $r['statoSvolgimento']) ?></td><?php
-            $string = '';
+                $stringDates = '';
+                $sendDates = '';
             foreach (ConferenceQueryController::getDaysConference($r['acronimo'], $r['annoEdizione']) as $r) {
-                $string .= date_format(date_create($r['giorno']), "d/m") . ' - ';
+                $sendDates .= date_format(date_create($r['giorno']), "d-m-y") . '%';
+                $stringDates .= date_format(date_create($r['giorno']), "d/m") . ' - ';
             } ?>
-                <td><?php print $string  ?></td>
+                <td><?php print $stringDates  ?></td>
                 <td>
-                    <button type="submit" class="modifica" name="<?php print $stato ?>" value="<?php print $stato ?>">Modifica conferenza <?php print $stato ?></button>
+                    <button type="submit" id="btn" class="modifica" name="btn" href="" value="<?php print $stato ?>">Modifica conferenza <?php print $stato ?></button>
+                    <input type="hidden" id="acronimo" name="acronimo" value="' <?php print $acronimo ?> '">
+                    <input type="hidden" id="annoEdizione" name="annoEdizione" value="'<?php print $annoEdizione ?>'">
+                    <input type="hidden" id="dates" name="dates" value="<?php print $sendDates ?>">
                 </td>
             </tr>
                 <?php
@@ -91,5 +90,20 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
         include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"]));
         ?>
 </form>
+
+<script type="text/javascript">
+    function OnSubmitForm()
+    {
+        const bottone = document.getElementById('btn');
+        if(bottone.getAttribute("value") == 'attiva')
+        {
+            document.myform.action ="/pages/admin/addsession.php";
+        } else if (bottone.getAttribute("value") == 'chiusa')
+        {
+            document.myform.action ="/pages/admin/addrate.php";
+        }
+        return true;
+    }
+</script>
 </body>
 </html>
