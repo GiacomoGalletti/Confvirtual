@@ -5,18 +5,20 @@ include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 ?>
 <body>
+<form class="ftco-section" method="post">
 <?php
 include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 ?>
-<form class="ftco-section" method="post">
-    <h4>Conferenza selezionata: </h4>
-    <p><?php print (
-            $_POST['acronimo']
-            . ' edizione ' .
-            $_POST['annoEdizione']);
-    $arrayDate = array();
-    $arrayDate = explode("%", $_POST['dates'])?></p>
     <div class="container">
+        <div>
+            <h4 class="conferenceInfo">Conferenza selezionata: </h4>
+            <p class="conferenceInfo">
+                <?php print (' acronimo ' . $_POST['acronimo'] . ', edizione ' . $_POST['annoEdizione']);
+                $arrayDate = array();
+                $arrayDate = explode("%", $_POST['dates'])
+                ?>
+            </p>
+        </div>
         <!-- Per poter aggiungere una sessione bisogna prima aver selezionato una conferenza -->
         <label for="ttl"><b>Titolo sessione</b></label>
         <input id = "titolo" type="text" placeholder="Inserisci titolo" name="ttl" required>
@@ -24,16 +26,16 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
         <label for="giorno"><b>Selezionare giorno della conferenza: </b></label>
         <select Name="lb_selezione_giorno" Size="Number_of_options">
             <?php
-                for ($i = 0; $i<sizeof($arrayDate); $i++)
-                {
+            for ($i = 0; $i<sizeof($arrayDate); $i++)
+            {
+                ?>
+                <option>
+                    <?php
+                    print $arrayDate[$i];
                     ?>
-                    <option>
-                        <?php
-                            print $arrayDate[$i];
-                        ?>
-                    </option>
-            <?php
-                }
+                </option>
+                <?php
+            }
             ?>
         </select>
         <br>
@@ -47,8 +49,8 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
         <br>
         <label for="stanza"><b>Link della stanza</b></label>
         <input id="linkstanza" type="text" placeholder="Inserisci link della stanza" name="stanza" required>
+        <button name = "submit" type="submit">Conferma</button>
     </div>
-
 </form>
 <?php
 include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"]));
