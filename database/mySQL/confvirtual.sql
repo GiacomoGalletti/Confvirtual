@@ -6,7 +6,7 @@ CREATE TABLE CONFERENZA (
 	annoEdizione year not null,
     acronimo varchar(10) not null,
 	totaleSponsorizzazioni int default 0,
-    immagineLogo varchar(260),
+    immagineLogo varchar(260) default 'no-image',
     statoSvolgimento enum('attiva','completata') default('attiva'),
     nome varchar(50) not null,
     primary key (annoEdizione,acronimo)
@@ -72,6 +72,7 @@ CREATE TABLE CREATORICONFERENZA(
     primary key(userNameUtente,annoEdizioneConferenza,acronimoConferenza),
 	foreign key (annoEdizioneConferenza,acronimoConferenza) references CONFERENZA(annoEdizione,acronimo),
     foreign key (userNameUtente) references AMMINISTRATORE(userNameUtente)
+    ON DELETE CASCADE
 )engine='InnoDB';
 
 CREATE TABLE SPEAKER (
@@ -113,7 +114,7 @@ CREATE TABLE PRESENTER (
 
 CREATE TABLE SPONSOR (
 	nome varchar(50),
-    immagineLogo varchar(260),
+    immagineLogo varchar(260) default "no-image",
     primary key(nome)
 )engine = 'InnoDB';
 
