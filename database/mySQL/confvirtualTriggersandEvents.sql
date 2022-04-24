@@ -1,27 +1,26 @@
 use confvirtual;
 
+SET GLOBAL EVENT_SCHEDULER = ON;
+
 DELIMITER $$
-DROP PROCEDURE IF EXISTS  aggiungiSponsorizzazione $$
-CREATE PROCEDURE aggiungiSponsorizzazione(IN in_importo double, IN in_annoEdizioneConferenza year, IN in_acronimoConferenza varchar(10), IN in_nomeSponsor varchar(50))
+DROP EVENT IF EXISTS cambioStatoConferenza $$
+CREATE EVENT cambioStatoConferenza
+ON SCHEDULE EVERY 1 MINUTE
+DO
 BEGIN
-	INSERT INTO sponsorizzazioni(importo, annoEdizioneConferenza, acronimoConferenza, nomeSponsor) VALUES(in_importo, in_annoEdizioneConferenza, in_acronimoConferenza, in_nomeSponsor);
+	UPDATE conferenza INNER JOIN dataconferenza ON conferenza.annoEdizione = dataconferenza.annoEdizioneConferenza AND conferenza.acronimo = dataconferenza.acronimoConferenza
+    SET conferenza.statoSvolgimento = 'completata'
+    WHERE CURRENT_DATE > (
+    SELECT MAX(giorno) FROM dataconferenza WHERE acronimo = acronimoConferenza AND annoEdizione = annoEdizioneConferenza
+    );
 END$$
 DELIMITER ;
 
-#TRIGGER DI AGGIUNTA SPONSOR NELLA LISTA DEGLI SPONSOR DOPO AVER AGGIUNTO UNA SPONSORIZZAZIONE TRAMITE PROCEDURE
+-- SELECT DATE((ADDDATE(MAX(dataconferenza.giorno), INTERVAL 1 DAY))) FROM dataconferenza;
+-- SELECT (CURRENT_DATE());
+-- SELECT * FROM conferenza INNER JOIN dataconferenza ON conferenza.annoEdizione = dataconferenza.annoEdizioneConferenza AND conferenza.acronimo = dataconferenza.acronimoConferenza;
 
-CALL aggiungiSponsorizzazione(1000, 2020, 'inf', 'Red Bull'); #non si può aggiungere il nomeSponsor perchè, essendo foreign key, non è presente nella tabella sponsor che contiene la primary key
+-- SHOW FULL PROCESSLIST;
 
--- DELIMITER $$
--- CREATE TRIGGER aggiuntaSponsor
--- AFTER UPDATE ON sponsorizzazioni
--- FOR EACH ROW
--- BEGIN
--- 	SELECT nomeSponsor FROM sponsorizzazioni WHERE sponsor.nome != sponsorizzazioni.nomeSponsor;
--- 	INSERT INTO sponsor(nome) VALUES(sponsorizzazioni.nomeSponsor);
--- END$$
--- DELIMITER ;
-
-#creare un evento schedulato che controlli che tutte le date più recenti (MAX) di tutte le conferenze esistenti siano più vecchie di un giorno rispetto alla data corrente (CURRENT_TIMESTAMP())
--- CREATE EVENT cambioStatoConferenza
--- ON SCHEDULE
+-- ADDDATE(MAX(dataconferenza.giorno), INTERVAL 1 DAY) > (CURRENT_DATE())
+-- SELECT ADDDATE(CURRENT_DATE(), INTERVAL 1 DAY);

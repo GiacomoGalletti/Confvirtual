@@ -7,7 +7,7 @@ CREATE TABLE CONFERENZA (
     acronimo varchar(10) not null,
 	totaleSponsorizzazioni int default 0,
     immagineLogo varchar(260) default 'no-image',
-    statoSvolgimento enum('attiva','completata') default('attiva'),
+    statoSvolgimento enum('attiva','completata') default 'attiva',
     nome varchar(50) not null,
     primary key (annoEdizione,acronimo)
 )engine='InnoDB';

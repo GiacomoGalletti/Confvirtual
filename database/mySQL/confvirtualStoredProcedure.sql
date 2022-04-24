@@ -174,3 +174,12 @@ END;
 //
 DELIMITER ;
 
+DELIMITER //
+DROP PROCEDURE IF EXISTS  aggiungiSponsor //
+CREATE PROCEDURE aggiungiSponsor(IN in_nome varchar(50), IN in_immagineLogo varchar(260))
+BEGIN
+	INSERT INTO sponsor(nome, immagineLogo) VALUES(in_nome, in_immagineLogo);
+END//
+DELIMITER ;
+
+-- CALL aggiungiSponsor('Red Bull', 'no-image');
