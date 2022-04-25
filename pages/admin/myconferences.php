@@ -99,7 +99,7 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
         if(bottone.getAttribute("value") == 'attiva')
         {
             document.myform.action ="/pages/admin/addsession.php";
-        } else if (bottone.getAttribute("value") == 'chiusa')
+        } else if (bottone.getAttribute("value") == 'completata')
         {
             document.myform.action ="/pages/admin/addrate.php";
         }

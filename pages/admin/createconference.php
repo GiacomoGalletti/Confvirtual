@@ -3,9 +3,9 @@
 <?php
 include_once(sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once(sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
-include_once(sprintf("%s/logic/CreateConference.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once(sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 if(isset($_POST['submit'])){
-    createConference();
+    ConferenceQueryController::createConference($_POST["name"],$_POST["acronimo"],$immagine = $_POST["immagine"],$_POST["date"]);
 }
 include_once(sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 ?>

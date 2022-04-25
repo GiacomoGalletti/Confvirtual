@@ -38,7 +38,7 @@ CREATE TABLE SESSIONE(
     constraint controlloOrario check(oraFine > oraInizio), # VERIFICARE I CONTROLLI CON LE DATE
     titolo varchar(50) not null,
     linkStanza varchar(260) not null,
-    numeroPresentazioni int,
+    numeroPresentazioni int default 0,
     giornoData date not null,
     annoEdizioneConferenza year not null,
     acronimoConferenza varchar(50),

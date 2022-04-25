@@ -28,4 +28,8 @@ class ConferenceQueryController
         return DbConference::getAdminConferences($userName);
     }
 
+    static function createConference($nome, $acronimo, $immagine, $date): bool
+    {
+        return DbConference::createConference($nome, $acronimo, $immagine, $date);
+    }
 }

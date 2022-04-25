@@ -137,17 +137,17 @@ BEGIN
 END //
 DELIMITER ;
 
-/*#procedure creazione sessione
+#procedure creazione sessione
 DELIMITER //
 drop procedure if exists createSession //
-CREATE PROCEDURE createSession(IN in_codice int,IN in_oraInizio time,IN in_oraFine time,IN in_titolo varchar(50),IN in_linkStanza varchar(360),IN in_numeroPresentazioni int,
+CREATE PROCEDURE createSession(IN in_oraInizio time,IN in_oraFine time,IN in_titolo varchar(50),IN in_linkStanza varchar(360),IN in_numeroPresentazioni int,
 							   IN in_giornoData date,IN in_annoEdizioneConferenza year,IN in_acronimoConferenza varchar(50))
 BEGIN
-	insert into conferenza(codice,titolo,linkStanza,numeroPresentazioni,giornoData,annoEdizioneConferenza,acronimoConferenza) values (in_codice,
-				in_oraInizio,in_oraFine,in_titolo,in_linkStanza,in_numeroPresentazioni,in_giornoData,in_annoEdizioneConferenza,in_acronimoConferenza);
+	insert into sessione(oraInizio,oraFine,titolo,linkStanza,giornoData,annoEdizioneConferenza,acronimoConferenza) values (
+				in_oraInizio,in_oraFine,in_titolo,in_linkStanza,in_giornoData,in_annoEdizioneConferenza,in_acronimoConferenza);
 END;
 //
-DELIMITER ;*/
+DELIMITER ;
 
 #procedure creazione presentazione
 DELIMITER //
