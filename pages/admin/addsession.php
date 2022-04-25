@@ -25,10 +25,10 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
         </div>
         <!-- Per poter aggiungere una sessione bisogna prima aver selezionato una conferenza -->
         <label for="ttl"><b>Titolo sessione</b></label>
-        <input id = "titolo" type="text" placeholder="Inserisci titolo" name="ttl" required>
+        <input id = "ttl" type="text" placeholder="Inserisci titolo" name="ttl" required>
         <!-- I giorni da poter selezionare devono essere quelli della conferenza -->
         <label for="giorno"><b>Selezionare giorno della conferenza: </b></label>
-        <select Name="lb_selezione_giorno" Size="Number_of_options">
+        <select id='giorno' Name="lb_selezione_giorno" Size="Number_of_options">
             <?php
             for ($i = 0; $i<sizeof($arrayDate); $i++)
             {
@@ -44,15 +44,15 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
         </select>
         <br>
         <label for="oraini"><b>Orario di inizio sessione</b></label>
-        <input type="time" id="appt1" name="appt1" min="07:00" max="23:00" required>
+        <input type="time" id="oraini" name="appt1" min="07:00" max="23:00" required>
         <small>Inserire un orario tra le 7:00 e le 23:00</small>
         <br>
         <label for="orafin"><b>Orario di fine sessione</b></label>
-        <input type="time" id="appt2" name="appt2" min="07:00" max="23:00" required>
+        <input type="time" id="orafin" name="appt2" min="07:00" max="23:00" required>
         <small>Inserire un orario tra le 7:00 e le 23:00</small>
         <br>
         <label for="stanza"><b>Link della stanza</b></label>
-        <input id="linkstanza" type="text" placeholder="Inserisci link della stanza" name="stanza" required>
+        <input id="stanza" type="text" placeholder="Inserisci link della stanza" name="stanza" required>
         <button name = "submit" type="submit">Conferma</button>
     </div>
 </form>
