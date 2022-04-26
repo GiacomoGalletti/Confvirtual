@@ -24,3 +24,12 @@ DELIMITER ;
 
 -- ADDDATE(MAX(dataconferenza.giorno), INTERVAL 1 DAY) > (CURRENT_DATE())
 -- SELECT ADDDATE(CURRENT_DATE(), INTERVAL 1 DAY);
+
+DELIMITER $$
+DROP TRIGGER IF EXISTS cambioSequenzaPresentazioni $$
+CREATE TRIGGER cambioSequenzaPresentazioni AFTER INSERT ON presentazione
+FOR EACH ROW
+BEGIN
+	UPDATE presentazione SET numeroSequenza = numeroSequenza + 1;
+END$$
+DELIMITER ;
