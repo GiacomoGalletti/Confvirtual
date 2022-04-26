@@ -46,51 +46,39 @@ class DbSessione
     {
         try
         {
+            $date = DateTime::createFromFormat("d-m-Y", $giorno_data);
+            $date = $date->format("Y-m-d");
             $sql = 'CALL createSession(
                 \'' . $ora_inizio . '\',
                 \'' . $ora_fine . '\',
                 \'' . $titolo . '\',
                 \'' . $link_stanza . '\',
-                \'' . $giorno_data . '\',
+                \'' . $date . '\',
                 \'' . $anno_edizione . '\',
                 \'' . $acronimo_conferenza . '\');';
             $res = DbConn::getInstance()::getPDO() -> query($sql);
             $res -> closeCursor();
+            return true;
         } catch (PDOException $e) {
+            echo ($e);
             return false;
         }
-        return true;
     }
 
-    static function conferenceClosed()
+    static function getSessionsFromConfrernce($acronimo,$annoEdizione)
     {
-        $sql = 'CALL ritornaConferenzePassate();';
+        $sql = 'CALL getSessionsFromConfrernce( \'' . $acronimo . '\',\'' . $annoEdizione . '\');';
         $res = DbConn::getInstance()::getPDO() -> query($sql);
         $output = $res -> fetchAll(PDO::FETCH_ASSOC);
         $res -> closeCursor();
-        return $output;
-    }
-
-    static function daysConference($acronimoConferenza,$annoEdizione)
-    {
-        if (isset($acronimoConferenza) && isset($annoEdizione)) {
-            $sql = 'CALL ritornaGiorniConferenza(\'' . $acronimoConferenza . '\',\'' . $annoEdizione . '\');';
-            $res = DbConn::getInstance()::getPDO()->query($sql);
-            $output = $res->fetchAll(PDO::FETCH_ASSOC);
-            $res->closeCursor();
+        if  (sizeof($output) > 0)
+        {
             return $output;
-        }else {
+        } else
+        {
             return null;
         }
-    }
 
-    static function getAdminConferences($nomeUtente)
-    {
-        $sql = 'CALL getAdminConferences(\'' . $nomeUtente . '\');';
-        $res = DbConn::getInstance()::getPDO()->query($sql);
-        $output = $res -> fetchAll(PDO::FETCH_ASSOC);
-        $res -> closeCursor();
-        return $output;
     }
 }
 

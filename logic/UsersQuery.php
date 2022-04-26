@@ -1,8 +1,6 @@
 <?php
 include_once('DbConn.php');
 include_once('Session.php');
-
-
 function login($username, $password)
 {
     Session::start();
@@ -17,17 +15,16 @@ function login($username, $password)
             {
                 Session::write('type',$row['res_type']);
                 $res -> closeCursor();
-                Session::read('type');
                 Session::commit();
-                Session::dump();
                 header("Location: /index.php");
                 exit();
             }
         }
-        Session::dump();
-        header("Location: /pages/login.php");
-        include sprintf("%s/templates/incorrectcredentials.html", $_SERVER["DOCUMENT_ROOT"]);
-        exit();
+        else
+        {
+            header("Location: /pages/login.php");
+            include sprintf("%s/templates/incorrectcredentials.html", $_SERVER["DOCUMENT_ROOT"]);
+        }
     } catch (PDOException $e)
     {
         echo($e);

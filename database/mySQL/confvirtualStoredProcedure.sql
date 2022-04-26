@@ -140,7 +140,7 @@ DELIMITER ;
 #procedure creazione sessione
 DELIMITER //
 drop procedure if exists createSession //
-CREATE PROCEDURE createSession(IN in_oraInizio time,IN in_oraFine time,IN in_titolo varchar(50),IN in_linkStanza varchar(360),IN in_numeroPresentazioni int,
+CREATE PROCEDURE createSession(IN in_oraInizio time,IN in_oraFine time,IN in_titolo varchar(50),IN in_linkStanza varchar(360),
 							   IN in_giornoData date,IN in_annoEdizioneConferenza year,IN in_acronimoConferenza varchar(50))
 BEGIN
 	insert into sessione(oraInizio,oraFine,titolo,linkStanza,giornoData,annoEdizioneConferenza,acronimoConferenza) values (
@@ -149,12 +149,24 @@ END;
 //
 DELIMITER ;
 
+#procedure ottenimento di tutte le sessioni di una conferenza
+DELIMITER //
+drop procedure if exists getSessionsFromConfrernce //
+CREATE PROCEDURE getSessionsFromConfrernce(in_acronimoConferenza varchar(50), IN in_annoEdizioneConferenza year)
+BEGIN
+    select *
+    from sessione
+    where sessione.acronimoConferenza = in_acronimoConferenza AND sessione.annoEdizioneConferenza = in_annoEdizioneConferenza;
+END //
+DELIMITER ;
+
+
 #procedure creazione presentazione
 DELIMITER //
 drop procedure if exists createPresentaion //
-CREATE PROCEDURE createPresentation(IN in_codice int,IN in_codiceSessione int,IN in_oraInizio time,IN in_oraFine time)
+CREATE PROCEDURE createPresentation(IN in_codiceSessione int,IN in_oraInizio time,IN in_oraFine time)
 BEGIN  
-	insert into presentazione(codice,codiceSessione,oraInizio,oraFine) values (in_codice,in_codiceSessione,in_oraInizio,in_oraFine);
+	insert into presentazione(codiceSessione,oraInizio,oraFine) values (in_codiceSessione,in_oraInizio,in_oraFine);
 END; 
 //
 DELIMITER ;

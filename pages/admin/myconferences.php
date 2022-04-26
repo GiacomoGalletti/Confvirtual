@@ -30,7 +30,7 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
                 $stringDates = '';
                 $sendDates = '';
             foreach (ConferenceQueryController::getDaysConference($r['acronimo'], $r['annoEdizione']) as $r) {
-                $sendDates .= date_format(date_create($r['giorno']), "d-m-y") . '%';
+                $sendDates .= date_format(date_create($r['giorno']), "d-m-Y") . '%';
                 $stringDates .= date_format(date_create($r['giorno']), "d/m") . ' - ';
             } ?>
                 <td><?php print $stringDates  ?></td>

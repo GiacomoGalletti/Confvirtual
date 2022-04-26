@@ -35,7 +35,7 @@ CREATE TABLE SESSIONE(
 	codice int auto_increment,
     oraInizio time not null,
     oraFine time not null,
-    constraint controlloOrario check(oraFine > oraInizio), # VERIFICARE I CONTROLLI CON LE DATE
+    constraint controlloOrario check(oraFine > oraInizio),
     titolo varchar(50) not null,
     linkStanza varchar(260) not null,
     numeroPresentazioni int default 0,
