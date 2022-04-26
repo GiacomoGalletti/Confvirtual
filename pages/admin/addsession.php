@@ -49,6 +49,7 @@ if (isset($_POST['submit']))
                             <table class="table">
                                 <thead class="thead-primary">
                                 <tr>
+                                    <th>codice sessione</th>
                                     <th>ora inizio</th>
                                     <th>ora fine</th>
                                     <th>titolo</th>
@@ -58,12 +59,15 @@ if (isset($_POST['submit']))
                                 </tr>
                                 ';
                                 foreach ($sessions as $s) {
+                                    $oraInizio = DateTime::createFromFormat("H:m:s", $s['oraInizio'])->format("H:m");
+                                    $oraFine = DateTime::createFromFormat("H:m:s", $s['oraFine'])->format("H:m")
                                     ?>
                                     <tr>
-                                        <td><?php print $s['oraInizio']  ?></td>
-                                        <td><?php print $s['oraFine']  ?></td>
+                                        <td><?php print $s['codice']  ?></td>
+                                        <td><?php print $oraInizio  ?></td>
+                                        <td><?php print $oraFine  ?></td>
                                         <td><?php print $s['titolo']  ?></td>
-                                        <td><?php print $s['linkStanza']  ?></td>
+                                        <td><a href="http://<?php print $s['linkStanza']?>">LINK</a></td>
                                         <td><?php print $s['numeroPresentazioni']  ?></td>
                                         <td><?php print $s['giornoData']  ?></td>
                                     </tr>
