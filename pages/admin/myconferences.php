@@ -14,6 +14,8 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
     function getConferencesAdmin($uName)
     {
         if ($uName != null)
+            global $id;
+            $id = 0;
             foreach (ConferenceQueryController::getMyConference($uName) as $r)
             {
                 rowConferenceInfo($r);
@@ -21,12 +23,15 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
     }
 
     function rowConferenceInfo($r)
-    {?>
+    {
+        global $id;
+        ?>
             <tr>
             <th scope="row" class="scope" ><?php  print ($acronimo = $r['acronimo'])  ?></th>
             <td><?php print $r['nome'] ?></td>
             <td><?php print ($annoEdizione = $r['annoEdizione']) ?></td>
             <td><?php  print ($stato = $r['statoSvolgimento']) ?></td><?php
+                $id++;
                 $stringDates = '';
                 $sendDates = '';
             foreach (ConferenceQueryController::getDaysConference($r['acronimo'], $r['annoEdizione']) as $r) {
@@ -35,10 +40,10 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
             } ?>
                 <td><?php print $stringDates  ?></td>
                 <td>
-                    <button type="submit" id="btn" class="modifica" name="btn" value="<?php print $stato ?>">Modifica conferenza <?php print $stato ?></button>
-                    <input type="hidden" id="acronimo" name="acronimo" value="<?php print $acronimo ?>">
-                    <input type="hidden" id="annoEdizione" name="annoEdizione" value="<?php print $annoEdizione ?>">
-                    <input type="hidden" id="dates" name="dates" value="<?php print $sendDates ?>">
+                    <button type="submit" id="btn" name="btn" onclick="inline(this)" value = "<?php print ($id) ?>" state="<?php print $stato ?>">Modifica conferenza <?php print $stato ?></button>
+                    <input type="hidden" id="acronimo" name="acronimo[]" value="<?php print $acronimo ?>">
+                    <input type="hidden" id="annoEdizione" name="annoEdizione[]" value="<?php print $annoEdizione ?>">
+                    <input type="hidden" id="dates" name="dates[]" value="<?php print $sendDates ?>">
                 </td>
             </tr>
                 <?php
@@ -93,17 +98,25 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
 </form>
 
 <script type="text/javascript">
+
+    let state;
+    let index;
+    const inline = btn => {
+        state = btn.getAttribute("state");
+        index = btn.getAttribute("value");
+    }
     function OnSubmitForm()
     {
-        const bottone = document.getElementById('btn');
-        if(bottone.getAttribute("value") == 'attiva')
+        if(state === 'attiva')
         {
             document.myform.action ="/pages/admin/addsession.php";
-        } else if (bottone.getAttribute("value") == 'completata')
+            return true;
+        } else if (state === 'completata')
         {
             document.myform.action ="/pages/admin/addrate.php";
+            return true;
         }
-        return true;
+        return false;
     }
 </script>
 </body>

@@ -24,14 +24,17 @@ if (isset($_POST['submit']))
     ?>
     <div class="container">
         <?php
-        $acronimo = $_POST['acronimo'];
-        $annoEdizione = $_POST['annoEdizione']; ?>
+        $index = $_POST['btn']-1;
+        $acronimo = $_POST['acronimo'][$index];
+        $annoEdizione = $_POST['annoEdizione'][$index];
+        $rawdates=$_POST['dates'][$index];
+        ?>
          <div class="container">
             <h4 class="conferenceInfo">Conferenza selezionata: </h4>
             <p class="conferenceInfo">
                 <?php print (' acronimo ' . ($acronimo) . ', edizione ' . ($annoEdizione));
                 $arrayDate = array();
-                $arrayDate = explode("%", $rawdates=$_POST['dates'])
+                $arrayDate = explode("%", $rawdates)
                 ?>
             </p>
          </div>
