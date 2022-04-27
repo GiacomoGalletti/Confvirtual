@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
 <?php
-
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/SessioneQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
@@ -30,15 +29,15 @@ if (isset($_POST['submit']))
         $annoEdizione = $_POST['annoEdizione'][$index];
         $rawdates=$_POST['dates'][$index];
         ?>
-         <div class="container">
-            <h4 class="conferenceInfo">Conferenza selezionata: </h4>
+        <div class="container">
+            <h4 class="conferenceInfo">Sessione selezionata: </h4>
             <p class="conferenceInfo">
                 <?php print (' acronimo ' . ($acronimo) . ', edizione ' . ($annoEdizione));
                 $arrayDate = array();
                 $arrayDate = explode("%", $rawdates)
                 ?>
             </p>
-         </div>
+        </div>
         <?php
         if (($sessions = SessioneQueryController::getSessions($acronimo,$annoEdizione)) != null)
         {
@@ -62,22 +61,22 @@ if (isset($_POST['submit']))
                                     <th>giorno</th>
                                 </tr>
                                 ';
-                                foreach ($sessions as $s) {
-                                    $oraInizio = DateTime::createFromFormat("H:i:s", $s['oraInizio'])->format("H:i");
-                                    $oraFine = DateTime::createFromFormat("H:i:s", $s['oraFine'])->format("H:i");
-                                    ?>
-                                    <tr>
-                                        <td><?php print $s['codice']  ?></td>
-                                        <td><?php print $oraInizio  ?></td>
-                                        <td><?php print $oraFine  ?></td>
-                                        <td><?php print $s['titolo']  ?></td>
-                                        <td><a href="http://<?php print $s['linkStanza']?>">LINK</a></td>
-                                        <td><?php print $s['numeroPresentazioni']  ?></td>
-                                        <td><?php print $s['giornoData']  ?></td>
-                                    </tr>
-                                    <?php
-                                }
-                                echo '
+            foreach ($sessions as $s) {
+                $oraInizio = DateTime::createFromFormat("H:m:s", $s['oraInizio'])->format("H:m");
+                $oraFine = DateTime::createFromFormat("H:m:s", $s['oraFine'])->format("H:m")
+                ?>
+                <tr>
+                    <td><?php print $s['codice']  ?></td>
+                    <td><?php print $oraInizio  ?></td>
+                    <td><?php print $oraFine  ?></td>
+                    <td><?php print $s['titolo']  ?></td>
+                    <td><a href="http://<?php print $s['linkStanza']?>">LINK</a></td>
+                    <td><?php print $s['numeroPresentazioni']  ?></td>
+                    <td><?php print $s['giornoData']  ?></td>
+                </tr>
+                <?php
+            }
+            echo '
                                 </thead>
                                 <tbody>
                                 <?php
@@ -94,8 +93,10 @@ if (isset($_POST['submit']))
         <input type="hidden" id="dates" name="dates" value="<?php print $rawdates ?>">
         <input type="hidden" id="acronimo" name="acronimo" value="<?php print $acronimo ?>">
         <input type="hidden" id="annoEdizione" name="annoEdizione" value="<?php print $annoEdizione ?>">
+        <!-- Per poter aggiungere una sessione bisogna prima aver selezionato una conferenza -->
         <label for="ttl"><b>Titolo sessione</b></label>
         <input id = "ttl" type="text" placeholder="Inserisci titolo" name="ttl" required>
+        <!-- I giorni da poter selezionare devono essere quelli della conferenza -->
         <label for="giorno"><b>Selezionare giorno della conferenza: </b></label>
         <select id='giorno' Name="giorno" Size="Number_of_options">
             <?php
@@ -111,16 +112,20 @@ if (isset($_POST['submit']))
             }
             ?>
         </select>
-        <?php
-        include (sprintf("%s/templates/timePicker.html", $_SERVER["DOCUMENT_ROOT"]));
-        ?>
+        <br>
+        <label for="oraini"><b>Orario di inizio sessione</b></label>
+        <input type="time" id="oraini" name="oraini" min="07:00" max="23:00" step="3600000" required>
+        <small>Inserire un orario tra le 7:00 e le 23:00</small>
+        <br>
+        <label for="orafin"><b>Orario di fine sessione</b></label>
+        <input type="time" id="orafin" name="orafin" min="07:00" max="23:00" step="3600000" required>
+        <small>Inserire un orario tra le 7:00 e le 23:00</small>
+        <br>
         <label for="stanza"><b>Link della stanza</b></label>
         <input id="stanza" type="text" placeholder="Inserisci link della stanza" name="stanza" required>
         <button name = "submit" type="submit">Conferma</button>
     </div>
 </form>
-<script>
-</script>
 <?php
 include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"]));
 ?>
