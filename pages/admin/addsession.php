@@ -6,6 +6,12 @@ include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/SessioneQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 
+if (isset($_POST['to_presentation']))
+{
+    header("Location:/pages/admin/addpresentation.php");
+}
+
+
 if (isset($_POST['submit']))
 {
     if (SessioneQueryController::createSession($_POST['oraini'],$_POST['orafin'],$_POST['ttl'],$_POST['stanza'],$_POST['giorno'],$_POST['annoEdizione'],$_POST['acronimo']))
@@ -19,7 +25,7 @@ if (isset($_POST['submit']))
 }
 ?>
 <body>
-<form class="ftco-section" method="post">
+<form method="post">
     <?php
     include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     ?>
@@ -53,13 +59,14 @@ if (isset($_POST['submit']))
                             <table class="table">
                                 <thead class="thead-primary">
                                 <tr>
-                                    <th>codice sessione</th>
+                                    <th>codice <br> sessione</th>
                                     <th>ora inizio</th>
                                     <th>ora fine</th>
                                     <th>titolo</th>
                                     <th>link stanza</th>
-                                    <th>numero presentazioni</th>
+                                    <th>numero <br> presentazioni</th>
                                     <th>giorno</th>
+                                    <th></th>
                                 </tr>
                                 ';
                                 foreach ($sessions as $s) {
@@ -73,17 +80,20 @@ if (isset($_POST['submit']))
                                         <td><?php print $s['titolo']  ?></td>
                                         <td><a href="http://<?php print $s['linkStanza']?>">LINK</a></td>
                                         <td><?php print $s['numeroPresentazioni']  ?></td>
-                                        <td><?php print $s['giornoData']  ?></td>
+                                        <td><?php print ($data = $s['giornoData'])  ?></td>
+                                            <?php
+                                                if (strtotime($data) >= strtotime('now')) {
+                                                    echo '<td><button type="submit" id="to_presentation" name="to_presentation">Presentazioni</button></td>';
+                                                } else
+                                                {
+                                                    echo '<td>non modificabile</td>';
+                                                }
+                                            ?>
                                     </tr>
                                     <?php
                                 }
                                 echo '
                                 </thead>
-                                <tbody>
-                                <?php
-                                getConferencesAdmin($uName);
-                                ?>
-                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -95,7 +105,7 @@ if (isset($_POST['submit']))
         <input type="hidden" id="acronimo" name="acronimo" value="<?php print $acronimo ?>">
         <input type="hidden" id="annoEdizione" name="annoEdizione" value="<?php print $annoEdizione ?>">
         <label for="ttl"><b>Titolo sessione</b></label>
-        <input id = "ttl" type="text" placeholder="Inserisci titolo" name="ttl" required>
+        <input id = "ttl" type="text" placeholder="Inserisci titolo" name="ttl">
         <label for="giorno"><b>Selezionare giorno della conferenza: </b></label>
         <select id='giorno' Name="giorno" Size="Number_of_options">
             <?php
@@ -115,7 +125,7 @@ if (isset($_POST['submit']))
         include (sprintf("%s/templates/timePicker.html", $_SERVER["DOCUMENT_ROOT"]));
         ?>
         <label for="stanza"><b>Link della stanza</b></label>
-        <input id="stanza" type="text" placeholder="Inserisci link della stanza" name="stanza" required>
+        <input id="stanza" type="text" placeholder="Inserisci link della stanza" name="stanza">
         <button name = "submit" type="submit">Conferma</button>
     </div>
 </form>

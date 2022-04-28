@@ -6,7 +6,7 @@ include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 ?>
 <body>
-<form name="myform" class="ftco-section" method="post" onsubmit="return OnSubmitForm();">
+<form name="myform" method="post" onsubmit="return OnSubmitForm();">
     <?php
     include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     $uName = Session::read('userName');

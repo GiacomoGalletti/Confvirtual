@@ -12,7 +12,12 @@ if(isset($_POST['logout'])){
     Session::destroy();
     header("Location: /index.php");
 }
-switch(Session::read('type')){
+$userType = null;
+try {
+    $userType = Session::read('type');
+} catch (ExpiredSessionException $e) {}
+
+switch($userType){
     case 'amministratore': ?>
             <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
                 <div class="container">

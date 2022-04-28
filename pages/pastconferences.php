@@ -7,7 +7,7 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
 
 ?>
 <body>
-<form class="ftco-section" method="post">
+<form method="post">
     <?php
     include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 
