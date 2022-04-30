@@ -163,7 +163,7 @@ DELIMITER ;
 
 #procedure creazione presentazione
 DELIMITER //
-drop procedure if exists createPresentaion //
+drop procedure if exists createPresentation //
 CREATE PROCEDURE createPresentation(IN in_codiceSessione int,IN in_oraInizio time,IN in_oraFine time)
 BEGIN  
 	insert into presentazione(codiceSessione,oraInizio,oraFine) values (in_codiceSessione,in_oraInizio,in_oraFine);
@@ -187,11 +187,34 @@ END;
 DELIMITER ;
 
 DELIMITER $$
-DROP PROCEDURE IF EXISTS getPresetationInfo $$
+DROP PROCEDURE IF EXISTS getPresentationInfo $$
 CREATE PROCEDURE getPresentationInfo(IN in_codiceSessione int)
 BEGIN
     SELECT * FROM presentazione WHERE in_codiceSessione = presentazione.codiceSessione ORDER BY presentazione.codiceSessione;
     SELECT * FROM tutorial WHERE in_codiceSessione = tutorial.codiceSessione ORDER BY tutorial.codiceSessione;
     SELECT * FROM articolo WHERE in_codiceSessione = articolo.codiceSessione ORDER BY articolo.codiceSessione;
 END$$
+DELIMITER ;
+
+call getPresentationInfo(13);
+
+#crea articolo con la call a create presentation
+DELIMITER //
+drop procedure if exists createArticolo //
+CREATE PROCEDURE createArticolo(IN in_codicePresentazione int, IN in_titolo varchar(50), IN in_filePdf varchar(260) , IN in_numeroPagine int)
+BEGIN
+    INSERT INTO  articolo(codicePresentazione,titolo,filePDF,numeroPagine)VALUES(in_codicePresentazione, in_titolo, in_filePdf, in_numeroPagine);
+END;
+//
+DELIMITER ;
+
+#crea tutorial con la call a create presentation
+DELIMITER //
+drop procedure if exists createTutorial//
+CREATE PROCEDURE createTutorial(IN in_codicePresentazione int, IN in_codiceSessione int, IN in_titolo varchar(50), IN in_abstract varchar(500))
+BEGIN
+    #--CALL createPresentation(1, '16:15:00', '17:15:00');	testare
+    INSERT INTO  tutorial(codicePresentazione, codiceSessione, titolo)VALUES(in_codicePresentazione,in_codiceSessione,in_titolo,in_abstract);
+END;
+//
 DELIMITER ;

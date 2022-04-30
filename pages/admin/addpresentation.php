@@ -6,9 +6,36 @@ include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/upload.php", $_SERVER["DOCUMENT_ROOT"]));
 
+$index = $_POST['presentationbtn'];
+$orainizio = $_POST['orainizio'][$index];
+$orafine = $_POST['orafine'][$index];
+$data=$_POST['data'][$index];
+$codice_sessione = $_POST['codice_sessione'][$index];
+
 if (isset($_POST['submit']))
 {
-    uploadPDF();
+    if ($_POST['radius'] == 'articolo')
+    {
+        uploadPDF();
+        //IN in_codiceSessione int,IN in_oraInizio time,IN in_oraFine time
+        if (PresentationQueryController::createPresentation($codice_sessione,$orainizio,$orafine))
+        {
+            if (PresentationQueryController::createArticle($codice_sessione,$orainizio,$orafine))
+            {
+
+            } else
+            {
+                echo 'articolo non creato.';
+            }
+        } else
+        {
+            echo 'presentazione non creata.';
+        }
+    } else if ($_POST['radius'] == 'tutorial'){
+
+    } else {
+        echo '<p2>seleziona una tipologia di presentazione.</p2>';
+    }
    // header("Location: /pages/admin/addpresentation.php");
 }
 ?>
@@ -19,11 +46,6 @@ if (isset($_POST['submit']))
     ?>
     <div class="container">
         <?php
-        $index = $_POST['presentationbtn'];
-        $orainizio = $_POST['orainizio'][$index];
-        $orafine = $_POST['orafine'][$index];
-        $data=$_POST['data'][$index];
-        $codice_sessione = $_POST['codice_sessione'][$index];
         ?>
             <h4 class="conferenceInfo">Sessione selezionata: </h4>
             <p class="conferenceInfo">
@@ -71,6 +93,11 @@ if (isset($_POST['submit']))
                     </div>
                 </div>
             </div>';
+        } else
+        {
+            echo '<div class="conteiner">
+                    <p1>nessuna presentazione creata per la sessione corrente.</p1>
+                  </div>';
         }
         ?>
 
@@ -99,6 +126,9 @@ if (isset($_POST['submit']))
 
         <label for="input_titolo_tutorial" class="form_tutorial"><b>Titolo Tutorial</b></label>
         <input class="form_tutorial" type="text" id="input_titolo_tutorial" name="titolo_tutorial" placeholder="inserisci titolo tutorial">
+        <label for="input_abstract_tutorial" class="form_tutorial"><b>Abstract</b></label>
+        <textarea id="input_abstract_tutorial" class="form_tutorial" maxlength="500" name="input_abstract_tutorial" rows="3" cols="95" placeholder="max 500 caratteri"></textarea>
+        <br>
         <button name = "submit" type="submit">Conferma</button>
 
     </div>
