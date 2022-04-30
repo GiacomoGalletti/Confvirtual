@@ -6,7 +6,7 @@ include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 ?>
 <body>
-<form name="myform" method="post" onsubmit="return OnSubmitForm();">
+<form name="myform" method="post" onsubmit="return OnSubmitForm();" >
     <?php
     include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     $uName = Session::read('userName');
@@ -19,6 +19,7 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
             foreach (ConferenceQueryController::getMyConference($uName) as $r)
             {
                 rowConferenceInfo($r);
+                $id++;
             }
     }
 
@@ -31,7 +32,6 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
             <td><?php print $r['nome'] ?></td>
             <td><?php print ($annoEdizione = $r['annoEdizione']) ?></td>
             <td><?php  print ($stato = $r['statoSvolgimento']) ?></td><?php
-                $id++;
                 $stringDates = '';
                 $sendDates = '';
             foreach (ConferenceQueryController::getDaysConference($r['acronimo'], $r['annoEdizione']) as $r) {
@@ -40,9 +40,9 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
             } ?>
                 <td><?php print $stringDates  ?></td>
                 <td>
-                    <button type="submit" id="btn" name="btn" onclick="inline(this)" value = "<?php print ($id) ?>" state="<?php print $stato ?>">Modifica conferenza <?php print $stato ?></button>
-                    <input type="hidden" id="acronimo" name="acronimo[]" value="<?php print $acronimo ?>">
-                    <input type="hidden" id="annoEdizione" name="annoEdizione[]" value="<?php print $annoEdizione ?>">
+                    <button type="submit" id="btn" name="sessionbtn" onclick="inline(this)" value = "<?php print ($id) ?>" state="<?php print $stato ?>">Modifica conferenza <?php print $stato ?></button>
+                    <input type="hidden" id="array_acronimo" name="array_acronimo[]" value="<?php print $acronimo ?>">
+                    <input type="hidden" id="array_annoEdizione" name="array_annoEdizione[]" value="<?php print $annoEdizione ?>">
                     <input type="hidden" id="dates" name="dates[]" value="<?php print $sendDates ?>">
                 </td>
             </tr>
@@ -98,7 +98,6 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
 </form>
 
 <script type="text/javascript">
-
     let state;
     let index;
     const inline = btn => {

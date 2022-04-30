@@ -13,7 +13,7 @@ class ExpiredSessionException extends Exception
 
     public function __construct()
     {
-        //header("refresh:2;url= " . "/pages/login.php");
+        header("refresh:10;url= " . "/pages/login.php");
         print ($this->errorMessage());
     }
 }

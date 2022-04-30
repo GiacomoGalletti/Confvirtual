@@ -3,41 +3,36 @@
 <?php
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
-include_once (sprintf("%s/logic/SessioneQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/logic/upload.php", $_SERVER["DOCUMENT_ROOT"]));
 
 if (isset($_POST['submit']))
 {
-//    if ())
-//    {
-//        header("refresh:2;Location: /pages/admin/addsession.php");
-//    }
-//    else
-//    {
-//        header("refresh:2;Location: /pages/admin/addsession.php");
-//    }
+    uploadPDF();
+   // header("Location: /pages/admin/addpresentation.php");
 }
 ?>
 <body>
-<form method="post">
+<form method="post" enctype= "multipart/form-data">
     <?php
     include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     ?>
     <div class="container">
         <?php
-        $index = $_POST['btn']-1;
-        //$acronimo = $_POST['acronimo'][$index];
-        //$annoEdizione = $_POST['annoEdizione'][$index];
-        //$rawdates=$_POST['dates'][$index];
+        $index = $_POST['presentationbtn'];
+        $orainizio = $_POST['orainizio'][$index];
+        $orafine = $_POST['orafine'][$index];
+        $data=$_POST['data'][$index];
+        $codice_sessione = $_POST['codice_sessione'][$index];
         ?>
             <h4 class="conferenceInfo">Sessione selezionata: </h4>
             <p class="conferenceInfo">
-                <?php print (' inizio sessione: ' . 'INSERIRE ORARIO' . ', fine sessione: ' . 'INSERIRE ORARIO');
-//                $arrayDate = array();
-//                $arrayDate = explode("%", $rawdates)
+                <?php
+                print ('giorno: ' . $data . ' inizio sessione: ' . $orainizio . ', fine sessione: ' . $orafine);
                 ?>
             </p>
         <?php
-        if (($sessions = SessioneQueryController::getSessions($acronimo,$annoEdizione)) != null)
+        if (($sessions = PresentationQueryController::getPresentations($codice_sessione)) != null)
         {
             echo '
                     <div class="container">
@@ -61,6 +56,7 @@ if (isset($_POST['submit']))
                 $oraFine = DateTime::createFromFormat("H:m:s", $s['oraFine'])->format("H:m")
                 ?>
                 <tr>
+                    <!-- TODO: sistemare dopo completamento della creazione dei Articoli e Tutorials -->
                     <td><?php print $s['codice']  ?></td>
                     <td><?php print $oraInizio  ?></td>
                     <td><?php print $oraFine  ?></td>
@@ -77,9 +73,7 @@ if (isset($_POST['submit']))
             </div>';
         }
         ?>
-        <input type="hidden" id="dates" name="dates" value="<?php print $rawdates ?>">
-        <input type="hidden" id="acronimo" name="acronimo" value="<?php print $acronimo ?>">
-        <input type="hidden" id="annoEdizione" name="annoEdizione" value="<?php print $annoEdizione ?>">
+
         <h4>Crea presentazione:</h4>
         <!-- Gli orari di inizio e fine devono essere compatibili con quelli già presi da altre PRESENTAZIONI -->
         <?php
@@ -95,11 +89,11 @@ if (isset($_POST['submit']))
 
         <label for="input_titolo_articolo" class="form_articolo"><b>Titolo Articolo</b></label>
         <input class="form_articolo" type="text" id="input_titolo_articolo" name="titolo_articolo" placeholder="inserisci titolo articolo">
-        <label for = "input_filepdf" class="form_articolo"><b>File PDF</b></label>
-        <form class="form_articolo" id="input_filepdf" action="/logic/upload.php" method="post" enctype="multipart/form-data">
-            <p class="form_articolo" id="input_filepdf">Seleziona il file PDF da caricare:<p/>
-            <input class="form_articolo" type="file" name="fileToUpload" id="fileToUpload">
-        </form>
+        <p class="form_articolo"><b>File PDF</b></p>
+
+        <p class="form_articolo">Seleziona il file PDF da caricare:</p>
+        <input class="form_articolo" type="file" name="fileToUpload" id="fileToUpload">
+
         <label class="form_articolo" for="pagenum"><b>Numero di pagine:</b></label>
         <input class="form_articolo" type="text" id="pagenum" name="pagenum" pattern="[0-9]+" placeholder="inserisci il numero di pagine">
 

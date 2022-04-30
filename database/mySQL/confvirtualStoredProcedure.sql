@@ -186,3 +186,12 @@ END;
 //
 DELIMITER ;
 
+DELIMITER $$
+DROP PROCEDURE IF EXISTS getPresetationInfo $$
+CREATE PROCEDURE getPresentationInfo(IN in_codiceSessione int)
+BEGIN
+    SELECT * FROM presentazione WHERE in_codiceSessione = presentazione.codiceSessione ORDER BY presentazione.codiceSessione;
+    SELECT * FROM tutorial WHERE in_codiceSessione = tutorial.codiceSessione ORDER BY tutorial.codiceSessione;
+    SELECT * FROM articolo WHERE in_codiceSessione = articolo.codiceSessione ORDER BY articolo.codiceSessione;
+END$$
+DELIMITER ;

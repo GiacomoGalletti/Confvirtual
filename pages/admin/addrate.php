@@ -1,2 +1,2 @@
 <?
-echo '<h1>SUCA</h1>';
+echo '<h1>pagina da implementare</h1>';
