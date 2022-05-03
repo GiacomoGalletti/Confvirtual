@@ -7,10 +7,12 @@ include_once(sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMEN
 if(isset($_POST['submit'])){
     ConferenceQueryController::createConference($_POST["name"],$_POST["acronimo"],$immagine = $_POST["immagine"],$_POST["date"]);
 }
-include_once(sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 ?>
 <body>
 <form action="createconference.php" method="post" autocomplete="off">
+    <?php
+    include_once(sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+    ?>
     <div class="container">
         <h3>Creazione conferenza</h3>
         <div class="container">
@@ -26,11 +28,11 @@ include_once(sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
             <label for="immagine"><b>Immagine Conferenza </b></label>
             <input type="text" placeholder="inserisci il percorso dell'immagine" name="immagine" id="immagine">
 
-<!--            <form action="upload.php" method="post" enctype="multipart/form-data">-->
-<!--                Select image to upload:-->
-<!--                <input type="file" name="fileToUpload" id="fileToUpload">-->
-<!--                <input type="submit" value="Upload Image" name="submit">-->
-<!--            </form>-->
+            <!--            <form action="upload.php" method="post" enctype="multipart/form-data">-->
+            <!--                Select image to upload:-->
+            <!--                <input type="file" name="fileToUpload" id="fileToUpload">-->
+            <!--                <input type="submit" value="Upload Image" name="submit">-->
+            <!--            </form>-->
 
             <label for="date"><b>Date di svolgimento <sup>*</sup></b></label>
             <input type="text" class="form-control date" placeholder="Inserisci tutte le date in cui si svolgerà" name="date" id="date">

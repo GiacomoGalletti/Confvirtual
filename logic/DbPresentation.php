@@ -27,5 +27,20 @@ class DbPresentation
         }
     }
 
+    public static function createArticle($codice_presentazione, $titolo, $filePDF, $numero_pagine)
+    {
+        try
+        {
+            $sql = 'CALL createArticolo(\'' . $codice_presentazione . '\',\'' . $titolo . '\',\'' . $filePDF . '\',\'' . $numero_pagine . '\');';
+            $res = DbConn::getInstance()::getPDO()->query($sql);
+            $res -> closeCursor();
+            return true;
+        } catch (Exception $e)
+        {
+            echo $e;
+            return false;
+        }
+    }
+
 
 }

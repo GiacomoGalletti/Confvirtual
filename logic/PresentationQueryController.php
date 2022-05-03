@@ -14,5 +14,9 @@ class PresentationQueryController
         return DbPresentation::createPresentation($codice_sessione, $orainizio, $orafine);
     }
 
+    public static function createArticle($codice_presentazione,$titolo,$filePDF,$numero_pagine)
+    {
+        return DbPresentation::createArticle($codice_presentazione,$titolo,$filePDF,$numero_pagine);
+    }
 
 }

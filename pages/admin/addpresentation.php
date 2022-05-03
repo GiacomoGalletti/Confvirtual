@@ -5,6 +5,7 @@ include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/upload.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/logic/FileTypeEnum.php", $_SERVER["DOCUMENT_ROOT"]));
 
 $index = $_POST['presentationbtn'];
 $orainizio = $_POST['orainizio'][$index];
@@ -16,13 +17,13 @@ if (isset($_POST['submit']))
 {
     if ($_POST['radius'] == 'articolo')
     {
-        uploadPDF();
-        //IN in_codiceSessione int,IN in_oraInizio time,IN in_oraFine time
+        $upload = new upload('fileToUpload',FileTypeEnum::PDF);
+        //TODO: modificare in base alla struttura della query
         if (PresentationQueryController::createPresentation($codice_sessione,$orainizio,$orafine))
         {
-            if (PresentationQueryController::createArticle($codice_sessione,$orainizio,$orafine))
+            if (PresentationQueryController::createArticle($_POST['codice_presentazione'],$_POST['titolo_articolo'],$upload->getFilePath(),$_POST['pagenum']))
             {
-
+                echo 'articolo creato con successo';
             } else
             {
                 echo 'articolo non creato.';
