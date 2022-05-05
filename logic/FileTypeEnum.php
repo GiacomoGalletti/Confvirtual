@@ -1,7 +1,7 @@
 <?php
-
-enum FileTypeEnum
+// NOTE: questa versione di php non ha le enum
+abstract class FileTypeEnum
 {
-    case PDF;
-    case IMG;
+    const PDF = 0;
+    const IMG = 1;
 }

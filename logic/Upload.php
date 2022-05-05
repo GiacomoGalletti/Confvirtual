@@ -1,19 +1,19 @@
 <?php
-class upload
+class Upload
 {
-    private string $target_file;
+    private $target_file;
 
     public function __construct($file_name,$file_Type)
     {
         $this->target_file = null;
         switch (true) {
             case $file_Type instanceof FileTypeEnum:
-                switch (true) {
-                    case $file_Type instanceof PDF:
+                switch ($file_Type) {
+                    case FileTypeEnum::PDF:
                         $this->uploadPDF($file_name);
                         break;
 
-                    case $file_Type instanceof IMG:
+                    case FileTypeEnum::IMG:
                         $this->uploadImg($file_name);
                         break;
                 }
@@ -24,7 +24,7 @@ class upload
         }
     }
 
-    public function getFilePath()
+    public function getFilePath(): ?string
     {
         if ($this->target_file != null)
             return $this->target_file;
@@ -51,21 +51,18 @@ class upload
             }
 
             if ($uploadOk == 0) {
-                echo "Sorry, your file was not uploaded.";
+                echo "file NON caricato.";
             } else {
                 if (move_uploaded_file($_FILES[$file_name]["tmp_name"], $this->target_file)) {
                     echo "The file ". htmlspecialchars( basename( $_FILES[$file_name]["name"])). " has been uploaded.";
                 } else {
-                    echo "Sorry, there was an error uploading your file.";
+                    echo "error: uploading fallito.";
                 }
             }
 
         } catch (Exception $e)
         {
-            echo '<h1> ERRORE UPLOAD FILE </h1> <p2>';
-            echo '<br> <b>Stack ERROR:</b> <br>' . $e;
-            echo '</p2>';
-            echo'<p1>';
+            echo '<h1> ERRORE UPLOAD FILE </h1> <p2>' . '<br> <b>Stack ERROR:</b> <br>' . $e . '</p2>' . '<p1>';
         }
     }
 
@@ -103,7 +100,7 @@ class upload
             if (move_uploaded_file($_FILES[$file_name]["tmp_name"], $this->target_file)) {
                 echo "The file ". htmlspecialchars( basename( $_FILES[$file_name]["name"])). " has been uploaded.";
             } else {
-                echo "Sorry, there was an error uploading your file.";
+                echo "error: uploading fallito.";
             }
         }
     }

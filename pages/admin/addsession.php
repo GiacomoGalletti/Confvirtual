@@ -93,10 +93,6 @@ if (isset($_POST['creaconferenzabtn']))
                         <input type="hidden" id="orafine" name="orafine[]" value="<?php print $oraFine ?>">
                         <input type="hidden" id="data" name="data[]" value="<?php print $data ?>">
                         <input type="hidden" id="codice_sessione" name="codice_sessione[]" value="<?php print $codice ?>">
-
-<!--                        <input type="hidden" id="acronimo" name="acronimo" value="--><?php //print($_POST['acronimo']); ?><!--">-->
-<!--                        <input type="hidden" id="annoEdizione" name="annoEdizione" value="--><?php //print($_POST['annoEdizione']); ?><!--">-->
-
                         <td><button type="submit" id="presentationbtn" name="presentationbtn" value = "<?php print ($id)?>">Presentazioni</button></td>
                         <?php
                         $id++;

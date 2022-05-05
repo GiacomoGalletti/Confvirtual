@@ -13,7 +13,7 @@ class DbPresentation
         return $output;
     }
 
-    public static function createPresentation($codice_sessione, $orainizio, $orafine)
+    public static function createPresentation($codice_sessione, $orainizio, $orafine): bool
     {
         try {
             $sql = 'CALL createPresentation(\'' . $codice_sessione . '\',\'' . $orainizio . '\',\'' . $orafine . '\');';
@@ -27,11 +27,27 @@ class DbPresentation
         }
     }
 
-    public static function createArticle($codice_presentazione, $titolo, $filePDF, $numero_pagine)
+    public static function createArticle($codice_sessione, $orainizio, $orafine,$titolo,$filePDF,$numero_pagine): bool
     {
         try
         {
-            $sql = 'CALL createArticolo(\'' . $codice_presentazione . '\',\'' . $titolo . '\',\'' . $filePDF . '\',\'' . $numero_pagine . '\');';
+            $sql = 'CALL addPresentationArticle(\'' . $codice_sessione . '\',\'' . $orainizio . '\',\'' . $orafine . '\',\'' . $titolo . '\',\'' . $filePDF . '\',\'' . $numero_pagine . '\');';
+            $res = DbConn::getInstance()::getPDO()->query($sql);
+            $res -> closeCursor();
+            return true;
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
+    public static function createTutorial($codice_sessione, $orainizio, $orafine,$titolo,$abstract): bool
+    {
+        try
+        {
+            $sql = 'CALL addPresentationTutorial(\'' . $codice_sessione . '\',\'' . $orainizio . '\',\'' . $orafine . '\',\'' . $titolo . '\',\'' . $abstract . '\');';
             $res = DbConn::getInstance()::getPDO()->query($sql);
             $res -> closeCursor();
             return true;
@@ -41,6 +57,4 @@ class DbPresentation
             return false;
         }
     }
-
-
 }

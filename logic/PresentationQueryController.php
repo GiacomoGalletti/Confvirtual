@@ -9,14 +9,14 @@ class PresentationQueryController
         return DbPresentation::getPresentationsOfSession($codice_sessione);
     }
 
-    public static function createPresentation($codice_sessione, $orainizio, $orafine)
+    public static function createArticle($codice_sessione, $orainizio, $orafine,$titolo,$filePDF,$numero_pagine): bool
     {
-        return DbPresentation::createPresentation($codice_sessione, $orainizio, $orafine);
+        return DbPresentation::createArticle($codice_sessione, $orainizio, $orafine,$titolo,$filePDF,$numero_pagine);
     }
 
-    public static function createArticle($codice_presentazione,$titolo,$filePDF,$numero_pagine)
+    public static function createTutorial($codice_sessione, $orainizio, $orafine,$titolo,$abstract): bool
     {
-        return DbPresentation::createArticle($codice_presentazione,$titolo,$filePDF,$numero_pagine);
+        return DbPresentation::createTutorial($codice_sessione, $orainizio, $orafine,$titolo,$abstract);
     }
 
 }

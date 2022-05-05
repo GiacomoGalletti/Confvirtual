@@ -160,17 +160,6 @@ BEGIN
 END //
 DELIMITER ;
 
-
-#procedure creazione presentazione
-DELIMITER //
-drop procedure if exists createPresentation //
-CREATE PROCEDURE createPresentation(IN in_codiceSessione int,IN in_oraInizio time,IN in_oraFine time)
-BEGIN  
-	insert into presentazione(codiceSessione,oraInizio,oraFine) values (in_codiceSessione,in_oraInizio,in_oraFine);
-END; 
-//
-DELIMITER ;
-
 DELIMITER //
 drop procedure if exists getAdminConferences //
 CREATE PROCEDURE getAdminConferences(IN userName int)
@@ -186,14 +175,14 @@ END;
 //
 DELIMITER ;
 
-DELIMITER $$
-DROP PROCEDURE IF EXISTS getPresentationInfo $$
+DELIMITER //
+DROP PROCEDURE IF EXISTS getPresentationInfo //
 CREATE PROCEDURE getPresentationInfo(IN in_codiceSessione int)
 BEGIN
     SELECT * FROM presentazione WHERE in_codiceSessione = presentazione.codiceSessione ORDER BY presentazione.codiceSessione;
     SELECT * FROM tutorial WHERE in_codiceSessione = tutorial.codiceSessione ORDER BY tutorial.codiceSessione;
     SELECT * FROM articolo WHERE in_codiceSessione = articolo.codiceSessione ORDER BY articolo.codiceSessione;
-END$$
+END//
 DELIMITER ;
 
 call getPresentationInfo(13);
@@ -201,9 +190,9 @@ call getPresentationInfo(13);
 #crea articolo con la call a create presentation
 DELIMITER //
 drop procedure if exists createArticolo //
-CREATE PROCEDURE createArticolo(IN in_codicePresentazione int, IN in_titolo varchar(50), IN in_filePdf varchar(260) , IN in_numeroPagine int)
+CREATE PROCEDURE createArticolo(IN in_codicePresentazione int, IN in_codiceSessione int, IN in_titolo varchar(50), IN in_filePdf varchar(260) , IN in_numeroPagine int)
 BEGIN
-    INSERT INTO  articolo(codicePresentazione,titolo,filePDF,numeroPagine)VALUES(in_codicePresentazione, in_titolo, in_filePdf, in_numeroPagine);
+    INSERT INTO  articolo(codicePresentazione,codiceSessione,titolo,filePDF,numeroPagine)VALUES(in_codicePresentazione,in_codiceSessione, in_titolo, in_filePdf, in_numeroPagine);
 END;
 //
 DELIMITER ;
@@ -213,8 +202,49 @@ DELIMITER //
 drop procedure if exists createTutorial//
 CREATE PROCEDURE createTutorial(IN in_codicePresentazione int, IN in_codiceSessione int, IN in_titolo varchar(50), IN in_abstract varchar(500))
 BEGIN
-    #--CALL createPresentation(1, '16:15:00', '17:15:00');	testare
     INSERT INTO  tutorial(codicePresentazione, codiceSessione, titolo)VALUES(in_codicePresentazione,in_codiceSessione,in_titolo,in_abstract);
 END;
 //
+DELIMITER ;
+
+#procedure creazione presentazione
+DELIMITER //
+drop procedure if exists createPresentation //
+CREATE PROCEDURE createPresentation(IN in_codiceSessione int,IN in_oraInizio time,IN in_oraFine time)
+BEGIN  
+	insert into presentazione(codiceSessione,oraInizio,oraFine) values (in_codiceSessione,in_oraInizio,in_oraFine);
+END; 
+//
+DELIMITER ;
+
+#procedure creazione presentazione e articolo
+DELIMITER //
+DROP PROCEDURE if exists addPresentationArticle //
+CREATE PROCEDURE addPresentationArticle(IN in_codiceSessione int,IN in_oraInizio time,IN in_oraFine time,IN in_titolo varchar(50),IN in_filePdf varchar(260),IN in_numeroPagine int)
+BEGIN
+	DECLARE codice_presentazione INT unsigned DEFAULT 0;  
+	#start transaction;
+		call createPresentation(in_codiceSessione,in_oraInizio,in_oraFine);
+		#commit;
+		SET codice_presentazione = (select codice from presentazione where codiceSessione =  in_codiceSessione);
+		call createArticolo (codice_presentazione,in_codiceSessione,in_titolo,in_filePdf,in_numeroPagine); 
+	#commit;
+END
+ //
+DELIMITER ;
+
+#procedure creazione presentazione e tutorial
+DELIMITER //
+DROP PROCEDURE if exists addPresentationTutorial //
+CREATE PROCEDURE addPresentationTutorial(IN in_codiceSessione int,IN in_oraInizio time,IN in_oraFine time,IN in_titolo varchar(50),IN in_abstract varchar(500))
+BEGIN
+	DECLARE codice_presentazione INT unsigned DEFAULT 0;  
+	#start transaction;
+		call createPresentation(in_codiceSessione,in_oraInizio,in_oraFine);
+		#commit;
+		SET codice_presentazione = (select codice from presentazione where codiceSessione =  in_codiceSessione);
+		call createTutorial(codice_presentazione,in_codiceSessione,in_titolo,in_abstract);
+	#commit;
+END
+ //
 DELIMITER ;
