@@ -3,24 +3,25 @@ class Upload
 {
     private $target_file;
 
-    public function __construct($file_name,$file_Type)
+    /**
+     * @throws Exception
+     */
+    public function __construct($file_name, $file_Type)
     {
         $this->target_file = null;
-        switch (true) {
-            case $file_Type instanceof FileTypeEnum:
-                switch ($file_Type) {
-                    case FileTypeEnum::PDF:
-                        $this->uploadPDF($file_name);
-                        break;
+        switch ($file_Type) {
+            case FileTypeEnum::PDF:
+                echo ("<script> alert('ENTRO IN PDF!') </script>");
+                $this->uploadPDF($file_name);
+                break;
 
-                    case FileTypeEnum::IMG:
-                        $this->uploadImg($file_name);
-                        break;
-                }
+            case FileTypeEnum::IMG:
+                echo ("<script> alert('ENTRO IN IMG!') </script>");
+                $this->uploadImg($file_name);
                 break;
+
             default:
-                echo "formato non previsto nel codice";
-                break;
+                throw new Exception("FILE NON SUPPORTATO PER IL DOWNLOAD");
         }
     }
 
@@ -36,7 +37,7 @@ class Upload
     {
         try {
             $target_dir = sprintf("%s/uploads/pdf/", $_SERVER["DOCUMENT_ROOT"]);
-            $this->target_file = $target_dir . basename($_FILES[$file_name]["name"]);
+            $this->target_file = $target_dir . basename($file_name["name"]);
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($this->target_file,PATHINFO_EXTENSION));
 
@@ -53,8 +54,8 @@ class Upload
             if ($uploadOk == 0) {
                 echo "file NON caricato.";
             } else {
-                if (move_uploaded_file($_FILES[$file_name]["tmp_name"], $this->target_file)) {
-                    echo "The file ". htmlspecialchars( basename( $_FILES[$file_name]["name"])). " has been uploaded.";
+                if (move_uploaded_file($file_name["tmp_name"], $this->target_file)) {
+                    echo "The file ". htmlspecialchars( basename( $file_name["name"])). " has been uploaded.";
                 } else {
                     echo "error: uploading fallito.";
                 }
@@ -69,12 +70,12 @@ class Upload
     private function uploadImg($file_name)
     {
         $target_dir = sprintf("%s/uploads/img/", $_SERVER["DOCUMENT_ROOT"]);
-        $this->target_file = $target_dir . basename($_FILES[$file_name]["name"]);
+        $this->target_file = $target_dir . basename($file_name["name"]);
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($this->target_file,PATHINFO_EXTENSION));
 
         if(isset($_POST["submit"])) {
-            $check = getimagesize($_FILES[$file_name]["tmp_name"]);
+            $check = getimagesize($file_name["tmp_name"]);
             if($check !== false) {
                 echo "File is an image - " . $check["mime"] . ".";
                 $uploadOk = 1;
@@ -97,8 +98,8 @@ class Upload
         if ($uploadOk == 0) {
             echo "Sorry, your file was not uploaded.";
         } else {
-            if (move_uploaded_file($_FILES[$file_name]["tmp_name"], $this->target_file)) {
-                echo "The file ". htmlspecialchars( basename( $_FILES[$file_name]["name"])). " has been uploaded.";
+            if (move_uploaded_file($file_name["tmp_name"], $this->target_file)) {
+                echo "The file ". htmlspecialchars( basename($file_name["name"])). " has been uploaded.";
             } else {
                 echo "error: uploading fallito.";
             }

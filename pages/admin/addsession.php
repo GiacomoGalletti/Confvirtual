@@ -22,17 +22,13 @@ if (isset($_POST['creaconferenzabtn']))
     if (SessioneQueryController::createSession($_POST['oraini'],$_POST['orafin'],$_POST['ttl'],$_POST['stanza'],$_POST['giorno'],$_POST['annoEdizione'],$_POST['acronimo']))
     {
         echo '
-            <script src="scripts.js"></script>
-              <script>
-                alert("conferenza creata con successo.");
-              </script>';
+            <h4>Sessione creata</h4>
+              ';
     } else
     {
-        echo '<script src="scripts.js">
-                </script>
-                  <script>
-                    alert("conferenza non creata");
-                  </script>';;
+        echo '
+         <h4>Sessione non creata</h4>
+            ';
     }
 }
 

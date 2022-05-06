@@ -175,18 +175,6 @@ END;
 //
 DELIMITER ;
 
-DELIMITER //
-DROP PROCEDURE IF EXISTS getPresentationInfo //
-CREATE PROCEDURE getPresentationInfo(IN in_codiceSessione int)
-BEGIN
-    SELECT * FROM presentazione WHERE in_codiceSessione = presentazione.codiceSessione ORDER BY presentazione.codiceSessione;
-    SELECT * FROM tutorial WHERE in_codiceSessione = tutorial.codiceSessione ORDER BY tutorial.codiceSessione;
-    SELECT * FROM articolo WHERE in_codiceSessione = articolo.codiceSessione ORDER BY articolo.codiceSessione;
-END//
-DELIMITER ;
-
-call getPresentationInfo(13);
-
 #crea articolo con la call a create presentation
 DELIMITER //
 drop procedure if exists createArticolo //
@@ -202,7 +190,7 @@ DELIMITER //
 drop procedure if exists createTutorial//
 CREATE PROCEDURE createTutorial(IN in_codicePresentazione int, IN in_codiceSessione int, IN in_titolo varchar(50), IN in_abstract varchar(500))
 BEGIN
-    INSERT INTO  tutorial(codicePresentazione, codiceSessione, titolo)VALUES(in_codicePresentazione,in_codiceSessione,in_titolo,in_abstract);
+    INSERT INTO  tutorial(codicePresentazione, codiceSessione, titolo, abstract)VALUES(in_codicePresentazione,in_codiceSessione,in_titolo,in_abstract);
 END;
 //
 DELIMITER ;
@@ -222,13 +210,18 @@ DELIMITER //
 DROP PROCEDURE if exists addPresentationArticle //
 CREATE PROCEDURE addPresentationArticle(IN in_codiceSessione int,IN in_oraInizio time,IN in_oraFine time,IN in_titolo varchar(50),IN in_filePdf varchar(260),IN in_numeroPagine int)
 BEGIN
-	DECLARE codice_presentazione INT unsigned DEFAULT 0;  
-	#start transaction;
+	DECLARE codice_presentazione INT unsigned DEFAULT 0;
+	DECLARE EXIT HANDLER FOR SQLEXCEPTION
+	BEGIN
+		ROLLBACK;
+         SELECT 'ERROR' AS risultato;
+	END;
+        start transaction;
 		call createPresentation(in_codiceSessione,in_oraInizio,in_oraFine);
-		#commit;
-		SET codice_presentazione = (select codice from presentazione where codiceSessione =  in_codiceSessione);
+		SET codice_presentazione = (select max(codice) from presentazione where codiceSessione =  in_codiceSessione);
 		call createArticolo (codice_presentazione,in_codiceSessione,in_titolo,in_filePdf,in_numeroPagine); 
-	#commit;
+        SELECT 'OK' AS risultato;
+        commit;
 END
  //
 DELIMITER ;
@@ -238,13 +231,69 @@ DELIMITER //
 DROP PROCEDURE if exists addPresentationTutorial //
 CREATE PROCEDURE addPresentationTutorial(IN in_codiceSessione int,IN in_oraInizio time,IN in_oraFine time,IN in_titolo varchar(50),IN in_abstract varchar(500))
 BEGIN
-	DECLARE codice_presentazione INT unsigned DEFAULT 0;  
-	#start transaction;
-		call createPresentation(in_codiceSessione,in_oraInizio,in_oraFine);
-		#commit;
-		SET codice_presentazione = (select codice from presentazione where codiceSessione =  in_codiceSessione);
-		call createTutorial(codice_presentazione,in_codiceSessione,in_titolo,in_abstract);
-	#commit;
+	DECLARE codice_presentazione INT unsigned DEFAULT 0; 
+     	DECLARE EXIT HANDLER FOR SQLEXCEPTION
+	BEGIN
+		ROLLBACK;
+        SELECT 'ERROR' AS risultato;
+	END;
+    start transaction;
+	call createPresentation(in_codiceSessione,in_oraInizio,in_oraFine);
+	SET codice_presentazione = (select max(codice) from presentazione where codiceSessione =  in_codiceSessione);
+	call createTutorial(codice_presentazione,in_codiceSessione,in_titolo,in_abstract);
+    SELECT 'OK' AS risultato;
+    commit;
 END
  //
+DELIMITER ;
+DELIMITER //
+DROP PROCEDURE IF EXISTS getAllPresentationInfo //
+CREATE PROCEDURE getAllPresentationInfo(IN in_codiceSessione int)
+BEGIN
+	select *
+    from presentazione
+    where presentazione.codiceSessione = in_codiceSessione;
+END//
+DELIMITER ;
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS getPresentationInfo //
+CREATE PROCEDURE getPresentationInfo(IN in_codicePresentazione int)
+BEGIN  
+  IF EXISTS (
+	SELECT *
+	FROM ARTICOLO
+    WHERE ARTICOLO.codicePresentazione = in_codicePresentazione
+  ) THEN (
+	SELECT *, 'articolo' AS tipoPresentazione
+    FROM PRESENTAZIONE,ARTICOLO
+    WHERE PRESENTAZIONE.codice = in_codicePresentazione
+  );ELSE (
+	SELECT *, 'tutorial' AS tipoPresentazione
+    FROM PRESENTAZIONE,TUTORIAL
+    WHERE PRESENTAZIONE.codice = in_codicePresentazione
+  );
+  END IF;
+END//
+DELIMITER ;
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS getTypePresentation //
+CREATE PROCEDURE getTypePresentation(IN in_codicePresentazione int)
+BEGIN  
+  IF EXISTS (
+	SELECT *
+	FROM ARTICOLO
+    WHERE ARTICOLO.codicePresentazione = in_codicePresentazione
+  ) THEN (
+	SELECT distinct 'articolo' AS tipoPresentazione
+    FROM PRESENTAZIONE,ARTICOLO
+    WHERE PRESENTAZIONE.codice = in_codicePresentazione
+  );ELSE (
+	SELECT distinct 'tutorial' AS tipoPresentazione
+    FROM PRESENTAZIONE,TUTORIAL
+    WHERE PRESENTAZIONE.codice = in_codicePresentazione
+  );
+  END IF;
+END//
 DELIMITER ;

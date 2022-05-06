@@ -17,15 +17,18 @@ if (isset($_POST['submit']))
 {
     if ($_POST['radius'] == 'articolo')
     {
-        $upload = new Upload('fileToUpload',FileTypeEnum::PDF);
-        echo '<script> alert('.$upload->getFilePath().')</script>';
-        if (PresentationQueryController::createArticle($_POST['codice_sessione'][$index],$_POST['orainizio'][$index],$_POST['orafine'][$index],$_POST['titolo_articolo'],$upload->getFilePath(),$_POST['pagenum'])) {
+        try {
+            $upload = new Upload($_FILES['fileToUpload'], FileTypeEnum::PDF);
+        } catch (Exception $e) {
+            echo '<h4>Upload fallito</h4>' . '<p>'. $e .'</p>';
+        }
+        if (PresentationQueryController::createArticle($_POST['codice_sessione'][$index],$_POST['oraini'],$_POST['orafin'],$_POST['titolo_articolo'],$upload->getFilePath(),$_POST['pagenum'])) {
             echo 'articolo creato con successo';
         } else {
             echo 'articolo non creato.';
         }
     } else if ($_POST['radius'] == 'tutorial') {
-        if (PresentationQueryController::createTutorial($codice_sessione,$orainizio,$orafine,$_POST['titolo_tutorial'],$_POST['input_abstract_tutorial'])) {
+        if (PresentationQueryController::createTutorial($_POST['codice_sessione'][$index],$_POST['oraini'],$_POST['orafin'],$_POST['titolo_tutorial'],$_POST['input_abstract_tutorial'])) {
             echo 'tutorial creato con successo';
         } else {
             echo 'tutorial non creato.';
@@ -39,6 +42,7 @@ if (isset($_POST['submit']))
 <?php
 include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 ?>
+<form method="post">
 <div class="container">
     <?php
     ?>
@@ -49,7 +53,7 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
         ?>
     </p>
     <?php
-    if (($sessions = PresentationQueryController::getPresentations($codice_sessione)) != null)
+    if (($presentations = PresentationQueryController::getAllPresentationInfo($codice_sessione)) != null)
     {
         echo '
                     <h4>Presentazioni create: </h4>
@@ -65,18 +69,20 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
                                     <th>ora inizio</th>
                                     <th>ora fine</th>
                                     <th>tipologia</th>
+                                    <th></th>
                                 </tr>
                                 ';
-        foreach ($sessions as $s) {
-            $oraInizio = DateTime::createFromFormat("H:i:s", $s['oraInizio'])->format("H:i");
-            $oraFine = DateTime::createFromFormat("H:i:s", $s['oraFine'])->format("H:i")
+        foreach ($presentations as $p) {
+            $oraInizio = DateTime::createFromFormat("H:i:s", $p['oraInizio'])->format("H:i");
+            $oraFine = DateTime::createFromFormat("H:i:s", $p['oraFine'])->format("H:i");
+            $tipologia = PresentationQueryController::getTypePresentation($p['codice'])[0]['tipoPresentazione'];
             ?>
             <tr>
-                <!-- TODO: sistemare dopo completamento della creazione dei Articoli e Tutorials -->
-                <td><?php print $s['codice']  ?></td>
+                <td><?php print $p['codice']  ?></td>
                 <td><?php print $oraInizio  ?></td>
                 <td><?php print $oraFine  ?></td>
-                <td><?php print $s['tipologia']  ?></td>
+                <td><?php print $tipologia ?></td>
+                <td><button type="submit" id="article_tutorial_btn" name="article_tutorial_btn" value = ""><?php print ('modifica '.$tipologia)?></button></td>
             </tr>
             <?php
         }
@@ -90,10 +96,11 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     {
         echo '<div class="conteiner">
                     <p1>nessuna presentazione creata per la sessione corrente.</p1>
-                  </div>';
+                  </div>
+                  </form>';
     }
     ?>
-    <form method="post" enctype= "multipart/form-data" action="addpresentation.php">
+    <form method="post" enctype= "multipart/form-data">
         <h4>Crea presentazione:</h4>
         <!-- Gli orari di inizio e fine devono essere compatibili con quelli già presi da altre PRESENTAZIONI -->
         <?php

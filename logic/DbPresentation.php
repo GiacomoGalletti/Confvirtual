@@ -4,13 +4,19 @@ include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/Presentation.php");
 
 class DbPresentation
 {
-    public static function getPresentationsOfSession($codice_sessione)
+    public static function getAllPresentationInfo($codice_sessione)
     {
-        $sql = 'CALL getPresentationInfo(\'' . $codice_sessione . '\');';
-        $res = DbConn::getInstance()::getPDO()->query($sql);
-        $output = $res -> fetchAll(PDO::FETCH_ASSOC);
-        $res -> closeCursor();
-        return $output;
+        try {
+            $sql = 'CALL getAllPresentationInfo(\'' . $codice_sessione . '\');';
+            $res = DbConn::getInstance()::getPDO()->query($sql);
+            $output = $res -> fetchAll(PDO::FETCH_ASSOC);
+            $res -> closeCursor();
+            return $output;
+        } catch (Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return null;
+        }
     }
 
     public static function createPresentation($codice_sessione, $orainizio, $orafine): bool
@@ -22,6 +28,7 @@ class DbPresentation
             return true;
         } catch (Exception $e)
         {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
             echo $e;
             return false;
         }
@@ -49,10 +56,35 @@ class DbPresentation
         {
             $sql = 'CALL addPresentationTutorial(\'' . $codice_sessione . '\',\'' . $orainizio . '\',\'' . $orafine . '\',\'' . $titolo . '\',\'' . $abstract . '\');';
             $res = DbConn::getInstance()::getPDO()->query($sql);
+
+            if ($res->fetch(PDO::FETCH_ASSOC)['risultato'] != 'ERROR') {
+                $res -> closeCursor();
+                return true;
+            }
             $res -> closeCursor();
-            return true;
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+
+            return false;
         } catch (Exception $e)
         {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
+    public static function getTypePresentation($codice_presentazione)
+    {
+        try
+        {
+            $sql = 'CALL getTypePresentation(\'' . $codice_presentazione . '\');';
+            $res = DbConn::getInstance()::getPDO()->query($sql);
+            $output = $res -> fetchAll(PDO::FETCH_ASSOC);
+            $res -> closeCursor();
+            return $output;
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
             echo $e;
             return false;
         }
