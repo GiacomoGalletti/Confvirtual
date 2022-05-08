@@ -13,6 +13,7 @@ class ExpiredSessionException extends Exception
 
     public function __construct()
     {
+        parent::__construct();
         header("refresh:10;url= " . "/pages/login.php");
         print ($this->errorMessage());
     }

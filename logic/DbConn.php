@@ -1,32 +1,43 @@
 <?php
 class DbConn {
-    private static $pdo;
+    private static $PDO;
     private static $currentDbConn = null;
 
-    private function __construct($pdo){
-        self::$pdo = $pdo;
-        self::$pdo -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    private function __construct($PDO){
+        self::setPDO($PDO);
+        self::$PDO -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     }
 
     public static function getInstance()
     {
-        if(self::$currentDbConn == null)
-        {
-            try {
+        try {
+
+            if(self::$currentDbConn == null)
+            {
                 self::$currentDbConn = new DbConn(new PDO('mysql:host=127.0.0.1;dbname=confvirtual;charset=utf8','root','root'));
-                return self::$currentDbConn;
-            } catch (PDOException $e) {
-                echo("<h1>ACCESSO FALLITO</h1> <br>");
-                echo($e);
+
             }
+            return self::$currentDbConn::getPDO();
+        } catch (PDOException $exception){
+            header('Location: /templates/Error500.php');
+            self::close();
+            exit();
         }
-        return self::$currentDbConn;
+
     }
 
-    public static function getPDO(){
-        return  self::$pdo;
+    private static function getPDO(){
+        return  self::$PDO;
     }
+
     public static function close(){
-        self::$pdo = null;
+        self::$currentDbConn = null;
+        self::$PDO = null;
     }
+
+    private static function setPDO($PDO): void
+    {
+        self::$PDO = $PDO;
+    }
+
 }

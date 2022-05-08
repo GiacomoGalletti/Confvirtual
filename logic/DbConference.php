@@ -7,7 +7,7 @@ class DbConference
     static function getConference($acronimo, $anno_edizione): Conference
     {
         $sql = 'CALL ritornaConferenza(\'' . $acronimo . '\', \'' . $anno_edizione . '\');';
-        $res = DbConn::getInstance()::getPDO() -> query($sql);
+        $res = DbConn::getInstance() -> query($sql);
         foreach ($res -> fetch() as $key) {
             $anno_edizione = $key[0];
             $acronimo = $key[1];
@@ -23,7 +23,7 @@ class DbConference
     static function conferenceActive()
     {
         $sql = 'CALL ritornaConferenzeFuture();';
-        $res = DbConn::getInstance()::getPDO() -> query($sql);
+        $res = DbConn::getInstance() -> query($sql);
         $output = $res -> fetchAll(PDO::FETCH_ASSOC);
         $res -> closeCursor();
         return $output;
@@ -32,7 +32,7 @@ class DbConference
     static function conferenceClosed()
     {
         $sql = 'CALL ritornaConferenzePassate();';
-        $res = DbConn::getInstance()::getPDO() -> query($sql);
+        $res = DbConn::getInstance() -> query($sql);
         $output = $res -> fetchAll(PDO::FETCH_ASSOC);
         $res -> closeCursor();
         return $output;
@@ -42,7 +42,7 @@ class DbConference
     {
         if (isset($acronimoConferenza) && isset($annoEdizione)) {
             $sql = 'CALL ritornaGiorniConferenza(\'' . $acronimoConferenza . '\',\'' . $annoEdizione . '\');';
-            $res = DbConn::getInstance()::getPDO()->query($sql);
+            $res = DbConn::getInstance()->query($sql);
             $output = $res->fetchAll(PDO::FETCH_ASSOC);
             $res->closeCursor();
             return $output;
@@ -54,7 +54,7 @@ class DbConference
     static function getAdminConferences($nomeUtente)
     {
         $sql = 'CALL getAdminConferences(\'' . $nomeUtente . '\');';
-        $res = DbConn::getInstance()::getPDO()->query($sql);
+        $res = DbConn::getInstance()->query($sql);
         $output = $res -> fetchAll(PDO::FETCH_ASSOC);
         $res -> closeCursor();
         return $output;
@@ -79,13 +79,13 @@ class DbConference
             }
 
             $sql = 'CALL createConference(\''.$arrayYears[0].'\',\''.$acronimo.'\',\''.$immagine.'\',\''. $nome .'\',\''.Session::read('userName').'\');';
-            $res = DbConn::getInstance()::getPDO() -> query($sql);
+            $res = DbConn::getInstance() -> query($sql);
             $res -> closeCursor();
             foreach ($arrayDate as $a)
             {
                 $date = DateTime::createFromFormat("Y-m-d", $a);
                 $sql = 'CALL aggiungiData(\'' . $date->format("Y-m-d") . '\',\'' . $date->format("Y") . '\',\''. $acronimo . '\')';
-                $res = DbConn::getInstance()::getPDO() -> query($sql);
+                $res = DbConn::getInstance() -> query($sql);
                 $res -> closeCursor();
             }
             header("refresh:3;url= " . "/pages/admin/createconference.php");

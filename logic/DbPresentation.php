@@ -8,7 +8,7 @@ class DbPresentation
     {
         try {
             $sql = 'CALL getAllPresentationInfo(\'' . $codice_sessione . '\');';
-            $res = DbConn::getInstance()::getPDO()->query($sql);
+            $res = DbConn::getInstance()->query($sql);
             $output = $res -> fetchAll(PDO::FETCH_ASSOC);
             $res -> closeCursor();
             return $output;
@@ -23,7 +23,7 @@ class DbPresentation
     {
         try {
             $sql = 'CALL createPresentation(\'' . $codice_sessione . '\',\'' . $orainizio . '\',\'' . $orafine . '\');';
-            $res = DbConn::getInstance()::getPDO()->query($sql);
+            $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
             return true;
         } catch (Exception $e)
@@ -39,7 +39,7 @@ class DbPresentation
         try
         {
             $sql = 'CALL addPresentationArticle(\'' . $codice_sessione . '\',\'' . $orainizio . '\',\'' . $orafine . '\',\'' . $titolo . '\',\'' . $filePDF . '\',\'' . $numero_pagine . '\');';
-            $res = DbConn::getInstance()::getPDO()->query($sql);
+            $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
             return true;
         } catch (Exception $e)
@@ -55,7 +55,7 @@ class DbPresentation
         try
         {
             $sql = 'CALL addPresentationTutorial(\'' . $codice_sessione . '\',\'' . $orainizio . '\',\'' . $orafine . '\',\'' . $titolo . '\',\'' . $abstract . '\');';
-            $res = DbConn::getInstance()::getPDO()->query($sql);
+            $res = DbConn::getInstance()->query($sql);
 
             if ($res->fetch(PDO::FETCH_ASSOC)['risultato'] != 'ERROR') {
                 $res -> closeCursor();
@@ -78,7 +78,7 @@ class DbPresentation
         try
         {
             $sql = 'CALL getTypePresentation(\'' . $codice_presentazione . '\');';
-            $res = DbConn::getInstance()::getPDO()->query($sql);
+            $res = DbConn::getInstance()->query($sql);
             $output = $res -> fetchAll(PDO::FETCH_ASSOC);
             $res -> closeCursor();
             return $output;
@@ -86,7 +86,7 @@ class DbPresentation
         {
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
             echo $e;
-            return false;
+            return null;
         }
     }
 }

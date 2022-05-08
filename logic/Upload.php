@@ -74,7 +74,7 @@ class Upload
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($this->target_file,PATHINFO_EXTENSION));
 
-        if(isset($_POST["submit"])) {
+        if(isset($_POST["submit"])) { //...
             $check = getimagesize($file_name["tmp_name"]);
             if($check !== false) {
                 echo "File is an image - " . $check["mime"] . ".";
@@ -91,7 +91,7 @@ class Upload
         }
 
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
-            echo "caricare solo file pdf.";
+            echo "caricare solo immagini.";
             $uploadOk = 0;
         }
 

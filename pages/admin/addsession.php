@@ -12,6 +12,12 @@ $acronimo = $_POST['array_acronimo'][$index];
 $annoEdizione = $_POST['array_annoEdizione'][$index];
 $rawdates = $_POST['dates'][$index];
 
+function validateDate($date, $format = 'd-m-Y'): bool
+{
+    $d = DateTime::createFromFormat($format, $date);
+    return $d && $d->format($format) === $date;
+}
+
 if (isset($_POST['presentationbtn']))
 {
     header("Location:/pages/admin/addpresentation.php");
@@ -19,16 +25,22 @@ if (isset($_POST['presentationbtn']))
 
 if (isset($_POST['creaconferenzabtn']))
 {
-    if (SessioneQueryController::createSession($_POST['oraini'],$_POST['orafin'],$_POST['ttl'],$_POST['stanza'],$_POST['giorno'],$_POST['annoEdizione'],$_POST['acronimo']))
-    {
+    if ($_POST['ttl'] != '' && $_POST['stanza'] != '' && isset($_POST['giorno']) && validateDate($_POST['giorno']) ) {
+        if (SessioneQueryController::createSession($_POST['oraini'],$_POST['orafin'],$_POST['ttl'],$_POST['stanza'],$_POST['giorno'],$_POST['annoEdizione'],$_POST['acronimo']))
+        {
+            echo '
+                <h4>Sessione creata</h4>
+                  ';
+        } else
+        {
+            echo '
+             <h4>Sessione non creata</h4>
+                ';
+        }
+    } else {
         echo '
-            <h4>Sessione creata</h4>
-              ';
-    } else
-    {
-        echo '
-         <h4>Sessione non creata</h4>
-            ';
+        <div class="container"><p>AVVISO: campi inseriti non validi.</p></div>
+        ';
     }
 }
 
@@ -138,15 +150,25 @@ if (isset($_POST['creaconferenzabtn']))
                 <label for="giorno"><b>Selezionare giorno della conferenza: </b></label>
                 <select id='giorno' Name="giorno" Size="Number_of_options">
                     <?php
-                    for ($i = 0; $i<sizeof($arrayDate); $i++)
+                    for ($i = 0; $i<sizeof($arrayDate)-1; $i++)
                     {
-                        ?>
-                        <option>
-                            <?php
-                            print $arrayDate[$i];
+                        if ($arrayDate[$i] > strtotime('now')) {
                             ?>
-                        </option>
-                        <?php
+                            <option>
+                                <?php
+                                print $arrayDate[$i];
+                                ?>
+                            </option>
+                            <?php
+                        } else {
+                            ?>
+                            <option>
+                                <?php
+                                print $arrayDate[$i] . ' NON MODIFICABILE';
+                                ?>
+                            </option>
+                            <?php
+                        }
                     }
                     ?>
                 </select>

@@ -5,10 +5,10 @@ include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/Sessione.php");
 class DbSessione
 {
     // TODO: sistemare con quello che sara la stored per le sessioni di una conferenza
-    static function getSessione($codice): Sessione
+    static function getSessione($codice): ?Sessione
     {
         $sql = 'CALL ritornaSessione(\'' . $codice . '\');';
-        $res = DbConn::getInstance()::getPDO() -> query($sql);
+        $res = DbConn::getInstance() -> query($sql);
         foreach ($res -> fetch() as $key) {
             $codice = $key[0];
             $ora_inizio = $key[1];
@@ -21,17 +21,20 @@ class DbSessione
             $acronimo_conferenza = $key[8];
         }
         $res -> closeCursor();
-        return new Sessione(
-            $codice,
-            $ora_inizio,
-            $ora_fine,
-            $titolo,
-            $link_stanza,
-            $numero_presentazioni,
-            $giorno_data,
-            $anno_edizione,
-            $acronimo_conferenza
-        );
+        if (!empty($codice) && !empty($ora_inizio) && !empty($ora_fine) && !empty($titolo) && !empty($link_stanza) && !empty($numero_presentazioni) && !empty($giorno_data) && !empty($anno_edizione) && !empty($acronimo_conferenza)) {
+            return new Sessione(
+                $codice,
+                $ora_inizio,
+                $ora_fine,
+                $titolo,
+                $link_stanza,
+                $numero_presentazioni,
+                $giorno_data,
+                $anno_edizione,
+                $acronimo_conferenza
+            );
+        }
+        return  null;
     }
 
     static function createSessione(
@@ -55,7 +58,7 @@ class DbSessione
                 \'' . $date . '\',
                 \'' . $anno_edizione . '\',
                 \'' . $acronimo_conferenza . '\');';
-            $res = DbConn::getInstance()::getPDO() -> query($sql);
+            $res = DbConn::getInstance() -> query($sql);
             $res -> closeCursor();
             return true;
         } catch (PDOException $e) {
@@ -74,7 +77,7 @@ class DbSessione
         try
         {
             $sql = 'CALL getSessionsFromConfrernce( \'' . $acronimo . '\',\'' . $annoEdizione . '\');';
-            $res = DbConn::getInstance()::getPDO() -> query($sql);
+            $res = DbConn::getInstance() -> query($sql);
             $output = $res -> fetchAll(PDO::FETCH_ASSOC);
             $res -> closeCursor();
             if  (sizeof($output) > 0)

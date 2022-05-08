@@ -9,15 +9,15 @@ include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/UsersQuery.php");
             try
                 {
                     $sql = 'CALL register(\'' . $username . '\',\'' . $name . '\',\'' . $surname . '\',\'' . $password . '\',\'' . $luogoNascita . '\',\'' . $dataNascita . '\');';
-                    $res = DbConn::getInstance()::getPDO() -> query($sql);
+                    $res = DbConn::getInstance() -> query($sql);
                     $res -> closeCursor();
                     header("refresh:2;url= " . "/pages/login.php");
                     ?>
                     <link rel="stylesheet" href="/css/style.css">
                     <div class="container"> </div>
-                    <h1>Grazie per la registrazione!</h1> 
-                    </div> <div class="container">
-                    <img src="https://www.angeliinmoto.it/wp-content/uploads/2020/04/ok-spunta.png" class="avatar"> </div>
+                    <h1>Grazie per la registrazione!</h1>
+                    <div class="container">
+                    <img src="https://www.angeliinmoto.it/wp-content/uploads/2020/04/ok-spunta.png" class="avatar" alt="ok"> </div>
                     <?php
                     exit();
                 } catch (PDOException $e)
