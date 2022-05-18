@@ -16,11 +16,12 @@ WHERE CURRENT_DATE > (
 END$$
 DELIMITER ;
 
--- SELECT DATE((ADDDATE(MAX(dataconferenza.giorno), INTERVAL 1 DAY))) FROM dataconferenza;
--- SELECT (CURRENT_DATE());
--- SELECT * FROM conferenza INNER JOIN dataconferenza ON conferenza.annoEdizione = dataconferenza.annoEdizioneConferenza AND conferenza.acronimo = dataconferenza.acronimoConferenza;
-
--- SHOW FULL PROCESSLIST;
-
--- ADDDATE(MAX(dataconferenza.giorno), INTERVAL 1 DAY) > (CURRENT_DATE())
--- SELECT ADDDATE(CURRENT_DATE(), INTERVAL 1 DAY);
+DELIMITER $$
+DROP TRIGGER IF EXISTS contatorePresentazioni $$
+CREATE TRIGGER contatorePresentazioni AFTER INSERT ON presentazione
+FOR EACH ROW
+BEGIN
+UPDATE sessione
+SET numeroPresentazioni = (SELECT count(codiceSessione) FROM presentazione WHERE sessione.codice = presentazione.codiceSessione GROUP BY codiceSessione);
+END$$
+DELIMITER ;

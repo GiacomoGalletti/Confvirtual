@@ -33,7 +33,9 @@ function rowConferenceInfo($r)
 }
 
 switch(Session::read('type')){
-    case 'amministratore': ?>
+    case 'amministratore':
+    case 'speaker':
+    case 'presenter': ?>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -58,14 +60,6 @@ switch(Session::read('type')){
                     </div>
                 </div>
             </div>
-        <?php
-        break;
-    case 'speaker':?>
-        <p>// robe 1</p>
-        <?php
-        break;
-    case 'presenter': ?>
-        <p>// robe 2</p>
         <?php
         break;
     default: ?>

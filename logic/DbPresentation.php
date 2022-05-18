@@ -11,7 +11,20 @@ class DbPresentation
             $res = DbConn::getInstance()->query($sql);
             $output = $res -> fetchAll(PDO::FETCH_ASSOC);
             $res -> closeCursor();
-            return $output;
+            if  (sizeof($output) > 0)
+            {
+                return $output;
+            } else
+            {
+                echo '<pre>
+
+                <p>nessuna presentazione creata per la sessione selezionata.</p>   
+
+                </pre>';
+                return null;
+            }
+
+
         } catch (Exception $e) {
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
             echo $e;
@@ -89,4 +102,57 @@ class DbPresentation
             return null;
         }
     }
+
+    public static function articlesList($userName)
+    {
+        try {
+            $sql = 'CALL ritornaArticoli(\'' . $userName . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $output = $res -> fetchAll(PDO::FETCH_ASSOC);
+            $res -> closeCursor();
+            if  (sizeof($output) > 0)
+            {
+                return $output;
+            } else
+            {
+                echo '<pre>
+
+                <p>nessun articolo disponibile.</p>   
+
+                </pre>';
+                return null;
+            }
+        } catch (Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return null;
+        }
+    }
+
+    public static function tutorialsList($userName)
+    {
+        try {
+            $sql = 'CALL ritornaTutorial(\'' . $userName . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $output = $res -> fetchAll(PDO::FETCH_ASSOC);
+            $res -> closeCursor();
+            if  (sizeof($output) > 0)
+            {
+                return $output;
+            } else
+            {
+                echo '<pre>
+
+                <p>nessun tutorial disponibile.</p>   
+
+                </pre>';
+                return null;
+            }
+        } catch (Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return null;
+        }
+    }
+
 }

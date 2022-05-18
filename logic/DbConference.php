@@ -71,7 +71,7 @@ class DbConference
             }
             if(count(array_unique($arrayYears)) !== 1) {
                 header("refresh:3;url= " . "/pages/admin/createconference.php");
-                echo '<link rel="stylesheet" href="/css/style.css">
+                echo '<link rel="stylesheet" href="/style/css/style.css">
                   <div class="container"> </div>
                   <h1>Le date devono essere dello stesso anno</h1> 
                   </div> <div class="container" </div>';
@@ -89,7 +89,7 @@ class DbConference
                 $res -> closeCursor();
             }
             header("refresh:3;url= " . "/pages/admin/createconference.php");
-            echo '<link rel="stylesheet" href="/css/style.css">
+            echo '<link rel="stylesheet" href="/style/css/style.css">
               <div class="container"> </div>
               <h1>Conferenza Inserita</h1> 
               </div> <div class="container" </div>';
@@ -98,6 +98,23 @@ class DbConference
           return false;
         }
 
+    }
+
+    static function createRating($codicePresentazione, $codiceSessione, $voto, $note): bool
+    {
+        try{
+            $sql = 'CALL insertRating(\''.Session::read('userName').'\',\''.$codicePresentazione.'\',\''.$codiceSessione.'\',\''. $voto .'\',\''.$note.'\');';
+            $res = DbConn::getInstance()::getPDO() -> query($sql);
+            $res -> closeCursor();
+            header("Location: /pages/admin/addrate.php");
+            echo '<link rel="stylesheet" href="/style/css/style.css">
+          <div class="container"> </div>
+          <h4>Valutazione Inserita</h4> 
+          ';
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 }
 

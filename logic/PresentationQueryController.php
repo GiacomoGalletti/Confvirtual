@@ -24,4 +24,11 @@ class PresentationQueryController
         return DbPresentation::getTypePresentation($codice_presentazione);
     }
 
+    public static function getArticlesList($userName){
+        return DbPresentation::articlesList($userName);
+    }
+
+    public static function getTutorialsList($userName){
+        return DbPresentation::tutorialsList($userName);
+    }
 }

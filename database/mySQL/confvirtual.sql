@@ -160,6 +160,18 @@ CREATE TABLE TUTORIAL(
                              ON DELETE CASCADE
 )engine = 'InnoDB';
 
+CREATE TABLE ARTICOLO(
+                         codicePresentazione int,
+                         codiceSessione int,
+                         titolo varchar(50) not null,
+                         filePdf varchar(260),
+                         numeroPagine int,
+                         statoSvolgimento enum('coperto','non coperto') default ('non coperto'),
+                         primary key (codicePresentazione, codiceSessione, titolo),
+                         foreign key (codiceSessione, codicePresentazione) references PRESENTAZIONE(codiceSessione, codice)
+                             ON DELETE CASCADE
+)engine = 'InnoDB';
+
 CREATE TABLE PRESENTAZIONESPEAKER(
                                      userNameUtente varchar(50),
                                      titoloTutorial varchar(50),
@@ -175,24 +187,13 @@ CREATE TABLE PRESENTAZIONESPEAKER(
 
 CREATE TABLE PRESENTAZIONEPRESENTER(
                                        userNameUtente varchar(50),
+                                       titoloArticolo varchar(50),
                                        codicePresentazione int,
                                        codiceSessione int,
-                                       primary key (userNameUtente, codicePresentazione, codiceSessione),
-                                       foreign key (userNameUtente) references UTENTE(userName),
-                                       foreign key (codicePresentazione,codiceSessione) references PRESENTAZIONE(codice,codiceSessione)
+                                       primary key (userNameUtente, titoloArticolo, codicePresentazione, codiceSessione),
+                                       foreign key (userNameUtente) references PRESENTER(userNameUtente),
+                                       foreign key (codicePresentazione,codiceSessione,titoloArticolo) references ARTICOLO(codicePresentazione,codiceSessione,titolo)
                                            ON DELETE CASCADE
-)engine = 'InnoDB';
-
-CREATE TABLE ARTICOLO(
-                         codicePresentazione int,
-                         codiceSessione int,
-                         titolo varchar(50) not null,
-                         filePdf varchar(260),
-                         numeroPagine int,
-                         statoSvolgimento enum('coperto','non coperto') default ('non coperto'),
-                         primary key (codicePresentazione, codiceSessione, titolo),
-                         foreign key (codiceSessione, codicePresentazione) references PRESENTAZIONE(codiceSessione, codice)
-                             ON DELETE CASCADE
 )engine = 'InnoDB';
 
 CREATE TABLE PAROLACHIAVE (

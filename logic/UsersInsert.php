@@ -13,7 +13,7 @@ include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/UsersQuery.php");
                     $res -> closeCursor();
                     header("refresh:2;url= " . "/pages/login.php");
                     ?>
-                    <link rel="stylesheet" href="/css/style.css">
+                    <link rel="stylesheet" href="/style/css/style.css">
                     <div class="container"> </div>
                     <h1>Grazie per la registrazione!</h1>
                     <div class="container">
@@ -26,7 +26,7 @@ include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/UsersQuery.php");
                     echo($e);
                 }
         } else {
-            echo '<link rel="stylesheet" href="/css/style.css">
+            echo '<link rel="stylesheet" href="/style/css/style.css">
               <div class="container"> </div>
               <h4>Utente già registrato</h4> 
               </div>';

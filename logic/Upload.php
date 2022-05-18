@@ -11,12 +11,10 @@ class Upload
         $this->target_file = null;
         switch ($file_Type) {
             case FileTypeEnum::PDF:
-                echo ("<script> alert('ENTRO IN PDF!') </script>");
                 $this->uploadPDF($file_name);
                 break;
 
             case FileTypeEnum::IMG:
-                echo ("<script> alert('ENTRO IN IMG!') </script>");
                 $this->uploadImg($file_name);
                 break;
 

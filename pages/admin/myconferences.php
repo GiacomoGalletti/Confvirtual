@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <?php
+include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
@@ -40,7 +41,7 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
             } ?>
             <td><?php print $stringDates  ?></td>
             <td>
-                <button type="submit" id="btn" name="sessionbtn" onclick="inline(this); EditSession()" value = "<?php print ($id) ?>" state="<?php print $stato ?>">Modifica conferenza <?php print $stato ?></button>
+                <button type="submit" id="btn" name="sessionbtn" onclick="inline(this); EditSession()" value = "<?php print ($id) ?>" state="<?php print $stato ?>"><?php if ($stato==='completata') {print("Vota conferenza ");} else {print("Modifica conferenza ");} ?><?php print $stato ?></button>
                 <input type="hidden" id="array_acronimo" name="array_acronimo[]" value="<?php print $acronimo ?>">
                 <input type="hidden" id="array_annoEdizione" name="array_annoEdizione[]" value="<?php print $annoEdizione ?>">
                 <input type="hidden" id="dates" name="dates[]" value="<?php print $sendDates ?>">

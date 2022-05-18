@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once(sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once(sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once(sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+require (sprintf("%s/logic/Upload.php", $_SERVER["DOCUMENT_ROOT"]));
+require (sprintf("%s/logic/FileTypeEnum.php", $_SERVER["DOCUMENT_ROOT"]));
+
 if(isset($_POST['submit'])){
-    ConferenceQueryController::createConference($_POST["name"],$_POST["acronimo"],$immagine = $_POST["immagine"],$_POST["date"]);
+    try {
+        $upload = new Upload($_FILES['fileToUpload'], FileTypeEnum::IMG);
+    } catch (Exception $e) {
+        echo '<h4>Upload fallito</h4>' . '<p>'. $e .'</p>';
+    }
+    if (!empty($upload)) {
+        ConferenceQueryController::createConference($_POST["name"],$_POST["acronimo"],$upload->getFilePath(),$_POST["date"]);
+    } else {
+        echo '<h4>Conferenza non creata</h4>';
+    }
 }
 ?>
 <body>
-<form action="createconference.php" method="post" autocomplete="off">
+<form action="createconference.php" method="post" autocomplete="off" enctype="multipart/form-data">>
     <?php
     include_once(sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     ?>
@@ -25,14 +38,8 @@ if(isset($_POST['submit'])){
             <label for="acronimo"><b>Acronimo Conferenza <sup>*</sup></b></label>
             <input type="text" placeholder="acronimo della conferenza" name="acronimo" id="acronimo" required>
 
-            <label for="immagine"><b>Immagine Conferenza </b></label>
-            <input type="text" placeholder="inserisci il percorso dell'immagine" name="immagine" id="immagine">
-
-            <!--            <form action="upload.php" method="post" enctype="multipart/form-data">-->
-            <!--                Select image to upload:-->
-            <!--                <input type="file" name="fileToUpload" id="fileToUpload">-->
-            <!--                <input type="submit" value="Upload Image" name="submit">-->
-            <!--            </form>-->
+            <label for="immagine"><b>Immagine Conferenza </b></label><br>
+            <input type="file" name="fileToUpload" id="fileToUpload"><br>
 
             <label for="date"><b>Date di svolgimento <sup>*</sup></b></label>
             <input type="text" class="form-control date" placeholder="Inserisci tutte le date in cui si svolgerà" name="date" id="date">

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="it">
 <?php
+include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/SessioneQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
-
 global $id;
 $id = 0;
 $index = $_POST['sessionbtn'];
@@ -91,7 +91,7 @@ if (isset($_POST['creaconferenzabtn']))
                     <td><?php print $oraInizio  ?></td>
                     <td><?php print $oraFine  ?></td>
                     <td><?php print $s['titolo']  ?></td>
-                    <td><a href="http://<?php print $s['linkStanza']?>">LINK</a></td>
+                    <td><a href="https://<?php print $s['linkStanza']?>">LINK</a></td>
                     <td><?php print $s['numeroPresentazioni']  ?></td>
                     <td><?php print ($data = $s['giornoData'])  ?></td>
                     <?php
@@ -125,7 +125,7 @@ if (isset($_POST['creaconferenzabtn']))
 </form>';
         ?>
         <!-- SECONDO FORM SOLO PER LA CREAZIONE DELLA SESSIONE -->
-        <form method="post" action="addsession.php" >
+        <form method="post" action="addsession.php" autocomplete="off">
             <!-- dati da mandare alla stessa pagina per ricostruirla una volta premuto il submit -->
             <input type="hidden" id="sessionbtn" name="sessionbtn" value="<?php print $_POST['sessionbtn'] ?>">
             <?php
@@ -152,7 +152,7 @@ if (isset($_POST['creaconferenzabtn']))
                     <?php
                     for ($i = 0; $i<sizeof($arrayDate)-1; $i++)
                     {
-                        if ($arrayDate[$i] > strtotime('now')) {
+                        if ($arrayDate[$i] <= strtotime('now')) {
                             ?>
                             <option>
                                 <?php

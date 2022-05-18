@@ -7,11 +7,12 @@ class Session
 
     /**
      * @throws ExpiredSessionException
+     * @throws Exception
      */
     public static function write($key, $value)
     {
         if ( !is_string($key) ) {
-            throw new InvalidArgumentTypeException('Session key must be string value');
+            throw new Exception('Session key must be string value');
         }
         self::_init();
         $_SESSION[$key] = $value;
@@ -31,11 +32,12 @@ class Session
 
     /**
      * @throws ExpiredSessionException
+     * @throws Exception
      */
     public static function read($key)
     {
         if ( !is_string($key) ) {
-            throw new InvalidArgumentTypeException('Session key must be string value');
+            throw new Exception('Session key must be string value');
         }
         self::_init();
         if (isset($_SESSION[$key]))
@@ -48,12 +50,13 @@ class Session
 
     /**
      * @throws ExpiredSessionException
+     * @throws Exception
      */
     public static function delete($key)
     {
         if ( !is_string($key) )
         {
-            throw new InvalidArgumentTypeException('Session key must be string value');
+            throw new Exception('Session key must be string value');
         }
         self::_init();
         unset($_SESSION[$key]);
@@ -86,8 +89,7 @@ class Session
         $_SESSION['LAST_ACTIVE'] = time();
     }
 
-    /** @noinspection PhpVoidFunctionResultUsedInspection */
-    public static function close()
+    public static function close(): bool
     {
         if ( '' !== session_id() )
         {
@@ -96,7 +98,7 @@ class Session
         return true;
     }
 
-    public static function commit()
+    public static function commit(): bool
     {
         return self::close();
     }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <?php
+include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
@@ -40,12 +41,12 @@ if (isset($_POST['submit']))
 ?>
 <body>
 <?php
-include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 ?>
 <form method="post">
-<div class="container">
     <?php
+    include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     ?>
+<div class="container">
     <h4 class="conferenceInfo">Sessione selezionata: </h4>
     <p class="conferenceInfo">
         <?php
@@ -92,12 +93,6 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
                         </div>
                     </div>
             </div>';
-    } else
-    {
-        echo '<div class="conteiner">
-                    <p1>nessuna presentazione creata per la sessione corrente.</p1>
-                  </div>
-                  </form>';
     }
     ?>
     <form method="post" enctype= "multipart/form-data">

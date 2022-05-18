@@ -4,7 +4,7 @@ class ExpiredSessionException extends Exception
 {
     public function errorMessage() {
         $errorMsg = '
-        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/style/css/style.css">
         <div class="container"> </div>
         <h1>Sessione scaduta</h1>
         <p>reindirizzamento alla home page</p>';

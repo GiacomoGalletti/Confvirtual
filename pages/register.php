@@ -5,11 +5,11 @@ include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/UsersInsert.php", $_SERVER["DOCUMENT_ROOT"]));
 if(isset($_POST['submit'])) {
-    registerUser($_POST["uname"], $_POST["name"], $_POST["surname"], $_POST["psw"], $_POST["luogoNascita"], $_POST["dataNascita"]);
+    registerUser($_POST["userName"], $_POST["name"], $_POST["surname"], $_POST["psw"], $_POST["luogoNascita"], $_POST["dataNascita"]);
 }
 ?>
 <body>
-<form action="register.php" method="post" >
+<form action="register.php" method="post" autocomplete="off">
     <div class="container">
         <h1>Registrazione</h1>
         <p>Riempire tutti i campi per creare l'account.</p>
@@ -38,7 +38,7 @@ if(isset($_POST['submit'])) {
     </div>
 
     <div class="container signin">
-        <p>Hai già un account? <a href="/.idea/pages/pages/login.php">Accedi</a>.</p>
+        <p>Hai già un account? <a href="/pages/login.php">Accedi</a>.</p>
     </div>
 </form>
 <?php
