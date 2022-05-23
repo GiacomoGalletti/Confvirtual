@@ -1,14 +1,14 @@
 <?php
 class Upload
 {
-    private $target_file;
+    private $target_file_to_save;
 
     /**
      * @throws Exception
      */
     public function __construct($file_name, $file_Type)
     {
-        $this->target_file = null;
+        $this->target_file_to_save = null;
         switch ($file_Type) {
             case FileTypeEnum::PDF:
                 $this->uploadPDF($file_name);
@@ -25,8 +25,8 @@ class Upload
 
     public function getFilePath(): ?string
     {
-        if ($this->target_file != null)
-            return $this->target_file;
+        if ($this->target_file_to_save != null)
+            return $this->target_file_to_save;
         else
             return null;
     }
@@ -34,13 +34,14 @@ class Upload
     private function uploadPDF($file_name)
     {
         try {
-            $target_dir = sprintf("%s/uploads/pdf/", $_SERVER["DOCUMENT_ROOT"]);
-            $this->target_file = $target_dir . basename($file_name["name"]);
+            $relative_path = '/uploads/pdf/';
+            $target_dir = sprintf("%s".$relative_path, $_SERVER["DOCUMENT_ROOT"]);
+            $target_file = $target_dir . basename($file_name["name"]);
             $uploadOk = 1;
-            $imageFileType = strtolower(pathinfo($this->target_file,PATHINFO_EXTENSION));
+            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-            if (file_exists($this->target_file)) {
-                echo "Sorry, file already exists.";
+            if (file_exists($target_file)) {
+                echo "il file è già presente sul db.";
                 $uploadOk = 0;
             }
 
@@ -52,8 +53,8 @@ class Upload
             if ($uploadOk == 0) {
                 echo "file NON caricato.";
             } else {
-                if (move_uploaded_file($file_name["tmp_name"], $this->target_file)) {
-                    echo "The file ". htmlspecialchars( basename( $file_name["name"])). " has been uploaded.";
+                if (move_uploaded_file($file_name["tmp_name"], $target_file)) {
+                    $this->target_file_to_save = $relative_path . $file_name["name"];
                 } else {
                     echo "error: uploading fallito.";
                 }
@@ -67,23 +68,20 @@ class Upload
 
     private function uploadImg($file_name)
     {
-        $target_dir = sprintf("%s/uploads/img/", $_SERVER["DOCUMENT_ROOT"]);
-        $this->target_file = $target_dir . basename($file_name["name"]);
+        $relative_path = '/uploads/img/';
+        $target_dir = sprintf("%s".$relative_path, $_SERVER["DOCUMENT_ROOT"]);
+        $target_file = $target_dir . basename($file_name["name"]);
         $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($this->target_file,PATHINFO_EXTENSION));
-
-        if(isset($_POST["submit"])) { //...
-            $check = getimagesize($file_name["tmp_name"]);
-            if($check !== false) {
-                echo "File is an image - " . $check["mime"] . ".";
-                $uploadOk = 1;
-            } else {
-                echo "File is not an image.";
-                $uploadOk = 0;
-            }
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        $check = getimagesize($file_name["tmp_name"]);
+        if($check !== false) {
+            $uploadOk = 1;
+        }else{
+            echo "File is not an image.";
+            $uploadOk = 0;
         }
 
-        if (file_exists($this->target_file)) {
+        if (file_exists($target_file)) {
             echo "Sorry, file already exists.";
             $uploadOk = 0;
         }
@@ -96,8 +94,8 @@ class Upload
         if ($uploadOk == 0) {
             echo "Sorry, your file was not uploaded.";
         } else {
-            if (move_uploaded_file($file_name["tmp_name"], $this->target_file)) {
-                echo "The file ". htmlspecialchars( basename($file_name["name"])). " has been uploaded.";
+            if (move_uploaded_file($file_name["tmp_name"], $target_file)) {
+                $this->target_file_to_save = $relative_path . $file_name["name"];
             } else {
                 echo "error: uploading fallito.";
             }

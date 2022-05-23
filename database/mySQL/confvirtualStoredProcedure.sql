@@ -413,4 +413,3 @@ BEGIN
 	INSERT INTO PRESENTAZIONESPEAKER(userNameUtente,titoloTutorial,codicePresentazione,codiceSessione) values(in_userNameUtente,in_titoloTutorial,in_codicePresentazione,in_codiceSessione);
 END$$
 DELIMITER ;
-

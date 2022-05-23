@@ -10,17 +10,22 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
 <form name="myform" method="post">
     <?php
     include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
-    $uName = Session::read('userName');
+    try {
+        $uName = Session::read('userName');
+    } catch (ExpiredSessionException|Exception $e) {
+        $uName = null;
+    }
 
     function getConferencesAdmin($uName)
     {
-        if ($uName != null)
+        if ($uName != null) {
             global $id;
-        $id = 0;
-        foreach (ConferenceQueryController::getMyConference($uName) as $r)
-        {
-            rowConferenceInfo($r);
-            $id++;
+            $id = 0;
+            foreach (ConferenceQueryController::getMyConference($uName) as $r)
+            {
+                rowConferenceInfo($r);
+                $id++;
+            }
         }
     }
 

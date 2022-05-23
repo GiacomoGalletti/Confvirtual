@@ -5,43 +5,17 @@ include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
-require (sprintf("%s/logic/Upload.php", $_SERVER["DOCUMENT_ROOT"]));
-require (sprintf("%s/logic/FileTypeEnum.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/logic/Upload.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/logic/FileTypeEnum.php", $_SERVER["DOCUMENT_ROOT"]));
 
 $index = $_POST['presentationbtn'];
 $orainizio = $_POST['orainizio'][$index];
 $orafine = $_POST['orafine'][$index];
 $data=$_POST['data'][$index];
 $codice_sessione = $_POST['codice_sessione'][$index];
-
-if (isset($_POST['submit']))
-{
-    if ($_POST['radius'] == 'articolo')
-    {
-        try {
-            $upload = new Upload($_FILES['fileToUpload'], FileTypeEnum::PDF);
-        } catch (Exception $e) {
-            echo '<h4>Upload fallito</h4>' . '<p>'. $e .'</p>';
-        }
-        if (PresentationQueryController::createArticle($_POST['codice_sessione'][$index],$_POST['oraini'],$_POST['orafin'],$_POST['titolo_articolo'],$upload->getFilePath(),$_POST['pagenum'])) {
-            echo 'articolo creato con successo';
-        } else {
-            echo 'articolo non creato.';
-        }
-    } else if ($_POST['radius'] == 'tutorial') {
-        if (PresentationQueryController::createTutorial($_POST['codice_sessione'][$index],$_POST['oraini'],$_POST['orafin'],$_POST['titolo_tutorial'],$_POST['input_abstract_tutorial'])) {
-            echo 'tutorial creato con successo';
-        } else {
-            echo 'tutorial non creato.';
-        }
-    } else {
-        echo '<p2>seleziona una tipologia di presentazione.</p2>';
-    }
-}
+$arrayHours = array();
 ?>
 <body>
-<?php
-?>
 <form method="post">
     <?php
     include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
@@ -76,6 +50,8 @@ if (isset($_POST['submit']))
         foreach ($presentations as $p) {
             $oraInizio = DateTime::createFromFormat("H:i:s", $p['oraInizio'])->format("H:i");
             $oraFine = DateTime::createFromFormat("H:i:s", $p['oraFine'])->format("H:i");
+            $arrayHours[] = $oraInizio;
+            $arrayHours[] = $oraFine;
             $tipologia = PresentationQueryController::getTypePresentation($p['codice'])[0]['tipoPresentazione'];
             ?>
             <tr>
@@ -95,7 +71,8 @@ if (isset($_POST['submit']))
             </div>';
     }
     ?>
-    <form method="post" enctype= "multipart/form-data">
+</form>
+    <form method="post" action="/logic/createpresentation.php" autocomplete="off" enctype="multipart/form-data">
         <h4>Crea presentazione:</h4>
         <!-- Gli orari di inizio e fine devono essere compatibili con quelli già presi da altre PRESENTAZIONI -->
         <?php
@@ -106,9 +83,7 @@ if (isset($_POST['submit']))
         <input type="radio" id="radius_articolo" name="radius" value="articolo">
         <label for="radius_tutorial"> Tutorial </label>
         <input type="radio" id="radius_tutorial" name="radius" value="tutorial">
-
         <br>
-
         <label for="input_titolo_articolo" class="form_articolo"><b>Titolo Articolo</b></label>
         <input class="form_articolo" type="text" id="input_titolo_articolo" name="titolo_articolo" placeholder="inserisci titolo articolo">
         <p class="form_articolo"><b>File PDF</b></p>
@@ -138,7 +113,11 @@ if (isset($_POST['submit']))
                 <input type="hidden" name="codice_sessione[]" value="<?php print $_POST['codice_sessione'][$i] ?>">
                 <?php
             }
-        ?>
+
+            for ($i = 0; $i<sizeof($arrayHours); $i++) {
+                ?> <input type="hidden" name="arrayHours[]" value="<?php print $arrayHours[$i] ?>"> <?php
+            }
+            ?>
     </form>
 </div>
 <?php

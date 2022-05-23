@@ -3,8 +3,9 @@
 <?php
 include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
-include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/SessioneQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
+
 global $id;
 $id = 0;
 $index = $_POST['sessionbtn'];
@@ -12,36 +13,9 @@ $acronimo = $_POST['array_acronimo'][$index];
 $annoEdizione = $_POST['array_annoEdizione'][$index];
 $rawdates = $_POST['dates'][$index];
 
-function validateDate($date, $format = 'd-m-Y'): bool
-{
-    $d = DateTime::createFromFormat($format, $date);
-    return $d && $d->format($format) === $date;
-}
-
 if (isset($_POST['presentationbtn']))
 {
     header("Location:/pages/admin/addpresentation.php");
-}
-
-if (isset($_POST['creaconferenzabtn']))
-{
-    if ($_POST['ttl'] != '' && $_POST['stanza'] != '' && isset($_POST['giorno']) && validateDate($_POST['giorno']) ) {
-        if (SessioneQueryController::createSession($_POST['oraini'],$_POST['orafin'],$_POST['ttl'],$_POST['stanza'],$_POST['giorno'],$_POST['annoEdizione'],$_POST['acronimo']))
-        {
-            echo '
-                <h4>Sessione creata</h4>
-                  ';
-        } else
-        {
-            echo '
-             <h4>Sessione non creata</h4>
-                ';
-        }
-    } else {
-        echo '
-        <div class="container"><p>AVVISO: campi inseriti non validi.</p></div>
-        ';
-    }
 }
 
 ?>
@@ -125,17 +99,17 @@ if (isset($_POST['creaconferenzabtn']))
 </form>';
         ?>
         <!-- SECONDO FORM SOLO PER LA CREAZIONE DELLA SESSIONE -->
-        <form method="post" action="addsession.php" autocomplete="off">
+        <form method="post" action="/logic/createsession.php" autocomplete="off">
             <!-- dati da mandare alla stessa pagina per ricostruirla una volta premuto il submit -->
-            <input type="hidden" id="sessionbtn" name="sessionbtn" value="<?php print $_POST['sessionbtn'] ?>">
+            <input type="hidden" id="sessionbtn" name="sessionbtn" value="<?php print $index ?>">
             <?php
                 $arrayLength = sizeof($_POST['array_acronimo']);
                 for ($i = 0; $i<$arrayLength; $i++)
                 {
                     ?>
-                        <input type="hidden" id="dates" name="dates[]" value="<?php print $_POST['dates'][$i] ?>">
-                        <input type="hidden" id="array_acronimo" name="array_acronimo[]" value="<?php print $_POST['array_acronimo'][$i] ?>">
-                        <input type="hidden" id="array_annoEdizione" name="array_annoEdizione[]" value="<?php print $_POST['array_annoEdizione'][$i] ?>">
+                        <input type="hidden" id="dates" name="dates[]" value="<?php print($_POST['dates'][$i]) ?>">
+                        <input type="hidden" id="array_acronimo" name="array_acronimo[]" value="<?php print($_POST['array_acronimo'][$i]) ?>">
+                        <input type="hidden" id="array_annoEdizione" name="array_annoEdizione[]" value="<?php print($_POST['array_annoEdizione'][$i]) ?>">
                     <?php
                 }
             ?>

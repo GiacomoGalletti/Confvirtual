@@ -23,12 +23,11 @@ CREATE TABLE UTENTE (
 )engine='InnoDB';
 
 CREATE TABLE DATACONFERENZA (
-                                giorno date not null,
-                                annoEdizioneConferenza year not null,
-                                acronimoConferenza varchar (50) not null,
-                                primary key (giorno,annoEdizioneConferenza,acronimoConferenza),
-                                foreign key (annoEdizioneConferenza, acronimoConferenza) references CONFERENZA(annoEdizione,acronimo)
-                                    ON DELETE CASCADE
+    giorno date not null,
+    annoEdizioneConferenza year not null,
+    acronimoConferenza varchar (50) not null,
+    primary key (giorno,annoEdizioneConferenza,acronimoConferenza),
+    foreign key (annoEdizioneConferenza, acronimoConferenza) references CONFERENZA(annoEdizione,acronimo) ON DELETE CASCADE
 )engine='InnoDB';
 
 CREATE TABLE SESSIONE(
@@ -43,19 +42,17 @@ CREATE TABLE SESSIONE(
     annoEdizioneConferenza year not null,
     acronimoConferenza varchar(50),
     primary key (codice),
-    foreign key (giornoData,annoEdizioneConferenza,acronimoConferenza) references DATACONFERENZA(giorno,annoEdizioneConferenza,acronimoConferenza)
-	ON DELETE CASCADE
+    foreign key (giornoData,annoEdizioneConferenza,acronimoConferenza) references DATACONFERENZA(giorno,annoEdizioneConferenza,acronimoConferenza)ON DELETE CASCADE
 )engine='InnoDB';
 
 CREATE TABLE PRESENTAZIONE (
-                               codice int auto_increment,
-                               codiceSessione int not null,
-                               oraInizio time not null,
-                               oraFine time not null,
-                               numeroSequenza int default 1,
-                               primary key (codice, codiceSessione),
-                               foreign key (codiceSessione) references SESSIONE(codice)
-                                   ON DELETE CASCADE
+     codice int auto_increment,
+     codiceSessione int not null,
+     oraInizio time not null,
+     oraFine time not null,
+     numeroSequenza int default 1,
+     primary key (codice, codiceSessione),
+     foreign key (codiceSessione) references SESSIONE(codice) ON DELETE CASCADE
 )engine='InnoDB';
 
 CREATE TABLE AMMINISTRATORE (
@@ -106,9 +103,8 @@ CREATE TABLE PRESENTER (
                            nomeAutore varchar(50),
                            cognomeAutore varchar(50),
                            primary key (userNameUtente),
-                           foreign key (userNameUtente) references UTENTE(userName),
-                           foreign key (codicePresentazione,codiceSessione,nomeAutore,cognomeAutore) references AUTORE(codicePresentazione,codiceSessione,nome,cognome)
-                               ON DELETE CASCADE
+                           foreign key (userNameUtente) references UTENTE(userName)ON DELETE CASCADE,
+                           foreign key (codicePresentazione,codiceSessione,nomeAutore,cognomeAutore) references AUTORE(codicePresentazione,codiceSessione,nome,cognome)ON DELETE CASCADE
 )engine = 'InnoDB';
 
 CREATE TABLE SPONSOR (
@@ -168,8 +164,7 @@ CREATE TABLE ARTICOLO(
                          numeroPagine int,
                          statoSvolgimento enum('coperto','non coperto') default ('non coperto'),
                          primary key (codicePresentazione, codiceSessione, titolo),
-                         foreign key (codiceSessione, codicePresentazione) references PRESENTAZIONE(codiceSessione, codice)
-                             ON DELETE CASCADE
+                         foreign key (codiceSessione, codicePresentazione) references PRESENTAZIONE(codiceSessione, codice)ON DELETE CASCADE
 )engine = 'InnoDB';
 
 CREATE TABLE PRESENTAZIONESPEAKER(
@@ -180,7 +175,7 @@ CREATE TABLE PRESENTAZIONESPEAKER(
                                      linkWeb varchar(260),
                                      descrizione varchar(200),
                                      primary key(userNameUtente, titoloTutorial, codicePresentazione, codiceSessione),
-                                     foreign key (userNameUtente) references SPEAKER(userNameUtente),
+                                     foreign key (userNameUtente) references SPEAKER(userNameUtente)ON DELETE CASCADE,
                                      foreign key (codicePresentazione,codiceSessione,titoloTutorial) references TUTORIAL(codicePresentazione,codiceSessione,titolo)
                                          ON DELETE CASCADE
 )engine = 'InnoDB';
@@ -191,9 +186,8 @@ CREATE TABLE PRESENTAZIONEPRESENTER(
                                        codicePresentazione int,
                                        codiceSessione int,
                                        primary key (userNameUtente, titoloArticolo, codicePresentazione, codiceSessione),
-                                       foreign key (userNameUtente) references PRESENTER(userNameUtente),
-                                       foreign key (codicePresentazione,codiceSessione,titoloArticolo) references ARTICOLO(codicePresentazione,codiceSessione,titolo)
-                                           ON DELETE CASCADE
+                                       foreign key (userNameUtente) references PRESENTER(userNameUtente)ON DELETE CASCADE,
+                                       foreign key (codicePresentazione,codiceSessione,titoloArticolo) references ARTICOLO(codicePresentazione,codiceSessione,titolo)ON DELETE CASCADE
 )engine = 'InnoDB';
 
 CREATE TABLE PAROLACHIAVE (

@@ -19,17 +19,30 @@ function getConferences()
 
 function rowConferenceInfo($r)
 {
+    $srcImg = $r['immagineLogo'];
+
     echo '
                                 <tr>
-                                <th scope="row" class="scope" >' . $r['acronimo'] . '</th> 
+                                <th>' . $r['acronimo'] . '</th> 
                                 <td>' . $r['nome'] . '</td>
                                 <td>' . $r['annoEdizione'] . '</td>
+                            
                             ';
     $string = '';
     foreach (ConferenceQueryController::getDaysConference($r['acronimo'], $r['annoEdizione']) as $r) {
         $string .= date_format(date_create($r['giorno']), "d/m") . ' - ';
     }
     echo '<td>' . $string . '</td>';
+    echo '
+    <td>';
+
+    if(!empty($srcImg)){
+        echo '<img id="currentPhoto" title="userImg personalizzata" width="60" height="80" src="';
+        echo $srcImg;
+        echo '">';
+    } else { echo '<img title="no img" width="60" height="80" src="/resources/images/noImgDefault.jpg">';}
+    echo '</td>
+    ';
 }
 
 switch(Session::read('type')){
@@ -48,6 +61,7 @@ switch(Session::read('type')){
                                     <th>Nome</th>
                                     <th>Anno</th>
                                     <th>Giorni</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -75,6 +89,7 @@ switch(Session::read('type')){
                                     <th>Nome</th>
                                     <th>Anno</th>
                                     <th>Giorni</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
