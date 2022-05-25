@@ -151,7 +151,7 @@ CREATE TABLE TUTORIAL(
                          codiceSessione int,
                          titolo varchar(50),
                          abstract varchar(500),
-                         primary key (codicePresentazione, codiceSessione, titolo),
+                         primary key (codicePresentazione, codiceSessione),
                          foreign key (codiceSessione, codicePresentazione) references PRESENTAZIONE(codiceSessione, codice)
                              ON DELETE CASCADE
 )engine = 'InnoDB';
@@ -163,7 +163,7 @@ CREATE TABLE ARTICOLO(
                          filePdf varchar(260),
                          numeroPagine int,
                          statoSvolgimento enum('coperto','non coperto') default ('non coperto'),
-                         primary key (codicePresentazione, codiceSessione, titolo),
+                         primary key (codicePresentazione, codiceSessione),
                          foreign key (codiceSessione, codicePresentazione) references PRESENTAZIONE(codiceSessione, codice)ON DELETE CASCADE
 )engine = 'InnoDB';
 

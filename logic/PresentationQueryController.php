@@ -19,9 +19,9 @@ class PresentationQueryController
         return DbPresentation::createTutorial($codice_sessione, $orainizio, $orafine,$titolo,$abstract);
     }
 
-    public static function getTypePresentation($codice_presentazione)
+    public static function getPresentationInfo($codice_presentazione)
     {
-        return DbPresentation::getTypePresentation($codice_presentazione);
+        return DbPresentation::getPresentationInfo($codice_presentazione);
     }
 
     public static function getArticlesList($userName){
@@ -30,5 +30,10 @@ class PresentationQueryController
 
     public static function getTutorialsList($userName){
         return DbPresentation::tutorialsList($userName);
+    }
+
+    public static function orderPresentation(): bool
+    {
+        return DbPresentation::ordinamentoSequenzePresentazioni();
     }
 }

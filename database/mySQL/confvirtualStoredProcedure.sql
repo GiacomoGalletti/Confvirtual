@@ -252,14 +252,15 @@ CREATE PROCEDURE getAllPresentationInfo(IN in_codiceSessione int)
 BEGIN
 select *
 from presentazione
-where presentazione.codiceSessione = in_codiceSessione;
+where presentazione.codiceSessione = in_codiceSessione
+order by numeroSequenza;
 END//
 DELIMITER ;
 
 DELIMITER //
 DROP PROCEDURE IF EXISTS getPresentationInfo //
 CREATE PROCEDURE getPresentationInfo(IN in_codicePresentazione int)
-BEGIN  
+BEGIN
   IF EXISTS (
 	SELECT *
 	FROM ARTICOLO
@@ -267,32 +268,13 @@ BEGIN
   ) THEN (
 	SELECT *, 'articolo' AS tipoPresentazione
     FROM PRESENTAZIONE,ARTICOLO
-    WHERE PRESENTAZIONE.codice = in_codicePresentazione
+    WHERE (PRESENTAZIONE.codice = ARTICOLO.codicePresentazione)  and
+          PRESENTAZIONE.codice = in_codicePresentazione
   );ELSE (
 	SELECT *, 'tutorial' AS tipoPresentazione
     FROM PRESENTAZIONE,TUTORIAL
-    WHERE PRESENTAZIONE.codice = in_codicePresentazione
-  );
-END IF;
-END//
-DELIMITER ;
-
-DELIMITER //
-DROP PROCEDURE IF EXISTS getTypePresentation //
-CREATE PROCEDURE getTypePresentation(IN in_codicePresentazione int)
-BEGIN  
-  IF EXISTS (
-	SELECT *
-	FROM ARTICOLO
-    WHERE ARTICOLO.codicePresentazione = in_codicePresentazione
-  ) THEN (
-	SELECT distinct 'articolo' AS tipoPresentazione
-    FROM PRESENTAZIONE,ARTICOLO
-    WHERE PRESENTAZIONE.codice = in_codicePresentazione
-  );ELSE (
-	SELECT distinct 'tutorial' AS tipoPresentazione
-    FROM PRESENTAZIONE,TUTORIAL
-    WHERE PRESENTAZIONE.codice = in_codicePresentazione
+    WHERE (PRESENTAZIONE.codice = TUTORIAL.codicePresentazione) AND
+          PRESENTAZIONE.codice = in_codicePresentazione
   );
 END IF;
 END//
@@ -308,8 +290,8 @@ END;
 //
 
 DELIMITER //
-drop procedure if exists ceckRatingExists//
-CREATE PROCEDURE ceckRatingExists(
+drop procedure if exists checkRatingExists//
+CREATE PROCEDURE checkRatingExists(
     IN in_userNameUtente varchar(50), IN in_codicePresentazione int , IN in_codiceSessione int)
 BEGIN
 declare esiste boolean;
@@ -372,14 +354,13 @@ DELIMITER ;
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS ritornaArticoli $$
-CREATE PROCEDURE ritornaArticoli(IN in_userNameUtente varchar(50))
+CREATE PROCEDURE ritornaArticoli()
 BEGIN
 select *
 from ARTICOLO
 where (ARTICOLO.codicePresentazione,ARTICOLO.codiceSessione) not in (
 	select codicePresentazione,codiceSessione
     from PRESENTAZIONEPRESENTER
-    where PRESENTAZIONEPRESENTER.userNameUtente = in_userNameUtente
 );
 END$$
 DELIMITER ;
@@ -412,4 +393,43 @@ CREATE PROCEDURE associaSpeaker(IN in_userNameUtente varchar(50),IN in_titoloTut
 BEGIN
 	INSERT INTO PRESENTAZIONESPEAKER(userNameUtente,titoloTutorial,codicePresentazione,codiceSessione) values(in_userNameUtente,in_titoloTutorial,in_codicePresentazione,in_codiceSessione);
 END$$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS ordinamentoSequenzePresentazioni $$
+CREATE PROCEDURE ordinamentoSequenzePresentazioni()
+BEGIN
+	DECLARE done INT DEFAULT 0;
+	DECLARE ora INT;
+    DECLARE sessioncode INT;
+    DECLARE oldsessioncode INT;
+    DECLARE nseq INT;
+	DECLARE getora CURSOR FOR SELECT presentazione.oraFine FROM presentazione INNER JOIN sessione ON presentazione.codiceSessione = sessione.codice 
+						      ORDER BY presentazione.oraFine AND presentazione.codiceSessione;
+	DECLARE getsessioncode CURSOR FOR SELECT presentazione.codiceSessione FROM presentazione INNER JOIN sessione ON presentazione.codiceSessione = sessione.codice 
+									  ORDER BY presentazione.oraFine AND presentazione.codiceSessione;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
+    
+    OPEN getora;
+    OPEN getsessioncode;
+    
+    FETCH getora INTO ora;
+    FETCH getsessioncode INTO sessioncode;
+    
+    SET @nseq = 1;
+    SET oldsessioncode = sessioncode;
+    
+    REPEAT
+		IF (sessioncode > oldsessioncode) THEN SET @nseq = 1;
+        END IF;
+        UPDATE presentazione SET numeroSequenza = @nseq WHERE presentazione.oraFine = ora AND presentazione.codiceSessione = sessioncode;
+        SET @nseq = @nseq + 1;
+        SET oldsessioncode = sessioncode;
+        FETCH getora INTO ora;
+		FETCH getsessioncode INTO sessioncode;
+	UNTIL done = 1 END REPEAT;
+    
+    CLOSE getora;
+    CLOSE getsessioncode;
+END $$
 DELIMITER ;

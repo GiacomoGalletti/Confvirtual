@@ -7,33 +7,43 @@ include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/Upload.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/FileTypeEnum.php", $_SERVER["DOCUMENT_ROOT"]));
-
 $index = $_POST['presentationbtn'];
 $orainizio = $_POST['orainizio'][$index];
 $orafine = $_POST['orafine'][$index];
 $data=$_POST['data'][$index];
 $codice_sessione = $_POST['codice_sessione'][$index];
 $arrayHours = array();
+$article_tutorial_btn = 0;
 ?>
 <body>
-<form method="post">
+<form method="post" action="/pages/admin/modifypresentation.php">
     <?php
     include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+    try {
+        Session::start();
+        if (Session::read('msg_presentazione') != false) {
+            echo Session::read('msg_presentazione');
+            Session::delete('msg_presentazione');
+            Session::commit();
+        }
+    } catch (ExpiredSessionException|Exception $e) {
+        echo $e;
+    }
     ?>
-<div class="container">
-    <h4 class="conferenceInfo">Sessione selezionata: </h4>
-    <p class="conferenceInfo">
+    <div class="container">
+        <h4 class="conferenceInfo">Sessione selezionata: </h4>
+        <p class="conferenceInfo">
+            <?php
+            print ('giorno: ' . $data . ' inizio sessione: ' . $orainizio . ', fine sessione: ' . $orafine);
+            ?>
+        </p>
         <?php
-        print ('giorno: ' . $data . ' inizio sessione: ' . $orainizio . ', fine sessione: ' . $orafine);
-        ?>
-    </p>
-    <?php
-    if (($presentations = PresentationQueryController::getAllPresentationInfo($codice_sessione)) != null)
-    {
-        echo '
-                    <h4>Presentazioni create: </h4>
-                    <p class="conferenceInfo">
-                    <div class="container">
+        if (($presentations = PresentationQueryController::getAllPresentationInfo($codice_sessione)) != null)
+        {
+            ?>
+            <h4>Presentazioni create: </h4>
+            <p class="conferenceInfo">
+            <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-wrap">
@@ -41,38 +51,75 @@ $arrayHours = array();
                                 <thead class="thead-primary">
                                 <tr>
                                     <th>codice presentazione</th>
+                                    <th>numero sequenza</th>
                                     <th>ora inizio</th>
                                     <th>ora fine</th>
                                     <th>tipologia</th>
+                                    <th>titolo</th>
                                     <th></th>
                                 </tr>
-                                ';
-        foreach ($presentations as $p) {
-            $oraInizio = DateTime::createFromFormat("H:i:s", $p['oraInizio'])->format("H:i");
-            $oraFine = DateTime::createFromFormat("H:i:s", $p['oraFine'])->format("H:i");
-            $arrayHours[] = $oraInizio;
-            $arrayHours[] = $oraFine;
-            $tipologia = PresentationQueryController::getTypePresentation($p['codice'])[0]['tipoPresentazione'];
-            ?>
-            <tr>
-                <td><?php print $p['codice']  ?></td>
-                <td><?php print $oraInizio  ?></td>
-                <td><?php print $oraFine  ?></td>
-                <td><?php print $tipologia ?></td>
-                <td><button type="submit" id="article_tutorial_btn" name="article_tutorial_btn" value = ""><?php print ('modifica '.$tipologia)?></button></td>
-            </tr>
-            <?php
-        }
-        echo '
+                                <?php
+                                foreach ($presentations as $p) {
+
+                                    $oraInizio = DateTime::createFromFormat("H:i:s", $p['oraInizio'])->format("H:i");
+                                    $oraFine = DateTime::createFromFormat("H:i:s", $p['oraFine'])->format("H:i");
+                                    $arrayHours[] = $oraInizio;
+                                    $arrayHours[] = $oraFine;
+                                    $info = PresentationQueryController::getPresentationInfo($p['codice']);
+                                    $tipologia = $info[0]['tipoPresentazione'];
+                                    $titolo = $info[0]['titolo'];
+                                    if ($tipologia == 'articolo') {
+                                        $numeroPagine = $info[0]['numeroPagine'];
+                                        $filePdf = $info[0]['filePdf'];
+                                        ?>
+                                        <input type="hidden" name="numeroPagine[]" value="<?php print $numeroPagine ?>">
+                                        <input type="hidden" name="filePDF[]" value="<?php print $filePdf ?>">
+                                        <input type="hidden" name="abstract[]" value="">
+                                        <?php
+                                    } else {
+                                        $abstract = $info[0]['abstract'];
+                                        ?>
+                                        <input type="hidden" name="numeroPagine[]" value="">
+                                        <input type="hidden" name="filePDF[]" value="">
+                                        <input type="hidden" name="abstract[]" value="<?php print $abstract ?>">
+                                        <?php
+                                    }
+                                    ?>
+                                    <input type="hidden" name="orafine[]" value="<?php print $oraFine ?>">
+                                    <input type="hidden" name="orainizio[]" value="<?php print $oraInizio ?>">
+                                    <input type="hidden" name="data" value="<?php print $data ?>">
+                                    <input type="hidden" name="codice_sessione" value="<?php print $codice_sessione ?>">
+                                    <input type="hidden" name="tipologia[]" value="<?php print $tipologia ?>">
+                                    <input type="hidden" name="titolo[]" value="<?php print $titolo ?>">
+                                    <input type="hidden" name="numeroSequenza[]" value="<?php print $p['numeroSequenza'] ?>">
+
+
+                                    <tr>
+                                        <td><?php print $p['codice']  ?></td>
+                                        <td><?php print $p['numeroSequenza']  ?></td>
+                                        <td><?php print $oraInizio  ?></td>
+                                        <td><?php print $oraFine  ?></td>
+                                        <td><?php print $tipologia ?></td>
+                                        <td><?php print $titolo ?></td>
+                                        <td><button type="submit" id="article_tutorial_btn" name="article_tutorial_btn" value = "<?php echo $article_tutorial_btn++; ?>"><?php print ('modifica '.$tipologia)?></button></td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
                                 </thead>
                             </table>
                         </div>
                     </div>
-            </div>';
-    }
-    ?>
+                </div>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
 </form>
-    <form method="post" action="/logic/createpresentation.php" autocomplete="off" enctype="multipart/form-data">
+
+<form method="post" action="/logic/createpresentation.php" autocomplete="off" enctype="multipart/form-data">
+    <div class="container">
         <h4>Crea presentazione:</h4>
         <!-- Gli orari di inizio e fine devono essere compatibili con quelli già presi da altre PRESENTAZIONI -->
         <?php
@@ -86,10 +133,9 @@ $arrayHours = array();
         <br>
         <label for="input_titolo_articolo" class="form_articolo"><b>Titolo Articolo</b></label>
         <input class="form_articolo" type="text" id="input_titolo_articolo" name="titolo_articolo" placeholder="inserisci titolo articolo">
-        <p class="form_articolo"><b>File PDF</b></p>
-
-        <p class="form_articolo">Seleziona il file PDF da caricare:</p>
-        <input class="form_articolo" type="file" name="fileToUpload" id="fileToUpload">
+        <label class="form_articolo"><b>File PDF</b></label>
+        <label for="fileToUpload" class="form_articolo">Seleziona il file PDF da caricare:</label>
+        <input class="form_articolo" type="file" name="fileToUpload" id="fileToUpload"><br>
 
         <label class="form_articolo" for="pagenum"><b>Numero di pagine:</b></label>
         <input class="form_articolo" type="text" id="pagenum" name="pagenum" pattern="[0-9]+" placeholder="inserisci il numero di pagine">
@@ -103,23 +149,22 @@ $arrayHours = array();
 
         <input type="hidden" id="presentationbtn" name="presentationbtn" value="<?php print $_POST['presentationbtn'] ?>">
         <?php
-            $arrayLength = sizeof($_POST['orainizio']);
-            for ($i = 0; $i<$arrayLength; $i++)
-            {
-                ?>
-                <input type="hidden" name="orafine[]" value="<?php print $_POST['orafine'][$i] ?>">
-                <input type="hidden" name="orainizio[]" value="<?php print $_POST['orainizio'][$i] ?>">
-                <input type="hidden" name="data[]" value="<?php print $_POST['data'][$i] ?>">
-                <input type="hidden" name="codice_sessione[]" value="<?php print $_POST['codice_sessione'][$i] ?>">
-                <?php
-            }
-
-            for ($i = 0; $i<sizeof($arrayHours); $i++) {
-                ?> <input type="hidden" name="arrayHours[]" value="<?php print $arrayHours[$i] ?>"> <?php
-            }
+        $arrayLength = sizeof($_POST['orainizio']);
+        for ($i = 0; $i<$arrayLength; $i++)
+        {
             ?>
-    </form>
-</div>
+            <input type="hidden" name="orafine[]" value="<?php print $_POST['orafine'][$i] ?>">
+            <input type="hidden" name="orainizio[]" value="<?php print $_POST['orainizio'][$i] ?>">
+            <input type="hidden" name="data[]" value="<?php print $_POST['data'][$i] ?>">
+            <input type="hidden" name="codice_sessione[]" value="<?php print $_POST['codice_sessione'][$i] ?>">
+            <?php
+        }
+        for ($i = 0; $i<sizeof($arrayHours); $i++) {
+            ?> <input type="hidden" name="arrayHours[]" value="<?php print $arrayHours[$i] ?>"> <?php
+        }
+        ?>
+    </div>
+</form>
 <?php
 include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"]));
 ?>

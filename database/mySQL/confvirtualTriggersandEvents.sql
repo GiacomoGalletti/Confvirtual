@@ -25,3 +25,14 @@ UPDATE sessione
 SET numeroPresentazioni = (SELECT count(codiceSessione) FROM presentazione WHERE sessione.codice = presentazione.codiceSessione GROUP BY codiceSessione);
 END$$
 DELIMITER ;
+
+#CREARE UN TRIGGER CHE IMPLEMENTI L'OPERAZIONE DI CAMBIO DI STATO_SVOLGIMENTO DI UNA PRESENTAZIONE DI ARTICOLO, PORTANDOLO DA NON COPERTO A COPERTO
+DELIMITER $$
+DROP TRIGGER IF EXISTS cambioStatoArticolo $$
+CREATE TRIGGER cambioStatoArticolo AFTER INSERT ON presentazionepresenter
+FOR EACH ROW
+BEGIN
+	UPDATE articolo, presentazionepresenter
+    SET articolo.statoSvolgimento = 'coperto' WHERE articolo.codiceSessione = presentazionepresenter.codiceSessione AND articolo.codicePresentazione = presentazionepresenter.codicePresentazione;
+END$$
+DELIMITER ;

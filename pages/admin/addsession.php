@@ -24,6 +24,18 @@ if (isset($_POST['presentationbtn']))
 <form method="post" action="/pages/admin/addpresentation.php">
     <?php
     include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+
+    try {
+        Session::start();
+        if (Session::read('msg_sessione') != false) {
+            echo Session::read('msg_sessione');
+            Session::delete('msg_sessione');
+            Session::commit();
+        }
+    } catch (ExpiredSessionException|Exception $e) {
+        echo $e;
+    }
+
     ?>
     <div class="container">
         <h4 class="conferenceInfo">Conferenza selezionata: </h4>

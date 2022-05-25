@@ -49,6 +49,9 @@ class DbPresentation
 
     public static function createArticle($codice_sessione, $orainizio, $orafine,$titolo,$filePDF,$numero_pagine): bool
     {
+        if (empty($codice_sessione) || empty($titolo)) {
+            return false;
+        }
         try
         {
             $sql = 'CALL addPresentationArticle(\'' . $codice_sessione . '\',\'' . $orainizio . '\',\'' . $orafine . '\',\'' . $titolo . '\',\'' . $filePDF . '\',\'' . $numero_pagine . '\');';
@@ -65,6 +68,9 @@ class DbPresentation
 
     public static function createTutorial($codice_sessione, $orainizio, $orafine,$titolo,$abstract): bool
     {
+        if (empty($codice_sessione) || empty($titolo)) {
+            return false;
+        }
         try
         {
             $sql = 'CALL addPresentationTutorial(\'' . $codice_sessione . '\',\'' . $orainizio . '\',\'' . $orafine . '\',\'' . $titolo . '\',\'' . $abstract . '\');';
@@ -86,11 +92,11 @@ class DbPresentation
         }
     }
 
-    public static function getTypePresentation($codice_presentazione)
+    public static function getPresentationInfo($codice_presentazione)
     {
         try
         {
-            $sql = 'CALL getTypePresentation(\'' . $codice_presentazione . '\');';
+            $sql = 'CALL getPresentationInfo(\'' . $codice_presentazione . '\');';
             $res = DbConn::getInstance()->query($sql);
             $output = $res -> fetchAll(PDO::FETCH_ASSOC);
             $res -> closeCursor();
@@ -154,5 +160,21 @@ class DbPresentation
             return null;
         }
     }
+
+    public static function ordinamentoSequenzePresentazioni(): bool
+    {
+        try {
+            $sql = 'CALL ordinamentoSequenzePresentazioni();';
+            $res = DbConn::getInstance()->query($sql);
+            $res -> closeCursor();
+            return true;
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
 
 }
