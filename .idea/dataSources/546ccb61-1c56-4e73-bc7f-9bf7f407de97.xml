@@ -1174,5 +1174,1370 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
     <user id="334" parent="1" name="root">
       <Host>localhost</Host>
     </user>
+    <routine id="335" parent="325" name="addPresentationArticle">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>482</SourceTextLength>
+    </routine>
+    <routine id="336" parent="325" name="addPresentationTutorial">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>472</SourceTextLength>
+    </routine>
+    <routine id="337" parent="325" name="aggiungiData">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>134</SourceTextLength>
+    </routine>
+    <routine id="338" parent="325" name="associaPresenter">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>197</SourceTextLength>
+    </routine>
+    <routine id="339" parent="325" name="associaSpeaker">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>195</SourceTextLength>
+    </routine>
+    <routine id="340" parent="325" name="checkUserExists">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>96</SourceTextLength>
+    </routine>
+    <routine id="341" parent="325" name="checkUserType">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>602</SourceTextLength>
+    </routine>
+    <routine id="342" parent="325" name="createArticolo">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>184</SourceTextLength>
+    </routine>
+    <routine id="343" parent="325" name="createConference">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>277</SourceTextLength>
+    </routine>
+    <routine id="344" parent="325" name="createPresentation">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>121</SourceTextLength>
+    </routine>
+    <routine id="345" parent="325" name="createSession">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>363</SourceTextLength>
+    </routine>
+    <routine id="346" parent="325" name="createTutorial">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>157</SourceTextLength>
+    </routine>
+    <routine id="347" parent="325" name="getAdminConferences">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>200</SourceTextLength>
+    </routine>
+    <routine id="348" parent="325" name="getAllPresentationInfo">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>117</SourceTextLength>
+    </routine>
+    <routine id="349" parent="325" name="getPresentationInfo">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>546</SourceTextLength>
+    </routine>
+    <routine id="350" parent="325" name="getSessionsFromConfrernce">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>155</SourceTextLength>
+    </routine>
+    <routine id="351" parent="325" name="insertRating">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>183</SourceTextLength>
+    </routine>
+    <routine id="352" parent="325" name="ordinamentoSequenzePresentazioni">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>1285</SourceTextLength>
+    </routine>
+    <routine id="353" parent="325" name="promuoviUtenteAPresenter">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>75</SourceTextLength>
+    </routine>
+    <routine id="354" parent="325" name="promuoviUtenteASpeaker">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>73</SourceTextLength>
+    </routine>
+    <routine id="355" parent="325" name="register">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>380</SourceTextLength>
+    </routine>
+    <routine id="356" parent="325" name="ritornaArticoli">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>180</SourceTextLength>
+    </routine>
+    <routine id="357" parent="325" name="ritornaConferenza">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>120</SourceTextLength>
+    </routine>
+    <routine id="358" parent="325" name="ritornaConferenzeFuture">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>82</SourceTextLength>
+    </routine>
+    <routine id="359" parent="325" name="ritornaConferenzePassate">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>86</SourceTextLength>
+    </routine>
+    <routine id="360" parent="325" name="ritornaGiorniConferenza">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>172</SourceTextLength>
+    </routine>
+    <routine id="361" parent="325" name="ritornaPresenter">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>149</SourceTextLength>
+    </routine>
+    <routine id="362" parent="325" name="ritornaSpeaker">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>145</SourceTextLength>
+    </routine>
+    <routine id="363" parent="325" name="ritornaTutorial">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>244</SourceTextLength>
+    </routine>
+    <routine id="364" parent="325" name="ritornaUtenti">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>198</SourceTextLength>
+    </routine>
+    <scheduled-event id="365" parent="325" name="cambioStatoConferenza">
+      <Definer>root@localhost</Definer>
+      <Interval>&apos;1&apos; MINUTE</Interval>
+      <LastExecuted>2022-05-27.13:21:15</LastExecuted>
+      <SourceTextLength>382</SourceTextLength>
+      <Starts>&apos;2022-05-27 11:17:15&apos;</Starts>
+      <Status>enabled</Status>
+    </scheduled-event>
+    <table id="366" parent="325" name="amministratore">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="367" parent="325" name="articolo">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="368" parent="325" name="autore">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="369" parent="325" name="conferenza">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="370" parent="325" name="creatoriconferenza">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="371" parent="325" name="dataconferenza">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="372" parent="325" name="messaggio">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="373" parent="325" name="parolachiave">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="374" parent="325" name="presentazione">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="375" parent="325" name="presentazionepresenter">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="376" parent="325" name="presentazionespeaker">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="377" parent="325" name="presenter">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="378" parent="325" name="sessione">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="379" parent="325" name="speaker">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="380" parent="325" name="sponsor">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="381" parent="325" name="sponsorizzazioni">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="382" parent="325" name="tutorial">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="383" parent="325" name="utente">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="384" parent="325" name="utenteregistrato">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="385" parent="325" name="valutazione">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <argument id="386" parent="335" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="387" parent="335" name="in_oraInizio">
+      <DataType>time|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="388" parent="335" name="in_oraFine">
+      <DataType>time|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="389" parent="335" name="in_titolo">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="390" parent="335" name="in_filePdf">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>5</Position>
+    </argument>
+    <argument id="391" parent="335" name="in_numeroPagine">
+      <DataType>int(11)|0s</DataType>
+      <Position>6</Position>
+    </argument>
+    <argument id="392" parent="336" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="393" parent="336" name="in_oraInizio">
+      <DataType>time|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="394" parent="336" name="in_oraFine">
+      <DataType>time|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="395" parent="336" name="in_titolo">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="396" parent="336" name="in_abstract">
+      <DataType>varchar(500)|0s</DataType>
+      <Position>5</Position>
+    </argument>
+    <argument id="397" parent="337" name="in_giorno">
+      <DataType>date|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="398" parent="337" name="in_annoEdizione">
+      <DataType>year(4)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="399" parent="337" name="in_acronimo">
+      <DataType>varchar(10)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="400" parent="338" name="in_userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="401" parent="338" name="in_titoloArticolo">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="402" parent="338" name="in_codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="403" parent="338" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="404" parent="339" name="in_userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="405" parent="339" name="in_titoloTutorial">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="406" parent="339" name="in_codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="407" parent="339" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="408" parent="340" name="nomeUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="409" parent="340" name="pswd">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="410" parent="341" name="nomeUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="411" parent="342" name="in_codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="412" parent="342" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="413" parent="342" name="in_titolo">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="414" parent="342" name="in_filePdf">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="415" parent="342" name="in_numeroPagine">
+      <DataType>int(11)|0s</DataType>
+      <Position>5</Position>
+    </argument>
+    <argument id="416" parent="343" name="in_annoEdizione">
+      <DataType>year(4)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="417" parent="343" name="in_acronimo">
+      <DataType>varchar(10)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="418" parent="343" name="in_immagineLogo">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="419" parent="343" name="in_nome">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="420" parent="343" name="in_userName">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>5</Position>
+    </argument>
+    <argument id="421" parent="344" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="422" parent="344" name="in_oraInizio">
+      <DataType>time|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="423" parent="344" name="in_oraFine">
+      <DataType>time|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="424" parent="345" name="in_oraInizio">
+      <DataType>time|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="425" parent="345" name="in_oraFine">
+      <DataType>time|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="426" parent="345" name="in_titolo">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="427" parent="345" name="in_linkStanza">
+      <DataType>varchar(360)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="428" parent="345" name="in_giornoData">
+      <DataType>date|0s</DataType>
+      <Position>5</Position>
+    </argument>
+    <argument id="429" parent="345" name="in_annoEdizioneConferenza">
+      <DataType>year(4)|0s</DataType>
+      <Position>6</Position>
+    </argument>
+    <argument id="430" parent="345" name="in_acronimoConferenza">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>7</Position>
+    </argument>
+    <argument id="431" parent="346" name="in_codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="432" parent="346" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="433" parent="346" name="in_titolo">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="434" parent="346" name="in_abstract">
+      <DataType>varchar(500)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="435" parent="347" name="userName">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="436" parent="348" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="437" parent="349" name="in_codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="438" parent="350" name="in_acronimoConferenza">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="439" parent="350" name="in_annoEdizioneConferenza">
+      <DataType>year(4)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="440" parent="351" name="in_usernameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="441" parent="351" name="in_codicePresentaione">
+      <DataType>int(11)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="442" parent="351" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="443" parent="351" name="in_voto">
+      <DataType>int(11)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="444" parent="351" name="in_note">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>5</Position>
+    </argument>
+    <argument id="445" parent="353" name="in_userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="446" parent="354" name="in_userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="447" parent="355" name="inUnserName">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="448" parent="355" name="inPswd">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="449" parent="355" name="inName">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="450" parent="355" name="inSurname">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="451" parent="355" name="inBirthPlace">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>5</Position>
+    </argument>
+    <argument id="452" parent="355" name="inBirthday">
+      <DataType>date|0s</DataType>
+      <Position>6</Position>
+    </argument>
+    <argument id="453" parent="357" name="in_acronimo">
+      <DataType>varchar(10)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="454" parent="357" name="in_annoEdizione">
+      <DataType>year(4)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="455" parent="360" name="in_acronimo">
+      <DataType>varchar(10)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="456" parent="360" name="in_annoEdizioneConferenza">
+      <DataType>year(4)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="457" parent="363" name="in_userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <column id="458" parent="366" name="userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <foreign-key id="459" parent="366" name="amministratore_ibfk_1">
+      <ColNames>userNameUtente</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>userName</RefColNames>
+      <RefTableName>utente</RefTableName>
+    </foreign-key>
+    <key id="460" parent="366" name="PRIMARY">
+      <ColNames>userNameUtente</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="461" parent="367" name="codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="462" parent="367" name="codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="463" parent="367" name="titolo">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="464" parent="367" name="filePdf">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="465" parent="367" name="numeroPagine">
+      <DataType>int(11)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="466" parent="367" name="statoSvolgimento">
+      <DataType>enum(&apos;coperto&apos;, &apos;non coperto&apos;)|0e</DataType>
+      <DefaultExpression>&apos;non coperto&apos;</DefaultExpression>
+      <Position>6</Position>
+    </column>
+    <foreign-key id="467" parent="367" name="articolo_ibfk_1">
+      <ColNames>codiceSessione
+codicePresentazione</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>codiceSessione
+codice</RefColNames>
+      <RefTableName>presentazione</RefTableName>
+    </foreign-key>
+    <index id="468" parent="367" name="codiceSessione">
+      <ColNames>codiceSessione
+codicePresentazione</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="469" parent="367" name="PRIMARY">
+      <ColNames>codicePresentazione
+codiceSessione</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="470" parent="368" name="codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="471" parent="368" name="codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="472" parent="368" name="nome">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="473" parent="368" name="cognome">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <foreign-key id="474" parent="368" name="autore_ibfk_1">
+      <ColNames>codicePresentazione
+codiceSessione</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>codice
+codiceSessione</RefColNames>
+      <RefTableName>presentazione</RefTableName>
+    </foreign-key>
+    <key id="475" parent="368" name="PRIMARY">
+      <ColNames>codicePresentazione
+codiceSessione
+nome
+cognome</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="476" parent="369" name="annoEdizione">
+      <DataType>year(4)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="477" parent="369" name="acronimo">
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="478" parent="369" name="totaleSponsorizzazioni">
+      <DataType>int(11)|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <Position>3</Position>
+    </column>
+    <column id="479" parent="369" name="immagineLogo">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="480" parent="369" name="statoSvolgimento">
+      <DataType>enum(&apos;attiva&apos;, &apos;completata&apos;)|0e</DataType>
+      <DefaultExpression>&apos;attiva&apos;</DefaultExpression>
+      <Position>5</Position>
+    </column>
+    <column id="481" parent="369" name="nome">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <key id="482" parent="369" name="PRIMARY">
+      <ColNames>annoEdizione
+acronimo</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="483" parent="370" name="userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="484" parent="370" name="annoEdizioneConferenza">
+      <DataType>year(4)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="485" parent="370" name="acronimoConferenza">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <foreign-key id="486" parent="370" name="creatoriconferenza_ibfk_2">
+      <ColNames>userNameUtente</ColNames>
+      <RefColNames>userNameUtente</RefColNames>
+      <RefTableName>amministratore</RefTableName>
+    </foreign-key>
+    <foreign-key id="487" parent="370" name="creatoriconferenza_ibfk_1">
+      <ColNames>annoEdizioneConferenza
+acronimoConferenza</ColNames>
+      <RefColNames>annoEdizione
+acronimo</RefColNames>
+      <RefTableName>conferenza</RefTableName>
+    </foreign-key>
+    <index id="488" parent="370" name="annoEdizioneConferenza">
+      <ColNames>annoEdizioneConferenza
+acronimoConferenza</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="489" parent="370" name="PRIMARY">
+      <ColNames>userNameUtente
+annoEdizioneConferenza
+acronimoConferenza</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="490" parent="371" name="giorno">
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="491" parent="371" name="annoEdizioneConferenza">
+      <DataType>year(4)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="492" parent="371" name="acronimoConferenza">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <foreign-key id="493" parent="371" name="dataconferenza_ibfk_1">
+      <ColNames>annoEdizioneConferenza
+acronimoConferenza</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>annoEdizione
+acronimo</RefColNames>
+      <RefTableName>conferenza</RefTableName>
+    </foreign-key>
+    <index id="494" parent="371" name="annoEdizioneConferenza">
+      <ColNames>annoEdizioneConferenza
+acronimoConferenza</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="495" parent="371" name="PRIMARY">
+      <ColNames>giorno
+annoEdizioneConferenza
+acronimoConferenza</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="496" parent="372" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="497" parent="372" name="codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="498" parent="372" name="userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="499" parent="372" name="testo">
+      <DataType>varchar(500)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="500" parent="372" name="dataInvio">
+      <DataType>date|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="501" parent="372" name="messaggio_ibfk_1">
+      <ColNames>codiceSessione</ColNames>
+      <RefColNames>codice</RefColNames>
+      <RefTableName>sessione</RefTableName>
+    </foreign-key>
+    <foreign-key id="502" parent="372" name="messaggio_ibfk_2">
+      <ColNames>userNameUtente</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>userName</RefColNames>
+      <RefTableName>utente</RefTableName>
+    </foreign-key>
+    <index id="503" parent="372" name="codiceSessione">
+      <ColNames>codiceSessione</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="504" parent="372" name="userNameUtente">
+      <ColNames>userNameUtente</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="505" parent="372" name="PRIMARY">
+      <ColNames>id
+codiceSessione
+userNameUtente</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="506" parent="373" name="parola">
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="507" parent="373" name="codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="508" parent="373" name="codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <foreign-key id="509" parent="373" name="parolachiave_ibfk_1">
+      <ColNames>codicePresentazione</ColNames>
+      <RefColNames>codice</RefColNames>
+      <RefTableName>presentazione</RefTableName>
+    </foreign-key>
+    <foreign-key id="510" parent="373" name="parolachiave_ibfk_2">
+      <ColNames>codiceSessione</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>codice</RefColNames>
+      <RefTableName>sessione</RefTableName>
+    </foreign-key>
+    <index id="511" parent="373" name="codicePresentazione">
+      <ColNames>codicePresentazione</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="512" parent="373" name="codiceSessione">
+      <ColNames>codiceSessione</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="513" parent="373" name="PRIMARY">
+      <ColNames>parola
+codicePresentazione
+codiceSessione</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="514" parent="374" name="codice">
+      <AutoIncrement>1</AutoIncrement>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="515" parent="374" name="codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="516" parent="374" name="oraInizio">
+      <DataType>time|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="517" parent="374" name="oraFine">
+      <DataType>time|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="518" parent="374" name="numeroSequenza">
+      <DataType>int(11)|0s</DataType>
+      <DefaultExpression>1</DefaultExpression>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="519" parent="374" name="presentazione_ibfk_1">
+      <ColNames>codiceSessione</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>codice</RefColNames>
+      <RefTableName>sessione</RefTableName>
+    </foreign-key>
+    <index id="520" parent="374" name="codiceSessione">
+      <ColNames>codiceSessione</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="521" parent="374" name="PRIMARY">
+      <ColNames>codice
+codiceSessione</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <trigger id="522" parent="374" name="contatorePresentazioni">
+      <Definer>root@localhost</Definer>
+      <Events>I</Events>
+      <SourceTextLength>179</SourceTextLength>
+      <Turn>after-row</Turn>
+    </trigger>
+    <column id="523" parent="375" name="userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="524" parent="375" name="titoloArticolo">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="525" parent="375" name="codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="526" parent="375" name="codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <foreign-key id="527" parent="375" name="presentazionepresenter_ibfk_1">
+      <ColNames>userNameUtente</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>userNameUtente</RefColNames>
+      <RefTableName>presenter</RefTableName>
+    </foreign-key>
+    <foreign-key id="528" parent="375" name="presentazionepresenter_ibfk_2">
+      <ColNames>codicePresentazione
+codiceSessione</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>codicePresentazione
+codiceSessione</RefColNames>
+      <RefTableName>articolo</RefTableName>
+    </foreign-key>
+    <index id="529" parent="375" name="codicePresentazione">
+      <ColNames>codicePresentazione
+codiceSessione</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="530" parent="375" name="PRIMARY">
+      <ColNames>userNameUtente
+titoloArticolo
+codicePresentazione
+codiceSessione</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <trigger id="531" parent="375" name="cambioStatoArticolo">
+      <Definer>root@localhost</Definer>
+      <Events>I</Events>
+      <SourceTextLength>245</SourceTextLength>
+      <Turn>after-row</Turn>
+    </trigger>
+    <column id="532" parent="376" name="userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="533" parent="376" name="titoloTutorial">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="534" parent="376" name="codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="535" parent="376" name="codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="536" parent="376" name="linkWeb">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="537" parent="376" name="descrizione">
+      <DataType>varchar(200)|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <foreign-key id="538" parent="376" name="presentazionespeaker_ibfk_1">
+      <ColNames>userNameUtente</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>userNameUtente</RefColNames>
+      <RefTableName>speaker</RefTableName>
+    </foreign-key>
+    <foreign-key id="539" parent="376" name="presentazionespeaker_ibfk_2">
+      <ColNames>codicePresentazione
+codiceSessione</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>codicePresentazione
+codiceSessione</RefColNames>
+      <RefTableName>tutorial</RefTableName>
+    </foreign-key>
+    <index id="540" parent="376" name="codicePresentazione">
+      <ColNames>codicePresentazione
+codiceSessione</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="541" parent="376" name="PRIMARY">
+      <ColNames>userNameUtente
+titoloTutorial
+codicePresentazione
+codiceSessione</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="542" parent="377" name="userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="543" parent="377" name="curriculum">
+      <DataType>varchar(30)|0s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="544" parent="377" name="foto">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="545" parent="377" name="nomeUniversita">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="546" parent="377" name="nomeDipartimento">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="547" parent="377" name="codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <column id="548" parent="377" name="codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>7</Position>
+    </column>
+    <column id="549" parent="377" name="nomeAutore">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>8</Position>
+    </column>
+    <column id="550" parent="377" name="cognomeAutore">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <foreign-key id="551" parent="377" name="presenter_ibfk_1">
+      <ColNames>userNameUtente</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>userName</RefColNames>
+      <RefTableName>utente</RefTableName>
+    </foreign-key>
+    <foreign-key id="552" parent="377" name="presenter_ibfk_2">
+      <ColNames>codicePresentazione
+codiceSessione
+nomeAutore
+cognomeAutore</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>codicePresentazione
+codiceSessione
+nome
+cognome</RefColNames>
+      <RefTableName>autore</RefTableName>
+    </foreign-key>
+    <index id="553" parent="377" name="codicePresentazione">
+      <ColNames>codicePresentazione
+codiceSessione
+nomeAutore
+cognomeAutore</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="554" parent="377" name="PRIMARY">
+      <ColNames>userNameUtente</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <check id="555" parent="378" name="controlloOrario">
+      <Predicate>`oraFine` &gt; `oraInizio`</Predicate>
+    </check>
+    <column id="556" parent="378" name="codice">
+      <AutoIncrement>1</AutoIncrement>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="557" parent="378" name="oraInizio">
+      <DataType>time|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="558" parent="378" name="oraFine">
+      <DataType>time|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="559" parent="378" name="titolo">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="560" parent="378" name="linkStanza">
+      <DataType>varchar(260)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="561" parent="378" name="numeroPresentazioni">
+      <DataType>int(11)|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <Position>6</Position>
+    </column>
+    <column id="562" parent="378" name="giornoData">
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <column id="563" parent="378" name="annoEdizioneConferenza">
+      <DataType>year(4)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+    </column>
+    <column id="564" parent="378" name="acronimoConferenza">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <foreign-key id="565" parent="378" name="sessione_ibfk_1">
+      <ColNames>giornoData
+annoEdizioneConferenza
+acronimoConferenza</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>giorno
+annoEdizioneConferenza
+acronimoConferenza</RefColNames>
+      <RefTableName>dataconferenza</RefTableName>
+    </foreign-key>
+    <index id="566" parent="378" name="giornoData">
+      <ColNames>giornoData
+annoEdizioneConferenza
+acronimoConferenza</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="567" parent="378" name="PRIMARY">
+      <ColNames>codice</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="568" parent="379" name="userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="569" parent="379" name="curriculum">
+      <DataType>varchar(30)|0s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="570" parent="379" name="foto">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="571" parent="379" name="nomeUniversita">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="572" parent="379" name="nomeDipartimento">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="573" parent="379" name="speaker_ibfk_1">
+      <ColNames>userNameUtente</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>userName</RefColNames>
+      <RefTableName>utente</RefTableName>
+    </foreign-key>
+    <key id="574" parent="379" name="PRIMARY">
+      <ColNames>userNameUtente</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="575" parent="380" name="nome">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="576" parent="380" name="immagineLogo">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>2</Position>
+    </column>
+    <key id="577" parent="380" name="PRIMARY">
+      <ColNames>nome</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="578" parent="381" name="importo">
+      <DataType>double|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="579" parent="381" name="annoEdizioneConferenza">
+      <DataType>year(4)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="580" parent="381" name="acronimoConferenza">
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="581" parent="381" name="nomeSponsor">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <foreign-key id="582" parent="381" name="sponsorizzazioni_ibfk_2">
+      <ColNames>annoEdizioneConferenza
+acronimoConferenza</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>annoEdizione
+acronimo</RefColNames>
+      <RefTableName>conferenza</RefTableName>
+    </foreign-key>
+    <foreign-key id="583" parent="381" name="sponsorizzazioni_ibfk_1">
+      <ColNames>nomeSponsor</ColNames>
+      <RefColNames>nome</RefColNames>
+      <RefTableName>sponsor</RefTableName>
+    </foreign-key>
+    <index id="584" parent="381" name="nomeSponsor">
+      <ColNames>nomeSponsor</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="585" parent="381" name="PRIMARY">
+      <ColNames>annoEdizioneConferenza
+acronimoConferenza
+nomeSponsor</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="586" parent="382" name="codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="587" parent="382" name="codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="588" parent="382" name="titolo">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="589" parent="382" name="abstract">
+      <DataType>varchar(500)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <foreign-key id="590" parent="382" name="tutorial_ibfk_1">
+      <ColNames>codiceSessione
+codicePresentazione</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>codiceSessione
+codice</RefColNames>
+      <RefTableName>presentazione</RefTableName>
+    </foreign-key>
+    <index id="591" parent="382" name="codiceSessione">
+      <ColNames>codiceSessione
+codicePresentazione</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="592" parent="382" name="PRIMARY">
+      <ColNames>codicePresentazione
+codiceSessione</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="593" parent="383" name="userName">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="594" parent="383" name="nome">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="595" parent="383" name="cognome">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="596" parent="383" name="pswd">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="597" parent="383" name="luogoNascita">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="598" parent="383" name="dataNascita">
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <key id="599" parent="383" name="PRIMARY">
+      <ColNames>userName</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="600" parent="384" name="userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="601" parent="384" name="annoEdizioneconferenza">
+      <DataType>year(4)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="602" parent="384" name="acronimoConferenza">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <foreign-key id="603" parent="384" name="utenteregistrato_ibfk_1">
+      <ColNames>userNameUtente</ColNames>
+      <RefColNames>userName</RefColNames>
+      <RefTableName>utente</RefTableName>
+    </foreign-key>
+    <foreign-key id="604" parent="384" name="utenteregistrato_ibfk_2">
+      <ColNames>annoEdizioneconferenza
+acronimoConferenza</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>annoEdizione
+acronimo</RefColNames>
+      <RefTableName>conferenza</RefTableName>
+    </foreign-key>
+    <index id="605" parent="384" name="annoEdizioneconferenza">
+      <ColNames>annoEdizioneconferenza
+acronimoConferenza</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="606" parent="384" name="PRIMARY">
+      <ColNames>userNameUtente
+annoEdizioneconferenza
+acronimoConferenza</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <check id="607" parent="385" name="validazioneVoto">
+      <Predicate>`voto` &gt;= 0 and `voto` &lt;= 10</Predicate>
+    </check>
+    <column id="608" parent="385" name="userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="609" parent="385" name="codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="610" parent="385" name="codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="611" parent="385" name="voto">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="612" parent="385" name="note">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="613" parent="385" name="valutazione_ibfk_1">
+      <ColNames>codicePresentazione
+codiceSessione</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>codice
+codiceSessione</RefColNames>
+      <RefTableName>presentazione</RefTableName>
+    </foreign-key>
+    <index id="614" parent="385" name="codicePresentazione">
+      <ColNames>codicePresentazione
+codiceSessione</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="615" parent="385" name="PRIMARY">
+      <ColNames>userNameUtente
+codicePresentazione
+codiceSessione</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
   </database-model>
 </dataSource>

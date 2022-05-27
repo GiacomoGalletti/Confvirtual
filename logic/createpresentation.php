@@ -18,7 +18,7 @@ function checkSessionHour(): bool
         return false;
     }
 }
-
+print_r($_POST);
 
 if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H:i"),DateTime::createFromFormat("H:i", $_POST['orafin'])->format("H:i"),$_POST['arrayHours'])) || checkSessionHour()) {
     Session::start();
@@ -40,7 +40,7 @@ if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H
             if (PresentationQueryController::createArticle($_POST['codice_sessione'][$index],$_POST['oraini'],$_POST['orafin'],$_POST['titolo_articolo'],$upload->getFilePath(),$_POST['pagenum'])) {
                 try {
                     Session::write('msg_presentazione', '
-                    <div class="container" style="background-color: red;opacity: 50"> <h4>
+                    <div class="container" style="background-color: limegreen;opacity: 50"> <h4>
                     Articolo creato con successo.
                     </h4> </div>');
                     PresentationQueryController::orderPresentation();
@@ -57,7 +57,7 @@ if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H
         case 'tutorial':
             if (PresentationQueryController::createTutorial($_POST['codice_sessione'][$index],$_POST['oraini'],$_POST['orafin'],$_POST['titolo_tutorial'],$_POST['input_abstract_tutorial'])) {
                 Session::write('msg_presentazione', '
-                    <div class="container" style="background-color: red;opacity: 50"> <h4>
+                    <div class="container" style="background-color: limegreen;opacity: 50"> <h4>
                     Tutorial creato con successo.
                     </h4> </div>');
                 PresentationQueryController::orderPresentation();

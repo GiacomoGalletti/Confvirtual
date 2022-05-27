@@ -101,7 +101,7 @@ $article_tutorial_btn = 0;
                                         <td><?php print $oraFine  ?></td>
                                         <td><?php print $tipologia ?></td>
                                         <td><?php print $titolo ?></td>
-                                        <td><button type="submit" id="article_tutorial_btn" name="article_tutorial_btn" value = "<?php echo $article_tutorial_btn++; ?>"><?php print ('modifica '.$tipologia)?></button></td>
+                                        <td><button type="submit" id="article_tutorial_btn" name="article_tutorial_btn" value="<?php echo $article_tutorial_btn++; ?>"><?php print ('modifica '.$tipologia)?></button></td>
                                     </tr>
                                     <?php
                                 }
@@ -145,7 +145,7 @@ $article_tutorial_btn = 0;
         <label for="input_abstract_tutorial" class="form_tutorial"><b>Abstract</b></label>
         <textarea id="input_abstract_tutorial" class="form_tutorial" maxlength="500" name="input_abstract_tutorial" rows="3" cols="95" placeholder="max 500 caratteri"></textarea>
         <br>
-        <button name = "submit" type="submit">Conferma</button>
+        <button name="confirm_btn" type="submit">Conferma</button>
 
         <input type="hidden" id="presentationbtn" name="presentationbtn" value="<?php print $_POST['presentationbtn'] ?>">
         <?php

@@ -16,7 +16,7 @@ if (isset($_POST['creaconferenzabtn']))
         )
         {
             Session::write('msg_sessione', '
-                    <div class="container" style="background-color: red;opacity: 50"> <h4>
+                    <div class="container" style="background-color: limegreen;opacity: 50"> <h4>
                         Sessione creata con successo.
                     </h4> </div>');
         } else

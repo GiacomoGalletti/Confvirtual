@@ -42,7 +42,7 @@ if (isset($_POST['presentationbtn']))
         <p class="conferenceInfo">
             <?php print (' acronimo ' . $acronimo . ', edizione ' . $annoEdizione);
             $arrayDate = array();
-            $arrayDate = explode("%", $rawdates)
+            $arrayDate = explode("%", $rawdates);
             ?>
         </p>
         <?php
@@ -138,7 +138,9 @@ if (isset($_POST['presentationbtn']))
                     <?php
                     for ($i = 0; $i<sizeof($arrayDate)-1; $i++)
                     {
-                        if ($arrayDate[$i] <= strtotime('now')) {
+                        $today = new DateTime(date("d-m-Y"));
+                        $expire = new DateTime($arrayDate[$i]);
+                        if ($expire > $today) {
                             ?>
                             <option>
                                 <?php
