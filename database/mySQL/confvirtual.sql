@@ -176,7 +176,7 @@ CREATE TABLE PRESENTAZIONESPEAKER(
                                      descrizione varchar(200),
                                      primary key(userNameUtente, titoloTutorial, codicePresentazione, codiceSessione),
                                      foreign key (userNameUtente) references SPEAKER(userNameUtente)ON DELETE CASCADE,
-                                     foreign key (codicePresentazione,codiceSessione,titoloTutorial) references TUTORIAL(codicePresentazione,codiceSessione,titolo)
+                                     foreign key (codicePresentazione,codiceSessione) references TUTORIAL(codicePresentazione,codiceSessione)
                                          ON DELETE CASCADE
 )engine = 'InnoDB';
 
@@ -187,7 +187,7 @@ CREATE TABLE PRESENTAZIONEPRESENTER(
                                        codiceSessione int,
                                        primary key (userNameUtente, titoloArticolo, codicePresentazione, codiceSessione),
                                        foreign key (userNameUtente) references PRESENTER(userNameUtente)ON DELETE CASCADE,
-                                       foreign key (codicePresentazione,codiceSessione,titoloArticolo) references ARTICOLO(codicePresentazione,codiceSessione,titolo)ON DELETE CASCADE
+                                       foreign key (codicePresentazione,codiceSessione) references ARTICOLO(codicePresentazione,codiceSessione)ON DELETE CASCADE
 )engine = 'InnoDB';
 
 CREATE TABLE PAROLACHIAVE (
