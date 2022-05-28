@@ -102,6 +102,7 @@ $article_tutorial_btn = 0;
                                         <td><?php print $tipologia ?></td>
                                         <td><?php print $titolo ?></td>
                                         <td><button type="submit" id="article_tutorial_btn" name="article_tutorial_btn" value="<?php echo $article_tutorial_btn++; ?>"><?php print ('modifica '.$tipologia)?></button></td>
+                                        <td><button type="submit" id="delete_btn" name="delete_btn" value="">Elimina</button></td>
                                     </tr>
                                     <?php
                                 }
@@ -159,6 +160,7 @@ $article_tutorial_btn = 0;
             <input type="hidden" name="codice_sessione[]" value="<?php print $_POST['codice_sessione'][$i] ?>">
             <?php
         }
+        //con nessun articolo o tutorial presente arrayHours ha size 0 e non viene creato, resta "undefined"
         for ($i = 0; $i<sizeof($arrayHours); $i++) {
             ?> <input type="hidden" name="arrayHours[]" value="<?php print $arrayHours[$i] ?>"> <?php
         }

@@ -1,6 +1,4 @@
 <?php
-header('HTTP/1.1 307 Temporary Redirect');
-header('Location: /pages/admin/addpresentation.php');
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/Upload.php", $_SERVER["DOCUMENT_ROOT"]));
@@ -18,7 +16,7 @@ function checkSessionHour(): bool
         return false;
     }
 }
-print_r($_POST);
+print_r($_POST); //-------DEBUG--------
 
 if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H:i"),DateTime::createFromFormat("H:i", $_POST['orafin'])->format("H:i"),$_POST['arrayHours'])) || checkSessionHour()) {
     Session::start();
@@ -44,6 +42,9 @@ if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H
                     Articolo creato con successo.
                     </h4> </div>');
                     PresentationQueryController::orderPresentation();
+                    header('HTTP/1.1 307 Temporary Redirect');
+                    header('Location: /pages/admin/addpresentation.php');
+                    exit;
                 } catch (ExpiredSessionException|Exception $e) {
                 }
             } else {
@@ -61,7 +62,9 @@ if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H
                     Tutorial creato con successo.
                     </h4> </div>');
                 PresentationQueryController::orderPresentation();
-
+                header('HTTP/1.1 307 Temporary Redirect');
+                header('Location: /pages/admin/addpresentation.php');
+                exit;
             } else {
                 Session::write('msg_presentazione', '
                     <div class="container" style="background-color: red;opacity: 50"> <h4>
