@@ -86,7 +86,7 @@ $article_tutorial_btn = 0;
                                         <?php
                                     }
                                     ?>
-                                    <input type="hidden" name="codice_presentazione[]" value="<?php print $codice_presentazione ?>"
+                                    <input type="hidden" name="codice_presentazione[]" value="<?php print $codice_presentazione ?>">
                                     <input type="hidden" name="orafine[]" value="<?php print $oraFine ?>">
                                     <input type="hidden" name="orainizio[]" value="<?php print $oraInizio ?>">
                                     <input type="hidden" name="data" value="<?php print $data ?>">
