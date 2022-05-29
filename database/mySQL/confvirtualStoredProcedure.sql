@@ -433,3 +433,11 @@ BEGIN
     CLOSE getsessioncode;
 END $$
 DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS eliminaPresentazione $$
+CREATE PROCEDURE eliminaPresentazione(IN in_codicePresentazione int , IN in_codiceSessione int)
+BEGIN
+	DELETE FROM presentazione WHERE in_codicePresentazione = presentazione.codice AND in_codiceSessione = presentazione.codiceSessione;
+END$$
+DELIMITER ;

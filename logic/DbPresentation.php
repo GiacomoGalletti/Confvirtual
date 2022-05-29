@@ -176,5 +176,20 @@ class DbPresentation
         }
     }
 
+    public static function eliminaPresentazione($codice_presentazione, $codice_sessione): bool
+    {
+        try {
+            $sql = 'CALL eliminaPresentazione(\'' . $codice_presentazione . $codice_sessione . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $res -> closeCursor();
+            return true;
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
 
 }

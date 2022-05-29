@@ -36,4 +36,9 @@ class PresentationQueryController
     {
         return DbPresentation::ordinamentoSequenzePresentazioni();
     }
+
+    public static function deletePresentation($codice_presentazione, $codice_sessione): bool
+    {
+        return DbPresentation::eliminaPresentazione($codice_presentazione, $codice_sessione);
+    }
 }

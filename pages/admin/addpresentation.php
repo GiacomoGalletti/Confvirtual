@@ -61,6 +61,7 @@ $article_tutorial_btn = 0;
                                 <?php
                                 foreach ($presentations as $p) {
 
+                                    $codice_presentazione = $p['codice'];
                                     $oraInizio = DateTime::createFromFormat("H:i:s", $p['oraInizio'])->format("H:i");
                                     $oraFine = DateTime::createFromFormat("H:i:s", $p['oraFine'])->format("H:i");
                                     $arrayHours[] = $oraInizio;
@@ -85,6 +86,7 @@ $article_tutorial_btn = 0;
                                         <?php
                                     }
                                     ?>
+                                    <input type="hidden" name="codice_presentazione[]" value="<?php print $codice_presentazione ?>"
                                     <input type="hidden" name="orafine[]" value="<?php print $oraFine ?>">
                                     <input type="hidden" name="orainizio[]" value="<?php print $oraInizio ?>">
                                     <input type="hidden" name="data" value="<?php print $data ?>">
@@ -102,7 +104,6 @@ $article_tutorial_btn = 0;
                                         <td><?php print $tipologia ?></td>
                                         <td><?php print $titolo ?></td>
                                         <td><button type="submit" id="article_tutorial_btn" name="article_tutorial_btn" value="<?php echo $article_tutorial_btn++; ?>"><?php print ('modifica '.$tipologia)?></button></td>
-                                        <td><button type="submit" id="delete_btn" name="delete_btn" value="">Elimina</button></td>
                                     </tr>
                                     <?php
                                 }

@@ -2,7 +2,16 @@
 
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 print_r($_POST);
+
+//if(isset($_POST['confirm_btn'])) {
+//    //...
+//}
+
+if(isset($_POST['delete_btn'])) {
+    PresentationQueryController::deletePresentation($_POST['codice_sessione'], $_POST['codice_presentazione']['article_tutorial_btn']);
+}
 
 if (isset($_POST['download_btn'])) {
 
@@ -62,6 +71,10 @@ print ('giorno: ' . $_POST['data'] . ' numero di sequenza: ' . $_POST['numeroSeq
             <input type="text" name="n_pagine_tb" placeholder="<?php  print $_POST['numeroPagine'][$index]; ?>" >
         </td>
     </tr>
+    <tr>
+        <td><button type="submit" id="confirm_btn" name="confirm_btn" value="">Conferma modifica</button></td>
+        <td><button type="submit" id="delete_btn" name="delete_btn" style="background-color: red;opacity: 50" value="">Elimina presentazione</button></td>
+    </tr>
 </table>
 
 </form>
@@ -94,6 +107,10 @@ case 'tutorial':
                 <label for="input_abstract_tutorial"><b>Abstract</b></label><br>
                 <textarea id="input_abstract_tutorial" class="form_tutorial" maxlength="500" name="input_abstract_tutorial" rows="3" cols="95" placeholder="<?php print_r($_POST['abstract'][$index]) ?>"></textarea>
             </td>
+        </tr>
+        <tr>
+            <td><button type="submit" id="confirm_btn" name="confirm_btn" value="">Conferma modifica</button></td>
+            <td><button type="submit" id="delete_btn" name="delete_btn" style="background-color: red;opacity: 50" value="">Elimina presentazione</button></td>
         </tr>
     </table>
 
