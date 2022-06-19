@@ -83,8 +83,8 @@ if (isset($_POST['presentationbtn']))
                     <?php
                     if (strtotime($data) >= strtotime('now')) {
                         ?>
-                        <input type="hidden" id="orainizio" name="orainizio[]" value="<?php print $oraInizio ?>">
-                        <input type="hidden" id="orafine" name="orafine[]" value="<?php print $oraFine ?>">
+                        <input type="hidden" id="orainizio_sessione" name="orainizio_sessione[]" value="<?php print $oraInizio ?>">
+                        <input type="hidden" id="orafine_sessione" name="orafine_sessione[]" value="<?php print $oraFine ?>">
                         <input type="hidden" id="data" name="data[]" value="<?php print $data ?>">
                         <input type="hidden" id="codice_sessione" name="codice_sessione[]" value="<?php print $codice ?>">
                         <td><button type="submit" id="presentationbtn" name="presentationbtn" value = "<?php print ($id)?>">Presentazioni</button></td>
@@ -128,7 +128,7 @@ if (isset($_POST['presentationbtn']))
             <input type="hidden" id="acronimo" name="acronimo" value="<?php print $acronimo ?>">
             <input type="hidden" id="annoEdizione" name="annoEdizione" value="<?php print $annoEdizione ?>">
             <br>
-            <!-- Creazione del form di creazione della sessione -->
+            <!-- form di creazione della sessione -->
             <div class="container">
                 <h4>Crea una sessione: </h4>
                 <label for="ttl"><b>Titolo sessione</b></label>

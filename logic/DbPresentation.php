@@ -191,5 +191,20 @@ class DbPresentation
         }
     }
 
+    public static function modificaPresentazione($codice_presentazione, $codice_sessione, $titolo, $filePDF, $numero_pagine, $abstract)
+    {
+        try {
+            $sql = 'CALL modificaPresentazione(\'' . $codice_presentazione . '\',\'' . $codice_sessione  . '\',\'' . $titolo  . '\',\'' . $filePDF  . '\',\'' . $numero_pagine  . '\',\'' .  $abstract . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $res -> closeCursor();
+            return true;
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
 
 }

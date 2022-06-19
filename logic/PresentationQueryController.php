@@ -41,4 +41,9 @@ class PresentationQueryController
     {
         return DbPresentation::eliminaPresentazione($codice_presentazione, $codice_sessione);
     }
+
+    public static function updatePresentation($codice_presentazione, $codice_sessione,$titolo,$filePDF,$numero_pagine,$abstract): bool
+    {
+        return DbPresentation::modificaPresentazione($codice_presentazione, $codice_sessione,$titolo,$filePDF,$numero_pagine,$abstract);
+    }
 }

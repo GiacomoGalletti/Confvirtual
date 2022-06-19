@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="it">
 <?php
+unset($_POST['tipologia']);
+unset($_POST['titolo']);
+unset($_POST['article_tutorial_btn']);
+unset($_POST['filePDF']);
+unset($_POST['confirm_btn']);
+unset($_POST['numeroPagine']);
+unset($_POST['abstract']);
+unset($_POST['orafine_presentazione']);
+unset($_POST['orainizio_presentazione']);
+
 print_r($_POST);
 include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
@@ -8,17 +18,17 @@ include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/Upload.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/FileTypeEnum.php", $_SERVER["DOCUMENT_ROOT"]));
+
+//unset($_POST['tipologia'],$_POST['numeroSequenza'],$_POST['titolo'],$_POST['numeroPagine'],$_POST['filePDF'],$_POST['abstract']);
+//unset($_POST);
+
 $index = $_POST['presentationbtn'];
-$orainizio = $_POST['orainizio'][$index];
-$orafine = $_POST['orafine'][$index];
+$orainizio_sessione = $_POST['orainizio_sessione'][$index];
+$orafine_sessione = $_POST['orafine_sessione'][$index];
 $data=$_POST['data'][$index];
 $codice_sessione = $_POST['codice_sessione'][$index];
 $arrayHours = array();
 $article_tutorial_btn = 0;
-
-if(isset($_POST['delete_btn'])) {
-    PresentationQueryController::deletePresentation($_POST['codice_presentazione'][$index], $_POST['codice_sessione']);
-}
 
 ?>
 <body>
@@ -40,7 +50,7 @@ if(isset($_POST['delete_btn'])) {
         <h4 class="conferenceInfo">Sessione selezionata: </h4>
         <p class="conferenceInfo">
             <?php
-            print ('giorno: ' . $data . ' inizio sessione: ' . $orainizio . ', fine sessione: ' . $orafine);
+            print ('giorno: ' . $data . ' inizio sessione: ' . $orainizio_sessione . ', fine sessione: ' . $orafine_sessione);
             ?>
         </p>
         <?php
@@ -93,8 +103,10 @@ if(isset($_POST['delete_btn'])) {
                                     }
                                     ?>
                                     <input type="hidden" name="codice_presentazione[]" value="<?php print $codice_presentazione ?>">
-                                    <input type="hidden" name="orafine[]" value="<?php print $oraFine ?>">
-                                    <input type="hidden" name="orainizio[]" value="<?php print $oraInizio ?>">
+                                    <input type="hidden" name="orafine_presentazione[]" value="<?php print $oraFine ?>">
+                                    <input type="hidden" name="orainizio_presentazione[]" value="<?php print $oraInizio ?>">
+                                    <input type="hidden" name="orafine_sessione[]" value="<?php print $orafine_sessione ?>">
+                                    <input type="hidden" name="orainizio_sessione[]" value="<?php print $orainizio_sessione ?>">
                                     <input type="hidden" name="data" value="<?php print $data ?>">
                                     <input type="hidden" name="codice_sessione" value="<?php print $codice_sessione ?>">
                                     <input type="hidden" name="tipologia[]" value="<?php print $tipologia ?>">
@@ -158,12 +170,12 @@ if(isset($_POST['delete_btn'])) {
 
         <input type="hidden" id="presentationbtn" name="presentationbtn" value="<?php print $_POST['presentationbtn'] ?>">
         <?php
-        $arrayLength = sizeof($_POST['orainizio']);
+        $arrayLength = sizeof($_POST['orainizio_sessione']);
         for ($i = 0; $i<$arrayLength; $i++)
         {
             ?>
-            <input type="hidden" name="orafine[]" value="<?php print $_POST['orafine'][$i] ?>">
-            <input type="hidden" name="orainizio[]" value="<?php print $_POST['orainizio'][$i] ?>">
+            <input type="hidden" name="orafine_sessione[]" value="<?php print $_POST['orafine_sessione'][$i] ?>">
+            <input type="hidden" name="orainizio_sessione[]" value="<?php print $_POST['orainizio_sessione'][$i] ?>">
             <input type="hidden" name="data[]" value="<?php print $_POST['data'][$i] ?>">
             <input type="hidden" name="codice_sessione[]" value="<?php print $_POST['codice_sessione'][$i] ?>">
             <?php

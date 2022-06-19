@@ -13,7 +13,10 @@ if (isset($_POST['download_btn'])) {
     $file = basename($_POST['filePDF'][$index]);
 
     if(!file_exists(sprintf("%s/uploads/pdf/", $_SERVER["DOCUMENT_ROOT"]) . $file)){ // file does not exist
-        die('file not found');
+        echo('
+<div class="container" style="background-color: red;opacity: 50"> <h4>
+        file non trovato.
+                    </h4> </div>');
     } else {
         header("Content-type:application/pdf");
         header("Content-Disposition:attachment;filename=$file");
@@ -24,23 +27,20 @@ if (isset($_POST['download_btn'])) {
 }
 ?>
     <body>
-        <form method="post">
+<form method="post">
 <?php
-
 include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
-
-
 switch ($_POST['tipologia'][$index]) {
     case 'articolo':
         ?>
         <div class="container">
             <h4 class="conferenceInfo">Articolo selezionato: </h4>
             <p class="conferenceInfo">
-            <?php
-            print ('giorno: ' . $_POST['data'] . ' numero di sequenza: ' . $_POST['numeroSequenza'][$index] . ', inizio: ' . $_POST['orainizio'][$index]
-                . ', fine: ' . $_POST['orafine'][$index] . '</p>');
-            sendData();
-            ?>
+                <?php
+                print ('giorno: ' . $_POST['data'] . ' numero di sequenza: ' . $_POST['numeroSequenza'][$index] . ', inizio: ' . $_POST['orainizio_presentazione'][$index]
+                    . ', fine: ' . $_POST['orafine_presentazione'][$index] . '</p>');
+                sendData();
+                ?>
 
             <table style="margin: 20px">
                 <tr>
@@ -72,17 +72,19 @@ switch ($_POST['tipologia'][$index]) {
             </table>
         </div>
         </form>
-        <div>
-            <table style="margin: 20px">
-                <tr>
-                    <form method="post" action="/pages/admin/addpresentation.php">
-                        <?php sendData(); ?>
-                        <td><button type="submit" id="confirm_btn" name="confirm_btn" value="">Conferma modifica</button></td>
+
+        <form method="post" action="/logic/delete_update_presentation.php">
+            <?php sendData(); ?>
+            <div class="container">
+                <table style="margin: 20px">
+                    <tr>
+                        <td><button type="submit" id="confirm_mod_btn" name="confirm_btn" value="">Conferma modifica</button></td>
                         <td><button type="submit" id="delete_btn" name="delete_btn" style="background-color: red;opacity: 50" value="">Elimina articolo</button></td>
-                    </form>
-                </tr>
-            </table>
-        </div>
+                    </tr>
+                </table>
+            </div>
+        </form>
+        </body>
         <?php
         break;
     case 'tutorial':
@@ -93,10 +95,10 @@ switch ($_POST['tipologia'][$index]) {
 
 
                 <?php
-            print ('giorno: ' . $_POST['data'] . ' numero di sequenza: ' . $_POST['numeroSequenza'][$index] . ', inizio: ' . $_POST['orainizio'][$index]
-                . ', fine: ' . $_POST['orafine'][$index] . '</p>');
-            sendData();
-            ?>
+                print ('giorno: ' . $_POST['data'] . ' numero di sequenza: ' . $_POST['numeroSequenza'][$index] . ', inizio: ' . $_POST['orainizio'][$index]
+                    . ', fine: ' . $_POST['orafine'][$index] . '</p>');
+                sendData();
+                ?>
             <table style="margin: 20px">
                 <tr>
                     <td>
@@ -112,14 +114,20 @@ switch ($_POST['tipologia'][$index]) {
                         <textarea id="input_abstract_tutorial" class="form_tutorial" maxlength="500" name="input_abstract_tutorial" rows="3" cols="95" placeholder="<?php print_r($_POST['abstract'][$index]) ?>"></textarea>
                     </td>
                 </tr>
-                <tr>
-                    <td><button type="submit" id="confirm_btn" name="confirm_btn" value="">Conferma modifica</button></td>
-                    <td><button type="submit" id="delete_btn" name="delete_btn" style="background-color: red;opacity: 50" value="">Elimina tutorial</button></td>
-                </tr>
             </table>
         </div>
+
+        <form method="post" action="/pages/admin/addpresentation.php">
+            <?php sendData(); ?>
+            <div class="container">
+                <table style="margin: 20px">
+                    <tr>
+                        <td><button type="submit" id="confirm_mod_btn" name="confirm_btn" value="">Conferma modifica</button></td>
+                        <td><button type="submit" id="delete_btn" name="delete_btn" style="background-color: red;opacity: 50" value="">Elimina tutorial</button></td>
+                    </tr>
+                </table>
+            </div>
         </form>
-        </body>
         <?php
         break;
     default :
@@ -130,11 +138,13 @@ switch ($_POST['tipologia'][$index]) {
 function sendData(): void
 {
     for ($i = 0; $i< sizeof($_POST['tipologia']); $i++) {
-    ?>
-    <input type="hidden" name="tipologia[]" value="<?php print $_POST['tipologia'][$i] ?>">
+        ?>
+        <input type="hidden" name="tipologia[]" value="<?php print $_POST['tipologia'][$i] ?>">
         <input type="hidden" name="numeroSequenza[]" value="<?php print $_POST['numeroSequenza'][$i] ?>">
-        <input type="hidden" name="orafine[]" value="<?php print $_POST['orafine'][$i] ?>">
-        <input type="hidden" name="orainizio[]" value="<?php print $_POST['orainizio'][$i] ?>">
+        <input type="hidden" name="orafine_presentazione[]" value="<?php print $_POST['orafine_presentazione'][$i] ?>">
+        <input type="hidden" name="orainizio_presentazione[]" value="<?php print $_POST['orainizio_presentazione'][$i] ?>">
+        <input type="hidden" name="orafine_sessione[]" value="<?php print $_POST['orafine_sessione'][$i] ?>">
+        <input type="hidden" name="orainizio_sessione[]" value="<?php print $_POST['orainizio_sessione'][$i] ?>">
         <input type="hidden" name="titolo[]" value="<?php print $_POST['titolo'][$i] ?>">
         <input type="hidden" name="codice_presentazione[]" value="<?php print $_POST['codice_presentazione'][$i] ?>">
         <input type="hidden" name="numeroPagine[]" value="<?php print $_POST['numeroPagine'][$i] ?>">
@@ -142,8 +152,9 @@ function sendData(): void
         <input type="hidden" name="abstract[]" value="<?php print $_POST['abstract'][$i] ?>">
         <?php
     }
-        ?>
-    <input type="hidden" name="data" value="<?php print $_POST['data'] ?>">
+    ?>
+
+    <input type="hidden" name="data[]" value="<?php print $_POST['data'] ?>">
     <input type="hidden" name="codice_sessione" value="<?php print $_POST['codice_sessione'] ?>">
     <input type="hidden" name="article_tutorial_btn" value="<?php print $_POST['article_tutorial_btn'] ?>">
     <input type="hidden" id="presentationbtn" name="presentationbtn" value="<?php print $_POST['presentationbtn'] ?>">

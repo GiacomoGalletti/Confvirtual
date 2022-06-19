@@ -4,20 +4,21 @@ include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCU
 include_once (sprintf("%s/logic/Upload.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/FileTypeEnum.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/hourchecker.php", $_SERVER["DOCUMENT_ROOT"]));
+print_r($_POST); //-------DEBUG--------
+header('HTTP/1.1 307 Temporary Redirect');
+header('Location: /pages/admin/addpresentation.php');
 
 $index = $_POST['presentationbtn'];
 function checkSessionHour(): bool
 {
-    $orainizio =$_POST['orainizio'][$_POST['presentationbtn']];
-    $orafine = $_POST['orafine'][$_POST['presentationbtn']];
-    if ($_POST['oraini'] < $orainizio || $_POST['orafin'] > $orafine) {
+    $orainizio_sessione = $_POST['orainizio_sessione'][$_POST['presentationbtn']];
+    $orafine_sessione = $_POST['orafine_sessione'][$_POST['presentationbtn']];
+    if ($_POST['oraini'] < $orainizio_sessione || $_POST['orafin'] > $orafine_sessione) {
         return true;
     } else {
         return false;
     }
 }
-print_r($_POST); //-------DEBUG--------
-
 if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H:i"),DateTime::createFromFormat("H:i", $_POST['orafin'])->format("H:i"),$_POST['arrayHours'])) || checkSessionHour()) {
     Session::start();
     Session::write('msg_presentazione', '
@@ -42,8 +43,6 @@ if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H
                     Articolo creato con successo.
                     </h4> </div>');
                     PresentationQueryController::orderPresentation();
-                    header('HTTP/1.1 307 Temporary Redirect');
-                    header('Location: /pages/admin/addpresentation.php');
                     exit;
                 } catch (ExpiredSessionException|Exception $e) {
                 }
@@ -62,8 +61,6 @@ if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H
                     Tutorial creato con successo.
                     </h4> </div>');
                 PresentationQueryController::orderPresentation();
-                header('HTTP/1.1 307 Temporary Redirect');
-                header('Location: /pages/admin/addpresentation.php');
                 exit;
             } else {
                 Session::write('msg_presentazione', '
