@@ -403,7 +403,7 @@ BEGIN
 	DECLARE ora INT;
     DECLARE sessioncode INT;
     DECLARE oldsessioncode INT;
-    DECLARE nseq INT;
+    #DECLARE nseq INT;
 	DECLARE getora CURSOR FOR SELECT presentazione.oraFine FROM presentazione INNER JOIN sessione ON presentazione.codiceSessione = sessione.codice 
 						      ORDER BY presentazione.oraFine AND presentazione.codiceSessione;
 	DECLARE getsessioncode CURSOR FOR SELECT presentazione.codiceSessione FROM presentazione INNER JOIN sessione ON presentazione.codiceSessione = sessione.codice 

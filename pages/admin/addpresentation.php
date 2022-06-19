@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <?php
+print_r($_POST);
 include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
@@ -14,6 +15,11 @@ $data=$_POST['data'][$index];
 $codice_sessione = $_POST['codice_sessione'][$index];
 $arrayHours = array();
 $article_tutorial_btn = 0;
+
+if(isset($_POST['delete_btn'])) {
+    PresentationQueryController::deletePresentation($_POST['codice_presentazione'][$index], $_POST['codice_sessione']);
+}
+
 ?>
 <body>
 <form method="post" action="/pages/admin/modifypresentation.php">
@@ -94,6 +100,7 @@ $article_tutorial_btn = 0;
                                     <input type="hidden" name="tipologia[]" value="<?php print $tipologia ?>">
                                     <input type="hidden" name="titolo[]" value="<?php print $titolo ?>">
                                     <input type="hidden" name="numeroSequenza[]" value="<?php print $p['numeroSequenza'] ?>">
+                                    <input type="hidden" id="presentationbtn" name="presentationbtn" value="<?php print $_POST['presentationbtn'] ?>">
 
 
                                     <tr>
@@ -213,3 +220,4 @@ include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUM
 </script>
 </body>
 </html>
+
