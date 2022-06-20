@@ -442,17 +442,11 @@ BEGIN
     IF (tipo = 'articolo') THEN
         UPDATE articolo
         SET titolo = in_titolo, filePdf = in_filePdf, numeroPagine = in_numeroPagine
-        WHERE in_codicePresentazione AND in_codiceSessione in (
-            SELECT codice, codiceSessione
-            from presentazione
-        );
+        WHERE in_codicePresentazione = articolo.codicePresentazione AND in_codiceSessione = articolo.codiceSessione;
     ELSE IF (tipo = 'tutorial') THEN
         UPDATE tutorial
         SET titolo = in_titolo, abstract = in_abstract
-        WHERE in_codicePresentazione AND in_codiceSessione in (
-            SELECT codice, codiceSessione
-            from presentazione
-        );
+        WHERE in_codicePresentazione = tutorial.codicePresentazione AND in_codiceSessione = tutorial.codiceSessione;
     END IF;
     END IF;
 END $$

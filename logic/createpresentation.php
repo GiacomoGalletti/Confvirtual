@@ -38,8 +38,8 @@ if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H
             }
             if (PresentationQueryController::createArticle($_POST['codice_sessione'][$index],$_POST['oraini'],$_POST['orafin'],$_POST['titolo_articolo'],$upload->getFilePath(),$_POST['pagenum'])) {
                 try {
-                    Session::write('msg_presentazione', '
-                    <div class="container" style="background-color: limegreen;opacity: 50"> <h4>
+                    Session::write('msg_presentazione',
+                    '<div class="container" style="background-color: limegreen;opacity: 50"> <h4>
                     Articolo creato con successo.
                     </h4> </div>');
                     PresentationQueryController::orderPresentation();

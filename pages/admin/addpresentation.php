@@ -19,9 +19,6 @@ include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCU
 include_once (sprintf("%s/logic/Upload.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/FileTypeEnum.php", $_SERVER["DOCUMENT_ROOT"]));
 
-//unset($_POST['tipologia'],$_POST['numeroSequenza'],$_POST['titolo'],$_POST['numeroPagine'],$_POST['filePDF'],$_POST['abstract']);
-//unset($_POST);
-
 $index = $_POST['presentationbtn'];
 $orainizio_sessione = $_POST['orainizio_sessione'][$index];
 $orafine_sessione = $_POST['orafine_sessione'][$index];
@@ -176,7 +173,7 @@ $article_tutorial_btn = 0;
             ?>
             <input type="hidden" name="orafine_sessione[]" value="<?php print $_POST['orafine_sessione'][$i] ?>">
             <input type="hidden" name="orainizio_sessione[]" value="<?php print $_POST['orainizio_sessione'][$i] ?>">
-            <input type="hidden" name="data[]" value="<?php print $_POST['data'][$i] ?>">
+            <input type="hidden" name="data" value="<?php print $_POST['data'][$i] ?>">
             <input type="hidden" name="codice_sessione[]" value="<?php print $_POST['codice_sessione'][$i] ?>">
             <?php
         }

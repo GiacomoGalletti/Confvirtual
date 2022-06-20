@@ -191,10 +191,10 @@ class DbPresentation
         }
     }
 
-    public static function modificaPresentazione($codice_presentazione, $codice_sessione, $titolo, $filePDF, $numero_pagine, $abstract)
+    public static function modificaPresentazione($tipologia,$codice_presentazione, $codice_sessione, $titolo, $filePDF, $numero_pagine, $abstract): bool
     {
         try {
-            $sql = 'CALL modificaPresentazione(\'' . $codice_presentazione . '\',\'' . $codice_sessione  . '\',\'' . $titolo  . '\',\'' . $filePDF  . '\',\'' . $numero_pagine  . '\',\'' .  $abstract . '\');';
+            $sql = 'CALL modificaPresentazione(\'' . $tipologia . '\',\'' . $codice_presentazione . '\',\'' . $codice_sessione  . '\',\'' . $titolo  . '\',\'' . $filePDF  . '\',\'' . $numero_pagine  . '\',\'' .  $abstract . '\');';
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
             return true;

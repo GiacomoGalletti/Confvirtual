@@ -1263,7 +1263,7 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
     <routine id="351" parent="324" name="modificaPresentazione">
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
-      <SourceTextLength>586</SourceTextLength>
+      <SourceTextLength>524</SourceTextLength>
     </routine>
     <routine id="352" parent="324" name="ordinamentoSequenzePresentazioni">
       <Definer>root@localhost</Definer>
@@ -1333,9 +1333,9 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
     <scheduled-event id="365" parent="324" name="cambioStatoConferenza">
       <Definer>root@localhost</Definer>
       <Interval>&apos;1&apos; SECOND</Interval>
-      <LastExecuted>2022-06-19.22:24:41</LastExecuted>
+      <LastExecuted>2022-06-20.02:19:21</LastExecuted>
       <SourceTextLength>382</SourceTextLength>
-      <Starts>&apos;2022-06-19 20:24:40&apos;</Starts>
+      <Starts>&apos;2022-06-20 00:19:21&apos;</Starts>
       <Status>enabled</Status>
     </scheduled-event>
     <table id="366" parent="324" name="amministratore">
