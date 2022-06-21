@@ -44,16 +44,15 @@ try {
                                 <div class="dropdown-menu" aria-labelledby="dropdown04">
                                     <a class="dropdown-item" href="/pages/admin/promoteuser.php">Promuovi utente</a>
                                     <a class="dropdown-item" href="/pages/admin/managespeaker.php">Gestisci Speaker</a>
-                                    <a class="dropdown-item" href="/pages/admin/managepresenter.php">Gestisci
-                                        Presenter</a>
+                                    <a class="dropdown-item" href="/pages/admin/managepresenter.php">Gestisci Presenter</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="false">Sponsor</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                    <a class="dropdown-item" href="/pages/admin/sponsorlist.php">Lista Sponsor</a>
-                                    <a class="dropdown-item" href="/pages/admin/managesponsor.php">Gestisci</a>
+                                    <a class="dropdown-item" href="/pages/admin/sponsorlist.php">Lista Sponsorizzazioni</a>
+                                    <a class="dropdown-item" href="/pages/admin/managesponsor.php">Gestisci Sponsor</a>
                                 </div>
                             </li>
                             <li class="nav-item">

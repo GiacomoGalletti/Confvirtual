@@ -65,5 +65,50 @@ class DBSponsor
             return false;
         }
     }
+
+    public static function createSponsorization($importo, $int, $int1, $nome_sponsor): bool
+    {
+        try
+        {
+            $sql = 'CALL creaSponsorizzazione(
+                \'' . $importo . '\',
+                \'' . $int . '\',
+                \'' . $int1 . '\',
+                \'' . $nome_sponsor . '\');';
+            $res = DbConn::getInstance() -> query($sql);
+            $res -> closeCursor();
+            return true;
+        } catch (PDOException $e) {
+            echo '<h1> ERRORE CREAZIONE SPONSOR </h1> <p2>';
+            echo '<br> <b>Stack ERROR:</b> <br>' . $e;
+            echo '</p2>';
+            echo'<p1>';
+            echo '<br> <b>PROVATO AD ESEGUIRE:</b> <br>' . $sql;
+            echo '</p1>';
+            return false;
+        }
+
+    }
+
+    public static function deleteSponsor($name)
+    {
+        try
+        {
+            $sql = 'CALL eliminaSponsor(
+                \'' . $name . '\');';
+            $res = DbConn::getInstance() -> query($sql);
+            $res -> closeCursor();
+            return true;
+        } catch (PDOException $e) {
+            echo '<h1> ERRORE CREAZIONE SPONSOR </h1> <p2>';
+            echo '<br> <b>Stack ERROR:</b> <br>' . $e;
+            echo '</p2>';
+            echo'<p1>';
+            echo '<br> <b>PROVATO AD ESEGUIRE:</b> <br>' . $sql;
+            echo '</p1>';
+            return false;
+        }
+
+    }
 }
 

@@ -10,15 +10,10 @@ include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 
 global $id;
 $id = 0;
-//$index = $_POST['sessionbtn'];
-//$acronimo = $_POST['array_acronimo'][$index];
-//$annoEdizione = $_POST['array_annoEdizione'][$index];
-//$rawdates = $_POST['dates'][$index];
-
 ?>
 <body>
 <!-- PRIMO FORM SOLO PER LA LISTA DEGLI SPONSOR -->
-<form method="post" >
+<form method="post" action="/pages/admin/modifysponsor.php">
     <?php include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     try {
         Session::start();
@@ -52,9 +47,16 @@ $id = 0;
             foreach ($sponsors as $s) {
                 $tot_sponsorizzazioni = SponsorQueryController::calculateTotalSponsorization($s['nome']);
                 ?>
+                    <input type="hidden" name="immagineLogo[]" value="<?php print($s['immagineLogo']);?>">
+                    <input type="hidden" name="nome[]" value="<?php print($s['nome']);?>">
                 <tr>
                     <td><?php print $s['nome']  ?></td>
-                    <td><?php print $s['immagineLogo']  ?></td>
+                    <td>
+                        <?php if(!empty($s['immagineLogo'])){
+                            echo '<img id="currentPhoto" title="userImg personalizzata" width="60" height="80" src="' .  $s['immagineLogo'] . '">';
+                        } else { echo '<img title="no img" width="60" height="80" src="/resources/images/noImgDefault.jpg">';}
+                        echo '</td>';  ?>
+                    </td>
                     <td><?php if ($tot_sponsorizzazioni == null){print (0 . ' euro');} else { print ($tot_sponsorizzazioni . ' euro'); } ?></td>
                     <td><button type="submit" name="sponsor_btn" value = "<?php print ($id)?>"> sponsorizzazioni</button></td>
                 </tr>
@@ -78,7 +80,7 @@ $id = 0;
             <div class="container">
                 <h4>Crea uno sponsor: </h4>
                 <label for="ttl"><b>Nome sponsor<sup>*</sup></b></label><input id = "ttl" type="text" placeholder="Inserisci nome" name="nome_sponsor" autocomplete="off">
-                <label for="fileToUpload"><b>Logo Sponsor<sup>*</sup></b></label><br>
+                <label for="fileToUpload"><b>Logo Sponsor</b></label><br>
                 <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
                 <p><sup>*</sup>: campi obbligatori</p>
             </div>

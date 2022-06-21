@@ -460,3 +460,20 @@ BEGIN
 
 END$$
 DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS creaSponsorizzazione $$
+CREATE PROCEDURE creaSponsorizzazione(IN in_importo double,IN in_annoEdizione year,IN in_acronimo varchar(10),IN in_nome varchar(50))
+BEGIN
+    insert into sponsorizzazioni(importo,annoEdizioneConferenza,acronimoConferenza,nomeSponsor) values (in_importo,in_annoEdizione,in_acronimo,in_nome);
+
+    END$$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS eliminaSponsor $$
+CREATE PROCEDURE eliminaSponsor(IN in_nome varchar(50))
+BEGIN
+    DELETE FROM sponsor WHERE in_nome = sponsor.nome;
+END$$
+DELIMITER ;

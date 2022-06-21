@@ -119,9 +119,8 @@ CREATE TABLE SPONSORIZZAZIONI(
                                  acronimoConferenza varchar(10),
                                  nomeSponsor varchar(50),
                                  primary key (annoEdizioneConferenza,acronimoConferenza,nomeSponsor),
-                                 foreign key (nomeSponsor) references SPONSOR(nome),
-                                 foreign key (annoEdizioneConferenza,acronimoConferenza) references CONFERENZA(annoEdizione,acronimo)
-                                     ON DELETE CASCADE
+                                 foreign key (nomeSponsor) references SPONSOR(nome) ON DELETE CASCADE,
+                                 foreign key (annoEdizioneConferenza,acronimoConferenza) references CONFERENZA(annoEdizione,acronimo) ON DELETE CASCADE
 )engine = 'InnoDB';
 
 CREATE TABLE UTENTEREGISTRATO(
