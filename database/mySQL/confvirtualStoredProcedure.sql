@@ -451,3 +451,12 @@ BEGIN
     END IF;
 END $$
 DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS creaSponsor $$
+CREATE PROCEDURE creaSponsor(IN in_nome varchar(50) , IN in_immagineLogo varchar(260))
+BEGIN
+    insert into SPONSOR(immagineLogo,nome) values (in_immagineLogo,in_nome);
+
+END$$
+DELIMITER ;

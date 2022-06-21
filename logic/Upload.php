@@ -77,12 +77,12 @@ class Upload
         if($check !== false) {
             $uploadOk = 1;
         }else{
-            echo "File is not an image.";
+            echo "File non è un'immagine.";
             $uploadOk = 0;
         }
 
         if (file_exists($target_file)) {
-            echo "Sorry, file already exists.";
+            echo "File già presente.";
             $uploadOk = 0;
         }
 
@@ -92,12 +92,12 @@ class Upload
         }
 
         if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
+            echo "<p><b>File NON CARICATO</b></p>";
         } else {
             if (move_uploaded_file($file_name["tmp_name"], $target_file)) {
                 $this->target_file_to_save = $relative_path . $file_name["name"];
             } else {
-                echo "error: uploading fallito.";
+                echo "<p><b>error: uploading fallito.</b></p>";
             }
         }
     }

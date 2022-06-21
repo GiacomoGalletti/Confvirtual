@@ -1,40 +1,19 @@
 <?php
 include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/DbConn.php");
-include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/Sessione.php");
 
 class DbSessione
 {
-    // TODO: sistemare con quello che sara la stored per le sessioni di una conferenza
-    static function getSessione($codice): ?Sessione
+    static function getSessione($codice)
     {
         $sql = 'CALL ritornaSessione(\'' . $codice . '\');';
         $res = DbConn::getInstance() -> query($sql);
-        foreach ($res -> fetch() as $key) {
-            $codice = $key[0];
-            $ora_inizio = $key[1];
-            $ora_fine = $key[2];
-            $titolo = $key[3];
-            $link_stanza = $key[4];
-            $numero_presentazioni = $key[5];
-            $giorno_data = $key[6];
-            $anno_edizione = $key[7];
-            $acronimo_conferenza = $key[8];
-        }
+        $output = $res -> fetchAll(PDO::FETCH_ASSOC);
         $res -> closeCursor();
-        if (!empty($codice) && !empty($ora_inizio) && !empty($ora_fine) && !empty($titolo) && !empty($link_stanza) && !empty($numero_presentazioni) && !empty($giorno_data) && !empty($anno_edizione) && !empty($acronimo_conferenza)) {
-            return new Sessione(
-                $codice,
-                $ora_inizio,
-                $ora_fine,
-                $titolo,
-                $link_stanza,
-                $numero_presentazioni,
-                $giorno_data,
-                $anno_edizione,
-                $acronimo_conferenza
-            );
+        if  (sizeof($output) > 0) {
+            return $output;
+        } else {
+            return null;
         }
-        return  null;
     }
 
     static function createSessione(

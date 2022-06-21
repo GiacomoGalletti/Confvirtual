@@ -1,23 +1,27 @@
 <?php
 include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/DbConn.php");
-include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/Conference.php");
 
 class DbConference
 {
-    static function getConference($acronimo, $anno_edizione): Conference
+    static function getConference($acronimo, $anno_edizione)
     {
-        $sql = 'CALL ritornaConferenza(\'' . $acronimo . '\', \'' . $anno_edizione . '\');';
-        $res = DbConn::getInstance() -> query($sql);
-        foreach ($res -> fetch() as $key) {
-            $anno_edizione = $key[0];
-            $acronimo = $key[1];
-            $tot_sponsorizzazioni = $key[2];
-            $immagine_logo = $key[3];
-            $stato_svolgimento = $key[4];
-            $nome = $key[5];
+        try{
+            $sql = 'CALL ritornaConferenza(\'' . $acronimo . '\', \'' . $anno_edizione . '\');';
+            $res = DbConn::getInstance() -> query($sql);
+            $output = $res -> fetchAll(PDO::FETCH_ASSOC);
+            $res -> closeCursor();
+            if  (sizeof($output) > 0)
+            {
+                return $output;
+            } else
+            {
+                return null;
+            }
+        } catch (Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
         }
-        $res -> closeCursor();
-        return new Conference($anno_edizione, $acronimo, $tot_sponsorizzazioni, $immagine_logo, $stato_svolgimento, $nome);
     }
 
     static function conferenceActive()
@@ -60,7 +64,7 @@ class DbConference
         return $output;
     }
 
-    static function createConference($nome, $acronimo, $immagine, $date): bool
+    static function createConference($nome, $acronimo, $immagine, $date): ?bool
     {
         try{
             $arrayDate = explode(",",$date);
@@ -96,15 +100,17 @@ class DbConference
             return true;
         } catch (PDOException $e) {
           return false;
+        } catch (ExpiredSessionException|Exception $e) {
+            return null;
         }
 
     }
 
-    static function createRating($codicePresentazione, $codiceSessione, $voto, $note): bool
+    static function createRating($codicePresentazione, $codiceSessione, $voto, $note): ?bool
     {
         try{
             $sql = 'CALL insertRating(\''.Session::read('userName').'\',\''.$codicePresentazione.'\',\''.$codiceSessione.'\',\''. $voto .'\',\''.$note.'\');';
-            $res = DbConn::getInstance()::getPDO() -> query($sql);
+            $res = DbConn::getInstance() -> query($sql);
             $res -> closeCursor();
             header("Location: /pages/admin/addrate.php");
             echo '<link rel="stylesheet" href="/style/css/style.css">
@@ -114,6 +120,8 @@ class DbConference
             return true;
         } catch (PDOException $e) {
             return false;
+        } catch (ExpiredSessionException|Exception $e) {
+            return null;
         }
     }
 }
