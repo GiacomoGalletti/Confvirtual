@@ -27,4 +27,20 @@ class SponsorQueryController
     {
         return DBSponsor::deleteSponsor($name);
     }
+
+    public static function getSponsorImg($nomeSponsor)
+    {
+        return DBSponsor::getSponsorImg($nomeSponsor);
+    }
+
+    public static function getAllSponsorizations()
+    {
+        return DBSponsor::getAllSponsorizations();
+
+    }
+
+    public static function deleteSponsorization($nomeSponsor,$acronimoConferenza,$annoEdizioneConferenza)
+    {
+        return DBSponsor::deleteSponsorization($nomeSponsor,$acronimoConferenza,$annoEdizioneConferenza);
+    }
 }

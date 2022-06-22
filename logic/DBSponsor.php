@@ -110,5 +110,73 @@ class DBSponsor
         }
 
     }
+
+    public static function getSponsorImg($nomeSponsor)
+    {
+        try {
+            $sql = 'SELECT immagineLogo as immagine FROM SPONSOR WHERE SPONSOR.nome =' . '\'' . $nomeSponsor . '\'';
+            $res = DbConn::getInstance() -> query($sql);
+            $output = $res -> fetchAll(PDO::FETCH_ASSOC);
+            $res -> closeCursor();
+            if  (sizeof($output) > 0)
+            {
+                return $output[0];
+            } else
+            {
+                return null;
+            }
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
+    public static function getAllSponsorizations()
+    {
+        try {
+            $sql = 'SELECT * FROM SPONSORIZZAZIONI';
+            $res = DbConn::getInstance() -> query($sql);
+            $output = $res -> fetchAll(PDO::FETCH_ASSOC);
+            $res -> closeCursor();
+            if  (sizeof($output) > 0)
+            {
+                return $output;
+            } else
+            {
+                echo '<pre>
+    
+                <p>nessuna sponsorizzazione.</p>
+    
+                </pre>';
+                return null;
+            }
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
+    public static function deleteSponsorization($nomeSponsor, $acronimoConferenza, $annoEdizioneConferenza)
+    {
+        try
+        {
+            $sql = 'DELETE FROM SPONSORIZZAZIONI WHERE nomeSponsor ='.'\''.$nomeSponsor.'\'' . ' AND acronimoConferenza =' . '\'' . $acronimoConferenza . '\''. ' AND annoEdizioneConferenza =' . '\'' . $annoEdizioneConferenza . '\'';
+            $res = DbConn::getInstance() -> query($sql);
+            $res -> closeCursor();
+            return true;
+        } catch (PDOException $e) {
+            echo '<h1> ERRORE CREAZIONE SPONSOR </h1> <p2>';
+            echo '<br> <b>Stack ERROR:</b> <br>' . $e;
+            echo '</p2>';
+            echo'<p1>';
+            echo '<br> <b>PROVATO AD ESEGUIRE:</b> <br>' . $sql;
+            echo '</p1>';
+            return false;
+        }
+    }
 }
 

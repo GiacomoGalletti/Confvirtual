@@ -51,7 +51,7 @@ try {
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="false">Sponsor</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                    <a class="dropdown-item" href="/pages/admin/sponsorlist.php">Lista Sponsorizzazioni</a>
+                                    <a class="dropdown-item" href="/pages/admin/sponsorizationlist.php">Lista Sponsorizzazioni</a>
                                     <a class="dropdown-item" href="/pages/admin/managesponsor.php">Gestisci Sponsor</a>
                                 </div>
                             </li>
