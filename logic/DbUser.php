@@ -1,5 +1,6 @@
 <?php
 include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/DbConn.php");
+include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 
 class DbUser
 {
@@ -74,5 +75,60 @@ class DbUser
             echo $e;
             return false;
         }
+    }
+
+    public static function registerUser($username, $name, $surname, $password, $luogoNascita, $dataNascita): bool
+    {
+        try {
+            $sql = 'CALL register(\'' . $username . '\',\'' . $name . '\',\'' . $surname . '\',\'' . $password . '\',\'' . $luogoNascita . '\',\'' . $dataNascita . '\');';
+            $res = DbConn::getInstance() -> query($sql);
+            $res -> closeCursor();
+            return true;
+        } catch (PDOException $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
+    public static function userExists($username, $password): bool
+    {
+        $sql = 'CALL checkUserExists(\'' . $username . '\',\'' . $password . '\');';
+        $res = DbConn::getInstance() -> query($sql);
+        if ($res->fetch()) {
+            $res -> closeCursor();
+            return true;
+        }
+        $res -> closeCursor();
+        return false;
+    }
+
+    public static function login($username, $password): bool
+    {
+        try {
+            Session::start();
+            if (self::userExists($username, $password)) {
+                Session::write('userName',$username);
+                $sql = 'CALL checkUserType(\'' . $username . '\');';
+                $res = DbConn::getInstance() -> query($sql);
+                $row = $res -> fetch();
+                Session::write('type',$row['res_type']);
+                $res -> closeCursor();
+                Session::commit();
+                header("Location: /index.php");
+                return true;
+            } else {
+                Session::write('msg_user', '
+                    <div class="container" style="background-color: red;opacity: 50"> <h4>
+                        Utente non registrato.
+                    </h4> </div>');
+                return false;
+            }
+        } catch (PDOException|ExpiredSessionException|Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+
     }
 }

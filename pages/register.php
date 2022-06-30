@@ -3,11 +3,39 @@
 <?php
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
-include_once (sprintf("%s/logic/UsersInsert.php", $_SERVER["DOCUMENT_ROOT"]));
-if(isset($_POST['submit'])) {
-    registerUser($_POST["userName"], $_POST["name"], $_POST["surname"], $_POST["psw"], $_POST["luogoNascita"], $_POST["dataNascita"]);
+include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+
+Session::start();
+try {
+    if (Session::read('msg_user') != false) {
+        echo Session::read('msg_user');
+        Session::delete('msg_user');
+        Session::commit();
+    }
+} catch (ExpiredSessionException|Exception $e) {
+    echo $e;
 }
-?>
+
+if(isset($_POST['submit'])) {
+    if (!UserQueryController::userExists($_POST["userName"],$_POST["psw"])) {
+        if(UserQueryController::registerUser($_POST["userName"], $_POST["name"], $_POST["surname"], $_POST["psw"], $_POST["luogoNascita"], $_POST["dataNascita"])) {
+            try {
+                Session::write('msg_user', '<div class="container" style="background-color: green;opacity: 50"> <h4>Utente registrato correttamente.</h4> </div>');
+                header("Location: /pages/login.php");
+            } catch (ExpiredSessionException|Exception $e) {
+                echo $e;
+            }
+        }
+    }else {
+        try {
+            Session::write('msg_user', '<div class="container" style="background-color: red;opacity: 50"> <h4>Utente già registrato.</h4> </div>');
+            header("Location: /pages/register.php");
+        } catch (ExpiredSessionException|Exception $e) {
+            echo $e;
+        }
+    }
+} ?>
 <body>
 <form action="register.php" method="post" autocomplete="off">
     <div class="container">

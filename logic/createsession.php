@@ -13,25 +13,29 @@ if (isset($_POST['creaconferenzabtn']))
     if ($_POST['ttl'] != '' && $_POST['stanza'] != '' && isset($_POST['giorno']) && validateDate($_POST['giorno'])) {
         if (
             SessioneQueryController::createSession($_POST['oraini'],$_POST['orafin'],$_POST['ttl'],$_POST['stanza'],$_POST['giorno'],$_POST['annoEdizione'],$_POST['acronimo'])
-        )
-        {
-            Session::write('msg_sessione', '
-                    <div class="container" style="background-color: limegreen;opacity: 50"> <h4>
-                        Sessione creata con successo.
-                    </h4> </div>');
-        } else
-        {
-            Session::write('msg_sessione', '
-                    <div class="container" style="background-color: red;opacity: 50"> <h4>
-                        Creazione sessione fallita.
-                    </h4> </div>');
+        ) {
+            try {
+                Session::write('msg_sessione', '
+                        <div class="container" style="background-color: limegreen;opacity: 50"> <h4>
+                            Sessione creata con successo.
+                        </h4> </div>');
+            } catch (ExpiredSessionException|Exception $e) {
+                echo $e;
+            }
+        } else {
+            try {
+                Session::write('msg_sessione', '<div class="container" style="background-color: red;opacity: 50"> <h4>Creazione sessione fallita.</h4> </div>');
+            } catch (ExpiredSessionException|Exception $e) {
+                echo $e;
+            }
         }
     } else {
-        Session::write('msg_sessione', '
-                    <div class="container" style="background-color: red;opacity: 50"> <h4>
-                        Campi inseriti non validi.
-                    </h4> </div>');
+        try {
+            Session::write('msg_sessione', '<div class="container" style="background-color: red;opacity: 50"> <h4>Campi inseriti non validi.</h4> </div>');
+        } catch (ExpiredSessionException|Exception $e) {
+            echo $e;
+        }
     }
 }
-    header('HTTP/1.1 307 Temporary Redirect');
-    header('Location: /pages/admin/addsession.php');
+header('HTTP/1.1 307 Temporary Redirect');
+header('Location: /pages/admin/addsession.php');

@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="it">
 <?php
-//include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
-include_once (sprintf("%s/logic/UsersQuery.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 ?>
 <body>
 <form method="post" >
 <?php
 if(isset($_POST['submit'])) {
-    login($_POST["uname"], $_POST["psw"]);
+     UserQueryController::login($_POST["uname"], $_POST["psw"]);
 }
 include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+try {
+    Session::start();
+    if (Session::read('msg_user') != false) {
+        echo Session::read('msg_user');
+        Session::delete('msg_user');
+        Session::commit();
+    }
+} catch (ExpiredSessionException|Exception $e) {
+    echo $e;
+}
 ?>
     <div class="container">
         <label for="uname"><b>Username</b></label>

@@ -18,13 +18,28 @@ class UserQueryController
         return DbUser::SpeakerList();
     }
 
-    static function promoteUserToSpeaker($username)
+    static function promoteUserToSpeaker($username): bool
     {
         return DbUser::promotionToSpeaker($username);
     }
 
-    static function promoteUserToPresenter($username)
+    static function promoteUserToPresenter($username): bool
     {
         return DbUser::promotionToPresenter($username);
+    }
+
+    static function registerUser($username, $name, $surname, $password, $luogoNascita, $dataNascita): bool
+    {
+        return DbUser::registerUser($username, $name, $surname, $password, $luogoNascita, $dataNascita);
+    }
+
+    static function login($username, $password): bool
+    {
+        return DbUser::login($username, $password);
+    }
+
+    public static function userExists($userName, $psw): bool
+    {
+        return DbUser::userExists($userName, $psw);
     }
 }
