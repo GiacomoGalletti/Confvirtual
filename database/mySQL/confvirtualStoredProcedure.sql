@@ -38,9 +38,7 @@ DELIMITER ;
 
 DELIMITER //
 drop procedure if exists  checkUserExists //
-CREATE PROCEDURE checkUserExists(
-    IN nomeUtente varchar(50),
-    IN pswd varchar(50))
+CREATE PROCEDURE checkUserExists(IN nomeUtente varchar(50),IN pswd varchar(50))
 BEGIN
     SELECT userName
     FROM UTENTE
@@ -51,28 +49,9 @@ DELIMITER ;
 
 DELIMITER //
 drop procedure if exists register//
-CREATE PROCEDURE register(
-    IN inUnserName varchar(50),
-    IN inPswd varchar(50),
-    IN inName varchar(50),
-    IN inSurname varchar(50),
-    IN inBirthPlace varchar(50),
-    IN inBirthday date)
+CREATE PROCEDURE register(IN inUnserName varchar(50),IN inName varchar(50),IN inSurname varchar(50),IN inPswd varchar(50),IN inBirthPlace varchar(50),IN inBirthday date)
 BEGIN
-    insert into UTENTE(
-        userName,
-        nome,
-        cognome,
-        pswd,
-        luogoNascita,
-        dataNascita) values (
-                                inUnserName,
-                                inName,
-                                inSurname,
-                                inPswd,
-                                inBirthPlace,
-                                inBirthday
-                            );
+    insert into UTENTE(userName,nome,cognome,pswd,luogoNascita,dataNascita) values (inUnserName,inName,inSurname,inPswd,inBirthPlace,inBirthday);
 END;
 //
 DELIMITER ;
@@ -308,7 +287,7 @@ BEGIN
     select userName, nome, cognome, luogoNascita, dataNascita
     from utente
     where username not in (select userNameUtente from speaker) and username not in (select userNameUtente from presenter);
-END$$
+END $$
 DELIMITER ;
 
 DELIMITER $$
@@ -316,7 +295,7 @@ DROP PROCEDURE IF EXISTS promuoviUtenteASpeaker $$
 CREATE PROCEDURE promuoviUtenteASpeaker(IN in_userNameUtente varchar(50))
 BEGIN
     insert into speaker(userNameUtente) values (in_userNameUtente);
-END$$
+END $$
 DELIMITER ;
 
 DELIMITER $$
@@ -324,7 +303,7 @@ DROP PROCEDURE IF EXISTS promuoviUtenteAPresenter $$
 CREATE PROCEDURE promuoviUtenteAPresenter(IN in_userNameUtente varchar(50))
 BEGIN
     insert into presenter(userNameUtente) values (in_userNameUtente);
-END$$
+END $$
 DELIMITER ;
 
 DELIMITER $$
@@ -333,7 +312,7 @@ CREATE PROCEDURE ritornaPresenter()
 BEGIN
     select foto,userName,nome,cognome,nomeUniversita,nomeDipartimento
     from UTENTE join PRESENTER on UTENTE.userName = PRESENTER.userNameUtente;
-END$$
+END $$
 DELIMITER ;
 
 DELIMITER $$
@@ -342,7 +321,7 @@ CREATE PROCEDURE ritornaSpeaker()
 BEGIN
     select foto,userName,nome,cognome,nomeUniversita,nomeDipartimento
     from UTENTE join SPEAKER on UTENTE.userName = SPEAKER.userNameUtente;
-END$$
+END $$
 DELIMITER ;
 
 DELIMITER $$
@@ -355,7 +334,7 @@ BEGIN
         select codicePresentazione,codiceSessione
         from PRESENTAZIONEPRESENTER
     );
-END$$
+END $$
 DELIMITER ;
 
 DELIMITER $$
@@ -363,7 +342,7 @@ DROP PROCEDURE IF EXISTS associaPresenter $$
 CREATE PROCEDURE associaPresenter(IN in_userNameUtente varchar(50),IN in_titoloArticolo varchar(50), IN in_codicePresentazione int , IN in_codiceSessione int)
 BEGIN
     INSERT INTO PRESENTAZIONEPRESENTER(userNameUtente,titoloArticolo,codicePresentazione,codiceSessione) values(in_userNameUtente,in_titoloArticolo,in_codicePresentazione,in_codiceSessione);
-END$$
+END $$
 DELIMITER ;
 
 DELIMITER $$
@@ -385,7 +364,7 @@ DROP PROCEDURE IF EXISTS associaSpeaker $$
 CREATE PROCEDURE associaSpeaker(IN in_userNameUtente varchar(50),IN in_titoloTutorial varchar(50), IN in_codicePresentazione int , IN in_codiceSessione int)
 BEGIN
     INSERT INTO PRESENTAZIONESPEAKER(userNameUtente,titoloTutorial,codicePresentazione,codiceSessione) values(in_userNameUtente,in_titoloTutorial,in_codicePresentazione,in_codiceSessione);
-END$$
+END $$
 DELIMITER ;
 
 DELIMITER $$
@@ -432,7 +411,7 @@ DROP PROCEDURE IF EXISTS eliminaPresentazione $$
 CREATE PROCEDURE eliminaPresentazione(IN in_codicePresentazione int , IN in_codiceSessione int)
 BEGIN
     DELETE FROM presentazione WHERE in_codicePresentazione = presentazione.codice AND in_codiceSessione = presentazione.codiceSessione;
-END$$
+END $$
 DELIMITER ;
 
 DELIMITER $$
@@ -457,8 +436,7 @@ DROP PROCEDURE IF EXISTS creaSponsor $$
 CREATE PROCEDURE creaSponsor(IN in_nome varchar(50) , IN in_immagineLogo varchar(260))
 BEGIN
     insert into SPONSOR(immagineLogo,nome) values (in_immagineLogo,in_nome);
-
-END$$
+END $$
 DELIMITER ;
 
 DELIMITER $$
@@ -466,8 +444,7 @@ DROP PROCEDURE IF EXISTS creaSponsorizzazione $$
 CREATE PROCEDURE creaSponsorizzazione(IN in_importo double,IN in_annoEdizione year,IN in_acronimo varchar(10),IN in_nome varchar(50))
 BEGIN
     insert into sponsorizzazioni(importo,annoEdizioneConferenza,acronimoConferenza,nomeSponsor) values (in_importo,in_annoEdizione,in_acronimo,in_nome);
-
-    END$$
+END$$
 DELIMITER ;
 
 DELIMITER $$
@@ -475,5 +452,21 @@ DROP PROCEDURE IF EXISTS eliminaSponsor $$
 CREATE PROCEDURE eliminaSponsor(IN in_nome varchar(50))
 BEGIN
     DELETE FROM sponsor WHERE in_nome = sponsor.nome;
-END$$
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS iscriviUtente $$
+CREATE PROCEDURE iscriviUtente(IN in_userNameUtente varchar(50), IN in_acronimoConferenza varchar(50),IN in_annoEdizioneconferenza year)
+BEGIN
+    insert into utenteregistrato(userNameUtente,acronimoConferenza,annoEdizioneConferenza) values (in_userNameUtente,in_acronimoConferenza,in_annoEdizioneconferenza);
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS verificaIscrizione $$
+CREATE PROCEDURE verificaIscrizione(IN in_userNameUtente varchar(50), IN in_acronimoConferenza varchar(50),IN in_annoEdizioneconferenza year)
+BEGIN
+    SELECT * FROM utenteregistrato WHERE in_userNameUtente = userNameUtente AND in_acronimoConferenza=acronimoConferenza AND in_annoEdizioneconferenza=annoEdizioneconferenza;
+END $$
 DELIMITER ;

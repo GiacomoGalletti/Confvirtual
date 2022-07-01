@@ -3,10 +3,6 @@ include_once('DbConference.php');
 
 class ConferenceQueryController
 {
-    static function getConferenceName($acronimo, $anno_edizione)
-    {
-        return DbConference::getConference($acronimo, $anno_edizione)->getName();
-    }
 
     static function getConferenceFuture()
     {
@@ -31,5 +27,15 @@ class ConferenceQueryController
     static function createConference($nome, $acronimo, $immagine, $date): bool
     {
         return DbConference::createConference($nome, $acronimo, $immagine, $date);
+    }
+
+    static function subscribeToConference($annoEdizione,$acronimoConferenza): bool
+    {
+        return DbConference::subscribeToConference($annoEdizione,$acronimoConferenza);
+    }
+
+    static function checkSubcription($annoEdizione,$acronimoConferenza): ?bool
+    {
+        return DbConference::checkSubcription($annoEdizione,$acronimoConferenza);
     }
 }

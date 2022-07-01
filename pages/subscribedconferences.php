@@ -3,11 +3,21 @@
 <?php
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
-include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMENT_ROOT"])); ?>
+include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+?>
 <body>
+<form method="post" action="/logic/subscribeconference.php">
     <?php
-    include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"])); ?>
-    <form method="post" action="/logic/subscribeconference.php"> <?php
+    include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+    try {
+        if (Session::read('msg_subscription') != false) {
+            echo Session::read('msg_subscription');
+            Session::delete('msg_subscription');
+            Session::commit();
+        }
+    } catch (ExpiredSessionException|Exception $e) {
+        echo $e;
+    }
 
     function getConferences()
     {
@@ -73,37 +83,15 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
                 </div>
                 <?php
                 break;
-            default: ?>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4 class="text-center mb-4">Programmazione Conferenze</h4>
-                            <div class="table-wrap">
-                                <table class="table">
-                                    <thead class="thead-primary">
-                                    <tr>
-                                        <th>Acronimo</th>
-                                        <th>Nome</th>
-                                        <th>Anno</th>
-                                        <th>Giorni</th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-                                    getConferences();
-                                    ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php
+            default:
+                header('Location: ');
         }
     } catch (ExpiredSessionException|Exception $e) {
         echo $e;
     }
+    ?>
+    <?php
+    include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"]));
     ?>
 </form>
 </body>

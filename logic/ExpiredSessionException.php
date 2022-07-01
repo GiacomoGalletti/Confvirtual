@@ -2,19 +2,14 @@
 
 class ExpiredSessionException extends Exception
 {
-    public function errorMessage(): string
+    public function errorMessage()
     {
-        return '
-        <link rel="stylesheet" href="/style/css/style.css">
-        <div class="container"> </div>
-        <h1>Sessione scaduta</h1>
-        <p>reindirizzamento alla home page</p>';
+        echo "<script> alert('Sessione scaduta: reindirizzamento alla home page');window.location.href='/pages/login.php';</script>";
     }
 
     public function __construct()
     {
         parent::__construct();
-        header("refresh:5;url= " . "/pages/login.php");
-        print ($this->errorMessage());
+        $this->errorMessage();
     }
 }

@@ -3,7 +3,7 @@ include_once (sprintf("%s/logic/ExpiredSessionException.php", $_SERVER["DOCUMENT
 
 class Session
 {
-    protected static $SESSION_AGE = 1800;
+    protected static $SESSION_AGE = 1000;
 
     /**
      * @throws ExpiredSessionException
@@ -22,8 +22,7 @@ class Session
 
     public static function isSet($key): bool
     {
-        if (empty($_SESSION[$key]) || $_SESSION[$key] == '')
-        {
+        if (empty($_SESSION[$key]) || $_SESSION[$key] == '') {
             return false;
         } else {
             return true;
@@ -40,8 +39,7 @@ class Session
             throw new Exception('Session key must be string value');
         }
         self::_init();
-        if (isset($_SESSION[$key]))
-        {
+        if (isset($_SESSION[$key])) {
             self::_age();
             return $_SESSION[$key];
         }
@@ -54,8 +52,7 @@ class Session
      */
     public static function delete($key)
     {
-        if ( !is_string($key) )
-        {
+        if ( !is_string($key) ) {
             throw new Exception('Session key must be string value');
         }
         self::_init();
@@ -81,8 +78,7 @@ class Session
     {
         $last = $_SESSION['LAST_ACTIVE'] ?? false;
 
-        if (false !== $last && (time() - $last > self::$SESSION_AGE))
-        {
+        if (false !== $last && (time() - $last > self::$SESSION_AGE)) {
             self::destroy();
             throw new ExpiredSessionException();
         }
@@ -91,8 +87,7 @@ class Session
 
     public static function close(): bool
     {
-        if ( '' !== session_id() )
-        {
+        if ( '' !== session_id() ) {
             return session_write_close();
         }
         return true;
@@ -105,8 +100,7 @@ class Session
 
     public static function destroy()
     {
-        if ( '' !== session_id() )
-        {
+        if (session_id() !== '') {
             $_SESSION = array();
             session_destroy();
         }
@@ -114,8 +108,7 @@ class Session
 
     private static function _init(): bool
     {
-        if ( '' === session_id() )
-        {
+        if (session_id() === '') {
             return session_start();
         }
         return session_regenerate_id(true);

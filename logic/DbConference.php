@@ -1,29 +1,7 @@
 <?php
 include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/DbConn.php");
-
 class DbConference
 {
-    static function getConference($acronimo, $anno_edizione)
-    {
-        try{
-            $sql = 'CALL ritornaConferenza(\'' . $acronimo . '\', \'' . $anno_edizione . '\');';
-            $res = DbConn::getInstance() -> query($sql);
-            $output = $res -> fetchAll(PDO::FETCH_ASSOC);
-            $res -> closeCursor();
-            if  (sizeof($output) > 0)
-            {
-                return $output;
-            } else
-            {
-                return null;
-            }
-        } catch (Exception $e) {
-            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
-            echo $e;
-            return false;
-        }
-    }
-
     static function conferenceActive()
     {
         $sql = 'CALL ritornaConferenzeFuture();';
@@ -81,7 +59,7 @@ class DbConference
                   </div> <div class="container" </div>';
                 return false;
             }
-
+            $sql='no query';
             $sql = 'CALL createConference(\''.$arrayYears[0].'\',\''.$acronimo.'\',\''.$immagine.'\',\''. $nome .'\',\''.Session::read('userName').'\');';
             $res = DbConn::getInstance() -> query($sql);
             $res -> closeCursor();
@@ -98,17 +76,19 @@ class DbConference
               <h1>Conferenza Inserita</h1> 
               </div> <div class="container" </div>';
             return true;
-        } catch (PDOException $e) {
-          return false;
-        } catch (ExpiredSessionException|Exception $e) {
-            return null;
+        } catch (PDOException|ExpiredSessionException|Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
         }
 
     }
 
-    static function createRating($codicePresentazione, $codiceSessione, $voto, $note): ?bool
+    static function createRating($codicePresentazione, $codiceSessione, $voto, $note): bool
     {
+        Session::start();
         try{
+            $sql='no query';
             $sql = 'CALL insertRating(\''.Session::read('userName').'\',\''.$codicePresentazione.'\',\''.$codiceSessione.'\',\''. $voto .'\',\''.$note.'\');';
             $res = DbConn::getInstance() -> query($sql);
             $res -> closeCursor();
@@ -118,9 +98,46 @@ class DbConference
           <h4>Valutazione Inserita</h4> 
           ';
             return true;
-        } catch (PDOException $e) {
+        } catch (PDOException|ExpiredSessionException|Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
             return false;
-        } catch (ExpiredSessionException|Exception $e) {
+        }
+    }
+
+    public static function subscribeToConference($annoEdizione,$acronimoConferenza): bool
+    {
+        try {
+            $sql='no query';
+            $sql = 'CALL iscriviUtente(\''.Session::read('userName').'\',\''.$annoEdizione.'\',\''.$acronimoConferenza.'\')';
+            $res = DbConn::getInstance() -> query($sql);
+            $res -> closeCursor();
+            return true;
+        } catch (PDOException|ExpiredSessionException|Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
+    public static function checkSubcription($annoEdizione,$acronimoConferenza): ?bool
+    {
+        Session::start();
+        try {
+            $sql='no query';
+            $sql = 'CALL verificaIscrizione(\''.Session::read('userName').'\',\''.$acronimoConferenza.'\',\''.$annoEdizione.'\')';
+            $res = DbConn::getInstance() -> query($sql);
+            $output = $res->fetchAll(PDO::FETCH_ASSOC);
+            $res -> closeCursor();
+            if (sizeof($output) > 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (PDOException|ExpiredSessionException|Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql . '</b></p>';
+            echo $e;
             return null;
         }
     }
