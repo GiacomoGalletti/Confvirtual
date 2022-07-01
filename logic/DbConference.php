@@ -141,5 +141,21 @@ class DbConference
             return null;
         }
     }
+
+    public static function getConferenceSubscribed()
+    {
+        try {
+            $sql='no query';
+            $sql = 'CALL ritornaIscrizioniConferenze(\'' . Session::read('userName') . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $output = $res -> fetchAll(PDO::FETCH_ASSOC);
+            $res -> closeCursor();
+            return $output;
+        } catch (PDOException|ExpiredSessionException|Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql . '</b></p>';
+            echo $e;
+            return null;
+        }
+    }
 }
 

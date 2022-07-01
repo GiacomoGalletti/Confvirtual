@@ -470,3 +470,14 @@ BEGIN
     SELECT * FROM utenteregistrato WHERE in_userNameUtente = userNameUtente AND in_acronimoConferenza=acronimoConferenza AND in_annoEdizioneconferenza=annoEdizioneconferenza;
 END $$
 DELIMITER ;
+
+DROP VIEW IF EXISTS conferenzevalide;
+create view conferenzevalide as ( select * from CONFERENZA where (CONFERENZA.statoSvolgimento = 'attiva'));
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS ritornaIscrizioniConferenze $$
+CREATE PROCEDURE ritornaIscrizioniConferenze(IN in_userNameUtente varchar(50))
+BEGIN
+    select * from conferenzevalide,utenteregistrato where conferenzevalide.acronimo = utenteregistrato.acronimoConferenza and conferenzevalide.annoEdizione = utenteregistrato.annoEdizioneconferenza and in_userNameUtente = utenteregistrato.userNameUtente;
+END $$
+DELIMITER ;

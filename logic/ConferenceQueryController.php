@@ -38,4 +38,9 @@ class ConferenceQueryController
     {
         return DbConference::checkSubcription($annoEdizione,$acronimoConferenza);
     }
+
+    static function getConferenceSubscribed()
+    {
+        return DbConference::getConferenceSubscribed();
+    }
 }

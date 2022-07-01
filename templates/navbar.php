@@ -32,7 +32,7 @@ try {
                                 <div class="dropdown-menu" aria-labelledby="dropdown04">
                                     <a class="dropdown-item" href="/pages/futureconferences.php">Prossime confereze</a>
                                     <a class="dropdown-item" href="/pages/pastconferences.php">Conferenze passate</a>
-                                    <a class="dropdown-item" href="#">Iscrizioni</a>
+                                    <a class="dropdown-item" href="/pages/subscribedconferences.php">Iscrizioni</a>
                                     <a class="dropdown-item" href="/pages/admin/createconference.php">Crea una
                                         conferenza</a>
                                     <a class="dropdown-item" href="/pages/admin/myconferences.php">Le mie conferenze</a>

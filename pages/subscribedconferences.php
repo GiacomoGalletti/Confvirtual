@@ -23,7 +23,7 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
     {
         global $id;
         $id = 0;
-        foreach (ConferenceQueryController::getConferenceFuture() as $c) {
+        foreach (ConferenceQueryController::getConferenceSubscribed() as $c) {
             $srcImg = $c['immagineLogo'];
 
             echo '
@@ -41,11 +41,9 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
             if(!empty($srcImg)){
                 echo '<td><img id="currentPhoto" title="userImg personalizzata" width="60" height="80" src="'.$srcImg.'"> </td>';
             } else { echo '<td><img title="no img" width="60" height="80" src="/resources/images/noImgDefault.jpg" alt="default_img"></td>';}
-            if (ConferenceQueryController::checkSubcription($c['annoEdizione'],$c['acronimo'])) {
-                echo '<td><button type="submit" id="btn" name="conferencebtn" value ="'.$id.'" disabled >già iscritto</button></td>';
-            } else {
-                echo '<td><button type="submit" id="btn" name="conferencebtn" value ="'.$id.'">Iscriviti</button></td>';
-            }
+
+            echo '<td><button type="submit" id="btn" name="conferencebtn" value ="'.$id.'">Seleziona</button></td>';
+
             $id++;
         }
     }
@@ -58,7 +56,7 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h4 class="text-center mb-4">Programmazione Conferenze</h4>
+                            <h4 class="text-center mb-4">Le tue iscrizioni</h4>
                             <div class="table-wrap">
                                 <table class="table">
                                     <thead class="thead-primary">
