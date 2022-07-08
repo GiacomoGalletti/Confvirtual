@@ -9,15 +9,6 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
 <form method="post" action="/logic/subscribeconference.php">
     <?php
     include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
-    try {
-        if (Session::read('msg_subscription') != false) {
-            echo Session::read('msg_subscription');
-            Session::delete('msg_subscription');
-            Session::commit();
-        }
-    } catch (ExpiredSessionException|Exception $e) {
-        echo $e;
-    }
 
     function getConferences()
     {
