@@ -6,7 +6,7 @@ include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 ?>
 <body>
-<form method="post" action="/logic/subscribeconference.php">
+<form method="post" action="/pages/conferenceinfo.php">
     <?php
     include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 
@@ -18,8 +18,10 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
             $srcImg = $c['immagineLogo'];
 
             echo '
+                                <input type="hidden" name="nome[]" value="'.$c['nome'].'">
                                 <input type="hidden" name="acronimo[]" value="'.$c['acronimo'].'">
                                 <input type="hidden" name="annoEdizione[]" value="'.$c['annoEdizione'].'">
+                                <input type="hidden" name="immagineLogo[]" value="'.$c['immagineLogo'].'">
                                 <tr>
                                 <th>' . $c['acronimo'] . '</th> 
                                 <td>' . $c['nome'] . '</td>
@@ -30,7 +32,7 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
             }
             echo '<td>' . $string . '</td>';
             if(!empty($srcImg)){
-                echo '<td><img id="currentPhoto" title="userImg personalizzata" width="60" height="80" src="'.$srcImg.'"> </td>';
+                echo '<td><img id="currentPhoto" title="userImg personalizzata" width="60" height="80" src="'.$srcImg.'" alt="img personale"> </td>';
             } else { echo '<td><img title="no img" width="60" height="80" src="/resources/images/noImgDefault.jpg" alt="default_img"></td>';}
 
             echo '<td><button type="submit" id="btn" name="conferencebtn" value ="'.$id.'">Seleziona</button></td>';
