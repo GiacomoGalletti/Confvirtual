@@ -17,9 +17,7 @@ class DbPresentation
             } else
             {
                 echo '<pre>
-
-                <p>nessuna presentazione creata per la sessione selezionata.</p>   
-
+                <p>nessuna presentazione creata per la sessione codice: '.$codice_sessione.'</p>   
                 </pre>';
                 return null;
             }
@@ -92,6 +90,12 @@ class DbPresentation
         }
     }
 
+    /**
+     * @param $codice_presentazione
+     * @return array|false|null
+     *  prende in input il codice della presentazione e seleziona tutte le informazioni da articolo o tutorial in base
+     *  al tipo di presentazione a cui appartiene il codice in input
+     */
     public static function getPresentationInfo($codice_presentazione)
     {
         try
