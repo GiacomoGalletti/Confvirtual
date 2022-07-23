@@ -14,7 +14,7 @@ class DbConn {
 
             if(self::$currentDbConn == null)
             {
-                self::$currentDbConn = new DbConn(new PDO('mysql:host=127.0.0.1;dbname=confvirtual;charset=utf8','root','root'));
+                self::$currentDbConn = new DbConn(new PDO('mysql:host=127.0.0.1;dbname=confvirtual;charset=utf8','root','radice'));
 
             }
             return self::$currentDbConn::getPDO();

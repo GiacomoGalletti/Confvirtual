@@ -6,37 +6,33 @@
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/headWithRate.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/logic/SessioneQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/logic/debug.php", $_SERVER["DOCUMENT_ROOT"]));
 
+global $id;
+$id = 0;
+$index = $_POST['sessionbtn'];
+$acronimo = $_POST['array_acronimo'][$index];
+$annoEdizione = $_POST['array_annoEdizione'][$index];
+$rawdates = $_POST['dates'][$index];
+$arrayDate = array();
+$arrayDate = explode("%", $rawdates);
 ?>
-
-
 <body>
 <form method="post">
     <?php
     include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     ?>
 </form>
+<div class="container">
+    <form action="/logic/rateAdded.php" method = "post">
+        <h1>VOTAZIONE CONFERENZA</h1>
 
-<form action="rateAdded.php" method = "post">
-    <h1>VOTAZIONE CONFERENZA</h1>
+        <h3> Conferenza selezionata:</h3>
 
-    <h3> conferenza selezionata:</h3>
-
-    <?php
-
-    global $id;
-    $id = 0;
-    $index = $_POST['sessionbtn'];
-    $acronimo = $_POST['array_acronimo'][$index];
-    $annoEdizione = $_POST['array_annoEdizione'][$index];
-    $rawdates = $_POST['dates'][$index];
-
-    $arrayDate = array();
-    $arrayDate = explode("%", $rawdates);
-
-    pre_r($_POST);  // mio debug, da togliere
-
-    if (isset($_POST['sessionbtn'])) {
+        <?php
+        //pre_r($_POST);
 
         echo "acronimo conferenza: ".$acronimo.'<br />';
         echo "edizione: ".$annoEdizione.'<br />';
@@ -45,61 +41,66 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
         foreach($arrayDate as $dat){
             print $dat." ";
         }
-
-
-
-    }
-
-    ?>
-
-    <h3> inserire valutazione:</h3>
-
-    <fieldset class="rate">
-        <input type="radio" id="rating10" name="voto" value="10" /><label for="rating10" title="5 stars"></label>
-        <input type="radio" id="rating9" name="voto" value="9" /><label class="half" for="rating9" title="4 1/2 stars"></label>
-        <input type="radio" id="rating8" name="voto" value="8" /><label for="rating8" title="4 stars"></label>
-        <input type="radio" id="rating7" name="voto" value="7" /><label class="half" for="rating7" title="3 1/2 stars"></label>
-        <input type="radio" id="rating6" name="voto" value="6" /><label for="rating6" title="3 stars"></label>
-        <input type="radio" id="rating5" name="voto" value="5" /><label class="half" for="rating5" title="2 1/2 stars"></label>
-        <input type="radio" id="rating4" name="voto" value="4" /><label for="rating4" title="2 stars"></label>
-        <input type="radio" id="rating3" name="voto" value="3" /><label class="half" for="rating3" title="1 1/2 stars"></label>
-        <input type="radio" id="rating2" name="voto" value="2" /><label for="rating2" title="1 star"></label>
-        <input type="radio" id="rating1" name="voto" value="1" /><label class="half" for="rating1" title="1/2 star"></label>
-    </fieldset>
-    <br>
-    <label for="input_abstract_tutorial"> <h4>inserire note della valutazione: </h4> </label>
-    <br>
-    <textarea id="input_rate" class="form_rate" maxlength="50" name="note" rows="3" cols="50" placeholder="max 50 caratteri"></textarea>
-    <br>
-
-    <button name="submitRate" type="submit">salva valutazione</button>
-</form>
-
-<?php
-
-
-pre_r($_POST);  // mio debug, da togliere
-
-if(isset($_POST['submitRate'])){
-
-
-
-
-    $radioVal = $_POST['voto'];
-    $textVal = $_POST['note'];
-
-
-    DbConference::createRating($_POST["codicePresentazione"],$_POST["codiceSessione"],$_POST["voto"],$_POST["note"]);
-}
-?>
-
+        ?>
+        <br>
+        <br>
+        <h3>Selezione Presentazione</h3>
+        <select class="custom-select" id="inputGroupSelect04" name="dati_conferenza">
+            <?php receivePresentations($acronimo,$annoEdizione); ?>
+    </form>
+</div>
 </body>
+<?php
+function receivePresentations($acronimo,$annoEdizione)
+{
+    $codici_sessioni = SessioneQueryController::getSessions($acronimo,$annoEdizione);
+    if ($codici_sessioni != null){
+        //print('<h3>Codici sessioni:</h3>');
+        //print_r($codici_sessioni);
+        print('<option selected>Scegli la presentazione</option>');
+        foreach ($codici_sessioni as $cs) {
+            //print('<h3>CS:</h3>');
+            //print_r($cs);
+            $codici_presentazioni = PresentationQueryController::getAllPresentationInfo($cs['codice']);
+            //print('<h3>Codici presentazioni:</h3>');
+            //print_r($codici_presentazioni);
+            foreach ($codici_presentazioni as $cp) {
+                //print('<h3>CP:</h3>');
+                //print_r($cp);
+                $info_presentazione = PresentationQueryController::getPresentationInfo($cp['codice'])[0];
+                //print('<h3>info_presentazione:</h3>');
+                //print_r($info_presentazione);
+                print('<option value="'. $info_presentazione['tipoPresentazione'].','.$info_presentazione['titolo'] .'">'. '<b>TIPO: </b>' .$info_presentazione['tipoPresentazione'] . ' <b>  TITOLO: </b>' . $info_presentazione['titolo'] .'</option>');
+            }
 
+        }
+        //print('<br><br><h1>Printo CP:</h1>');
 
-<?php                                   //funzione debug post
-function pre_r($array){
-    echo '<pre>';
-    print_r($array);
-    echo '</pre>';
+        print('
+        </select>
+        <h3> inserire valutazione:</h3>
+
+        <fieldset class="rate">
+            <input type="radio" id="rating10" name="voto" value="10" /><label for="rating10" title="5 stars"></label>
+            <input type="radio" id="rating9" name="voto" value="9" /><label class="half" for="rating9" title="4 1/2 stars"></label>
+            <input type="radio" id="rating8" name="voto" value="8" /><label for="rating8" title="4 stars"></label>
+            <input type="radio" id="rating7" name="voto" value="7" /><label class="half" for="rating7" title="3 1/2 stars"></label>
+            <input type="radio" id="rating6" name="voto" value="6" /><label for="rating6" title="3 stars"></label>
+            <input type="radio" id="rating5" name="voto" value="5" /><label class="half" for="rating5" title="2 1/2 stars"></label>
+            <input type="radio" id="rating4" name="voto" value="4" /><label for="rating4" title="2 stars"></label>
+            <input type="radio" id="rating3" name="voto" value="3" /><label class="half" for="rating3" title="1 1/2 stars"></label>
+            <input type="radio" id="rating2" name="voto" value="2" /><label for="rating2" title="1 star"></label>
+            <input type="radio" id="rating1" name="voto" value="1" /><label class="half" for="rating1" title="1/2 star"></label>
+        </fieldset>
+        <br>
+        <label for="input_abstract_tutorial"> <h4>inserire note della valutazione: </h4> </label>
+        <br>
+        <textarea id="input_rate" class="form_rate" maxlength="50" name="note" rows="3" cols="50" placeholder="max 50 caratteri"></textarea>
+        <br>
+
+        <button name="submitRate" type="submit">salva valutazione</button>
+            ');
+    } else {
+        print('<p>Nessuna sessione in questa conferenza.</p>');
+    }
 }
-?>

@@ -16,6 +16,16 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
         $uName = null;
     }
 
+    try {
+        Session::start();
+        if (Session::read('msg_presentazione') != false) {
+            echo Session::read('msg_presentazione');
+            Session::delete('msg_presentazione');
+            Session::commit();
+        }
+    } catch (ExpiredSessionException|Exception $e) {
+        echo $e;
+    }
     function getConferencesAdmin($uName)
     {
         if ($uName != null) {

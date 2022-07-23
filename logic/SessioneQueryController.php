@@ -21,4 +21,5 @@ class SessioneQueryController
     {
         return DbSessione::getSessionsFromConfrernce($acronimo,$annoEdizione);
     }
+
 }

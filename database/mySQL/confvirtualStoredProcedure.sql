@@ -467,7 +467,8 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS verificaIscrizione $$
 CREATE PROCEDURE verificaIscrizione(IN in_userNameUtente varchar(50), IN in_acronimoConferenza varchar(50),IN in_annoEdizioneconferenza year)
 BEGIN
-    SELECT * FROM utenteregistrato WHERE in_userNameUtente = userNameUtente AND in_acronimoConferenza=acronimoConferenza AND in_annoEdizioneconferenza=annoEdizioneconferenza;
+    SELECT * FROM utenteregistrato
+    WHERE in_userNameUtente = userNameUtente AND in_acronimoConferenza=acronimoConferenza AND in_annoEdizioneconferenza=annoEdizioneconferenza;
 END $$
 DELIMITER ;
 

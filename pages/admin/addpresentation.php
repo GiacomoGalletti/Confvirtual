@@ -11,7 +11,6 @@ unset($_POST['abstract']);
 unset($_POST['orafine_presentazione']);
 unset($_POST['orainizio_presentazione']);
 
-print_r($_POST);
 include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
@@ -177,7 +176,10 @@ $article_tutorial_btn = 0;
             <input type="hidden" name="codice_sessione[]" value="<?php print $_POST['codice_sessione'][$i] ?>">
             <?php
         }
-        //con nessun articolo o tutorial presente arrayHours ha size 0 e non viene creato, resta "undefined"
+
+        if (sizeof($arrayHours)==0){
+            ?> <input type="hidden" name="arrayHours[]"> <?php
+        }
         for ($i = 0; $i<sizeof($arrayHours); $i++) {
             ?> <input type="hidden" name="arrayHours[]" value="<?php print $arrayHours[$i] ?>"> <?php
         }

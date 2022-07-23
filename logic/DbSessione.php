@@ -64,11 +64,11 @@ class DbSessione
                 return $output;
             } else
             {
-                echo '<pre>
-    
-                <p>nessuna sessione creata per la conferenza selezionata.</p>
-    
-                </pre>';
+//                echo '<pre>
+//
+//                <p>nessuna sessione creata per la conferenza selezionata.</p>
+//
+//                </pre>';
                 return null;
             }
         } catch (PDOException $e) {
