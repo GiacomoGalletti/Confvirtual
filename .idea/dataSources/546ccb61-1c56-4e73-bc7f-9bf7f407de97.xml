@@ -1311,7 +1311,7 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
     <routine id="361" parent="324" name="ritornaArticoli">
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
-      <SourceTextLength>207</SourceTextLength>
+      <SourceTextLength>95</SourceTextLength>
     </routine>
     <routine id="362" parent="324" name="ritornaConferenza">
       <Definer>root@localhost</Definer>
@@ -1361,12 +1361,12 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
     <routine id="371" parent="324" name="verificaIscrizione">
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
-      <SourceTextLength>184</SourceTextLength>
+      <SourceTextLength>188</SourceTextLength>
     </routine>
     <scheduled-event id="372" parent="324" name="cambioStatoConferenza">
       <Definer>root@localhost</Definer>
       <Interval>&apos;1&apos; SECOND</Interval>
-      <LastExecuted>2022-07-22.19:42:32</LastExecuted>
+      <LastExecuted>2022-07-25.12:43:41</LastExecuted>
       <SourceTextLength>382</SourceTextLength>
       <Starts>&apos;2022-07-22 17:42:31&apos;</Starts>
       <Status>enabled</Status>

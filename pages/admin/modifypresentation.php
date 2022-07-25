@@ -82,8 +82,8 @@ switch ($_POST['tipologia'][$index]) {
             <h4 class="conferenceInfo">Tutorial selezionato: </h4>
             <p class="conferenceInfo">
                 <?php
-                print ('giorno: ' . $_POST['data'] . ' numero di sequenza: ' . $_POST['numeroSequenza'][$index] . ', inizio: ' . $_POST['orainizio'][$index]
-                    . ', fine: ' . $_POST['orafine'][$index] . '</p>');
+                print ('giorno: ' . $_POST['data'] . ' numero di sequenza: ' . $_POST['numeroSequenza'][$index] . ', inizio: ' . $_POST['orainizio_sessione'][$index]
+                    . ', fine: ' . $_POST['orafine_sessione'][$index] . '</p>');
                 sendData();
                 ?>
             <table style="margin: 20px">

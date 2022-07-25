@@ -329,11 +329,8 @@ DROP PROCEDURE IF EXISTS ritornaArticoli $$
 CREATE PROCEDURE ritornaArticoli()
 BEGIN
     select *
-    from ARTICOLO
-    where (ARTICOLO.codicePresentazione,ARTICOLO.codiceSessione) not in (
-        select codicePresentazione,codiceSessione
-        from PRESENTAZIONEPRESENTER
-    );
+    from articolo
+    where (articolo.statoSvolgimento = 'non coperto');
 END $$
 DELIMITER ;
 

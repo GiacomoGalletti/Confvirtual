@@ -1,5 +1,7 @@
 <?php
 include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/DbConn.php");
+include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
+
 class DbConference
 {
     static function conferenceActive()

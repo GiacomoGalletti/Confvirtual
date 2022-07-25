@@ -43,4 +43,9 @@ class ConferenceQueryController
     {
         return DbConference::getConferenceSubscribed();
     }
+
+    static function createRating($codicePresentazione,$codiceSessione,$voto,$note)
+    {
+        return DbConference::createRating($codicePresentazione,$codiceSessione,$voto,$note);
+    }
 }

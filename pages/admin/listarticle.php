@@ -16,7 +16,7 @@ include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCU
         global $id;
         $id = 0;
         $selected_user = $_POST['username'][$_POST['btn']];
-        if (($articles = PresentationQueryController::getArticlesList($selected_user)) != null ) {
+        if (($articles = PresentationQueryController::getArticlesListUncovered()) != null ) {
             foreach ($articles as $r) {
                 rowArticlesInfo($r, $id);
                 $id++;

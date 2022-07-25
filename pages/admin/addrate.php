@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="it">
-
-
 <?php
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/headWithRate.html", $_SERVER["DOCUMENT_ROOT"]));
@@ -9,7 +7,7 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
 include_once (sprintf("%s/logic/SessioneQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/debug.php", $_SERVER["DOCUMENT_ROOT"]));
-
+print_r($_POST);
 global $id;
 $id = 0;
 $index = $_POST['sessionbtn'];
@@ -23,6 +21,16 @@ $arrayDate = explode("%", $rawdates);
 <form method="post">
     <?php
     include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+    try {
+        //Session::start();
+        if (Session::read('msg_presentazione') != false) {
+            echo Session::read('msg_presentazione');
+            Session::delete('msg_presentazione');
+            Session::commit();
+        }
+    } catch (ExpiredSessionException|Exception $e) {
+        echo $e;
+    }
     ?>
 </form>
 <div class="container">
@@ -32,11 +40,8 @@ $arrayDate = explode("%", $rawdates);
         <h3> Conferenza selezionata:</h3>
 
         <?php
-        //pre_r($_POST);
-
         echo "acronimo conferenza: ".$acronimo.'<br />';
         echo "edizione: ".$annoEdizione.'<br />';
-        //echo "data:".$arrayDate.'<br />';
         print "date: ";
         foreach($arrayDate as $dat){
             print $dat." ";
@@ -45,7 +50,7 @@ $arrayDate = explode("%", $rawdates);
         <br>
         <br>
         <h3>Selezione Presentazione</h3>
-        <select class="custom-select" id="inputGroupSelect04" name="dati_conferenza">
+        <select class="custom-select" id="inputGroupSelect04" name="dati_presentazione">
             <?php receivePresentations($acronimo,$annoEdizione); ?>
     </form>
 </div>
@@ -70,16 +75,19 @@ function receivePresentations($acronimo,$annoEdizione)
                 $info_presentazione = PresentationQueryController::getPresentationInfo($cp['codice'])[0];
                 //print('<h3>info_presentazione:</h3>');
                 //print_r($info_presentazione);
-                print('<option value="'. $info_presentazione['tipoPresentazione'].','.$info_presentazione['titolo'] .'">'. '<b>TIPO: </b>' .$info_presentazione['tipoPresentazione'] . ' <b>  TITOLO: </b>' . $info_presentazione['titolo'] .'</option>');
+                print('<option value="'. $info_presentazione['codicePresentazione'].','.$info_presentazione['codiceSessione'] .'">'. '<b>TIPO: </b>' .$info_presentazione['tipoPresentazione'] . ' <b>  TITOLO: </b>' . $info_presentazione['titolo'] .'</option>');
             }
 
         }
-        //print('<br><br><h1>Printo CP:</h1>');
-
+        for ($i=0;$i < sizeof($_POST['array_acronimo']); $i++) {
+            print('<input type="hidden" name="array_acronimo[]" value="'.$_POST['array_acronimo'][$i].'">');
+            print('<input type="hidden" name="array_annoEdizione[]" value="'.$_POST['array_annoEdizione'][$i].'">');
+            print('<input type="hidden" name="dates[]" value="'.$_POST['dates'][$i].'">');
+        }
         print('
         </select>
         <h3> inserire valutazione:</h3>
-
+        <input type="hidden" name="sessionbtn" value="'.$_POST['sessionbtn'].'">
         <fieldset class="rate">
             <input type="radio" id="rating10" name="voto" value="10" /><label for="rating10" title="5 stars"></label>
             <input type="radio" id="rating9" name="voto" value="9" /><label class="half" for="rating9" title="4 1/2 stars"></label>
@@ -97,7 +105,6 @@ function receivePresentations($acronimo,$annoEdizione)
         <br>
         <textarea id="input_rate" class="form_rate" maxlength="50" name="note" rows="3" cols="50" placeholder="max 50 caratteri"></textarea>
         <br>
-
         <button name="submitRate" type="submit">salva valutazione</button>
             ');
     } else {

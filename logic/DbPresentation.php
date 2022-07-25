@@ -113,10 +113,10 @@ class DbPresentation
         }
     }
 
-    public static function articlesList($userName)
+    public static function uncoveredArticlesList()
     {
         try {
-            $sql = 'CALL ritornaArticoli(\'' . $userName . '\');';
+            $sql = 'CALL ritornaArticoli();';
             $res = DbConn::getInstance()->query($sql);
             $output = $res -> fetchAll(PDO::FETCH_ASSOC);
             $res -> closeCursor();
