@@ -9,6 +9,18 @@ include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCU
 <form action="/logic/association_article_tutorial.php" method="post">
     <?php
     include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+
+    try {
+        Session::start();
+        if (Session::read('msg_sessione') != false) {
+            echo Session::read('msg_sessione');
+            Session::delete('msg_sessione');
+            Session::commit();
+        }
+    } catch (ExpiredSessionException|Exception $e) {
+        echo $e;
+    }
+
     $index = $_POST['btn'];
     $nome = $_POST['nome'][$index];
     $cognome = $_POST['cognome'][$index];
