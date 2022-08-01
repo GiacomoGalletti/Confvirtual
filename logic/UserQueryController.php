@@ -38,8 +38,18 @@ class UserQueryController
         return DbUser::login($username, $password);
     }
 
-    public static function userExists($userName, $psw): bool
+    static function userExists($userName, $psw): bool
     {
         return DbUser::userExists($userName, $psw);
+    }
+
+    static function getUserImgProfile($userName,$type)
+    {
+        return DbUser::getUserImgProfile($userName,$type);
+    }
+
+    public static function getUserType($userName)
+    {
+        return DbUser::getUserType($userName);
     }
 }

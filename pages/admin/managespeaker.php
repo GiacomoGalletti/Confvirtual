@@ -31,8 +31,8 @@ include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROO
                                 <tr>
                                 <td>';  if(isset($r['foto'])){ echo '<img title="userImg personalizzata" width="60" height="80" src="'. $r['foto'] .'">'; } else { echo '<img title="userImg default" width="60" height="80" src="/resources/images/defaultUserImg.jpg">';} echo '</td>
                                 <td><input type="hidden" name="username[]" value="' . $r['userName'] . '">' . $r['userName'] . '</td> 
-                                <td>' . setData($r['nome']) . '</td>
-                                <td>' . setData($r['cognome']) . '</td>
+                                <td><input type="hidden" name="nome[]" value="' . $r['nome'] . '">' . setData($r['nome']) . '</td>
+                                <td><input type="hidden" name="cognome[]" value="' . $r['cognome'] . '">' . setData($r['cognome']) . '</td>
                                 <td>' . setData($r['nomeUniversita']) . '</td>
                                 <td>' . setData($r['nomeDipartimento']) . '</td>
                                 <td><button type="submit" id="btn" name="btn" value="' . $id . '">Assegna Tutorial</button></td>

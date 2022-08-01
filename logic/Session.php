@@ -106,11 +106,30 @@ class Session
         }
     }
 
+    public static function status_dump(){
+        if(session_status() == 0) {
+            print '<br> STATUS DISABLED <br>';
+        }
+
+        if(session_status() == 1) {
+            print '<br> STATUS NAN <br>';
+        }
+
+        if(session_status() == 2) {
+            print '<br> STATUS ACTIVE <br>';
+        }
+    }
+
     private static function _init(): bool
     {
         if (session_id() === '') {
             return session_start();
         }
+
+        if(session_status() !== 2) {
+            session_start();
+        }
+
         return session_regenerate_id(true);
     }
 

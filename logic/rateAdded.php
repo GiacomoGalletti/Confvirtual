@@ -11,8 +11,8 @@ if(isset($_POST['submitRate'])){
                     '<div class="container" style="background-color: limegreen;opacity: 50"> <h4>
                     Voto inserito con successo.
                     </h4> </div>');
-                //header('HTTP/1.1 307 Temporary Redirect');
-                //header('Location: /pages/admin/myconferences.php');
+                header('HTTP/1.1 307 Temporary Redirect');
+                header('Location: /pages/admin/myconferences.php');
             } else {
                 Session::write('msg_presentazione',
                     '<div class="container" style="background-color: red;opacity: 50"> <h4>

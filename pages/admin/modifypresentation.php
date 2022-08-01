@@ -3,9 +3,6 @@ include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
-
-print_r($_POST);
-
 $index =  $_POST['article_tutorial_btn'];
 if (isset($_POST['download_btn'])) {
     $file = basename($_POST['filePDF'][$index]);
@@ -90,7 +87,7 @@ switch ($_POST['tipologia'][$index]) {
                 <tr>
                     <td>
                         <label for="titolo_tb"><b>Titolo</b><br>
-                            <input type="text" name="titolo_tb" maxlength="50" placeholder="<?php  print $_POST['titolo'][$index]; ?>" >
+                            <input type="text" name="titolo_new" maxlength="50" placeholder="<?php  print $_POST['titolo'][$index]; ?>" >
                         </label>
                     </td>
                 </tr>
@@ -104,7 +101,6 @@ switch ($_POST['tipologia'][$index]) {
             </table>
         </div>
 
-        <form method="post" action="/pages/admin/addpresentation.php">
             <?php sendData(); ?>
             <div class="container">
                 <table style="margin: 20px">
@@ -117,6 +113,7 @@ switch ($_POST['tipologia'][$index]) {
         </form>
         <?php
         break;
+
     default :
         header('Location: /pages/admin/addpresentation.php');
         break;

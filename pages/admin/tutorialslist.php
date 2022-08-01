@@ -5,19 +5,21 @@ include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 ?>
-
 <body>
-<form action="" method="post">
+<form action="/logic/association_article_tutorial.php" method="post">
     <?php
     include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+    $index = $_POST['btn'];
+    $nome = $_POST['nome'][$index];
+    $cognome = $_POST['cognome'][$index];
+    $username = $_POST['username'][$index];
 
-    function getTutorials()
+    function getTutorials($username)
     {
         global $id;
         $id = 0;
-        $selected_user = $_POST['username'][$_POST['btn']];
-        if (($articles = PresentationQueryController::getTutorialsList($selected_user)) != null ) {
-            foreach ($articles as $r) {
+        if (($tutorials = PresentationQueryController::getTutorialsList($username)) != null ) {
+            foreach ($tutorials as $r) {
                 rowTutorialsInfo($r, $id);
                 $id++;
             }
@@ -31,12 +33,25 @@ include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCU
                                 <td><input type="hidden" name="codicepresentazione[]" value="' . $r['codicePresentazione'] . '">' . $r['codicePresentazione'] . '</td> 
                                 <td><input type="hidden" name="codicesessione[]" value="' . $r['codiceSessione'] . '">' . $r['codiceSessione'] . '</td>
                                 <td><input type="hidden" name="titolo[]" value="' . $r['titolo'] . '">' . $r['titolo'] . '</td>
-                                <td><button type="submit" id="btn" name="promotion_btn1" value="' . $id . '">DA DEFINIRE</button></td>
+                                <td><button type="submit" id="btn" name="associationbtn" value="' . $id . '">ASSOCIA SPEAKER</button></td>
                             ';
+
+        for ( $i=0; $i<sizeof($_POST['username']); $i++) {
+            //echo '<h4>valore di $i: '. $i .'</h4>';
+            echo '
+                <input type="hidden" name="username[]" value="' . $_POST['username'][$i] . '"> 
+                <input type="hidden" name="nome[]" value="' . $_POST['nome'][$i] . '">
+                <input type="hidden" name="cognome[]" value="' . $_POST['cognome'][$i] . '">';
+        }
     }
     ?>
 
     <div class="container">
+        <h4>Speaker selezionato: </h4>
+        <p>
+            <?php print (' Nome: <b>' . $nome . '</b>, Cognome: <b>' . $cognome .'</b>, UserName: <b>' . $username .'</b>');
+            ?>
+        </p>
         <div class="row">
             <div class="col-md-12">
                 <h4 class="text-center mb-4">Lista Tutorial</h4>
@@ -50,9 +65,11 @@ include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCU
                             <th></th>
                         </tr>
                         </thead>
+                        <input type="hidden" name="tipo_presentazione" value="tutorial">
+                        <input type="hidden" name="btn" value="<?php print $_POST['btn'] ?>">
                         <tbody>
                         <?php
-                        getTutorials();
+                        getTutorials($username);
                         ?>
                         </tbody>
                     </table>

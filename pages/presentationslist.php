@@ -7,21 +7,23 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
 include_once (sprintf("%s/logic/SessioneQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 
-?><body><?php
-$index = $_POST['conferencebtn'];
+$index = $_POST['presentations_list_btn'];
 $srcImg = $_POST['immagineLogo'][$index];
 $nome = $_POST['nome'][$index];
 $anno_edizione = $_POST['annoEdizione'][$index];
 $acronimo = $_POST['acronimo'][$index];
+?>
 
-include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
-// all'inizio bisogna reperire tutti i codici delle sessioni riferiti alla conferenza selezionata
-?><div class="container"><?php
+<body>
+<div class="container">
+    <?php
     $array_sessioni = SessioneQueryController::getSessions($acronimo,$anno_edizione);
-    // ora posso andare a reperire gli articoli ed i tutorial di tutte le sessioni trovate
     ?>
 </div>
-<form method="post" action="/pages/chat.php">
+<form method="post" action="">
+    <?php
+    include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+    ?>
     <div class="container">
         <div style="margin-top: 40px">
             <div style="display: block">
@@ -54,9 +56,6 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
                             <p style="display: inline-block; margin-right: 80px"><?php print ( $a['codice'] ); ?></p>
                             <h4 style="display: inline-block; margin-right: 10px">Giorno: </h4>
                             <p style="display: inline-block; margin-right: 80px"><?php print ( $a['giornoData'] ); ?></p>
-                            <h4 style="display: inline-block; margin-right: 10px">Link stanza: </h4>
-                            <a style="display: inline-block; margin-right: 80px" href="<?php print ( $a['linkStanza'] ); ?>"> LINK TEAMS</a>
-                            <button style="display: inline-block;" type="submit" name="chatbtn" value="<?php print $a['codice'] ?>">vai alla chat</button>
                         </div>
                         <div class="table-wrap">
                             <table class="table">
@@ -67,21 +66,28 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
                                     <th>Tipologia</th>
                                     <th>Ora Inizio</th>
                                     <th>Ora Fine</th>
+                                    <th>Media Valutazioni</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($array_presentazione as $presentazione_corrente) {
-                                    $info_aticolo_tutorial = PresentationQueryController::getPresentationInfo($presentazione_corrente['codice'])[0]; ?>
-                                <tr>
-                                <td><?php  print $presentazione_corrente['numeroSequenza']?></td>
-                                <td><?php  print $info_aticolo_tutorial['titolo']?></td>
-                                <td><?php  print $info_aticolo_tutorial['tipoPresentazione']?></td>
-                                <td><?php  print $presentazione_corrente['oraInizio']?></td>
-                                <td><?php  print $presentazione_corrente['oraFine']?></td>
-                                <td></td>
-                                </tr>
-                                <?php } ?>
+                                    <?php
+                                        foreach ($array_presentazione as $presentazione_corrente) {
+                                        $info_aticolo_tutorial = PresentationQueryController::getPresentationInfo($presentazione_corrente['codice'])[0];
+                                        $media_valutazioni_presentazione = PresentationQueryController::getMediaValutazioniPresentazione($a['codice'], $presentazione_corrente['codice']);
+                                    ?>
+                                    <tr>
+                                        <td><?php  print $presentazione_corrente['numeroSequenza']?></td>
+                                        <td><?php  print $info_aticolo_tutorial['titolo']?></td>
+                                        <td><?php  print $info_aticolo_tutorial['tipoPresentazione']?></td>
+                                        <td><?php  print $presentazione_corrente['oraInizio']?></td>
+                                        <td><?php  print $presentazione_corrente['oraFine']?></td>
+                                        <td><?php  if ($media_valutazioni_presentazione[0]['mediaVoti'] == null) { print "nessuna valutazione";
+                                        } else { print round($media_valutazioni_presentazione[0]['mediaVoti']); }?></td>
+                                    </tr>
+                                    <?php
+                                        }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
@@ -94,7 +100,3 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     </div>
 </form>
 </body>
-<?php
-
-
-

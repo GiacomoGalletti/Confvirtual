@@ -131,4 +131,39 @@ class DbUser
         }
 
     }
+
+    public static function getUserImgProfile($userName,$type)
+    {
+        try{
+            $sql = 'CALL ritornaImmagineProfilo(\''.$userName . '\',\'' . $type .'\');';
+            $res = DbConn::getInstance() -> query($sql);
+            $output = $res -> fetchAll(PDO::FETCH_ASSOC);
+            $res -> closeCursor();
+            if (isset($output)) {
+                return null;
+            }
+            if ($output[0]['foto']===''){
+                return null;
+            }
+            return $output[0]['foto'];
+        } catch (Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return null;
+        }
+    }
+
+    public static function getUserType($userName)
+    {
+        try {
+            $sql = 'CALL checkUserType(\'' . $userName . '\');';
+            $res = DbConn::getInstance() -> query($sql);
+            $row = $res -> fetch();
+            return $row['res_type'];
+        } catch (Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
 }

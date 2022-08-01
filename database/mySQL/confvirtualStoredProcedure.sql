@@ -479,3 +479,64 @@ BEGIN
     select * from conferenzevalide,utenteregistrato where conferenzevalide.acronimo = utenteregistrato.acronimoConferenza and conferenzevalide.annoEdizione = utenteregistrato.annoEdizioneconferenza and in_userNameUtente = utenteregistrato.userNameUtente;
 END $$
 DELIMITER ;
+
+DELIMITER //
+drop procedure if exists associateSpeaker //
+CREATE PROCEDURE associateSpeaker(IN in_userNameUtente varchar(50),IN in_titoloTutorial varchar(50), IN in_codicePresentazione int, IN in_codiceSessione int)
+BEGIN
+    insert into presentazionespeaker (userNameUtente, titoloTutorial, codicePresentazione, codiceSessione) values (in_userNameUtente, in_titoloTutorial, in_codicePresentazione, in_codiceSessione);
+END //
+DELIMITER ;
+
+DELIMITER //
+drop procedure if exists associatePresenter //
+CREATE PROCEDURE associatePresenter(IN in_userNameUtente varchar(50),IN in_titoloArticolo varchar(50), IN in_codicePresentazione int, IN in_codiceSessione int)
+BEGIN
+    insert into presentazionepresenter (userNameUtente, titoloArticolo, codicePresentazione, codiceSessione) values (in_userNameUtente, in_titoloArticolo, in_codicePresentazione, in_codiceSessione);
+END //
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS ritornaMediaValutazioniPresentazione $$
+CREATE PROCEDURE ritornaMediaValutazioniPresentazione(IN in_codiceSessione int, IN in_codicePresentazione int)
+BEGIN
+    SELECT avg(voto) as mediaVoti
+    FROM valutazione
+    WHERE codiceSessione = in_codiceSessione and codicePresentazione = in_codicePresentazione;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS ritornaImmagineProfilo $$
+CREATE PROCEDURE ritornaImmagineProfilo(IN in_username varchar(50),IN tipo varchar(20))
+BEGIN
+    IF (tipo = 'speaker') THEN
+        select foto
+        from speaker
+        where userNameUtente = in_username;
+    ELSE IF (tipo = 'presenter') THEN
+        select foto
+        from presenter
+        where userNameUtente = in_username;
+    END IF;
+    END IF;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS ritornaMessaggi $$
+CREATE PROCEDURE ritornaMessaggi(IN in_codice_sessione int)
+BEGIN
+    select *
+    from messaggio
+    where messaggio.codiceSessione = in_codice_sessione;
+END $$
+DELIMITER ;
+
+DELIMITER //
+drop procedure if exists creaMessaggio //
+CREATE PROCEDURE creaMessaggio(IN in_codice_sessione int, IN in_userNameUtente varchar(50),IN in_messaggio varchar(500), IN in_data date)
+BEGIN
+    insert into messaggio (codiceSessione,userNameUtente,testo,dataInvio) values (in_codice_sessione,in_userNameUtente, in_messaggio, in_data);
+END //
+DELIMITER ;

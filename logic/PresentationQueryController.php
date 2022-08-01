@@ -46,4 +46,8 @@ class PresentationQueryController
     {
         return DbPresentation::modificaPresentazione($tipologia,$codice_presentazione, $codice_sessione,$titolo,$filePDF,$numero_pagine,$abstract);
     }
+
+    public static function getMediaValutazioniPresentazione($codice_sessione, $codice_presentazione){
+        return DbPresentation::mediaValutazioniPresentazione($codice_sessione, $codice_presentazione);
+    }
 }
