@@ -33,7 +33,7 @@ print_r($_POST);
     }
 
     if ($_POST['tipo_presentazione']==='articolo') {
-        if(PresentazionePresenterSpeakerController::associatePresenter()) {
+        if(PresentazionePresenterSpeakerController::associatePresenter($_POST['username'][$index_btn],$_POST['titolo'][$index],$_POST['codicepresentazione'][$index],$_POST['codicesessione'][$index])) {
             try {
                 Session::write('msg_sessione', '
                         <div class="container" style="background-color: limegreen;opacity: 50"> <h4>
@@ -48,11 +48,12 @@ print_r($_POST);
             } catch (ExpiredSessionException|Exception $e) {
                 echo $e;
             }
-            header('HTTP/1.1 307 Temporary Redirect');
-            header('Location: /pages/admin/listarticle.php');
-        }
 
+        }
         header('HTTP/1.1 307 Temporary Redirect');
-        header('Location: /index.php');
+        header('Location: /pages/admin/listarticle.php');
     }
 }
+
+header('HTTP/1.1 307 Temporary Redirect');
+header('Location: /index.php');
