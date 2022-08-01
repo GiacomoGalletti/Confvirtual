@@ -508,13 +508,13 @@ DELIMITER ;
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS ritornaImmagineProfilo $$
-CREATE PROCEDURE ritornaImmagineProfilo(IN in_username varchar(50),IN tipo varchar(20))
+CREATE PROCEDURE ritornaImmagineProfilo(IN in_username varchar(50),IN in_tipo varchar(20))
 BEGIN
-    IF (tipo = 'speaker') THEN
+    IF (in_tipo = 'speaker') THEN
         select foto
         from speaker
         where userNameUtente = in_username;
-    ELSE IF (tipo = 'presenter') THEN
+    ELSE IF (in_tipo = 'presenter') THEN
         select foto
         from presenter
         where userNameUtente = in_username;

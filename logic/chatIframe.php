@@ -11,12 +11,15 @@ include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROO
     $codice_sessione = $_POST['chatbtn'];
     foreach (ChatQueryController::getMessages($codice_sessione) as $m) {
         $userName_sender = $m['userNameUtente'];
-        $type_sender = UserQueryController::getUserType($userName_sender);
-        $foto = UserQueryController::getUserImgProfile($userName_sender,$type_sender);
-        if ($foto == null OR $foto == '') {
-            $foto = '/resources/images/noImgDefault.jpg';
-        }
+
         if (Session::read('userName') != $m['userNameUtente']) {
+
+            $type_sender = UserQueryController::getUserType($userName_sender);
+            $foto = UserQueryController::getUserImgProfile($userName_sender,$type_sender);
+            if ($foto == null OR $foto == '') {
+                $foto = '/resources/images/noImgDefault.jpg';
+            }
+
             print('
                      <div class="row messaggio">
                      <div class="col-1"></div>
@@ -28,6 +31,7 @@ include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROO
                       </div>
                     </div>');
         } else {
+            $foto = '/resources/images/adminDefaultImg.png';
             print('
                      <div class="row messaggio">
                      <div class="col-6"></div>

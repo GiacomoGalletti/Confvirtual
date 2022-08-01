@@ -139,7 +139,7 @@ class DbUser
             $res = DbConn::getInstance() -> query($sql);
             $output = $res -> fetchAll(PDO::FETCH_ASSOC);
             $res -> closeCursor();
-            if (isset($output)) {
+            if (!isset($output)) {
                 return null;
             }
             if ($output[0]['foto']===''){
