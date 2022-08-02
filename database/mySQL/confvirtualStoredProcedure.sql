@@ -540,3 +540,12 @@ BEGIN
     insert into messaggio (codiceSessione,userNameUtente,testo,dataInvio) values (in_codice_sessione,in_userNameUtente, in_messaggio, in_data);
 END //
 DELIMITER ;
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS ritornaAmministratori //
+CREATE PROCEDURE ritornaAmministratori()
+BEGIN
+    select *
+    from UTENTE join AMMINISTRATORE on UTENTE.userName = AMMINISTRATORE.userNameUtente;
+END //
+DELIMITER ;

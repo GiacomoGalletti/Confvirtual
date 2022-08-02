@@ -17,14 +17,25 @@ if (isset($_POST['presentationbtn']))
 {
     header("Location:/pages/admin/addpresentation.php");
 }
+include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 
 ?>
 <body>
 <!-- PRIMO FORM SOLO PER LA LISTA DELLE SESSIONI E PER SPOSTARSI IN CREAZIONE PRESENTAZIONE -->
+<div class="container">
+    <form method="post" action="adminlist.php">
+    <h4 style="display: inline;" class="conferenceInfo">Conferenza selezionata: </h4>
+    <p style="display: inline;" class="conferenceInfo">
+        <?php print (' acronimo ' . $acronimo . ', edizione ' . $annoEdizione);
+        $arrayDate = array();
+        $arrayDate = explode("%", $rawdates);
+        ?>
+    </p>
+
+        <button style="margin-left: 20px;vertical-align: text-top; display: inline; max-width: 250px;" name = "creaconferenzabtn" id="creaconferenzabtn" type="submit">Aggiungi Amministratore</button>
+    </form>
 <form method="post" action="/pages/admin/addpresentation.php">
     <?php
-    include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
-
     try {
         Session::start();
         if (Session::read('msg_sessione') != false) {
@@ -35,17 +46,6 @@ if (isset($_POST['presentationbtn']))
     } catch (ExpiredSessionException|Exception $e) {
         echo $e;
     }
-
-    ?>
-    <div class="container">
-        <h4 class="conferenceInfo">Conferenza selezionata: </h4>
-        <p class="conferenceInfo">
-            <?php print (' acronimo ' . $acronimo . ', edizione ' . $annoEdizione);
-            $arrayDate = array();
-            $arrayDate = explode("%", $rawdates);
-            ?>
-        </p>
-        <?php
         if (($sessions = SessioneQueryController::getSessions($acronimo,$annoEdizione)) != null)
         {
             echo '

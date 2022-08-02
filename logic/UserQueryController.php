@@ -18,6 +18,11 @@ class UserQueryController
         return DbUser::SpeakerList();
     }
 
+    static function getAdministratorList()
+    {
+        return DbUser::AdministratorList();
+    }
+
     static function promoteUserToSpeaker($username): bool
     {
         return DbUser::promotionToSpeaker($username);

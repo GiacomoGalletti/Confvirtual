@@ -166,4 +166,19 @@ class DbUser
             return false;
         }
     }
+
+    public static function AdministratorList()
+    {
+        try {
+            $sql = 'CALL ritornaAmministratori();';
+            $res = DbConn::getInstance() -> query($sql);
+            $output = $res -> fetchAll(PDO::FETCH_ASSOC);
+            $res -> closeCursor();
+            return $output;
+        } catch (Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
 }
