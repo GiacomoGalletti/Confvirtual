@@ -7,7 +7,6 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
 include_once (sprintf("%s/logic/SessioneQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/debug.php", $_SERVER["DOCUMENT_ROOT"]));
-print_r($_POST);
 global $id;
 $id = 0;
 $index = $_POST['sessionbtn'];
@@ -73,11 +72,12 @@ function receivePresentations($acronimo,$annoEdizione)
                 //print('<h3>CP:</h3>');
                 //print_r($cp);
                 $info_presentazione = PresentationQueryController::getPresentationInfo($cp['codice'])[0];
-                //print('<h3>info_presentazione:</h3>');
-                //print_r($info_presentazione);
-                print('<option value="'. $info_presentazione['codicePresentazione'].','.$info_presentazione['codiceSessione'] .'">'. '<b>TIPO: </b>' .$info_presentazione['tipoPresentazione'] . ' <b>  TITOLO: </b>' . $info_presentazione['titolo'] .'</option>');
+                print('<h3>info_presentazione:</h3>');
+                print_r($info_presentazione);
+                if (PresentationQueryController::checkCoveredPresentation($info_presentazione['codicePresentazione'], $info_presentazione['codiceSessione'],$info_presentazione['tipoPresentazione'])) {
+                    print('<option value="'. $info_presentazione['codicePresentazione'].','.$info_presentazione['codiceSessione'] .'">'. '<b>TIPO: </b>' .$info_presentazione['tipoPresentazione'] . ' <b>  TITOLO: </b>' . $info_presentazione['titolo'] .'</option>');
+                }
             }
-
         }
         for ($i=0;$i < sizeof($_POST['array_acronimo']); $i++) {
             print('<input type="hidden" name="array_acronimo[]" value="'.$_POST['array_acronimo'][$i].'">');

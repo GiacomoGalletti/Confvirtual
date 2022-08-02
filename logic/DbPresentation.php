@@ -236,4 +236,25 @@ class DbPresentation
         }
     }
 
+    public static function checkCoveredPresentation($codicePresentazione, $codiceSessione, $tipo) : ?bool
+    {
+        try {
+            //$tipo: articolo tutorial
+            $sql = 'CALL controlloCoperturaPresentazioni(\'' . $codicePresentazione . '\',\'' . $codiceSessione . '\',\''  .  $tipo . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $output = $res -> fetchAll(PDO::FETCH_ASSOC);
+            $res -> closeCursor();
+            if (sizeof($output)>0){
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return null;
+        }
+    }
+
 }

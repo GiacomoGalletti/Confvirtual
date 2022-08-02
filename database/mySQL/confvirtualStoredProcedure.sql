@@ -549,3 +549,20 @@ BEGIN
     from UTENTE join AMMINISTRATORE on UTENTE.userName = AMMINISTRATORE.userNameUtente;
 END //
 DELIMITER ;
+
+DELIMITER $$
+drop procedure if exists controlloCoperturaPresentazioni $$
+CREATE PROCEDURE controlloCoperturaPresentazioni(IN in_codice_presentazione int, IN in_codice_sessione int, IN in_tipo varchar(20))
+BEGIN
+    IF (in_tipo = 'articolo') THEN
+        SELECT *
+        FROM PRESENTAZIONEPRESENTER
+        WHERE in_codice_presentazione = PRESENTAZIONEPRESENTER.codicePresentazione AND in_codice_sessione = PRESENTAZIONEPRESENTER.codiceSessione;
+    ELSE IF (in_tipo = 'tutorial') THEN
+        SELECT *
+        FROM PRESENTAZIONESPEAKER
+        WHERE in_codice_presentazione = PRESENTAZIONESPEAKER.codicePresentazione AND in_codice_sessione = PRESENTAZIONESPEAKER.codiceSessione;
+    END IF;
+    END IF;
+END $$
+DELIMITER ;

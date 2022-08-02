@@ -50,4 +50,9 @@ class PresentationQueryController
     public static function getMediaValutazioniPresentazione($codice_sessione, $codice_presentazione){
         return DbPresentation::mediaValutazioniPresentazione($codice_sessione, $codice_presentazione);
     }
+
+    public static function checkCoveredPresentation($codicePresentazione, $codiceSessione, $tipo): ?bool
+    {
+        return DbPresentation::checkCoveredPresentation($codicePresentazione, $codiceSessione, $tipo);
+    }
 }
