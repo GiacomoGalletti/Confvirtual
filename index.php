@@ -1,5 +1,6 @@
 <?php
 include_once(sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once(sprintf("%s/logic/StatsQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 echo '
 <!DOCTYPE html>
 <html lang="it">
@@ -7,9 +8,36 @@ echo '
 include_once(sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 ?>
 <body>
+
 <form method="post">
     <?php
     include_once(sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+    ?>
+
+    <div class="container">
+    <!-- statistiche visibili a tutti. -->
+
+     <h3> Statistiche Confvirtual:</h3>
+
+        <?php
+        $confRegitrate= StatsQueryController::getContaConferenzeRegistrate() ;
+        $confAttive= StatsQueryController::getContaConferenzeAttive();
+        $utRegistrati= StatsQueryController::getContaUtentiTotali();
+       // print_r($confRegitrate);
+
+        echo "<p1>Tot. conferenze registrate: </p1>".$confRegitrate[0]['numConferenzeRegistrate'].'<br />';
+        echo "<p1>Tot. conferenze attive: </p1>".$confAttive[0]['numConferenzeAttive'].'<br />';
+        echo "<p1>Tot. utenti registrati: </p1>".$utRegistrati[0]['numUtentiTotali'].'<br />';
+
+
+        ?>
+    <h3> classifica presenter e speaker:</h3>
+
+    </div>
+
+
+
+    <?php
     try {
         switch (Session::read('type')) {
             case 'amministratore': ?>
@@ -85,5 +113,6 @@ include_once(sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
     }
     ?>
 </form>
+
 </body>
 </html>
