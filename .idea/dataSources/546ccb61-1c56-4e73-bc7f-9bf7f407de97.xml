@@ -1353,82 +1353,146 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
       <RoutineKind>procedure</RoutineKind>
       <SourceTextLength>155</SourceTextLength>
     </routine>
+<<<<<<< Updated upstream
     <routine id="370" parent="324" name="ritornaAmministratori">
+=======
+    <routine id="364" parent="324" name="ritornaAmministratori">
+>>>>>>> Stashed changes
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
       <SourceTextLength>110</SourceTextLength>
     </routine>
+<<<<<<< Updated upstream
     <routine id="371" parent="324" name="ritornaArticoli">
+=======
+    <routine id="365" parent="324" name="ritornaArticoli">
+>>>>>>> Stashed changes
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
       <SourceTextLength>95</SourceTextLength>
     </routine>
+<<<<<<< Updated upstream
     <routine id="372" parent="324" name="ritornaConferenza">
+=======
+    <routine id="366" parent="324" name="ritornaConferenza">
+>>>>>>> Stashed changes
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
       <SourceTextLength>136</SourceTextLength>
     </routine>
+<<<<<<< Updated upstream
     <routine id="373" parent="324" name="ritornaConferenzeFuture">
+=======
+    <routine id="367" parent="324" name="ritornaConferenzeFuture">
+>>>>>>> Stashed changes
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
       <SourceTextLength>94</SourceTextLength>
     </routine>
+<<<<<<< Updated upstream
     <routine id="374" parent="324" name="ritornaConferenzePassate">
+=======
+    <routine id="368" parent="324" name="ritornaConferenzePassate">
+>>>>>>> Stashed changes
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
       <SourceTextLength>98</SourceTextLength>
     </routine>
+<<<<<<< Updated upstream
     <routine id="375" parent="324" name="ritornaGiorniConferenza">
+=======
+    <routine id="369" parent="324" name="ritornaGiorniConferenza">
+>>>>>>> Stashed changes
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
       <SourceTextLength>184</SourceTextLength>
     </routine>
+<<<<<<< Updated upstream
     <routine id="376" parent="324" name="ritornaImmagineProfilo">
+=======
+    <routine id="370" parent="324" name="ritornaImmagineProfilo">
+>>>>>>> Stashed changes
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
       <SourceTextLength>280</SourceTextLength>
     </routine>
+<<<<<<< Updated upstream
     <routine id="377" parent="324" name="ritornaIscrizioniConferenze">
+=======
+    <routine id="371" parent="324" name="ritornaIscrizioniConferenze">
+>>>>>>> Stashed changes
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
       <SourceTextLength>264</SourceTextLength>
     </routine>
+<<<<<<< Updated upstream
     <routine id="378" parent="324" name="ritornaMediaValutazioniPresentazione">
+=======
+    <routine id="372" parent="324" name="ritornaMediaValutazioniPresentazione">
+>>>>>>> Stashed changes
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
       <SourceTextLength>159</SourceTextLength>
     </routine>
+<<<<<<< Updated upstream
     <routine id="379" parent="324" name="ritornaMessaggi">
+=======
+    <routine id="373" parent="324" name="ritornaMessaggi">
+>>>>>>> Stashed changes
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
       <SourceTextLength>98</SourceTextLength>
     </routine>
+<<<<<<< Updated upstream
     <routine id="380" parent="324" name="ritornaPresenter">
+=======
+    <routine id="374" parent="324" name="ritornaPresenter">
+>>>>>>> Stashed changes
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
       <SourceTextLength>157</SourceTextLength>
     </routine>
+<<<<<<< Updated upstream
     <routine id="381" parent="324" name="ritornaSpeaker">
+=======
+    <routine id="375" parent="324" name="ritornaSpeaker">
+>>>>>>> Stashed changes
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
       <SourceTextLength>153</SourceTextLength>
     </routine>
+<<<<<<< Updated upstream
     <routine id="382" parent="324" name="ritornaTutorial">
+=======
+    <routine id="376" parent="324" name="ritornaTutorial">
+>>>>>>> Stashed changes
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
       <SourceTextLength>275</SourceTextLength>
     </routine>
+<<<<<<< Updated upstream
     <routine id="383" parent="324" name="ritornaUtenti">
+=======
+    <routine id="377" parent="324" name="ritornaUtenti">
+>>>>>>> Stashed changes
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
       <SourceTextLength>210</SourceTextLength>
     </routine>
+<<<<<<< Updated upstream
     <routine id="384" parent="324" name="verificaIscrizione">
+=======
+    <routine id="378" parent="324" name="verificaIscrizione">
+>>>>>>> Stashed changes
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
       <SourceTextLength>188</SourceTextLength>
     </routine>
+<<<<<<< Updated upstream
     <scheduled-event id="385" parent="324" name="cambioStatoConferenza">
+=======
+    <scheduled-event id="379" parent="324" name="cambioStatoConferenza">
+>>>>>>> Stashed changes
       <Definer>root@localhost</Definer>
       <Interval>&apos;1&apos; SECOND</Interval>
       <LastExecuted>2022-07-28.23:44:48</LastExecuted>
@@ -1436,6 +1500,7 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
       <Starts>&apos;2022-07-22 17:42:31&apos;</Starts>
       <Status>enabled</Status>
     </scheduled-event>
+<<<<<<< Updated upstream
     <table id="386" parent="324" name="amministratore">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_general_ci</CollationName>
@@ -1521,70 +1586,206 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
       <SourceTextLength>467</SourceTextLength>
     </view>
     <table id="407" parent="326" name="column_stats">
+=======
+    <table id="380" parent="324" name="amministratore">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="381" parent="324" name="articolo">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="382" parent="324" name="autore">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="383" parent="324" name="conferenza">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="384" parent="324" name="creatoriconferenza">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="385" parent="324" name="dataconferenza">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="386" parent="324" name="messaggio">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="387" parent="324" name="parolachiave">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="388" parent="324" name="presentazione">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="389" parent="324" name="presentazionepresenter">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="390" parent="324" name="presentazionespeaker">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="391" parent="324" name="presenter">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="392" parent="324" name="sessione">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="393" parent="324" name="speaker">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="394" parent="324" name="sponsor">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="395" parent="324" name="sponsorizzazioni">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="396" parent="324" name="tutorial">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="397" parent="324" name="utente">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="398" parent="324" name="utenteregistrato">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="399" parent="324" name="valutazione">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <view id="400" parent="324" name="conferenzevalide">
+      <Definer>root@localhost</Definer>
+      <SourceTextLength>467</SourceTextLength>
+    </view>
+    <table id="401" parent="326" name="column_stats">
+>>>>>>> Stashed changes
       <Comment>Statistics on Columns</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_bin</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="408" parent="326" name="columns_priv">
+=======
+    <table id="402" parent="326" name="columns_priv">
+>>>>>>> Stashed changes
       <Comment>Column privileges</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_bin</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="409" parent="326" name="db">
+=======
+    <table id="403" parent="326" name="db">
+>>>>>>> Stashed changes
       <Comment>Database privileges</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_bin</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="410" parent="326" name="event">
+=======
+    <table id="404" parent="326" name="event">
+>>>>>>> Stashed changes
       <Comment>Events</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_general_ci</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="411" parent="326" name="func">
+=======
+    <table id="405" parent="326" name="func">
+>>>>>>> Stashed changes
       <Comment>User defined functions</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_bin</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="412" parent="326" name="general_log">
+=======
+    <table id="406" parent="326" name="general_log">
+>>>>>>> Stashed changes
       <Comment>General log</Comment>
       <Engine>CSV</Engine>
       <CollationName>utf8_general_ci</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="413" parent="326" name="global_priv">
+=======
+    <table id="407" parent="326" name="global_priv">
+>>>>>>> Stashed changes
       <Comment>Users and global privileges</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_bin</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="414" parent="326" name="gtid_slave_pos">
+=======
+    <table id="408" parent="326" name="gtid_slave_pos">
+>>>>>>> Stashed changes
       <Comment>Replication slave GTID position</Comment>
       <Engine>InnoDB</Engine>
       <CollationName>latin1_swedish_ci</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="415" parent="326" name="help_category">
+=======
+    <table id="409" parent="326" name="help_category">
+>>>>>>> Stashed changes
       <Comment>help categories</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_general_ci</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="416" parent="326" name="help_keyword">
+=======
+    <table id="410" parent="326" name="help_keyword">
+>>>>>>> Stashed changes
       <Comment>help keywords</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_general_ci</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="417" parent="326" name="help_relation">
+=======
+    <table id="411" parent="326" name="help_relation">
+>>>>>>> Stashed changes
       <Comment>keyword-topic relation</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_general_ci</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="418" parent="326" name="help_topic">
+=======
+    <table id="412" parent="326" name="help_topic">
+>>>>>>> Stashed changes
       <Comment>help topics</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_general_ci</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="419" parent="326" name="index_stats">
+=======
+    <table id="413" parent="326" name="index_stats">
+>>>>>>> Stashed changes
       <Comment>Statistics on Indexes</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_bin</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="420" parent="326" name="innodb_index_stats">
       <Engine>InnoDB</Engine>
       <CollationName>utf8_bin</CollationName>
@@ -1594,75 +1795,139 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
       <CollationName>utf8_bin</CollationName>
     </table>
     <table id="422" parent="326" name="plugin">
+=======
+    <table id="414" parent="326" name="innodb_index_stats">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8_bin</CollationName>
+    </table>
+    <table id="415" parent="326" name="innodb_table_stats">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8_bin</CollationName>
+    </table>
+    <table id="416" parent="326" name="plugin">
+>>>>>>> Stashed changes
       <Comment>MySQL plugins</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_general_ci</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="423" parent="326" name="proc">
+=======
+    <table id="417" parent="326" name="proc">
+>>>>>>> Stashed changes
       <Comment>Stored Procedures</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_general_ci</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="424" parent="326" name="procs_priv">
+=======
+    <table id="418" parent="326" name="procs_priv">
+>>>>>>> Stashed changes
       <Comment>Procedure privileges</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_bin</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="425" parent="326" name="proxies_priv">
+=======
+    <table id="419" parent="326" name="proxies_priv">
+>>>>>>> Stashed changes
       <Comment>User proxy privileges</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_bin</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="426" parent="326" name="roles_mapping">
+=======
+    <table id="420" parent="326" name="roles_mapping">
+>>>>>>> Stashed changes
       <Comment>Granted roles</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_bin</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="427" parent="326" name="servers">
+=======
+    <table id="421" parent="326" name="servers">
+>>>>>>> Stashed changes
       <Comment>MySQL Foreign Servers table</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_general_ci</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="428" parent="326" name="slow_log">
+=======
+    <table id="422" parent="326" name="slow_log">
+>>>>>>> Stashed changes
       <Comment>Slow log</Comment>
       <Engine>CSV</Engine>
       <CollationName>utf8_general_ci</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="429" parent="326" name="table_stats">
+=======
+    <table id="423" parent="326" name="table_stats">
+>>>>>>> Stashed changes
       <Comment>Statistics on Tables</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_bin</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="430" parent="326" name="tables_priv">
+=======
+    <table id="424" parent="326" name="tables_priv">
+>>>>>>> Stashed changes
       <Comment>Table privileges</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_bin</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="431" parent="326" name="time_zone">
+=======
+    <table id="425" parent="326" name="time_zone">
+>>>>>>> Stashed changes
       <Comment>Time zones</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_general_ci</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="432" parent="326" name="time_zone_leap_second">
+=======
+    <table id="426" parent="326" name="time_zone_leap_second">
+>>>>>>> Stashed changes
       <Comment>Leap seconds information for time zones</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_general_ci</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="433" parent="326" name="time_zone_name">
+=======
+    <table id="427" parent="326" name="time_zone_name">
+>>>>>>> Stashed changes
       <Comment>Time zone names</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_general_ci</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="434" parent="326" name="time_zone_transition">
+=======
+    <table id="428" parent="326" name="time_zone_transition">
+>>>>>>> Stashed changes
       <Comment>Time zone transitions</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_general_ci</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="435" parent="326" name="time_zone_transition_type">
+=======
+    <table id="429" parent="326" name="time_zone_transition_type">
+>>>>>>> Stashed changes
       <Comment>Time zone transition types</Comment>
       <Engine>Aria</Engine>
       <CollationName>utf8_general_ci</CollationName>
     </table>
+<<<<<<< Updated upstream
     <table id="436" parent="326" name="transaction_registry">
       <Engine>InnoDB</Engine>
       <CollationName>utf8_bin</CollationName>
@@ -2132,36 +2397,528 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
       <Position>3</Position>
     </argument>
     <column id="553" parent="386" name="userNameUtente">
+=======
+    <table id="430" parent="326" name="transaction_registry">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8_bin</CollationName>
+    </table>
+    <view id="431" parent="326" name="user">
+      <Definer>root@localhost</Definer>
+      <SourceTextLength>4366</SourceTextLength>
+    </view>
+    <argument id="432" parent="333" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="433" parent="333" name="in_oraInizio">
+      <DataType>time|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="434" parent="333" name="in_oraFine">
+      <DataType>time|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="435" parent="333" name="in_titolo">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="436" parent="333" name="in_filePdf">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>5</Position>
+    </argument>
+    <argument id="437" parent="333" name="in_numeroPagine">
+      <DataType>int(11)|0s</DataType>
+      <Position>6</Position>
+    </argument>
+    <argument id="438" parent="334" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="439" parent="334" name="in_oraInizio">
+      <DataType>time|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="440" parent="334" name="in_oraFine">
+      <DataType>time|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="441" parent="334" name="in_titolo">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="442" parent="334" name="in_abstract">
+      <DataType>varchar(500)|0s</DataType>
+      <Position>5</Position>
+    </argument>
+    <argument id="443" parent="335" name="in_giorno">
+      <DataType>date|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="444" parent="335" name="in_annoEdizione">
+      <DataType>year(4)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="445" parent="335" name="in_acronimo">
+      <DataType>varchar(10)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="446" parent="336" name="in_userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="447" parent="336" name="in_titoloArticolo">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="448" parent="336" name="in_codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="449" parent="336" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="450" parent="337" name="in_userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="451" parent="337" name="in_titoloTutorial">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="452" parent="337" name="in_codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="453" parent="337" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="454" parent="338" name="in_userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="455" parent="338" name="in_titoloArticolo">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="456" parent="338" name="in_codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="457" parent="338" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="458" parent="339" name="in_userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="459" parent="339" name="in_titoloTutorial">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="460" parent="339" name="in_codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="461" parent="339" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="462" parent="340" name="in_userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="463" parent="340" name="in_codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="464" parent="340" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="465" parent="341" name="nomeUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="466" parent="341" name="pswd">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="467" parent="342" name="nomeUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="468" parent="343" name="in_codice_sessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="469" parent="343" name="in_userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="470" parent="343" name="in_messaggio">
+      <DataType>varchar(500)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="471" parent="343" name="in_data">
+      <DataType>date|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="472" parent="344" name="in_nome">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="473" parent="344" name="in_immagineLogo">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="474" parent="345" name="in_importo">
+      <DataType>double|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="475" parent="345" name="in_annoEdizione">
+      <DataType>year(4)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="476" parent="345" name="in_acronimo">
+      <DataType>varchar(10)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="477" parent="345" name="in_nome">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="478" parent="346" name="in_codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="479" parent="346" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="480" parent="346" name="in_titolo">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="481" parent="346" name="in_filePdf">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="482" parent="346" name="in_numeroPagine">
+      <DataType>int(11)|0s</DataType>
+      <Position>5</Position>
+    </argument>
+    <argument id="483" parent="347" name="in_annoEdizione">
+      <DataType>year(4)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="484" parent="347" name="in_acronimo">
+      <DataType>varchar(10)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="485" parent="347" name="in_immagineLogo">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="486" parent="347" name="in_nome">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="487" parent="347" name="in_userName">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>5</Position>
+    </argument>
+    <argument id="488" parent="348" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="489" parent="348" name="in_oraInizio">
+      <DataType>time|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="490" parent="348" name="in_oraFine">
+      <DataType>time|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="491" parent="349" name="in_oraInizio">
+      <DataType>time|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="492" parent="349" name="in_oraFine">
+      <DataType>time|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="493" parent="349" name="in_titolo">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="494" parent="349" name="in_linkStanza">
+      <DataType>varchar(360)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="495" parent="349" name="in_giornoData">
+      <DataType>date|0s</DataType>
+      <Position>5</Position>
+    </argument>
+    <argument id="496" parent="349" name="in_annoEdizioneConferenza">
+      <DataType>year(4)|0s</DataType>
+      <Position>6</Position>
+    </argument>
+    <argument id="497" parent="349" name="in_acronimoConferenza">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>7</Position>
+    </argument>
+    <argument id="498" parent="350" name="in_codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="499" parent="350" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="500" parent="350" name="in_titolo">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="501" parent="350" name="in_abstract">
+      <DataType>varchar(500)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="502" parent="351" name="in_codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="503" parent="351" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="504" parent="352" name="in_nome">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="505" parent="353" name="userName">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="506" parent="354" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="507" parent="355" name="in_codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="508" parent="356" name="in_acronimoConferenza">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="509" parent="356" name="in_annoEdizioneConferenza">
+      <DataType>year(4)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="510" parent="357" name="in_usernameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="511" parent="357" name="in_codicePresentaione">
+      <DataType>int(11)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="512" parent="357" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="513" parent="357" name="in_voto">
+      <DataType>int(11)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="514" parent="357" name="in_note">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>5</Position>
+    </argument>
+    <argument id="515" parent="358" name="in_userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="516" parent="358" name="in_acronimoConferenza">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="517" parent="358" name="in_annoEdizioneconferenza">
+      <DataType>year(4)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="518" parent="359" name="tipo">
+      <DataType>varchar(20)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="519" parent="359" name="in_codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="520" parent="359" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="521" parent="359" name="in_titolo">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="522" parent="359" name="in_filePdf">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>5</Position>
+    </argument>
+    <argument id="523" parent="359" name="in_numeroPagine">
+      <DataType>int(11)|0s</DataType>
+      <Position>6</Position>
+    </argument>
+    <argument id="524" parent="359" name="in_abstract">
+      <DataType>varchar(500)|0s</DataType>
+      <Position>7</Position>
+    </argument>
+    <argument id="525" parent="361" name="in_userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="526" parent="362" name="in_userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="527" parent="363" name="inUnserName">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="528" parent="363" name="inName">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="529" parent="363" name="inSurname">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="530" parent="363" name="inPswd">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>4</Position>
+    </argument>
+    <argument id="531" parent="363" name="inBirthPlace">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>5</Position>
+    </argument>
+    <argument id="532" parent="363" name="inBirthday">
+      <DataType>date|0s</DataType>
+      <Position>6</Position>
+    </argument>
+    <argument id="533" parent="366" name="in_acronimo">
+      <DataType>varchar(10)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="534" parent="366" name="in_annoEdizione">
+      <DataType>year(4)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="535" parent="369" name="in_acronimo">
+      <DataType>varchar(10)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="536" parent="369" name="in_annoEdizioneConferenza">
+      <DataType>year(4)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="537" parent="370" name="in_username">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="538" parent="370" name="in_tipo">
+      <DataType>varchar(20)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="539" parent="371" name="in_userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="540" parent="372" name="in_codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="541" parent="372" name="in_codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="542" parent="373" name="in_codice_sessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="543" parent="376" name="in_userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="544" parent="378" name="in_userNameUtente">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="545" parent="378" name="in_acronimoConferenza">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="546" parent="378" name="in_annoEdizioneconferenza">
+      <DataType>year(4)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <column id="547" parent="380" name="userNameUtente">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <foreign-key id="554" parent="386" name="amministratore_ibfk_1">
+=======
+    <foreign-key id="548" parent="380" name="amministratore_ibfk_1">
+>>>>>>> Stashed changes
       <ColNames>userNameUtente</ColNames>
       <OnDelete>cascade</OnDelete>
       <RefColNames>userName</RefColNames>
       <RefTableName>utente</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <key id="555" parent="386" name="PRIMARY">
+=======
+    <key id="549" parent="380" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>userNameUtente</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="556" parent="387" name="codicePresentazione">
+=======
+    <column id="550" parent="381" name="codicePresentazione">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="557" parent="387" name="codiceSessione">
+=======
+    <column id="551" parent="381" name="codiceSessione">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="558" parent="387" name="titolo">
+=======
+    <column id="552" parent="381" name="titolo">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="559" parent="387" name="filePdf">
       <DataType>varchar(260)|0s</DataType>
       <Position>4</Position>
@@ -2171,11 +2928,26 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
       <Position>5</Position>
     </column>
     <column id="561" parent="387" name="statoSvolgimento">
+=======
+    <column id="553" parent="381" name="filePdf">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="554" parent="381" name="numeroPagine">
+      <DataType>int(11)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="555" parent="381" name="statoSvolgimento">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;coperto&apos;, &apos;non coperto&apos;)|0e</DataType>
       <DefaultExpression>&apos;non coperto&apos;</DefaultExpression>
       <Position>6</Position>
     </column>
+<<<<<<< Updated upstream
     <foreign-key id="562" parent="387" name="articolo_ibfk_1">
+=======
+    <foreign-key id="556" parent="381" name="articolo_ibfk_1">
+>>>>>>> Stashed changes
       <ColNames>codiceSessione
 codicePresentazione</ColNames>
       <OnDelete>cascade</OnDelete>
@@ -2183,38 +2955,66 @@ codicePresentazione</ColNames>
 codice</RefColNames>
       <RefTableName>presentazione</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <index id="563" parent="387" name="codiceSessione">
+=======
+    <index id="557" parent="381" name="codiceSessione">
+>>>>>>> Stashed changes
       <ColNames>codiceSessione
 codicePresentazione</ColNames>
       <Type>btree</Type>
     </index>
+<<<<<<< Updated upstream
     <key id="564" parent="387" name="PRIMARY">
+=======
+    <key id="558" parent="381" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>codicePresentazione
 codiceSessione</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="565" parent="388" name="codicePresentazione">
+=======
+    <column id="559" parent="382" name="codicePresentazione">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="566" parent="388" name="codiceSessione">
+=======
+    <column id="560" parent="382" name="codiceSessione">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="567" parent="388" name="nome">
+=======
+    <column id="561" parent="382" name="nome">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="568" parent="388" name="cognome">
+=======
+    <column id="562" parent="382" name="cognome">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <foreign-key id="569" parent="388" name="autore_ibfk_1">
+=======
+    <foreign-key id="563" parent="382" name="autore_ibfk_1">
+>>>>>>> Stashed changes
       <ColNames>codicePresentazione
 codiceSessione</ColNames>
       <OnDelete>cascade</OnDelete>
@@ -2222,7 +3022,11 @@ codiceSessione</ColNames>
 codiceSessione</RefColNames>
       <RefTableName>presentazione</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <key id="570" parent="388" name="PRIMARY">
+=======
+    <key id="564" parent="382" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>codicePresentazione
 codiceSessione
 nome
@@ -2230,96 +3034,168 @@ cognome</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="571" parent="389" name="annoEdizione">
+=======
+    <column id="565" parent="383" name="annoEdizione">
+>>>>>>> Stashed changes
       <DataType>year(4)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="572" parent="389" name="acronimo">
+=======
+    <column id="566" parent="383" name="acronimo">
+>>>>>>> Stashed changes
       <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="573" parent="389" name="totaleSponsorizzazioni">
+=======
+    <column id="567" parent="383" name="totaleSponsorizzazioni">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="574" parent="389" name="immagineLogo">
       <DataType>varchar(260)|0s</DataType>
       <Position>4</Position>
     </column>
     <column id="575" parent="389" name="statoSvolgimento">
+=======
+    <column id="568" parent="383" name="immagineLogo">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="569" parent="383" name="statoSvolgimento">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;attiva&apos;, &apos;completata&apos;)|0e</DataType>
       <DefaultExpression>&apos;attiva&apos;</DefaultExpression>
       <Position>5</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="576" parent="389" name="nome">
+=======
+    <column id="570" parent="383" name="nome">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
+<<<<<<< Updated upstream
     <key id="577" parent="389" name="PRIMARY">
+=======
+    <key id="571" parent="383" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>annoEdizione
 acronimo</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="578" parent="390" name="userNameUtente">
+=======
+    <column id="572" parent="384" name="userNameUtente">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="579" parent="390" name="annoEdizioneConferenza">
+=======
+    <column id="573" parent="384" name="annoEdizioneConferenza">
+>>>>>>> Stashed changes
       <DataType>year(4)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="580" parent="390" name="acronimoConferenza">
+=======
+    <column id="574" parent="384" name="acronimoConferenza">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <foreign-key id="581" parent="390" name="creatoriconferenza_ibfk_2">
+=======
+    <foreign-key id="575" parent="384" name="creatoriconferenza_ibfk_2">
+>>>>>>> Stashed changes
       <ColNames>userNameUtente</ColNames>
       <RefColNames>userNameUtente</RefColNames>
       <RefTableName>amministratore</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <foreign-key id="582" parent="390" name="creatoriconferenza_ibfk_1">
+=======
+    <foreign-key id="576" parent="384" name="creatoriconferenza_ibfk_1">
+>>>>>>> Stashed changes
       <ColNames>annoEdizioneConferenza
 acronimoConferenza</ColNames>
       <RefColNames>annoEdizione
 acronimo</RefColNames>
       <RefTableName>conferenza</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <index id="583" parent="390" name="annoEdizioneConferenza">
+=======
+    <index id="577" parent="384" name="annoEdizioneConferenza">
+>>>>>>> Stashed changes
       <ColNames>annoEdizioneConferenza
 acronimoConferenza</ColNames>
       <Type>btree</Type>
     </index>
+<<<<<<< Updated upstream
     <key id="584" parent="390" name="PRIMARY">
+=======
+    <key id="578" parent="384" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>userNameUtente
 annoEdizioneConferenza
 acronimoConferenza</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="585" parent="391" name="giorno">
+=======
+    <column id="579" parent="385" name="giorno">
+>>>>>>> Stashed changes
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="586" parent="391" name="annoEdizioneConferenza">
+=======
+    <column id="580" parent="385" name="annoEdizioneConferenza">
+>>>>>>> Stashed changes
       <DataType>year(4)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="587" parent="391" name="acronimoConferenza">
+=======
+    <column id="581" parent="385" name="acronimoConferenza">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <foreign-key id="588" parent="391" name="dataconferenza_ibfk_1">
+=======
+    <foreign-key id="582" parent="385" name="dataconferenza_ibfk_1">
+>>>>>>> Stashed changes
       <ColNames>annoEdizioneConferenza
 acronimoConferenza</ColNames>
       <OnDelete>cascade</OnDelete>
@@ -2327,34 +3203,55 @@ acronimoConferenza</ColNames>
 acronimo</RefColNames>
       <RefTableName>conferenza</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <index id="589" parent="391" name="annoEdizioneConferenza">
+=======
+    <index id="583" parent="385" name="annoEdizioneConferenza">
+>>>>>>> Stashed changes
       <ColNames>annoEdizioneConferenza
 acronimoConferenza</ColNames>
       <Type>btree</Type>
     </index>
+<<<<<<< Updated upstream
     <key id="590" parent="391" name="PRIMARY">
+=======
+    <key id="584" parent="385" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>giorno
 annoEdizioneConferenza
 acronimoConferenza</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="591" parent="392" name="id">
+=======
+    <column id="585" parent="386" name="id">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
+<<<<<<< Updated upstream
     <column id="592" parent="392" name="codiceSessione">
+=======
+    <column id="586" parent="386" name="codiceSessione">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="593" parent="392" name="userNameUtente">
+=======
+    <column id="587" parent="386" name="userNameUtente">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="594" parent="392" name="testo">
       <DataType>varchar(500)|0s</DataType>
       <Position>4</Position>
@@ -2364,16 +3261,32 @@ acronimoConferenza</ColNames>
       <Position>5</Position>
     </column>
     <foreign-key id="596" parent="392" name="messaggio_ibfk_1">
+=======
+    <column id="588" parent="386" name="testo">
+      <DataType>varchar(500)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="589" parent="386" name="dataInvio">
+      <DataType>date|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="590" parent="386" name="messaggio_ibfk_1">
+>>>>>>> Stashed changes
       <ColNames>codiceSessione</ColNames>
       <RefColNames>codice</RefColNames>
       <RefTableName>sessione</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <foreign-key id="597" parent="392" name="messaggio_ibfk_2">
+=======
+    <foreign-key id="591" parent="386" name="messaggio_ibfk_2">
+>>>>>>> Stashed changes
       <ColNames>userNameUtente</ColNames>
       <OnDelete>cascade</OnDelete>
       <RefColNames>userName</RefColNames>
       <RefTableName>utente</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <index id="598" parent="392" name="codiceSessione">
       <ColNames>codiceSessione</ColNames>
       <Type>btree</Type>
@@ -2383,38 +3296,70 @@ acronimoConferenza</ColNames>
       <Type>btree</Type>
     </index>
     <key id="600" parent="392" name="PRIMARY">
+=======
+    <index id="592" parent="386" name="codiceSessione">
+      <ColNames>codiceSessione</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="593" parent="386" name="userNameUtente">
+      <ColNames>userNameUtente</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="594" parent="386" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>id
 codiceSessione
 userNameUtente</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="601" parent="393" name="parola">
+=======
+    <column id="595" parent="387" name="parola">
+>>>>>>> Stashed changes
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="602" parent="393" name="codicePresentazione">
+=======
+    <column id="596" parent="387" name="codicePresentazione">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="603" parent="393" name="codiceSessione">
+=======
+    <column id="597" parent="387" name="codiceSessione">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <foreign-key id="604" parent="393" name="parolachiave_ibfk_1">
+=======
+    <foreign-key id="598" parent="387" name="parolachiave_ibfk_1">
+>>>>>>> Stashed changes
       <ColNames>codicePresentazione</ColNames>
       <RefColNames>codice</RefColNames>
       <RefTableName>presentazione</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <foreign-key id="605" parent="393" name="parolachiave_ibfk_2">
+=======
+    <foreign-key id="599" parent="387" name="parolachiave_ibfk_2">
+>>>>>>> Stashed changes
       <ColNames>codiceSessione</ColNames>
       <OnDelete>cascade</OnDelete>
       <RefColNames>codice</RefColNames>
       <RefTableName>sessione</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <index id="606" parent="393" name="codicePresentazione">
       <ColNames>codicePresentazione</ColNames>
       <Type>btree</Type>
@@ -2424,87 +3369,158 @@ userNameUtente</ColNames>
       <Type>btree</Type>
     </index>
     <key id="608" parent="393" name="PRIMARY">
+=======
+    <index id="600" parent="387" name="codicePresentazione">
+      <ColNames>codicePresentazione</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="601" parent="387" name="codiceSessione">
+      <ColNames>codiceSessione</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="602" parent="387" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>parola
 codicePresentazione
 codiceSessione</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="609" parent="394" name="codice">
+=======
+    <column id="603" parent="388" name="codice">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
+<<<<<<< Updated upstream
     <column id="610" parent="394" name="codiceSessione">
+=======
+    <column id="604" parent="388" name="codiceSessione">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="611" parent="394" name="oraInizio">
+=======
+    <column id="605" parent="388" name="oraInizio">
+>>>>>>> Stashed changes
       <DataType>time|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="612" parent="394" name="oraFine">
+=======
+    <column id="606" parent="388" name="oraFine">
+>>>>>>> Stashed changes
       <DataType>time|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="613" parent="394" name="numeroSequenza">
+=======
+    <column id="607" parent="388" name="numeroSequenza">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>1</DefaultExpression>
       <Position>5</Position>
     </column>
+<<<<<<< Updated upstream
     <foreign-key id="614" parent="394" name="presentazione_ibfk_1">
+=======
+    <foreign-key id="608" parent="388" name="presentazione_ibfk_1">
+>>>>>>> Stashed changes
       <ColNames>codiceSessione</ColNames>
       <OnDelete>cascade</OnDelete>
       <RefColNames>codice</RefColNames>
       <RefTableName>sessione</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <index id="615" parent="394" name="codiceSessione">
       <ColNames>codiceSessione</ColNames>
       <Type>btree</Type>
     </index>
     <key id="616" parent="394" name="PRIMARY">
+=======
+    <index id="609" parent="388" name="codiceSessione">
+      <ColNames>codiceSessione</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="610" parent="388" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>codice
 codiceSessione</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <trigger id="617" parent="394" name="contatorePresentazioni">
+=======
+    <trigger id="611" parent="388" name="contatorePresentazioni">
+>>>>>>> Stashed changes
       <Definer>root@localhost</Definer>
       <Events>I</Events>
       <SourceTextLength>179</SourceTextLength>
       <Turn>after-row</Turn>
     </trigger>
+<<<<<<< Updated upstream
     <column id="618" parent="395" name="userNameUtente">
+=======
+    <column id="612" parent="389" name="userNameUtente">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="619" parent="395" name="titoloArticolo">
+=======
+    <column id="613" parent="389" name="titoloArticolo">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="620" parent="395" name="codicePresentazione">
+=======
+    <column id="614" parent="389" name="codicePresentazione">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="621" parent="395" name="codiceSessione">
+=======
+    <column id="615" parent="389" name="codiceSessione">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <foreign-key id="622" parent="395" name="presentazionepresenter_ibfk_1">
+=======
+    <foreign-key id="616" parent="389" name="presentazionepresenter_ibfk_1">
+>>>>>>> Stashed changes
       <ColNames>userNameUtente</ColNames>
       <OnDelete>cascade</OnDelete>
       <RefColNames>userNameUtente</RefColNames>
       <RefTableName>presenter</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <foreign-key id="623" parent="395" name="presentazionepresenter_ibfk_2">
+=======
+    <foreign-key id="617" parent="389" name="presentazionepresenter_ibfk_2">
+>>>>>>> Stashed changes
       <ColNames>codicePresentazione
 codiceSessione</ColNames>
       <OnDelete>cascade</OnDelete>
@@ -2512,12 +3528,20 @@ codiceSessione</ColNames>
 codiceSessione</RefColNames>
       <RefTableName>articolo</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <index id="624" parent="395" name="codicePresentazione">
+=======
+    <index id="618" parent="389" name="codicePresentazione">
+>>>>>>> Stashed changes
       <ColNames>codicePresentazione
 codiceSessione</ColNames>
       <Type>btree</Type>
     </index>
+<<<<<<< Updated upstream
     <key id="625" parent="395" name="PRIMARY">
+=======
+    <key id="619" parent="389" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>userNameUtente
 titoloArticolo
 codicePresentazione
@@ -2525,32 +3549,53 @@ codiceSessione</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <trigger id="626" parent="395" name="cambioStatoArticolo">
+=======
+    <trigger id="620" parent="389" name="cambioStatoArticolo">
+>>>>>>> Stashed changes
       <Definer>root@localhost</Definer>
       <Events>I</Events>
       <SourceTextLength>245</SourceTextLength>
       <Turn>after-row</Turn>
     </trigger>
+<<<<<<< Updated upstream
     <column id="627" parent="396" name="userNameUtente">
+=======
+    <column id="621" parent="390" name="userNameUtente">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="628" parent="396" name="titoloTutorial">
+=======
+    <column id="622" parent="390" name="titoloTutorial">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="629" parent="396" name="codicePresentazione">
+=======
+    <column id="623" parent="390" name="codicePresentazione">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="630" parent="396" name="codiceSessione">
+=======
+    <column id="624" parent="390" name="codiceSessione">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="631" parent="396" name="linkWeb">
       <DataType>varchar(260)|0s</DataType>
       <Position>5</Position>
@@ -2560,12 +3605,27 @@ codiceSessione</ColNames>
       <Position>6</Position>
     </column>
     <foreign-key id="633" parent="396" name="presentazionespeaker_ibfk_1">
+=======
+    <column id="625" parent="390" name="linkWeb">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="626" parent="390" name="descrizione">
+      <DataType>varchar(200)|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <foreign-key id="627" parent="390" name="presentazionespeaker_ibfk_1">
+>>>>>>> Stashed changes
       <ColNames>userNameUtente</ColNames>
       <OnDelete>cascade</OnDelete>
       <RefColNames>userNameUtente</RefColNames>
       <RefTableName>speaker</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <foreign-key id="634" parent="396" name="presentazionespeaker_ibfk_2">
+=======
+    <foreign-key id="628" parent="390" name="presentazionespeaker_ibfk_2">
+>>>>>>> Stashed changes
       <ColNames>codicePresentazione
 codiceSessione</ColNames>
       <OnDelete>cascade</OnDelete>
@@ -2573,12 +3633,20 @@ codiceSessione</ColNames>
 codiceSessione</RefColNames>
       <RefTableName>tutorial</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <index id="635" parent="396" name="codicePresentazione">
+=======
+    <index id="629" parent="390" name="codicePresentazione">
+>>>>>>> Stashed changes
       <ColNames>codicePresentazione
 codiceSessione</ColNames>
       <Type>btree</Type>
     </index>
+<<<<<<< Updated upstream
     <key id="636" parent="396" name="PRIMARY">
+=======
+    <key id="630" parent="390" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>userNameUtente
 titoloTutorial
 codicePresentazione
@@ -2586,11 +3654,16 @@ codiceSessione</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="637" parent="397" name="userNameUtente">
+=======
+    <column id="631" parent="391" name="userNameUtente">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="638" parent="397" name="curriculum">
       <DataType>varchar(30)|0s</DataType>
       <Position>2</Position>
@@ -2624,12 +3697,51 @@ codiceSessione</ColNames>
       <Position>9</Position>
     </column>
     <foreign-key id="646" parent="397" name="presenter_ibfk_1">
+=======
+    <column id="632" parent="391" name="curriculum">
+      <DataType>varchar(30)|0s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="633" parent="391" name="foto">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="634" parent="391" name="nomeUniversita">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="635" parent="391" name="nomeDipartimento">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="636" parent="391" name="codicePresentazione">
+      <DataType>int(11)|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <column id="637" parent="391" name="codiceSessione">
+      <DataType>int(11)|0s</DataType>
+      <Position>7</Position>
+    </column>
+    <column id="638" parent="391" name="nomeAutore">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>8</Position>
+    </column>
+    <column id="639" parent="391" name="cognomeAutore">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <foreign-key id="640" parent="391" name="presenter_ibfk_1">
+>>>>>>> Stashed changes
       <ColNames>userNameUtente</ColNames>
       <OnDelete>cascade</OnDelete>
       <RefColNames>userName</RefColNames>
       <RefTableName>utente</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <foreign-key id="647" parent="397" name="presenter_ibfk_2">
+=======
+    <foreign-key id="641" parent="391" name="presenter_ibfk_2">
+>>>>>>> Stashed changes
       <ColNames>codicePresentazione
 codiceSessione
 nomeAutore
@@ -2641,67 +3753,118 @@ nome
 cognome</RefColNames>
       <RefTableName>autore</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <index id="648" parent="397" name="codicePresentazione">
+=======
+    <index id="642" parent="391" name="codicePresentazione">
+>>>>>>> Stashed changes
       <ColNames>codicePresentazione
 codiceSessione
 nomeAutore
 cognomeAutore</ColNames>
       <Type>btree</Type>
     </index>
+<<<<<<< Updated upstream
     <key id="649" parent="397" name="PRIMARY">
+=======
+    <key id="643" parent="391" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>userNameUtente</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <check id="650" parent="398" name="controlloOrario">
       <Predicate>`oraFine` &gt; `oraInizio`</Predicate>
     </check>
     <column id="651" parent="398" name="codice">
+=======
+    <check id="644" parent="392" name="controlloOrario">
+      <Predicate>`oraFine` &gt; `oraInizio`</Predicate>
+    </check>
+    <column id="645" parent="392" name="codice">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
+<<<<<<< Updated upstream
     <column id="652" parent="398" name="oraInizio">
+=======
+    <column id="646" parent="392" name="oraInizio">
+>>>>>>> Stashed changes
       <DataType>time|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="653" parent="398" name="oraFine">
+=======
+    <column id="647" parent="392" name="oraFine">
+>>>>>>> Stashed changes
       <DataType>time|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="654" parent="398" name="titolo">
+=======
+    <column id="648" parent="392" name="titolo">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="655" parent="398" name="linkStanza">
+=======
+    <column id="649" parent="392" name="linkStanza">
+>>>>>>> Stashed changes
       <DataType>varchar(260)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="656" parent="398" name="numeroPresentazioni">
+=======
+    <column id="650" parent="392" name="numeroPresentazioni">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <Position>6</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="657" parent="398" name="giornoData">
+=======
+    <column id="651" parent="392" name="giornoData">
+>>>>>>> Stashed changes
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="658" parent="398" name="annoEdizioneConferenza">
+=======
+    <column id="652" parent="392" name="annoEdizioneConferenza">
+>>>>>>> Stashed changes
       <DataType>year(4)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="659" parent="398" name="acronimoConferenza">
       <DataType>varchar(50)|0s</DataType>
       <Position>9</Position>
     </column>
     <foreign-key id="660" parent="398" name="sessione_ibfk_1">
+=======
+    <column id="653" parent="392" name="acronimoConferenza">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <foreign-key id="654" parent="392" name="sessione_ibfk_1">
+>>>>>>> Stashed changes
       <ColNames>giornoData
 annoEdizioneConferenza
 acronimoConferenza</ColNames>
@@ -2711,22 +3874,35 @@ annoEdizioneConferenza
 acronimoConferenza</RefColNames>
       <RefTableName>dataconferenza</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <index id="661" parent="398" name="giornoData">
+=======
+    <index id="655" parent="392" name="giornoData">
+>>>>>>> Stashed changes
       <ColNames>giornoData
 annoEdizioneConferenza
 acronimoConferenza</ColNames>
       <Type>btree</Type>
     </index>
+<<<<<<< Updated upstream
     <key id="662" parent="398" name="PRIMARY">
+=======
+    <key id="656" parent="392" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>codice</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="663" parent="399" name="userNameUtente">
+=======
+    <column id="657" parent="393" name="userNameUtente">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="664" parent="399" name="curriculum">
       <DataType>varchar(30)|0s</DataType>
       <Position>2</Position>
@@ -2744,51 +3920,106 @@ acronimoConferenza</ColNames>
       <Position>5</Position>
     </column>
     <foreign-key id="668" parent="399" name="speaker_ibfk_1">
+=======
+    <column id="658" parent="393" name="curriculum">
+      <DataType>varchar(30)|0s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="659" parent="393" name="foto">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="660" parent="393" name="nomeUniversita">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="661" parent="393" name="nomeDipartimento">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="662" parent="393" name="speaker_ibfk_1">
+>>>>>>> Stashed changes
       <ColNames>userNameUtente</ColNames>
       <OnDelete>cascade</OnDelete>
       <RefColNames>userName</RefColNames>
       <RefTableName>utente</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <key id="669" parent="399" name="PRIMARY">
+=======
+    <key id="663" parent="393" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>userNameUtente</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="670" parent="400" name="nome">
+=======
+    <column id="664" parent="394" name="nome">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="671" parent="400" name="immagineLogo">
       <DataType>varchar(260)|0s</DataType>
       <Position>2</Position>
     </column>
     <key id="672" parent="400" name="PRIMARY">
+=======
+    <column id="665" parent="394" name="immagineLogo">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>2</Position>
+    </column>
+    <key id="666" parent="394" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>nome</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="673" parent="401" name="importo">
+=======
+    <column id="667" parent="395" name="importo">
+>>>>>>> Stashed changes
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="674" parent="401" name="annoEdizioneConferenza">
+=======
+    <column id="668" parent="395" name="annoEdizioneConferenza">
+>>>>>>> Stashed changes
       <DataType>year(4)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="675" parent="401" name="acronimoConferenza">
+=======
+    <column id="669" parent="395" name="acronimoConferenza">
+>>>>>>> Stashed changes
       <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="676" parent="401" name="nomeSponsor">
+=======
+    <column id="670" parent="395" name="nomeSponsor">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <foreign-key id="677" parent="401" name="sponsorizzazioni_ibfk_2">
+=======
+    <foreign-key id="671" parent="395" name="sponsorizzazioni_ibfk_2">
+>>>>>>> Stashed changes
       <ColNames>annoEdizioneConferenza
 acronimoConferenza</ColNames>
       <OnDelete>cascade</OnDelete>
@@ -2796,33 +4027,54 @@ acronimoConferenza</ColNames>
 acronimo</RefColNames>
       <RefTableName>conferenza</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <foreign-key id="678" parent="401" name="sponsorizzazioni_ibfk_1">
+=======
+    <foreign-key id="672" parent="395" name="sponsorizzazioni_ibfk_1">
+>>>>>>> Stashed changes
       <ColNames>nomeSponsor</ColNames>
       <OnDelete>cascade</OnDelete>
       <RefColNames>nome</RefColNames>
       <RefTableName>sponsor</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <index id="679" parent="401" name="nomeSponsor">
       <ColNames>nomeSponsor</ColNames>
       <Type>btree</Type>
     </index>
     <key id="680" parent="401" name="PRIMARY">
+=======
+    <index id="673" parent="395" name="nomeSponsor">
+      <ColNames>nomeSponsor</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="674" parent="395" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>annoEdizioneConferenza
 acronimoConferenza
 nomeSponsor</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="681" parent="402" name="codicePresentazione">
+=======
+    <column id="675" parent="396" name="codicePresentazione">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="682" parent="402" name="codiceSessione">
+=======
+    <column id="676" parent="396" name="codiceSessione">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="683" parent="402" name="titolo">
       <DataType>varchar(50)|0s</DataType>
       <Position>3</Position>
@@ -2832,6 +4084,17 @@ nomeSponsor</ColNames>
       <Position>4</Position>
     </column>
     <foreign-key id="685" parent="402" name="tutorial_ibfk_1">
+=======
+    <column id="677" parent="396" name="titolo">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="678" parent="396" name="abstract">
+      <DataType>varchar(500)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <foreign-key id="679" parent="396" name="tutorial_ibfk_1">
+>>>>>>> Stashed changes
       <ColNames>codiceSessione
 codicePresentazione</ColNames>
       <OnDelete>cascade</OnDelete>
@@ -2839,72 +4102,128 @@ codicePresentazione</ColNames>
 codice</RefColNames>
       <RefTableName>presentazione</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <index id="686" parent="402" name="codiceSessione">
+=======
+    <index id="680" parent="396" name="codiceSessione">
+>>>>>>> Stashed changes
       <ColNames>codiceSessione
 codicePresentazione</ColNames>
       <Type>btree</Type>
     </index>
+<<<<<<< Updated upstream
     <key id="687" parent="402" name="PRIMARY">
+=======
+    <key id="681" parent="396" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>codicePresentazione
 codiceSessione</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="688" parent="403" name="userName">
+=======
+    <column id="682" parent="397" name="userName">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="689" parent="403" name="nome">
+=======
+    <column id="683" parent="397" name="nome">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="690" parent="403" name="cognome">
+=======
+    <column id="684" parent="397" name="cognome">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="691" parent="403" name="pswd">
+=======
+    <column id="685" parent="397" name="pswd">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="692" parent="403" name="luogoNascita">
       <DataType>varchar(50)|0s</DataType>
       <Position>5</Position>
     </column>
     <column id="693" parent="403" name="dataNascita">
+=======
+    <column id="686" parent="397" name="luogoNascita">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="687" parent="397" name="dataNascita">
+>>>>>>> Stashed changes
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
+<<<<<<< Updated upstream
     <key id="694" parent="403" name="PRIMARY">
+=======
+    <key id="688" parent="397" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>userName</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="695" parent="404" name="userNameUtente">
+=======
+    <column id="689" parent="398" name="userNameUtente">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="696" parent="404" name="annoEdizioneconferenza">
+=======
+    <column id="690" parent="398" name="annoEdizioneconferenza">
+>>>>>>> Stashed changes
       <DataType>year(4)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="697" parent="404" name="acronimoConferenza">
+=======
+    <column id="691" parent="398" name="acronimoConferenza">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <foreign-key id="698" parent="404" name="utenteregistrato_ibfk_1">
+=======
+    <foreign-key id="692" parent="398" name="utenteregistrato_ibfk_1">
+>>>>>>> Stashed changes
       <ColNames>userNameUtente</ColNames>
       <RefColNames>userName</RefColNames>
       <RefTableName>utente</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <foreign-key id="699" parent="404" name="utenteregistrato_ibfk_2">
+=======
+    <foreign-key id="693" parent="398" name="utenteregistrato_ibfk_2">
+>>>>>>> Stashed changes
       <ColNames>annoEdizioneconferenza
 acronimoConferenza</ColNames>
       <OnDelete>cascade</OnDelete>
@@ -2912,46 +4231,81 @@ acronimoConferenza</ColNames>
 acronimo</RefColNames>
       <RefTableName>conferenza</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <index id="700" parent="404" name="annoEdizioneconferenza">
+=======
+    <index id="694" parent="398" name="annoEdizioneconferenza">
+>>>>>>> Stashed changes
       <ColNames>annoEdizioneconferenza
 acronimoConferenza</ColNames>
       <Type>btree</Type>
     </index>
+<<<<<<< Updated upstream
     <key id="701" parent="404" name="PRIMARY">
+=======
+    <key id="695" parent="398" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>userNameUtente
 annoEdizioneconferenza
 acronimoConferenza</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <check id="702" parent="405" name="validazioneVoto">
       <Predicate>`voto` &gt;= 0 and `voto` &lt;= 10</Predicate>
     </check>
     <column id="703" parent="405" name="userNameUtente">
+=======
+    <check id="696" parent="399" name="validazioneVoto">
+      <Predicate>`voto` &gt;= 0 and `voto` &lt;= 10</Predicate>
+    </check>
+    <column id="697" parent="399" name="userNameUtente">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="704" parent="405" name="codicePresentazione">
+=======
+    <column id="698" parent="399" name="codicePresentazione">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="705" parent="405" name="codiceSessione">
+=======
+    <column id="699" parent="399" name="codiceSessione">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="706" parent="405" name="voto">
+=======
+    <column id="700" parent="399" name="voto">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="707" parent="405" name="note">
       <DataType>varchar(50)|0s</DataType>
       <Position>5</Position>
     </column>
     <foreign-key id="708" parent="405" name="valutazione_ibfk_1">
+=======
+    <column id="701" parent="399" name="note">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="702" parent="399" name="valutazione_ibfk_1">
+>>>>>>> Stashed changes
       <ColNames>codicePresentazione
 codiceSessione</ColNames>
       <OnDelete>cascade</OnDelete>
@@ -2959,28 +4313,45 @@ codiceSessione</ColNames>
 codiceSessione</RefColNames>
       <RefTableName>presentazione</RefTableName>
     </foreign-key>
+<<<<<<< Updated upstream
     <index id="709" parent="405" name="codicePresentazione">
+=======
+    <index id="703" parent="399" name="codicePresentazione">
+>>>>>>> Stashed changes
       <ColNames>codicePresentazione
 codiceSessione</ColNames>
       <Type>btree</Type>
     </index>
+<<<<<<< Updated upstream
     <key id="710" parent="405" name="PRIMARY">
+=======
+    <key id="704" parent="399" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>userNameUtente
 codicePresentazione
 codiceSessione</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="711" parent="406" name="annoEdizione">
+=======
+    <column id="705" parent="400" name="annoEdizione">
+>>>>>>> Stashed changes
       <DataType>year(4)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="712" parent="406" name="acronimo">
+=======
+    <column id="706" parent="400" name="acronimo">
+>>>>>>> Stashed changes
       <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="713" parent="406" name="totaleSponsorizzazioni">
       <DataType>int(11)|0s</DataType>
       <Position>3</Position>
@@ -2994,25 +4365,53 @@ codiceSessione</ColNames>
       <Position>5</Position>
     </column>
     <column id="716" parent="406" name="nome">
+=======
+    <column id="707" parent="400" name="totaleSponsorizzazioni">
+      <DataType>int(11)|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="708" parent="400" name="immagineLogo">
+      <DataType>varchar(260)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="709" parent="400" name="statoSvolgimento">
+      <DataType>enum(&apos;attiva&apos;, &apos;completata&apos;)|0e</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="710" parent="400" name="nome">
+>>>>>>> Stashed changes
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="717" parent="407" name="db_name">
+=======
+    <column id="711" parent="401" name="db_name">
+>>>>>>> Stashed changes
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="718" parent="407" name="table_name">
+=======
+    <column id="712" parent="401" name="table_name">
+>>>>>>> Stashed changes
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="719" parent="407" name="column_name">
+=======
+    <column id="713" parent="401" name="column_name">
+>>>>>>> Stashed changes
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="720" parent="407" name="min_value">
       <DataType>varbinary(255)|0s</DataType>
       <Position>4</Position>
@@ -3046,57 +4445,124 @@ codiceSessione</ColNames>
       <Position>11</Position>
     </column>
     <key id="728" parent="407" name="PRIMARY">
+=======
+    <column id="714" parent="401" name="min_value">
+      <DataType>varbinary(255)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="715" parent="401" name="max_value">
+      <DataType>varbinary(255)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="716" parent="401" name="nulls_ratio">
+      <DataType>decimal(12,4 digit)|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <column id="717" parent="401" name="avg_length">
+      <DataType>decimal(12,4 digit)|0s</DataType>
+      <Position>7</Position>
+    </column>
+    <column id="718" parent="401" name="avg_frequency">
+      <DataType>decimal(12,4 digit)|0s</DataType>
+      <Position>8</Position>
+    </column>
+    <column id="719" parent="401" name="hist_size">
+      <DataType>tinyint(3) unsigned|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <column id="720" parent="401" name="hist_type">
+      <DataType>enum(&apos;SINGLE_PREC_HB&apos;, &apos;DOUBLE_PREC_HB&apos;)|0e</DataType>
+      <Position>10</Position>
+    </column>
+    <column id="721" parent="401" name="histogram">
+      <DataType>varbinary(255)|0s</DataType>
+      <Position>11</Position>
+    </column>
+    <key id="722" parent="401" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>db_name
 table_name
 column_name</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="729" parent="408" name="Host">
+=======
+    <column id="723" parent="402" name="Host">
+>>>>>>> Stashed changes
       <DataType>char(60)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="730" parent="408" name="Db">
+=======
+    <column id="724" parent="402" name="Db">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="731" parent="408" name="User">
+=======
+    <column id="725" parent="402" name="User">
+>>>>>>> Stashed changes
       <DataType>char(80)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="732" parent="408" name="Table_name">
+=======
+    <column id="726" parent="402" name="Table_name">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="733" parent="408" name="Column_name">
+=======
+    <column id="727" parent="402" name="Column_name">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="734" parent="408" name="Timestamp">
+=======
+    <column id="728" parent="402" name="Timestamp">
+>>>>>>> Stashed changes
       <DataType>timestamp|0s</DataType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <NotNull>1</NotNull>
       <OnUpdate>current_timestamp()</OnUpdate>
       <Position>6</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="735" parent="408" name="Column_priv">
+=======
+    <column id="729" parent="402" name="Column_priv">
+>>>>>>> Stashed changes
       <DataType>set(&apos;Select&apos;, &apos;Insert&apos;, &apos;Update&apos;, &apos;References&apos;)|0e</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>7</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <key id="736" parent="408" name="PRIMARY">
+=======
+    <key id="730" parent="402" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>Host
 Db
 User
@@ -3105,200 +4571,317 @@ Column_name</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="737" parent="409" name="Host">
+=======
+    <column id="731" parent="403" name="Host">
+>>>>>>> Stashed changes
       <DataType>char(60)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="738" parent="409" name="Db">
+=======
+    <column id="732" parent="403" name="Db">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="739" parent="409" name="User">
+=======
+    <column id="733" parent="403" name="User">
+>>>>>>> Stashed changes
       <DataType>char(80)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="740" parent="409" name="Select_priv">
+=======
+    <column id="734" parent="403" name="Select_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="741" parent="409" name="Insert_priv">
+=======
+    <column id="735" parent="403" name="Insert_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>5</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="742" parent="409" name="Update_priv">
+=======
+    <column id="736" parent="403" name="Update_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>6</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="743" parent="409" name="Delete_priv">
+=======
+    <column id="737" parent="403" name="Delete_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>7</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="744" parent="409" name="Create_priv">
+=======
+    <column id="738" parent="403" name="Create_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>8</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="745" parent="409" name="Drop_priv">
+=======
+    <column id="739" parent="403" name="Drop_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>9</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="746" parent="409" name="Grant_priv">
+=======
+    <column id="740" parent="403" name="Grant_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>10</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="747" parent="409" name="References_priv">
+=======
+    <column id="741" parent="403" name="References_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>11</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="748" parent="409" name="Index_priv">
+=======
+    <column id="742" parent="403" name="Index_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>12</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="749" parent="409" name="Alter_priv">
+=======
+    <column id="743" parent="403" name="Alter_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>13</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="750" parent="409" name="Create_tmp_table_priv">
+=======
+    <column id="744" parent="403" name="Create_tmp_table_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>14</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="751" parent="409" name="Lock_tables_priv">
+=======
+    <column id="745" parent="403" name="Lock_tables_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>15</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="752" parent="409" name="Create_view_priv">
+=======
+    <column id="746" parent="403" name="Create_view_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>16</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="753" parent="409" name="Show_view_priv">
+=======
+    <column id="747" parent="403" name="Show_view_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>17</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="754" parent="409" name="Create_routine_priv">
+=======
+    <column id="748" parent="403" name="Create_routine_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>18</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="755" parent="409" name="Alter_routine_priv">
+=======
+    <column id="749" parent="403" name="Alter_routine_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>19</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="756" parent="409" name="Execute_priv">
+=======
+    <column id="750" parent="403" name="Execute_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>20</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="757" parent="409" name="Event_priv">
+=======
+    <column id="751" parent="403" name="Event_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>21</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="758" parent="409" name="Trigger_priv">
+=======
+    <column id="752" parent="403" name="Trigger_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>22</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="759" parent="409" name="Delete_history_priv">
+=======
+    <column id="753" parent="403" name="Delete_history_priv">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>23</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <index id="760" parent="409" name="User">
       <ColNames>User</ColNames>
       <Type>btree</Type>
     </index>
     <key id="761" parent="409" name="PRIMARY">
+=======
+    <index id="754" parent="403" name="User">
+      <ColNames>User</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="755" parent="403" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>Host
 Db
 User</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="762" parent="410" name="db">
+=======
+    <column id="756" parent="404" name="db">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <CollationName>utf8_bin</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="763" parent="410" name="name">
+=======
+    <column id="757" parent="404" name="name">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="764" parent="410" name="body">
+=======
+    <column id="758" parent="404" name="body">
+>>>>>>> Stashed changes
       <DataType>longblob|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="765" parent="410" name="definer">
+=======
+    <column id="759" parent="404" name="definer">
+>>>>>>> Stashed changes
       <DataType>char(141)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <CollationName>utf8_bin</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="766" parent="410" name="execute_at">
       <DataType>datetime|0s</DataType>
       <Position>5</Position>
@@ -3312,18 +4895,38 @@ User</ColNames>
       <Position>7</Position>
     </column>
     <column id="769" parent="410" name="created">
+=======
+    <column id="760" parent="404" name="execute_at">
+      <DataType>datetime|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="761" parent="404" name="interval_value">
+      <DataType>int(11)|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <column id="762" parent="404" name="interval_field">
+      <DataType>enum(&apos;YEAR&apos;, &apos;QUARTER&apos;, &apos;MONTH&apos;, &apos;DAY&apos;, &apos;HOUR&apos;, &apos;MINUTE&apos;, &apos;WEEK&apos;, &apos;SECOND&apos;, &apos;MICROSECOND&apos;, &apos;YEAR_MONTH&apos;, &apos;DAY_HOUR&apos;, &apos;DAY_MINUTE&apos;, &apos;DAY_SECOND&apos;, &apos;HOUR_MINUTE&apos;, &apos;HOUR_SECOND&apos;, &apos;MINUTE_SECOND&apos;, &apos;DAY_MICROSECOND&apos;, &apos;HOUR_MICROSECOND&apos;, &apos;MINUTE_MICROSECOND&apos;, &apos;SECOND_MICROSECOND&apos;)|0e</DataType>
+      <Position>7</Position>
+    </column>
+    <column id="763" parent="404" name="created">
+>>>>>>> Stashed changes
       <DataType>timestamp|0s</DataType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <NotNull>1</NotNull>
       <OnUpdate>current_timestamp()</OnUpdate>
       <Position>8</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="770" parent="410" name="modified">
+=======
+    <column id="764" parent="404" name="modified">
+>>>>>>> Stashed changes
       <DataType>timestamp|0s</DataType>
       <DefaultExpression>&apos;0000-00-00 00:00:00&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>9</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="771" parent="410" name="last_executed">
       <DataType>datetime|0s</DataType>
       <Position>10</Position>
@@ -3337,324 +4940,582 @@ User</ColNames>
       <Position>12</Position>
     </column>
     <column id="774" parent="410" name="status">
+=======
+    <column id="765" parent="404" name="last_executed">
+      <DataType>datetime|0s</DataType>
+      <Position>10</Position>
+    </column>
+    <column id="766" parent="404" name="starts">
+      <DataType>datetime|0s</DataType>
+      <Position>11</Position>
+    </column>
+    <column id="767" parent="404" name="ends">
+      <DataType>datetime|0s</DataType>
+      <Position>12</Position>
+    </column>
+    <column id="768" parent="404" name="status">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;ENABLED&apos;, &apos;DISABLED&apos;, &apos;SLAVESIDE_DISABLED&apos;)|0e</DataType>
       <DefaultExpression>&apos;ENABLED&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>13</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="775" parent="410" name="on_completion">
+=======
+    <column id="769" parent="404" name="on_completion">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;DROP&apos;, &apos;PRESERVE&apos;)|0e</DataType>
       <DefaultExpression>&apos;DROP&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>14</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="776" parent="410" name="sql_mode">
+=======
+    <column id="770" parent="404" name="sql_mode">
+>>>>>>> Stashed changes
       <DataType>set(&apos;REAL_AS_FLOAT&apos;, &apos;PIPES_AS_CONCAT&apos;, &apos;ANSI_QUOTES&apos;, &apos;IGNORE_SPACE&apos;, &apos;IGNORE_BAD_TABLE_OPTIONS&apos;, &apos;ONLY_FULL_GROUP_BY&apos;, &apos;NO_UNSIGNED_SUBTRACTION&apos;, &apos;NO_DIR_IN_CREATE&apos;, &apos;POSTGRESQL&apos;, &apos;ORACLE&apos;, &apos;MSSQL&apos;, &apos;DB2&apos;, &apos;MAXDB&apos;, &apos;NO_KEY_OPTIONS&apos;, &apos;NO_TABLE_OPTIONS&apos;, &apos;NO_FIELD_OPTIONS&apos;, &apos;MYSQL323&apos;, &apos;MYSQL40&apos;, &apos;ANSI&apos;, &apos;NO_AUTO_VALUE_ON_ZERO&apos;, &apos;NO_BACKSLASH_ESCAPES&apos;, &apos;STRICT_TRANS_TABLES&apos;, &apos;STRICT_ALL_TABLES&apos;, &apos;NO_ZERO_IN_DATE&apos;, &apos;NO_ZERO_DATE&apos;, &apos;INVALID_DATES&apos;, &apos;ERROR_FOR_DIVISION_BY_ZERO&apos;, &apos;TRADITIONAL&apos;, &apos;NO_AUTO_CREATE_USER&apos;, &apos;HIGH_NOT_PRECEDENCE&apos;, &apos;NO_ENGINE_SUBSTITUTION&apos;, &apos;PAD_CHAR_TO_FULL_LENGTH&apos;, &apos;EMPTY_STRING_IS_NULL&apos;, &apos;SIMULTANEOUS_ASSIGNMENT&apos;, &apos;TIME_ROUND_FRACTIONAL&apos;)|0e</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>15</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="777" parent="410" name="comment">
+=======
+    <column id="771" parent="404" name="comment">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>16</Position>
       <CollationName>utf8_bin</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="778" parent="410" name="originator">
+=======
+    <column id="772" parent="404" name="originator">
+>>>>>>> Stashed changes
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>17</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="779" parent="410" name="time_zone">
+=======
+    <column id="773" parent="404" name="time_zone">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;SYSTEM&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>18</Position>
       <CollationName>latin1_swedish_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="780" parent="410" name="character_set_client">
+=======
+    <column id="774" parent="404" name="character_set_client">
+>>>>>>> Stashed changes
       <DataType>char(32)|0s</DataType>
       <Position>19</Position>
       <CollationName>utf8_bin</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="781" parent="410" name="collation_connection">
+=======
+    <column id="775" parent="404" name="collation_connection">
+>>>>>>> Stashed changes
       <DataType>char(32)|0s</DataType>
       <Position>20</Position>
       <CollationName>utf8_bin</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="782" parent="410" name="db_collation">
+=======
+    <column id="776" parent="404" name="db_collation">
+>>>>>>> Stashed changes
       <DataType>char(32)|0s</DataType>
       <Position>21</Position>
       <CollationName>utf8_bin</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="783" parent="410" name="body_utf8">
       <DataType>longblob|0s</DataType>
       <Position>22</Position>
     </column>
     <key id="784" parent="410" name="PRIMARY">
+=======
+    <column id="777" parent="404" name="body_utf8">
+      <DataType>longblob|0s</DataType>
+      <Position>22</Position>
+    </column>
+    <key id="778" parent="404" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>db
 name</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="785" parent="411" name="name">
+=======
+    <column id="779" parent="405" name="name">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="786" parent="411" name="ret">
+=======
+    <column id="780" parent="405" name="ret">
+>>>>>>> Stashed changes
       <DataType>tinyint(1)|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="787" parent="411" name="dl">
+=======
+    <column id="781" parent="405" name="dl">
+>>>>>>> Stashed changes
       <DataType>char(128)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="788" parent="411" name="type">
+=======
+    <column id="782" parent="405" name="type">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;function&apos;, &apos;aggregate&apos;)|0e</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <key id="789" parent="411" name="PRIMARY">
+=======
+    <key id="783" parent="405" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>name</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="790" parent="412" name="event_time">
+=======
+    <column id="784" parent="406" name="event_time">
+>>>>>>> Stashed changes
       <DataType>timestamp(6)|0s</DataType>
       <DefaultExpression>current_timestamp(6)</DefaultExpression>
       <NotNull>1</NotNull>
       <OnUpdate>current_timestamp(6)</OnUpdate>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="791" parent="412" name="user_host">
+=======
+    <column id="785" parent="406" name="user_host">
+>>>>>>> Stashed changes
       <DataType>mediumtext|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="792" parent="412" name="thread_id">
+=======
+    <column id="786" parent="406" name="thread_id">
+>>>>>>> Stashed changes
       <DataType>bigint(21) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="793" parent="412" name="server_id">
+=======
+    <column id="787" parent="406" name="server_id">
+>>>>>>> Stashed changes
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="794" parent="412" name="command_type">
+=======
+    <column id="788" parent="406" name="command_type">
+>>>>>>> Stashed changes
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="795" parent="412" name="argument">
+=======
+    <column id="789" parent="406" name="argument">
+>>>>>>> Stashed changes
       <DataType>mediumtext|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
+<<<<<<< Updated upstream
     <check id="796" parent="413" name="Priv">
       <Predicate>json_valid(`Priv`)</Predicate>
     </check>
     <column id="797" parent="413" name="Host">
+=======
+    <check id="790" parent="407" name="Priv">
+      <Predicate>json_valid(`Priv`)</Predicate>
+    </check>
+    <column id="791" parent="407" name="Host">
+>>>>>>> Stashed changes
       <DataType>char(60)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="798" parent="413" name="User">
+=======
+    <column id="792" parent="407" name="User">
+>>>>>>> Stashed changes
       <DataType>char(80)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="799" parent="413" name="Priv">
+=======
+    <column id="793" parent="407" name="Priv">
+>>>>>>> Stashed changes
       <DataType>longtext|0s</DataType>
       <DefaultExpression>&apos;{}&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <CollationName>utf8mb4_bin</CollationName>
     </column>
+<<<<<<< Updated upstream
     <key id="800" parent="413" name="PRIMARY">
+=======
+    <key id="794" parent="407" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>Host
 User</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="801" parent="414" name="domain_id">
+=======
+    <column id="795" parent="408" name="domain_id">
+>>>>>>> Stashed changes
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="802" parent="414" name="sub_id">
+=======
+    <column id="796" parent="408" name="sub_id">
+>>>>>>> Stashed changes
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="803" parent="414" name="server_id">
+=======
+    <column id="797" parent="408" name="server_id">
+>>>>>>> Stashed changes
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="804" parent="414" name="seq_no">
+=======
+    <column id="798" parent="408" name="seq_no">
+>>>>>>> Stashed changes
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <key id="805" parent="414" name="PRIMARY">
+=======
+    <key id="799" parent="408" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>domain_id
 sub_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="806" parent="415" name="help_category_id">
+=======
+    <column id="800" parent="409" name="help_category_id">
+>>>>>>> Stashed changes
       <DataType>smallint(5) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="807" parent="415" name="name">
+=======
+    <column id="801" parent="409" name="name">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="808" parent="415" name="parent_category_id">
       <DataType>smallint(5) unsigned|0s</DataType>
       <Position>3</Position>
     </column>
     <column id="809" parent="415" name="url">
+=======
+    <column id="802" parent="409" name="parent_category_id">
+      <DataType>smallint(5) unsigned|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="803" parent="409" name="url">
+>>>>>>> Stashed changes
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <index id="810" parent="415" name="name">
+=======
+    <index id="804" parent="409" name="name">
+>>>>>>> Stashed changes
       <ColNames>name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
+<<<<<<< Updated upstream
     <key id="811" parent="415" name="PRIMARY">
+=======
+    <key id="805" parent="409" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>help_category_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <key id="812" parent="415" name="name">
       <ColNames>name</ColNames>
       <UnderlyingIndexName>name</UnderlyingIndexName>
     </key>
     <column id="813" parent="416" name="help_keyword_id">
+=======
+    <key id="806" parent="409" name="name">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>name</UnderlyingIndexName>
+    </key>
+    <column id="807" parent="410" name="help_keyword_id">
+>>>>>>> Stashed changes
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="814" parent="416" name="name">
+=======
+    <column id="808" parent="410" name="name">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <index id="815" parent="416" name="name">
+=======
+    <index id="809" parent="410" name="name">
+>>>>>>> Stashed changes
       <ColNames>name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
+<<<<<<< Updated upstream
     <key id="816" parent="416" name="PRIMARY">
+=======
+    <key id="810" parent="410" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>help_keyword_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <key id="817" parent="416" name="name">
       <ColNames>name</ColNames>
       <UnderlyingIndexName>name</UnderlyingIndexName>
     </key>
     <column id="818" parent="417" name="help_topic_id">
+=======
+    <key id="811" parent="410" name="name">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>name</UnderlyingIndexName>
+    </key>
+    <column id="812" parent="411" name="help_topic_id">
+>>>>>>> Stashed changes
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="819" parent="417" name="help_keyword_id">
+=======
+    <column id="813" parent="411" name="help_keyword_id">
+>>>>>>> Stashed changes
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <key id="820" parent="417" name="PRIMARY">
+=======
+    <key id="814" parent="411" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>help_keyword_id
 help_topic_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="821" parent="418" name="help_topic_id">
+=======
+    <column id="815" parent="412" name="help_topic_id">
+>>>>>>> Stashed changes
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="822" parent="418" name="name">
+=======
+    <column id="816" parent="412" name="name">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="823" parent="418" name="help_category_id">
+=======
+    <column id="817" parent="412" name="help_category_id">
+>>>>>>> Stashed changes
       <DataType>smallint(5) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="824" parent="418" name="description">
+=======
+    <column id="818" parent="412" name="description">
+>>>>>>> Stashed changes
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="825" parent="418" name="example">
+=======
+    <column id="819" parent="412" name="example">
+>>>>>>> Stashed changes
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="826" parent="418" name="url">
+=======
+    <column id="820" parent="412" name="url">
+>>>>>>> Stashed changes
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
+<<<<<<< Updated upstream
     <index id="827" parent="418" name="name">
+=======
+    <index id="821" parent="412" name="name">
+>>>>>>> Stashed changes
       <ColNames>name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
+<<<<<<< Updated upstream
     <key id="828" parent="418" name="PRIMARY">
+=======
+    <key id="822" parent="412" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>help_topic_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <key id="829" parent="418" name="name">
       <ColNames>name</ColNames>
       <UnderlyingIndexName>name</UnderlyingIndexName>
     </key>
     <column id="830" parent="419" name="db_name">
+=======
+    <key id="823" parent="412" name="name">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>name</UnderlyingIndexName>
+    </key>
+    <column id="824" parent="413" name="db_name">
+>>>>>>> Stashed changes
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="831" parent="419" name="table_name">
+=======
+    <column id="825" parent="413" name="table_name">
+>>>>>>> Stashed changes
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="832" parent="419" name="index_name">
+=======
+    <column id="826" parent="413" name="index_name">
+>>>>>>> Stashed changes
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="833" parent="419" name="prefix_arity">
+=======
+    <column id="827" parent="413" name="prefix_arity">
+>>>>>>> Stashed changes
       <DataType>int(11) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="834" parent="419" name="avg_frequency">
       <DataType>decimal(12,4 digit)|0s</DataType>
       <Position>5</Position>
     </column>
     <key id="835" parent="419" name="PRIMARY">
+=======
+    <column id="828" parent="413" name="avg_frequency">
+      <DataType>decimal(12,4 digit)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <key id="829" parent="413" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>db_name
 table_name
 index_name
@@ -3662,48 +5523,84 @@ prefix_arity</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="836" parent="420" name="database_name">
+=======
+    <column id="830" parent="414" name="database_name">
+>>>>>>> Stashed changes
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="837" parent="420" name="table_name">
+=======
+    <column id="831" parent="414" name="table_name">
+>>>>>>> Stashed changes
       <DataType>varchar(199)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="838" parent="420" name="index_name">
+=======
+    <column id="832" parent="414" name="index_name">
+>>>>>>> Stashed changes
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="839" parent="420" name="last_update">
+=======
+    <column id="833" parent="414" name="last_update">
+>>>>>>> Stashed changes
       <DataType>timestamp|0s</DataType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <NotNull>1</NotNull>
       <OnUpdate>current_timestamp()</OnUpdate>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="840" parent="420" name="stat_name">
+=======
+    <column id="834" parent="414" name="stat_name">
+>>>>>>> Stashed changes
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="841" parent="420" name="stat_value">
+=======
+    <column id="835" parent="414" name="stat_value">
+>>>>>>> Stashed changes
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="842" parent="420" name="sample_size">
       <DataType>bigint(20) unsigned|0s</DataType>
       <Position>7</Position>
     </column>
     <column id="843" parent="420" name="stat_description">
+=======
+    <column id="836" parent="414" name="sample_size">
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <Position>7</Position>
+    </column>
+    <column id="837" parent="414" name="stat_description">
+>>>>>>> Stashed changes
       <DataType>varchar(1024)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
+<<<<<<< Updated upstream
     <key id="844" parent="420" name="PRIMARY">
+=======
+    <key id="838" parent="414" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>database_name
 table_name
 index_name
@@ -3711,243 +5608,411 @@ stat_name</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="845" parent="421" name="database_name">
+=======
+    <column id="839" parent="415" name="database_name">
+>>>>>>> Stashed changes
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="846" parent="421" name="table_name">
+=======
+    <column id="840" parent="415" name="table_name">
+>>>>>>> Stashed changes
       <DataType>varchar(199)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="847" parent="421" name="last_update">
+=======
+    <column id="841" parent="415" name="last_update">
+>>>>>>> Stashed changes
       <DataType>timestamp|0s</DataType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <NotNull>1</NotNull>
       <OnUpdate>current_timestamp()</OnUpdate>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="848" parent="421" name="n_rows">
+=======
+    <column id="842" parent="415" name="n_rows">
+>>>>>>> Stashed changes
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="849" parent="421" name="clustered_index_size">
+=======
+    <column id="843" parent="415" name="clustered_index_size">
+>>>>>>> Stashed changes
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="850" parent="421" name="sum_of_other_index_sizes">
+=======
+    <column id="844" parent="415" name="sum_of_other_index_sizes">
+>>>>>>> Stashed changes
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
+<<<<<<< Updated upstream
     <key id="851" parent="421" name="PRIMARY">
+=======
+    <key id="845" parent="415" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>database_name
 table_name</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="852" parent="422" name="name">
+=======
+    <column id="846" parent="416" name="name">
+>>>>>>> Stashed changes
       <DataType>varchar(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="853" parent="422" name="dl">
+=======
+    <column id="847" parent="416" name="dl">
+>>>>>>> Stashed changes
       <DataType>varchar(128)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <key id="854" parent="422" name="PRIMARY">
+=======
+    <key id="848" parent="416" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>name</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="855" parent="423" name="db">
+=======
+    <column id="849" parent="417" name="db">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <CollationName>utf8_bin</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="856" parent="423" name="name">
+=======
+    <column id="850" parent="417" name="name">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="857" parent="423" name="type">
+=======
+    <column id="851" parent="417" name="type">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;FUNCTION&apos;, &apos;PROCEDURE&apos;, &apos;PACKAGE&apos;, &apos;PACKAGE BODY&apos;)|0e</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="858" parent="423" name="specific_name">
+=======
+    <column id="852" parent="417" name="specific_name">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="859" parent="423" name="language">
+=======
+    <column id="853" parent="417" name="language">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;SQL&apos;)|0e</DataType>
       <DefaultExpression>&apos;SQL&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="860" parent="423" name="sql_data_access">
+=======
+    <column id="854" parent="417" name="sql_data_access">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;CONTAINS_SQL&apos;, &apos;NO_SQL&apos;, &apos;READS_SQL_DATA&apos;, &apos;MODIFIES_SQL_DATA&apos;)|0e</DataType>
       <DefaultExpression>&apos;CONTAINS_SQL&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="861" parent="423" name="is_deterministic">
+=======
+    <column id="855" parent="417" name="is_deterministic">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;YES&apos;, &apos;NO&apos;)|0e</DataType>
       <DefaultExpression>&apos;NO&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="862" parent="423" name="security_type">
+=======
+    <column id="856" parent="417" name="security_type">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;INVOKER&apos;, &apos;DEFINER&apos;)|0e</DataType>
       <DefaultExpression>&apos;DEFINER&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="863" parent="423" name="param_list">
+=======
+    <column id="857" parent="417" name="param_list">
+>>>>>>> Stashed changes
       <DataType>blob|0s</DataType>
       <NotNull>1</NotNull>
       <Position>9</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="864" parent="423" name="returns">
+=======
+    <column id="858" parent="417" name="returns">
+>>>>>>> Stashed changes
       <DataType>longblob|0s</DataType>
       <NotNull>1</NotNull>
       <Position>10</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="865" parent="423" name="body">
+=======
+    <column id="859" parent="417" name="body">
+>>>>>>> Stashed changes
       <DataType>longblob|0s</DataType>
       <NotNull>1</NotNull>
       <Position>11</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="866" parent="423" name="definer">
+=======
+    <column id="860" parent="417" name="definer">
+>>>>>>> Stashed changes
       <DataType>char(141)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>12</Position>
       <CollationName>utf8_bin</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="867" parent="423" name="created">
+=======
+    <column id="861" parent="417" name="created">
+>>>>>>> Stashed changes
       <DataType>timestamp|0s</DataType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <NotNull>1</NotNull>
       <OnUpdate>current_timestamp()</OnUpdate>
       <Position>13</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="868" parent="423" name="modified">
+=======
+    <column id="862" parent="417" name="modified">
+>>>>>>> Stashed changes
       <DataType>timestamp|0s</DataType>
       <DefaultExpression>&apos;0000-00-00 00:00:00&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>14</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="869" parent="423" name="sql_mode">
+=======
+    <column id="863" parent="417" name="sql_mode">
+>>>>>>> Stashed changes
       <DataType>set(&apos;REAL_AS_FLOAT&apos;, &apos;PIPES_AS_CONCAT&apos;, &apos;ANSI_QUOTES&apos;, &apos;IGNORE_SPACE&apos;, &apos;IGNORE_BAD_TABLE_OPTIONS&apos;, &apos;ONLY_FULL_GROUP_BY&apos;, &apos;NO_UNSIGNED_SUBTRACTION&apos;, &apos;NO_DIR_IN_CREATE&apos;, &apos;POSTGRESQL&apos;, &apos;ORACLE&apos;, &apos;MSSQL&apos;, &apos;DB2&apos;, &apos;MAXDB&apos;, &apos;NO_KEY_OPTIONS&apos;, &apos;NO_TABLE_OPTIONS&apos;, &apos;NO_FIELD_OPTIONS&apos;, &apos;MYSQL323&apos;, &apos;MYSQL40&apos;, &apos;ANSI&apos;, &apos;NO_AUTO_VALUE_ON_ZERO&apos;, &apos;NO_BACKSLASH_ESCAPES&apos;, &apos;STRICT_TRANS_TABLES&apos;, &apos;STRICT_ALL_TABLES&apos;, &apos;NO_ZERO_IN_DATE&apos;, &apos;NO_ZERO_DATE&apos;, &apos;INVALID_DATES&apos;, &apos;ERROR_FOR_DIVISION_BY_ZERO&apos;, &apos;TRADITIONAL&apos;, &apos;NO_AUTO_CREATE_USER&apos;, &apos;HIGH_NOT_PRECEDENCE&apos;, &apos;NO_ENGINE_SUBSTITUTION&apos;, &apos;PAD_CHAR_TO_FULL_LENGTH&apos;, &apos;EMPTY_STRING_IS_NULL&apos;, &apos;SIMULTANEOUS_ASSIGNMENT&apos;, &apos;TIME_ROUND_FRACTIONAL&apos;)|0e</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>15</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="870" parent="423" name="comment">
+=======
+    <column id="864" parent="417" name="comment">
+>>>>>>> Stashed changes
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <Position>16</Position>
       <CollationName>utf8_bin</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="871" parent="423" name="character_set_client">
+=======
+    <column id="865" parent="417" name="character_set_client">
+>>>>>>> Stashed changes
       <DataType>char(32)|0s</DataType>
       <Position>17</Position>
       <CollationName>utf8_bin</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="872" parent="423" name="collation_connection">
+=======
+    <column id="866" parent="417" name="collation_connection">
+>>>>>>> Stashed changes
       <DataType>char(32)|0s</DataType>
       <Position>18</Position>
       <CollationName>utf8_bin</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="873" parent="423" name="db_collation">
+=======
+    <column id="867" parent="417" name="db_collation">
+>>>>>>> Stashed changes
       <DataType>char(32)|0s</DataType>
       <Position>19</Position>
       <CollationName>utf8_bin</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="874" parent="423" name="body_utf8">
       <DataType>longblob|0s</DataType>
       <Position>20</Position>
     </column>
     <column id="875" parent="423" name="aggregate">
+=======
+    <column id="868" parent="417" name="body_utf8">
+      <DataType>longblob|0s</DataType>
+      <Position>20</Position>
+    </column>
+    <column id="869" parent="417" name="aggregate">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;NONE&apos;, &apos;GROUP&apos;)|0e</DataType>
       <DefaultExpression>&apos;NONE&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>21</Position>
     </column>
+<<<<<<< Updated upstream
     <key id="876" parent="423" name="PRIMARY">
+=======
+    <key id="870" parent="417" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>db
 name
 type</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="877" parent="424" name="Host">
+=======
+    <column id="871" parent="418" name="Host">
+>>>>>>> Stashed changes
       <DataType>char(60)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="878" parent="424" name="Db">
+=======
+    <column id="872" parent="418" name="Db">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="879" parent="424" name="User">
+=======
+    <column id="873" parent="418" name="User">
+>>>>>>> Stashed changes
       <DataType>char(80)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="880" parent="424" name="Routine_name">
+=======
+    <column id="874" parent="418" name="Routine_name">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="881" parent="424" name="Routine_type">
+=======
+    <column id="875" parent="418" name="Routine_type">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;FUNCTION&apos;, &apos;PROCEDURE&apos;, &apos;PACKAGE&apos;, &apos;PACKAGE BODY&apos;)|0e</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="882" parent="424" name="Grantor">
+=======
+    <column id="876" parent="418" name="Grantor">
+>>>>>>> Stashed changes
       <DataType>char(141)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="883" parent="424" name="Proc_priv">
+=======
+    <column id="877" parent="418" name="Proc_priv">
+>>>>>>> Stashed changes
       <DataType>set(&apos;Execute&apos;, &apos;Alter Routine&apos;, &apos;Grant&apos;)|0e</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>7</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="884" parent="424" name="Timestamp">
+=======
+    <column id="878" parent="418" name="Timestamp">
+>>>>>>> Stashed changes
       <DataType>timestamp|0s</DataType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <NotNull>1</NotNull>
       <OnUpdate>current_timestamp()</OnUpdate>
       <Position>8</Position>
     </column>
+<<<<<<< Updated upstream
     <index id="885" parent="424" name="Grantor">
       <ColNames>Grantor</ColNames>
       <Type>btree</Type>
     </index>
     <key id="886" parent="424" name="PRIMARY">
+=======
+    <index id="879" parent="418" name="Grantor">
+      <ColNames>Grantor</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="880" parent="418" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>Host
 Db
 User
@@ -3956,54 +6021,90 @@ Routine_type</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="887" parent="425" name="Host">
+=======
+    <column id="881" parent="419" name="Host">
+>>>>>>> Stashed changes
       <DataType>char(60)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="888" parent="425" name="User">
+=======
+    <column id="882" parent="419" name="User">
+>>>>>>> Stashed changes
       <DataType>char(80)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="889" parent="425" name="Proxied_host">
+=======
+    <column id="883" parent="419" name="Proxied_host">
+>>>>>>> Stashed changes
       <DataType>char(60)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="890" parent="425" name="Proxied_user">
+=======
+    <column id="884" parent="419" name="Proxied_user">
+>>>>>>> Stashed changes
       <DataType>char(80)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="891" parent="425" name="With_grant">
+=======
+    <column id="885" parent="419" name="With_grant">
+>>>>>>> Stashed changes
       <DataType>tinyint(1)|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="892" parent="425" name="Grantor">
+=======
+    <column id="886" parent="419" name="Grantor">
+>>>>>>> Stashed changes
       <DataType>char(141)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="893" parent="425" name="Timestamp">
+=======
+    <column id="887" parent="419" name="Timestamp">
+>>>>>>> Stashed changes
       <DataType>timestamp|0s</DataType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <NotNull>1</NotNull>
       <OnUpdate>current_timestamp()</OnUpdate>
       <Position>7</Position>
     </column>
+<<<<<<< Updated upstream
     <index id="894" parent="425" name="Grantor">
       <ColNames>Grantor</ColNames>
       <Type>btree</Type>
     </index>
     <key id="895" parent="425" name="PRIMARY">
+=======
+    <index id="888" parent="419" name="Grantor">
+      <ColNames>Grantor</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="889" parent="419" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>Host
 User
 Proxied_host
@@ -4011,246 +6112,418 @@ Proxied_user</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="896" parent="426" name="Host">
+=======
+    <column id="890" parent="420" name="Host">
+>>>>>>> Stashed changes
       <DataType>char(60)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="897" parent="426" name="User">
+=======
+    <column id="891" parent="420" name="User">
+>>>>>>> Stashed changes
       <DataType>char(80)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="898" parent="426" name="Role">
+=======
+    <column id="892" parent="420" name="Role">
+>>>>>>> Stashed changes
       <DataType>char(80)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="899" parent="426" name="Admin_option">
+=======
+    <column id="893" parent="420" name="Admin_option">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;N&apos;, &apos;Y&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <index id="900" parent="426" name="Host">
+=======
+    <index id="894" parent="420" name="Host">
+>>>>>>> Stashed changes
       <ColNames>Host
 User
 Role</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
+<<<<<<< Updated upstream
     <key id="901" parent="426" name="Host">
+=======
+    <key id="895" parent="420" name="Host">
+>>>>>>> Stashed changes
       <ColNames>Host
 User
 Role</ColNames>
       <UnderlyingIndexName>Host</UnderlyingIndexName>
     </key>
+<<<<<<< Updated upstream
     <column id="902" parent="427" name="Server_name">
+=======
+    <column id="896" parent="421" name="Server_name">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="903" parent="427" name="Host">
+=======
+    <column id="897" parent="421" name="Host">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="904" parent="427" name="Db">
+=======
+    <column id="898" parent="421" name="Db">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="905" parent="427" name="Username">
+=======
+    <column id="899" parent="421" name="Username">
+>>>>>>> Stashed changes
       <DataType>char(80)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="906" parent="427" name="Password">
+=======
+    <column id="900" parent="421" name="Password">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="907" parent="427" name="Port">
+=======
+    <column id="901" parent="421" name="Port">
+>>>>>>> Stashed changes
       <DataType>int(4)|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="908" parent="427" name="Socket">
+=======
+    <column id="902" parent="421" name="Socket">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="909" parent="427" name="Wrapper">
+=======
+    <column id="903" parent="421" name="Wrapper">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="910" parent="427" name="Owner">
+=======
+    <column id="904" parent="421" name="Owner">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>9</Position>
     </column>
+<<<<<<< Updated upstream
     <key id="911" parent="427" name="PRIMARY">
+=======
+    <key id="905" parent="421" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>Server_name</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="912" parent="428" name="start_time">
+=======
+    <column id="906" parent="422" name="start_time">
+>>>>>>> Stashed changes
       <DataType>timestamp(6)|0s</DataType>
       <DefaultExpression>current_timestamp(6)</DefaultExpression>
       <NotNull>1</NotNull>
       <OnUpdate>current_timestamp(6)</OnUpdate>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="913" parent="428" name="user_host">
+=======
+    <column id="907" parent="422" name="user_host">
+>>>>>>> Stashed changes
       <DataType>mediumtext|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="914" parent="428" name="query_time">
+=======
+    <column id="908" parent="422" name="query_time">
+>>>>>>> Stashed changes
       <DataType>time(6)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="915" parent="428" name="lock_time">
+=======
+    <column id="909" parent="422" name="lock_time">
+>>>>>>> Stashed changes
       <DataType>time(6)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="916" parent="428" name="rows_sent">
+=======
+    <column id="910" parent="422" name="rows_sent">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="917" parent="428" name="rows_examined">
+=======
+    <column id="911" parent="422" name="rows_examined">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="918" parent="428" name="db">
+=======
+    <column id="912" parent="422" name="db">
+>>>>>>> Stashed changes
       <DataType>varchar(512)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="919" parent="428" name="last_insert_id">
+=======
+    <column id="913" parent="422" name="last_insert_id">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="920" parent="428" name="insert_id">
+=======
+    <column id="914" parent="422" name="insert_id">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>9</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="921" parent="428" name="server_id">
+=======
+    <column id="915" parent="422" name="server_id">
+>>>>>>> Stashed changes
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>10</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="922" parent="428" name="sql_text">
+=======
+    <column id="916" parent="422" name="sql_text">
+>>>>>>> Stashed changes
       <DataType>mediumtext|0s</DataType>
       <NotNull>1</NotNull>
       <Position>11</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="923" parent="428" name="thread_id">
+=======
+    <column id="917" parent="422" name="thread_id">
+>>>>>>> Stashed changes
       <DataType>bigint(21) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>12</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="924" parent="428" name="rows_affected">
+=======
+    <column id="918" parent="422" name="rows_affected">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>13</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="925" parent="429" name="db_name">
+=======
+    <column id="919" parent="423" name="db_name">
+>>>>>>> Stashed changes
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="926" parent="429" name="table_name">
+=======
+    <column id="920" parent="423" name="table_name">
+>>>>>>> Stashed changes
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="927" parent="429" name="cardinality">
       <DataType>bigint(21) unsigned|0s</DataType>
       <Position>3</Position>
     </column>
     <key id="928" parent="429" name="PRIMARY">
+=======
+    <column id="921" parent="423" name="cardinality">
+      <DataType>bigint(21) unsigned|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <key id="922" parent="423" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>db_name
 table_name</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="929" parent="430" name="Host">
+=======
+    <column id="923" parent="424" name="Host">
+>>>>>>> Stashed changes
       <DataType>char(60)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="930" parent="430" name="Db">
+=======
+    <column id="924" parent="424" name="Db">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="931" parent="430" name="User">
+=======
+    <column id="925" parent="424" name="User">
+>>>>>>> Stashed changes
       <DataType>char(80)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="932" parent="430" name="Table_name">
+=======
+    <column id="926" parent="424" name="Table_name">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="933" parent="430" name="Grantor">
+=======
+    <column id="927" parent="424" name="Grantor">
+>>>>>>> Stashed changes
       <DataType>char(141)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="934" parent="430" name="Timestamp">
+=======
+    <column id="928" parent="424" name="Timestamp">
+>>>>>>> Stashed changes
       <DataType>timestamp|0s</DataType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <NotNull>1</NotNull>
       <OnUpdate>current_timestamp()</OnUpdate>
       <Position>6</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="935" parent="430" name="Table_priv">
+=======
+    <column id="929" parent="424" name="Table_priv">
+>>>>>>> Stashed changes
       <DataType>set(&apos;Select&apos;, &apos;Insert&apos;, &apos;Update&apos;, &apos;Delete&apos;, &apos;Create&apos;, &apos;Drop&apos;, &apos;Grant&apos;, &apos;References&apos;, &apos;Index&apos;, &apos;Alter&apos;, &apos;Create View&apos;, &apos;Show view&apos;, &apos;Trigger&apos;, &apos;Delete versioning rows&apos;)|0e</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>7</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <column id="936" parent="430" name="Column_priv">
+=======
+    <column id="930" parent="424" name="Column_priv">
+>>>>>>> Stashed changes
       <DataType>set(&apos;Select&apos;, &apos;Insert&apos;, &apos;Update&apos;, &apos;References&apos;)|0e</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>8</Position>
       <CollationName>utf8_general_ci</CollationName>
     </column>
+<<<<<<< Updated upstream
     <index id="937" parent="430" name="Grantor">
       <ColNames>Grantor</ColNames>
       <Type>btree</Type>
     </index>
     <key id="938" parent="430" name="PRIMARY">
+=======
+    <index id="931" parent="424" name="Grantor">
+      <ColNames>Grantor</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="932" parent="424" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>Host
 Db
 User
@@ -4258,168 +6531,293 @@ Table_name</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="939" parent="431" name="Time_zone_id">
+=======
+    <column id="933" parent="425" name="Time_zone_id">
+>>>>>>> Stashed changes
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
+<<<<<<< Updated upstream
     <column id="940" parent="431" name="Use_leap_seconds">
+=======
+    <column id="934" parent="425" name="Use_leap_seconds">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;Y&apos;, &apos;N&apos;)|0e</DataType>
       <DefaultExpression>&apos;N&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <key id="941" parent="431" name="PRIMARY">
+=======
+    <key id="935" parent="425" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>Time_zone_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="942" parent="432" name="Transition_time">
+=======
+    <column id="936" parent="426" name="Transition_time">
+>>>>>>> Stashed changes
       <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="943" parent="432" name="Correction">
+=======
+    <column id="937" parent="426" name="Correction">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <key id="944" parent="432" name="PRIMARY">
+=======
+    <key id="938" parent="426" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>Transition_time</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="945" parent="433" name="Name">
+=======
+    <column id="939" parent="427" name="Name">
+>>>>>>> Stashed changes
       <DataType>char(64)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="946" parent="433" name="Time_zone_id">
+=======
+    <column id="940" parent="427" name="Time_zone_id">
+>>>>>>> Stashed changes
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <key id="947" parent="433" name="PRIMARY">
+=======
+    <key id="941" parent="427" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>Name</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="948" parent="434" name="Time_zone_id">
+=======
+    <column id="942" parent="428" name="Time_zone_id">
+>>>>>>> Stashed changes
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="949" parent="434" name="Transition_time">
+=======
+    <column id="943" parent="428" name="Transition_time">
+>>>>>>> Stashed changes
       <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="950" parent="434" name="Transition_type_id">
+=======
+    <column id="944" parent="428" name="Transition_type_id">
+>>>>>>> Stashed changes
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <key id="951" parent="434" name="PRIMARY">
+=======
+    <key id="945" parent="428" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>Time_zone_id
 Transition_time</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="952" parent="435" name="Time_zone_id">
+=======
+    <column id="946" parent="429" name="Time_zone_id">
+>>>>>>> Stashed changes
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="953" parent="435" name="Transition_type_id">
+=======
+    <column id="947" parent="429" name="Transition_type_id">
+>>>>>>> Stashed changes
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="954" parent="435" name="Offset">
+=======
+    <column id="948" parent="429" name="Offset">
+>>>>>>> Stashed changes
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="955" parent="435" name="Is_DST">
+=======
+    <column id="949" parent="429" name="Is_DST">
+>>>>>>> Stashed changes
       <DataType>tinyint(3) unsigned|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="956" parent="435" name="Abbreviation">
+=======
+    <column id="950" parent="429" name="Abbreviation">
+>>>>>>> Stashed changes
       <DataType>char(8)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
+<<<<<<< Updated upstream
     <key id="957" parent="435" name="PRIMARY">
+=======
+    <key id="951" parent="429" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>Time_zone_id
 Transition_type_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <column id="958" parent="436" name="transaction_id">
+=======
+    <column id="952" parent="430" name="transaction_id">
+>>>>>>> Stashed changes
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="959" parent="436" name="commit_id">
+=======
+    <column id="953" parent="430" name="commit_id">
+>>>>>>> Stashed changes
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="960" parent="436" name="begin_timestamp">
+=======
+    <column id="954" parent="430" name="begin_timestamp">
+>>>>>>> Stashed changes
       <DataType>timestamp(6)|0s</DataType>
       <DefaultExpression>&apos;0000-00-00 00:00:00.000000&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="961" parent="436" name="commit_timestamp">
+=======
+    <column id="955" parent="430" name="commit_timestamp">
+>>>>>>> Stashed changes
       <DataType>timestamp(6)|0s</DataType>
       <DefaultExpression>&apos;0000-00-00 00:00:00.000000&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="962" parent="436" name="isolation_level">
+=======
+    <column id="956" parent="430" name="isolation_level">
+>>>>>>> Stashed changes
       <DataType>enum(&apos;READ-UNCOMMITTED&apos;, &apos;READ-COMMITTED&apos;, &apos;REPEATABLE-READ&apos;, &apos;SERIALIZABLE&apos;)|0e</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
+<<<<<<< Updated upstream
     <index id="963" parent="436" name="commit_id">
+=======
+    <index id="957" parent="430" name="commit_id">
+>>>>>>> Stashed changes
       <ColNames>commit_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
+<<<<<<< Updated upstream
     <index id="964" parent="436" name="begin_timestamp">
       <ColNames>begin_timestamp</ColNames>
       <Type>btree</Type>
     </index>
     <index id="965" parent="436" name="commit_timestamp">
+=======
+    <index id="958" parent="430" name="begin_timestamp">
+      <ColNames>begin_timestamp</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="959" parent="430" name="commit_timestamp">
+>>>>>>> Stashed changes
       <ColNames>commit_timestamp
 transaction_id</ColNames>
       <Type>btree</Type>
     </index>
+<<<<<<< Updated upstream
     <key id="966" parent="436" name="PRIMARY">
+=======
+    <key id="960" parent="430" name="PRIMARY">
+>>>>>>> Stashed changes
       <ColNames>transaction_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
+<<<<<<< Updated upstream
     <key id="967" parent="436" name="commit_id">
       <ColNames>commit_id</ColNames>
       <UnderlyingIndexName>commit_id</UnderlyingIndexName>
     </key>
     <column id="968" parent="437" name="Host">
+=======
+    <key id="961" parent="430" name="commit_id">
+      <ColNames>commit_id</ColNames>
+      <UnderlyingIndexName>commit_id</UnderlyingIndexName>
+    </key>
+    <column id="962" parent="431" name="Host">
+>>>>>>> Stashed changes
       <DataType>char(60)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="969" parent="437" name="User">
+=======
+    <column id="963" parent="431" name="User">
+>>>>>>> Stashed changes
       <DataType>char(80)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="970" parent="437" name="Password">
       <DataType>longtext|0s</DataType>
       <Position>3</Position>
@@ -4549,65 +6947,244 @@ transaction_id</ColNames>
       <Position>34</Position>
     </column>
     <column id="1002" parent="437" name="ssl_cipher">
+=======
+    <column id="964" parent="431" name="Password">
+      <DataType>longtext|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="965" parent="431" name="Select_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="966" parent="431" name="Insert_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="967" parent="431" name="Update_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <column id="968" parent="431" name="Delete_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>7</Position>
+    </column>
+    <column id="969" parent="431" name="Create_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>8</Position>
+    </column>
+    <column id="970" parent="431" name="Drop_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <column id="971" parent="431" name="Reload_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>10</Position>
+    </column>
+    <column id="972" parent="431" name="Shutdown_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>11</Position>
+    </column>
+    <column id="973" parent="431" name="Process_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>12</Position>
+    </column>
+    <column id="974" parent="431" name="File_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>13</Position>
+    </column>
+    <column id="975" parent="431" name="Grant_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>14</Position>
+    </column>
+    <column id="976" parent="431" name="References_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>15</Position>
+    </column>
+    <column id="977" parent="431" name="Index_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>16</Position>
+    </column>
+    <column id="978" parent="431" name="Alter_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>17</Position>
+    </column>
+    <column id="979" parent="431" name="Show_db_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>18</Position>
+    </column>
+    <column id="980" parent="431" name="Super_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>19</Position>
+    </column>
+    <column id="981" parent="431" name="Create_tmp_table_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>20</Position>
+    </column>
+    <column id="982" parent="431" name="Lock_tables_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>21</Position>
+    </column>
+    <column id="983" parent="431" name="Execute_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>22</Position>
+    </column>
+    <column id="984" parent="431" name="Repl_slave_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>23</Position>
+    </column>
+    <column id="985" parent="431" name="Repl_client_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>24</Position>
+    </column>
+    <column id="986" parent="431" name="Create_view_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>25</Position>
+    </column>
+    <column id="987" parent="431" name="Show_view_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>26</Position>
+    </column>
+    <column id="988" parent="431" name="Create_routine_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>27</Position>
+    </column>
+    <column id="989" parent="431" name="Alter_routine_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>28</Position>
+    </column>
+    <column id="990" parent="431" name="Create_user_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>29</Position>
+    </column>
+    <column id="991" parent="431" name="Event_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>30</Position>
+    </column>
+    <column id="992" parent="431" name="Trigger_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>31</Position>
+    </column>
+    <column id="993" parent="431" name="Create_tablespace_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>32</Position>
+    </column>
+    <column id="994" parent="431" name="Delete_history_priv">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>33</Position>
+    </column>
+    <column id="995" parent="431" name="ssl_type">
+      <DataType>varchar(9)|0s</DataType>
+      <Position>34</Position>
+    </column>
+    <column id="996" parent="431" name="ssl_cipher">
+>>>>>>> Stashed changes
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
       <Position>35</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="1003" parent="437" name="x509_issuer">
+=======
+    <column id="997" parent="431" name="x509_issuer">
+>>>>>>> Stashed changes
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
       <Position>36</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="1004" parent="437" name="x509_subject">
+=======
+    <column id="998" parent="431" name="x509_subject">
+>>>>>>> Stashed changes
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
       <Position>37</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="1005" parent="437" name="max_questions">
+=======
+    <column id="999" parent="431" name="max_questions">
+>>>>>>> Stashed changes
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>38</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="1006" parent="437" name="max_updates">
+=======
+    <column id="1000" parent="431" name="max_updates">
+>>>>>>> Stashed changes
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>39</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="1007" parent="437" name="max_connections">
+=======
+    <column id="1001" parent="431" name="max_connections">
+>>>>>>> Stashed changes
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>40</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="1008" parent="437" name="max_user_connections">
+=======
+    <column id="1002" parent="431" name="max_user_connections">
+>>>>>>> Stashed changes
       <DataType>bigint(21)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>41</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="1009" parent="437" name="plugin">
+=======
+    <column id="1003" parent="431" name="plugin">
+>>>>>>> Stashed changes
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
       <Position>42</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="1010" parent="437" name="authentication_string">
+=======
+    <column id="1004" parent="431" name="authentication_string">
+>>>>>>> Stashed changes
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
       <Position>43</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="1011" parent="437" name="password_expired">
+=======
+    <column id="1005" parent="431" name="password_expired">
+>>>>>>> Stashed changes
       <DataType>varchar(1)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>44</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="1012" parent="437" name="is_role">
       <DataType>varchar(1)|0s</DataType>
       <Position>45</Position>
     </column>
     <column id="1013" parent="437" name="default_role">
+=======
+    <column id="1006" parent="431" name="is_role">
+      <DataType>varchar(1)|0s</DataType>
+      <Position>45</Position>
+    </column>
+    <column id="1007" parent="431" name="default_role">
+>>>>>>> Stashed changes
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
       <Position>46</Position>
     </column>
+<<<<<<< Updated upstream
     <column id="1014" parent="437" name="max_statement_time">
+=======
+    <column id="1008" parent="431" name="max_statement_time">
+>>>>>>> Stashed changes
       <DataType>decimal(12,6 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>47</Position>
