@@ -80,8 +80,8 @@ $acronimo = $_POST['acronimo'][$index];
                                         <td><?php  print $presentazione_corrente['numeroSequenza']?></td>
                                         <td><?php  print $info_aticolo_tutorial['titolo']?></td>
                                         <td><?php  print $info_aticolo_tutorial['tipoPresentazione']?></td>
-                                        <td><?php  print $presentazione_corrente['oraInizio']?></td>
-                                        <td><?php  print $presentazione_corrente['oraFine']?></td>
+                                        <td><?php  print DateTime::createFromFormat("H:i:s", $presentazione_corrente['oraInizio'])->format("H:i")?></td>
+                                        <td><?php  print DateTime::createFromFormat("H:i:s", $presentazione_corrente['oraFine'])->format("H:i") ?></td>
                                         <td><?php  if ($media_valutazioni_presentazione[0]['mediaVoti'] == null) { print "nessuna valutazione";
                                         } else { print round($media_valutazioni_presentazione[0]['mediaVoti']); }?></td>
                                     </tr>

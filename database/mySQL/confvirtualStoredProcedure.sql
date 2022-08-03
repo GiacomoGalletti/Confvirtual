@@ -555,3 +555,24 @@ BEGIN
     END IF;
 END $$
 DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS addAuthorAndAssociatePresenter $$
+CREATE PROCEDURE addAuthorAndAssociatePresenter(IN in_userNameUtente varchar(50),  IN in_titoloArticolo varchar(50), IN in_codicePresentazione int, IN in_codiceSessione int)
+BEGIN
+    DECLARE nomeAutore varchar(50);
+    DECLARE cognomeAutore varchar(50);
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+        BEGIN
+            ROLLBACK;
+            SELECT 'ERROR' AS risultato;
+        END;
+    START TRANSACTION;
+    set nomeAutore = (SELECT nome FROM UTENTE WHERE userName = in_userNameUtente);
+    set cognomeAutore = (SELECT cognome FROM UTENTE WHERE userName = in_userNameUtente);
+    insert into presentazionepresenter (userNameUtente, titoloArticolo, codicePresentazione, codiceSessione) values (in_userNameUtente, in_titoloArticolo, in_codicePresentazione, in_codiceSessione);
+    insert into AUTORE (codicePresentazione, codiceSessione, nome, cognome) values (in_codicePresentazione, in_codiceSessione, nomeAutore, cognomeAutore);
+    SELECT 'OK' AS risultato;
+    COMMIT;
+END $$
+DELIMITER ;

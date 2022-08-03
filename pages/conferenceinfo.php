@@ -72,13 +72,14 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
                                 </thead>
                                 <tbody>
                                 <?php foreach ($array_presentazione as $presentazione_corrente) {
+
                                     $info_aticolo_tutorial = PresentationQueryController::getPresentationInfo($presentazione_corrente['codice'])[0]; ?>
                                 <tr>
                                 <td><?php  print $presentazione_corrente['numeroSequenza']?></td>
                                 <td><?php  print $info_aticolo_tutorial['titolo']?></td>
                                 <td><?php  print $info_aticolo_tutorial['tipoPresentazione']?></td>
-                                <td><?php  print $presentazione_corrente['oraInizio']?></td>
-                                <td><?php  print $presentazione_corrente['oraFine']?></td>
+                                <td><?php  echo DateTime::createFromFormat("H:i:s", $presentazione_corrente['oraInizio'])->format("H:i")?></td>
+                                <td><?php  print DateTime::createFromFormat("H:i:s", $presentazione_corrente['oraFine'])->format("H:i")?></td>
                                 <td></td>
                                 </tr>
                                 <?php } ?>

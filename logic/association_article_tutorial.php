@@ -33,7 +33,7 @@ print_r($_POST);
     }
 
     if ($_POST['tipo_presentazione']==='articolo') {
-        if(PresentazionePresenterSpeakerController::associatePresenter($_POST['username'][$index_btn],$_POST['titolo'][$index],$_POST['codicepresentazione'][$index],$_POST['codicesessione'][$index])) {
+        if(PresentazionePresenterSpeakerController::addAuthorAndAssociatePresenter($_POST['username'][$index_btn],$_POST['titolo'][$index],$_POST['codicepresentazione'][$index],$_POST['codicesessione'][$index])) {
             try {
                 Session::write('msg_sessione', '
                         <div class="container" style="background-color: limegreen;opacity: 50"> <h4>
