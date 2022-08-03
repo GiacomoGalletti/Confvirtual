@@ -57,3 +57,25 @@ FROM UTENTE
 WHERE userName IN (SELECT userNameUtente FROM PRESENTER);
 END $$
 DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS classificaSpeaker $$
+CREATE PROCEDURE classificaSpeaker()
+BEGIN
+    SELECT userName, avg(voto) AS mediaVoti
+    FROM speakerConValutazione INNER JOIN valutazione ON speakerConValutazione.codiceSessione = valutazione.codiceSessione AND speakerConValutazione.codicePresentazione = valutazione.codicePresentazione
+    GROUP BY userName
+    ORDER BY mediaVoti desc;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS classificaPresenter $$
+CREATE PROCEDURE classificaPresenter()
+BEGIN
+    SELECT userName, avg(voto) AS mediaVoti
+    FROM presenterConValutazione INNER JOIN valutazione ON presenterConValutazione.codiceSessione = valutazione.codiceSessione AND presenterConValutazione.codicePresentazione = valutazione.codicePresentazione
+    GROUP BY userName
+    ORDER BY mediaVoti desc;
+END $$
+DELIMITER ;

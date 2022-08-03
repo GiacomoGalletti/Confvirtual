@@ -32,7 +32,36 @@ include_once(sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 
         ?>
     <h3> classifica presenter e speaker:</h3>
-
+        <div style="display: inline;">
+            <p>Speaker/Tutorial </p>
+            <?php $speakers_rank = StatsQueryController::getRankingSpeaker();
+            if(sizeof($speakers_rank) >0 ) {
+                echo '<ol>';
+                    for($i = 0;$i<4;$i++) {
+                        if (isset($speakers_rank[$i])) {
+                            echo '<li>utente: <b>'.$speakers_rank[$i]['userName'].'</b> media valutazioni: <b>'. round($speakers_rank[$i]['mediaVoti'],2).'</b></li>';
+                        }
+                    }
+                echo '</ol>';
+            } else {
+                echo '<p>Nessuna Valutazione Disponibile</p>';
+            } ?>
+        </div>
+        <div style="display: inline">
+            <p>Presenter/Articolo </p>
+            <?php $speakers_rank = StatsQueryController::getRankingPresenter();
+            if(sizeof($speakers_rank) >0 ) {
+                echo '<ol>';
+                    for($i = 0;$i<4;$i++) {
+                        if (isset($speakers_rank[$i])) {
+                            echo '<li>'.$speakers_rank[$i]['userName'].'<span class="tab">     </span>'.$speakers_rank[$i]['mediaVoti'].'</li>';
+                        }
+                    }
+                echo '</ol>';
+            } else {
+                echo '<p>Nessuna Valutazione Disponibile</p>';
+            } ?>
+        </div>
     </div>
 
 

@@ -22,9 +22,15 @@ class StatsQueryController
         return DbStats::contaUtentiTotali();
     }
 
+    public static function getRankingSpeaker()
+    {
+        return DbStats::getRankingSpeaker();
+    }
 
-
-
+    public static function getRankingPresenter()
+    {
+        return DbStats::getRankingPresenter();
+    }
 
 }
 

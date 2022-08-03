@@ -469,17 +469,6 @@ BEGIN
 END $$
 DELIMITER ;
 
-DROP VIEW IF EXISTS conferenzevalide;
-create view conferenzevalide as ( select * from CONFERENZA where (CONFERENZA.statoSvolgimento = 'attiva'));
-
-DELIMITER $$
-DROP PROCEDURE IF EXISTS ritornaIscrizioniConferenze $$
-CREATE PROCEDURE ritornaIscrizioniConferenze(IN in_userNameUtente varchar(50))
-BEGIN
-    select * from conferenzevalide,utenteregistrato where conferenzevalide.acronimo = utenteregistrato.acronimoConferenza and conferenzevalide.annoEdizione = utenteregistrato.annoEdizioneconferenza and in_userNameUtente = utenteregistrato.userNameUtente;
-END $$
-DELIMITER ;
-
 DELIMITER //
 drop procedure if exists associateSpeaker //
 CREATE PROCEDURE associateSpeaker(IN in_userNameUtente varchar(50),IN in_titoloTutorial varchar(50), IN in_codicePresentazione int, IN in_codiceSessione int)
