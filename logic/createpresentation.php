@@ -5,6 +5,7 @@ include_once (sprintf("%s/logic/Upload.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/FileTypeEnum.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/hourchecker.php", $_SERVER["DOCUMENT_ROOT"]));
 print_r($_POST); //-------DEBUG--------
+
 header('HTTP/1.1 307 Temporary Redirect');
 header('Location: /pages/admin/addpresentation.php');
 
@@ -76,5 +77,3 @@ if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H
                                         Seleziona una tipologia di presentazione</h4> </div>');;
     }
 }
-
-

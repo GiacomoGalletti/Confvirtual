@@ -157,6 +157,29 @@ $article_tutorial_btn = 0;
         <label class="form_articolo" for="pagenum"><b>Numero di pagine:</b></label>
         <input class="form_articolo" type="text" id="pagenum" name="pagenum" pattern="[0-9]+" placeholder="inserisci il numero di pagine">
 
+        <label class="form_articolo" for="pagenum"><b>Parole chiave</b></label>
+        <input class="form_articolo" type="text" id="pagenum" name="pagenum" pattern="[0-9]+" placeholder="inserisci il numero di pagine">
+
+        <b class="form_articolo">Autore</b>
+        <div class="input-group form_articolo" id="input_group">
+            <div class="input-group-prepend" id="autore_input">
+                <span class="input-group-text">Nome e cognome</span>
+                <input autocomplete="off" type="text" class="form-control" name="nome[]" id="nome_cognome" style="margin: 0!important;">
+                <input autocomplete="off" type="text" class="form-control" name="cognome[]" id="nome_cognome" style="margin: 0!important;">
+            </div>
+        </div>
+        <div class="container form_articolo" style="margin-top: 10px;">
+            <div class="row">
+                <div class="col-sm">
+                </div>
+                <div class="col-sm">
+                </div>
+                <div class="col-sm">
+                    <button type="button" id="aggiungiAutore">Aggiungi Autore</button>
+                </div>
+            </div>
+        </div>
+
         <label for="input_titolo_tutorial" class="form_tutorial"><b>Titolo Tutorial</b></label>
         <input class="form_tutorial" type="text" id="input_titolo_tutorial" name="titolo_tutorial" placeholder="inserisci titolo tutorial">
         <label for="input_abstract_tutorial" class="form_tutorial"><b>Abstract</b></label>
@@ -191,6 +214,8 @@ include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUM
 ?>
 
 <script>
+
+    $('')
 
     function hideElement(elements) {
         [].forEach.call(elements,function(obj) {
@@ -228,6 +253,14 @@ include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUM
     document.getElementById("radius_articolo").onchange = changeForm;
     document.getElementById('radius_tutorial').onchange = changeForm;
     changeForm();
+
+    const rows = '<div class="input-group-prepend" id="autore_input" style="margin-top: 3px;"> <span class="input-group-text">Nome e cognome</span> <input autocomplete="off" type="text" class="form-control" name="nome[]" id="nome_cognome" style="margin: 0!important;"> <input autocomplete="off" type="text" class="form-control" name="cognome[]" id="nome_cognome" style="margin: 0!important;"> </div>';
+
+    $('#aggiungiAutore').on('click', function handleClick() {
+        let template = document.createElement('div');
+        document.getElementById('input_group').appendChild(template);
+        template.innerHTML = rows;
+    });
 </script>
 </body>
 </html>
