@@ -92,19 +92,29 @@ CREATE TABLE AUTORE(
                            ON DELETE CASCADE
 )engine = 'InnoDB';
 
+# CREATE TABLE PRESENTER (
+#                            userNameUtente varchar(50),
+#                            curriculum varchar(30),
+#                            foto varchar(260),
+#                            nomeUniversita varchar(50),
+#                            nomeDipartimento varchar(50),
+#                            codicePresentazione int,
+#                            codiceSessione int,
+#                            nomeAutore varchar(50),
+#                            cognomeAutore varchar(50),
+#                            primary key (userNameUtente),
+#                            foreign key (userNameUtente) references UTENTE(userName)ON DELETE CASCADE,
+#                            foreign key (codicePresentazione,codiceSessione,nomeAutore,cognomeAutore) references AUTORE(codicePresentazione,codiceSessione,nome,cognome)ON DELETE CASCADE
+# )engine = 'InnoDB';
+
 CREATE TABLE PRESENTER (
                            userNameUtente varchar(50),
                            curriculum varchar(30),
                            foto varchar(260),
                            nomeUniversita varchar(50),
                            nomeDipartimento varchar(50),
-                           codicePresentazione int,
-                           codiceSessione int,
-                           nomeAutore varchar(50),
-                           cognomeAutore varchar(50),
                            primary key (userNameUtente),
-                           foreign key (userNameUtente) references UTENTE(userName)ON DELETE CASCADE,
-                           foreign key (codicePresentazione,codiceSessione,nomeAutore,cognomeAutore) references AUTORE(codicePresentazione,codiceSessione,nome,cognome)ON DELETE CASCADE
+                           foreign key (userNameUtente) references UTENTE(userName)ON DELETE CASCADE
 )engine = 'InnoDB';
 
 CREATE TABLE SPONSOR (

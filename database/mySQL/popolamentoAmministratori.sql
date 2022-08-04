@@ -10,6 +10,12 @@ insert into UTENTE(userName,nome,cognome,pswd,luogoNascita,dataNascita)
                    ('usertwo','Gianni','Verdi','usertwo','Bologna','2002/12/31'),
                    ('userthree','Gianni','Verdi','userthree','Bologna','2003/12/31'),
                    ('userfour','Gianni','Verdi','userfour','Bologna','2004/12/31'),
+                   ('userfive','Gianni','Verdi','userfive','Bologna','2004/12/31'),
+                   ('usersix','Gianni','Verdi','usersix','Bologna','2004/12/31'),
+                   ('userseven','Gianni','Verdi','userseven','Bologna','2004/12/31'),
+                   ('usereight','Gianni','Verdi','usereight','Bologna','2004/12/31'),
+                   ('usernine','Gianni','Verdi','usernine','Bologna','2004/12/31'),
+                   ('userten','Gianni','Verdi','userten','Bologna','2004/12/31'),
                    ('buzz','Gianni','Verdi','buzz','Bologna','2005/12/31'),
                    ('lightyear','Gianni','Verdi','lightyear','Bologna','2006/12/31')
                    ;
