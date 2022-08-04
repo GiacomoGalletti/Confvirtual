@@ -108,6 +108,8 @@ try {
                                 <div class="dropdown-menu" aria-labelledby="dropdown04">
                                     <a class="dropdown-item" href="#">Prossime confereze</a>
                                     <a class="dropdown-item" href="#">Conferenze o passate</a>
+                                    <a class="dropdown-item" href="/pages/subscribedconferences.php">Iscrizioni</a>
+                                    <a class="dropdown-item" href="/pages/admin/myconferences.php">Le mie conferenze</a>
                                 </div>
                             </li>
                             <li class="nav-item"><!--suppress HtmlDeprecatedAttribute -->
