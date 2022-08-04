@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="confvirtual@localhost">
-  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.40">
+  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.41">
     <root id="1">
       <DefaultCasing>lower/lower</DefaultCasing>
       <DefaultEngine>InnoDB</DefaultEngine>
@@ -1443,9 +1443,9 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
     <scheduled-event id="389" parent="325" name="cambioStatoConferenza">
       <Definer>root@localhost</Definer>
       <Interval>&apos;1&apos; SECOND</Interval>
-      <LastExecuted>2022-08-04.16:47:51</LastExecuted>
+      <LastExecuted>2022-08-04.20:42:36</LastExecuted>
       <SourceTextLength>382</SourceTextLength>
-      <Starts>&apos;2022-08-04 14:47:50&apos;</Starts>
+      <Starts>&apos;2022-08-04 18:42:17&apos;</Starts>
       <Status>enabled</Status>
     </scheduled-event>
     <table id="390" parent="325" name="amministratore">
@@ -2332,7 +2332,7 @@ codiceSessione</ColNames>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="590" parent="398" name="codice">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>17</AutoIncrement>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -2543,7 +2543,7 @@ codiceSessione</ColNames>
       <Predicate>`oraFine` &gt; `oraInizio`</Predicate>
     </check>
     <column id="630" parent="402" name="codice">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>15</AutoIncrement>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
