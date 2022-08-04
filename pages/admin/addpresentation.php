@@ -168,8 +168,8 @@ $article_tutorial_btn = 0;
         <label class="form_articolo" for="pagenum"><b>Numero di pagine:</b></label>
         <input class="form_articolo" type="text" id="pagenum" name="pagenum" pattern="[0-9]+" placeholder="inserisci il numero di pagine">
 
-        <label class="form_articolo" for="pagenum"><b>Parole chiave</b></label>
-        <input class="form_articolo" type="text" id="pagenum" name="pagenum" pattern='[a-z,a-z]+' placeholder="inserisci le parole chiave">
+        <label class="form_articolo" for="paroleChiave"><b>Parole chiave</b></label>
+        <input class="form_articolo" type="text" id="pagenum" name="paroleChiave" pattern='[a-z,a-z]+' placeholder="inserisci le parole chiave">
 
         <b class="form_articolo">Autore</b>
         <div class="input-group form_articolo" id="input_group">
