@@ -61,7 +61,10 @@ insert into SESSIONE(codice,oraInizio,oraFine,titolo,linkStanza,numeroPresentazi
                     ('10','08:00:00','23:00:00','sesione giornaliera prova chat' ,'link','1','2022-08-06','2022','prvcht'),
                     ('11','08:00:00','23:00:00','sesione giornaliera prova chat' ,'link','1','2022-08-07','2022','prvcht'),
                     ('12','08:00:00','23:00:00','sesione giornaliera prova chat' ,'link','1','2022-08-08','2022','prvcht'),
-                    ('13','08:00:00','23:00:00','sesione giornaliera prova chat' ,'link','1','2022-08-09','2022','prvcht');
+                    ('13','08:00:00','23:00:00','sesione giornaliera prova chat' ,'link','1','2022-08-09','2022','prvcht'),
+
+                    ('14','08:00:00','23:00:00','sesione giornaliera ces20' ,'link','1','2020-09-01','2020','ces20');
+
 
 
 
@@ -86,7 +89,11 @@ insert into PRESENTAZIONE(codice, codiceSessione, oraInizio, oraFine, numeroSequ
                           ('13','10','12:00:00','14:00:00','2'),
 
                           ('14','11','09:00:00','11:00:00','1'),
-                          ('15','11','12:00:00','14:00:00','2');
+                          ('15','11','12:00:00','14:00:00','2'),
+
+                          ('16','14','12:00:00','14:00:00','1');
+
+
 
 
 
@@ -172,7 +179,8 @@ insert into ARTICOLO(codicePresentazione, codiceSessione, titolo, filePdf, numer
                 values('12','10','electronic consumers','/uploads/pdf/Sample.pdf','1','non coperto'),
                       ('13','10','l informatica','/uploads/pdf/Sample.pdf','1','non coperto'),
                       ('14','11','storia tecnica','/uploads/pdf/Sample.pdf','1','non coperto'),
-                      ('15','11','articolone','/uploads/pdf/Sample.pdf','1','non coperto');
+                      ('15','11','articolone','/uploads/pdf/Sample.pdf','1','non coperto'),
+                      ('16','14','articolone','/uploads/pdf/Sample.pdf','1','non coperto');
 
 insert into PRESENTAZIONESPEAKER(userNameUtente, titoloTutorial, codicePresentazione, codiceSessione, linkWeb, descrizione)
                           values('buzz','come vendere elettronica','1','1','link','lorem ipsum'),
@@ -184,7 +192,8 @@ insert into PRESENTAZIONEPRESENTER(userNameUtente, titoloArticolo, codicePresent
                             values('lightyear','electronic consumers','12','10'),
                                   ('userten','l informatica','13','10'),
                                   ('lightyear','storia tecnica','14','11'),
-                                  ('userten','l informatica','15','11');
+                                  ('userten','l informatica','15','11'),
+                                  ('lightyear','articolone','16','14');
 
 # insert into PAROLACHIAVE(parola, codicePresentazione, codiceSessione)
 #                 values();
