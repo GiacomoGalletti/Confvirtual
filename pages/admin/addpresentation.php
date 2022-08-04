@@ -41,6 +41,17 @@ $article_tutorial_btn = 0;
     } catch (ExpiredSessionException|Exception $e) {
         echo $e;
     }
+
+    try {
+        Session::start();
+        if (Session::read('msg_presentazione_1') != false) {
+            echo Session::read('msg_presentazione_1');
+            Session::delete('msg_presentazione_1');
+            Session::commit();
+        }
+    } catch (ExpiredSessionException|Exception $e) {
+        echo $e;
+    }
     ?>
     <div class="container">
         <h4 class="conferenceInfo">Sessione selezionata: </h4>
@@ -158,7 +169,7 @@ $article_tutorial_btn = 0;
         <input class="form_articolo" type="text" id="pagenum" name="pagenum" pattern="[0-9]+" placeholder="inserisci il numero di pagine">
 
         <label class="form_articolo" for="pagenum"><b>Parole chiave</b></label>
-        <input class="form_articolo" type="text" id="pagenum" name="pagenum" pattern="[0-9]+" placeholder="inserisci il numero di pagine">
+        <input class="form_articolo" type="text" id="pagenum" name="pagenum" pattern='[a-z,a-z]+' placeholder="inserisci le parole chiave">
 
         <b class="form_articolo">Autore</b>
         <div class="input-group form_articolo" id="input_group">

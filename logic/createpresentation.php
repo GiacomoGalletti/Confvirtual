@@ -53,6 +53,23 @@ if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H
                     Creazione articolo fallita.
                     </h4> </div>');
             }
+
+            $array_nome_cognome = [];
+            for ($i = 0; $i<$_POST['nome']; $i++) {
+                $array_nome_cognome [] = $_POST['nome'][$i] . '*' . $_POST['cognome'][$i];
+            }
+            $array_nome_cognome = array_unique($array_nome_cognome);
+
+            foreach ($array_nome_cognome as $a) {
+                $singolo_nome_cognome = explode('*',$a);
+                if(!PresentationQueryController::addAuthor($a[0],$a[1])) {
+                    Session::write('msg_presentazione_1', '
+                    <div class="container" style="background-color: red;opacity: 50"> <h4>
+                    inserimento Autore '.$a[0].' '.$a[1].' Fallito
+                    </h4> </div>');
+                }
+            }
+
             break;
 
         case 'tutorial':

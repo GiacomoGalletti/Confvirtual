@@ -257,4 +257,19 @@ class DbPresentation
         }
     }
 
+    public static function addAuthor($nome, $cognome) :bool
+    {
+        try {
+            $sql = 'CALL addAuthor(\'' . $nome . '\',\'' . $cognome . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $res -> closeCursor();
+            return true;
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
 }

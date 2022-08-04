@@ -55,4 +55,9 @@ class PresentationQueryController
     {
         return DbPresentation::checkCoveredPresentation($codicePresentazione, $codiceSessione, $tipo);
     }
+
+    public static function addAuthor($nome, $cognome) :bool
+    {
+        return DbPresentation::addAuthor($nome, $cognome);
+    }
 }

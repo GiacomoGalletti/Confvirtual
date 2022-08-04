@@ -576,3 +576,15 @@ BEGIN
     COMMIT;
 END $$
 DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS addAuthor $$
+CREATE PROCEDURE addAuthor(IN in_codicePresentazione int, IN in_codiceSessione int, IN in_nome varchar(50), IN in_cognome varchar(50))
+BEGIN
+    INSERT INTO AUTORE (codicePresentazione, codiceSessione, nome, cognome)
+    SELECT in_codicePresentazione, in_codiceSessione, in_nome, in_cognome
+    WHERE NOT EXISTS (SELECT nome, cognome FROM AUTORE WHERE (codicePresentazione = in_codicePresentazione) AND (codiceSessione = in_codiceSessione)
+                                                         AND (nome = in_nome) AND (cognome = in_cognome));
+END $$
+DELIMITER ;
+
