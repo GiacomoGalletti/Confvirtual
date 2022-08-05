@@ -95,9 +95,14 @@ print_r($_POST);
                                         } else { print round($media_valutazioni_presentazione[0]['mediaVoti']); }?></td>
                                         <td><?php
                                             //foreach;
-                                            foreach($array_note_presentazione as $nota_corrente){
-                                                ?><p> <?php print $nota_corrente['NoteVoto']; ?> </p><?php
+                                            if($array_note_presentazione == null){
+                                                print "nessuna valutazione";
+                                            }else{
+                                                foreach($array_note_presentazione as $nota_corrente){
+                                                    ?><p> <?php print $nota_corrente['NoteVoto']; ?> </p><?php
+                                                }
                                             }
+
 
 
                                             ?>

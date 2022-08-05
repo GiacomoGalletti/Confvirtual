@@ -202,6 +202,8 @@ insert into VALUTAZIONE(userNameUtente, codicePresentazione, codiceSessione, vot
                  values ('admin1','1','1','4','recensione lorem ipsum'),
                         ('admin2','2','1','4','recensione lorem ipsum'),
                         ('admin3','3','7','4','recensione lorem ipsum'),
+                        ('admin2','3','7','5','seconda recensione lorem ipsum'),
+                        ('admin4','3','7','2','questa presentazione e` brutta'),
                         ('admin4','4','8','4','recensione lorem ipsum'),
                         ('admin1','5','8','4','recensione lorem ipsum'),
                         ('admin2','6','9','4','recensione lorem ipsum'),
