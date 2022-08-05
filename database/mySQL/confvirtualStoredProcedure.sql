@@ -507,6 +507,18 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
+DROP PROCEDURE IF EXISTS ritornaNoteValutazioniPresentazione $$
+CREATE PROCEDURE ritornaNoteValutazioniPresentazione(IN in_codiceSessione int, IN in_codicePresentazione int)
+BEGIN
+    SELECT note as NoteVoto
+    FROM valutazione
+    WHERE codiceSessione = in_codiceSessione and codicePresentazione = in_codicePresentazione;
+END $$
+DELIMITER ;
+
+call ritornaNoteValutazioniPresentazione(1,1);
+
+DELIMITER $$
 DROP PROCEDURE IF EXISTS ritornaImmagineProfilo $$
 CREATE PROCEDURE ritornaImmagineProfilo(IN in_username varchar(50),IN in_tipo varchar(20))
 BEGIN

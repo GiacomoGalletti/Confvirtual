@@ -236,4 +236,30 @@ class DbPresentation
         }
     }
 
+    public static function noteValutazioniPresentazione($codice_sessione, $codice_presentazione)
+    {
+        try {
+            $sql = 'CALL ritornaNoteValutazioniPresentazione(\'' . $codice_sessione . '\',\'' .  $codice_presentazione . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $output = $res -> fetchAll(PDO::FETCH_ASSOC);
+            $res -> closeCursor();
+            if  (sizeof($output) > 0)
+            {
+                return $output;
+            } else
+            {
+                echo '<pre>
+
+                <p>nessuna valutazione disponibile!</p>
+
+                </pre>';
+                return null;
+            }
+        } catch (Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return null;
+        }
+    }
+
 }

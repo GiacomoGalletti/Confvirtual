@@ -50,4 +50,10 @@ class PresentationQueryController
     public static function getMediaValutazioniPresentazione($codice_sessione, $codice_presentazione){
         return DbPresentation::mediaValutazioniPresentazione($codice_sessione, $codice_presentazione);
     }
+
+    public static function getNoteValutazioniPresentazione($codice_sessione, $codice_presentazione){
+        return DbPresentation::noteValutazioniPresentazione($codice_sessione, $codice_presentazione);
+    }
+
+
 }
