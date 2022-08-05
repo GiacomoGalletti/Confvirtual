@@ -109,12 +109,13 @@ class DbUser
             Session::start();
             if (self::userExists($username, $password)) {
                 Session::write('userName',$username);
+                Session::commit();
                 $sql = 'CALL checkUserType(\'' . $username . '\');';
                 $res = DbConn::getInstance() -> query($sql);
                 $row = $res -> fetch();
                 Session::write('type',$row['res_type']);
-                $res -> closeCursor();
                 Session::commit();
+                $res -> closeCursor();
                 header("Location: /index.php");
                 return true;
             } else {
@@ -139,9 +140,12 @@ class DbUser
             $res = DbConn::getInstance() -> query($sql);
             $output = $res -> fetchAll(PDO::FETCH_ASSOC);
             $res -> closeCursor();
+            print 'tipo utente:' . Session::read('type');
+
             if (!isset($output)) {
                 return null;
             }
+
             if ($output[0]['foto']===''){
                 return null;
             }

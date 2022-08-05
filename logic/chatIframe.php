@@ -4,6 +4,8 @@ include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/ChatQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+
+Session::start();
     if(Session::read('post')) {$_POST = Session::read('post'); Session::delete('post');}
     if(isset($_POST) & count($_POST)) { Session::write('post',$_POST);}
     global $id;
@@ -15,8 +17,12 @@ include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROO
         if (Session::read('userName') != $m['userNameUtente']) {
 
             $type_sender = UserQueryController::getUserType($userName_sender);
-            $foto = UserQueryController::getUserImgProfile($userName_sender,$type_sender);
-            if ($foto == null OR $foto == '') {
+            if ($type_sender !== 'amministratore') {
+                $foto = UserQueryController::getUserImgProfile($userName_sender,$type_sender);
+                if ($foto == null OR $foto == '') {
+                    $foto = '/resources/images/noImgDefault.jpg';
+                }
+            } else {
                 $foto = '/resources/images/noImgDefault.jpg';
             }
 

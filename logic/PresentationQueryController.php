@@ -56,8 +56,33 @@ class PresentationQueryController
         return DbPresentation::checkCoveredPresentation($codicePresentazione, $codiceSessione, $tipo);
     }
 
-    public static function addAuthor($nome, $cognome) :bool
+    public static function addAuthor($codicePresentazione,$codiceSessione,$nome, $cognome) :bool
     {
-        return DbPresentation::addAuthor($nome, $cognome);
+        return DbPresentation::addAuthor($codicePresentazione,$codiceSessione,$nome, $cognome);
+    }
+
+    public static function addKeyWord($codicePresentazione,$codiceSessione,$word): bool
+    {
+        return DbPresentation::addKeyWord($codicePresentazione,$codiceSessione,$word);
+    }
+
+    public static function getKeyWord($codicePresentazione,$codiceSessione)
+    {
+        return DbPresentation::getKeyWord($codicePresentazione,$codiceSessione);
+    }
+
+    public static function getAuthors($codicePresentazione,$codiceSessione)
+    {
+        return DbPresentation::getAuthors($codicePresentazione,$codiceSessione);
+    }
+
+    public static function deleteKeyWords($codicePresentazione,$codiceSessione)
+    {
+        return DbPresentation::deleteKeyWords($codicePresentazione,$codiceSessione);
+    }
+
+    public static function deleteAuthors($codicePresentazione,$codiceSessione)
+    {
+        return DbPresentation::deleteAuthors($codicePresentazione,$codiceSessione);
     }
 }

@@ -257,10 +257,10 @@ class DbPresentation
         }
     }
 
-    public static function addAuthor($nome, $cognome) :bool
+    public static function addAuthor($codicePresentazione,$codiceSessione,$nome, $cognome) :bool
     {
         try {
-            $sql = 'CALL addAuthor(\'' . $nome . '\',\'' . $cognome . '\');';
+            $sql = 'CALL addAuthor(\'' . $codicePresentazione . '\',\'' .$codiceSessione . '\',\'' . $nome . '\',\'' . $cognome . '\');';
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
             return true;
@@ -272,4 +272,80 @@ class DbPresentation
         }
     }
 
+    public static function addKeyWord($codicePresentazione,$codiceSessione,$word): bool
+    {
+        try {
+            $sql = 'CALL addKeyWord(\'' . $codicePresentazione . '\',\'' . $codiceSessione . '\',\'' . $word . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $res -> closeCursor();
+            return true;
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
+    public static function getKeyWord($codicePresentazione,$codiceSessione)
+    {
+        try {
+            $sql = 'CALL getKeyWord(\'' . $codicePresentazione . '\',\'' . $codiceSessione . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $output = $res -> fetchAll(PDO::FETCH_ASSOC);
+            $res -> closeCursor();
+            return $output;
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
+    public static function getAuthors($codicePresentazione,$codiceSessione)
+    {
+        try {
+            $sql = 'CALL getAuthors(\'' . $codicePresentazione . '\',\'' . $codiceSessione . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $output = $res -> fetchAll(PDO::FETCH_ASSOC);
+            $res -> closeCursor();
+            return $output;
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
+    public static function deleteKeyWords($codicePresentazione, $codiceSessione)
+    {
+        try {
+            $sql = 'CALL deleteKeyWords(\'' . $codicePresentazione . '\',\'' . $codiceSessione . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $res -> closeCursor();
+            return true;
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
+    public static function deleteAuthors($codicePresentazione, $codiceSessione)
+    {
+        try {
+            $sql = 'CALL deleteAuthors(\'' . $codicePresentazione . '\',\'' . $codiceSessione . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $res -> closeCursor();
+            return true;
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
 }

@@ -4,7 +4,6 @@ include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCU
 include_once (sprintf("%s/logic/Upload.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/FileTypeEnum.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/hourchecker.php", $_SERVER["DOCUMENT_ROOT"]));
-print_r($_POST); //-------DEBUG--------
 
 header('HTTP/1.1 307 Temporary Redirect');
 header('Location: /pages/admin/addpresentation.php');
@@ -20,7 +19,8 @@ function checkSessionHour(): bool
         return false;
     }
 }
-if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H:i"),DateTime::createFromFormat("H:i", $_POST['orafin'])->format("H:i"),$_POST['arrayHours'])) || checkSessionHour()) {
+if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H:i"),DateTime::createFromFormat("H:i", $_POST['orafin'])->format("H:i"),$_POST['arrayHours'])) || checkSessionHour())
+{
     Session::start();
     Session::write('msg_presentazione', '
                     <div class="container" style="background-color: red;opacity: 50"> <h4>
@@ -53,23 +53,6 @@ if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H
                     Creazione articolo fallita.
                     </h4> </div>');
             }
-
-            $array_nome_cognome = [];
-            for ($i = 0; $i<$_POST['nome']; $i++) {
-                $array_nome_cognome [] = $_POST['nome'][$i] . '*' . $_POST['cognome'][$i];
-            }
-            $array_nome_cognome = array_unique($array_nome_cognome);
-
-            foreach ($array_nome_cognome as $a) {
-                $singolo_nome_cognome = explode('*',$a);
-                if(!PresentationQueryController::addAuthor($a[0],$a[1])) {
-                    Session::write('msg_presentazione_1', '
-                    <div class="container" style="background-color: red;opacity: 50"> <h4>
-                    inserimento Autore '.$a[0].' '.$a[1].' Fallito
-                    </h4> </div>');
-                }
-            }
-
             break;
 
         case 'tutorial':

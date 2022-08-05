@@ -20,9 +20,10 @@ class DbChat {
         }
     }
 
-    public static function sendMessage($codice_sessione,$username_mittente,$testo,$timestamp): bool
+    public static function sendMessage($codice_sessione,$testo,$timestamp): bool
     {
         try {
+            $username_mittente = Session::read('userName');
             $sql = 'CALL creaMessaggio(\'' . $codice_sessione . '\',\'' . $username_mittente . '\',\'' . $testo . '\',\'' . $timestamp . '\');';
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();

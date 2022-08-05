@@ -41,17 +41,6 @@ $article_tutorial_btn = 0;
     } catch (ExpiredSessionException|Exception $e) {
         echo $e;
     }
-
-    try {
-        Session::start();
-        if (Session::read('msg_presentazione_1') != false) {
-            echo Session::read('msg_presentazione_1');
-            Session::delete('msg_presentazione_1');
-            Session::commit();
-        }
-    } catch (ExpiredSessionException|Exception $e) {
-        echo $e;
-    }
     ?>
     <div class="container">
         <h4 class="conferenceInfo">Sessione selezionata: </h4>
@@ -96,6 +85,7 @@ $article_tutorial_btn = 0;
                                         $numeroPagine = $info[0]['numeroPagine'];
                                         $filePdf = $info[0]['filePdf'];
                                         ?>
+                                        <input type="hidden" name="codice_presentazione[]" value="<?php print $codice_presentazione ?>">
                                         <input type="hidden" name="numeroPagine[]" value="<?php print $numeroPagine ?>">
                                         <input type="hidden" name="filePDF[]" value="<?php print $filePdf ?>">
                                         <input type="hidden" name="abstract[]" value="">
@@ -103,6 +93,7 @@ $article_tutorial_btn = 0;
                                     } else {
                                         $abstract = $info[0]['abstract'];
                                         ?>
+                                        <input type="hidden" name="codice_presentazione[]" value="<?php print $codice_presentazione ?>">
                                         <input type="hidden" name="numeroPagine[]" value="">
                                         <input type="hidden" name="filePDF[]" value="">
                                         <input type="hidden" name="abstract[]" value="<?php print $abstract ?>">
@@ -129,9 +120,17 @@ $article_tutorial_btn = 0;
                                         <td><?php print $oraFine  ?></td>
                                         <td><?php print $tipologia ?></td>
                                         <td><?php print $titolo ?></td>
-                                        <td><button type="submit" id="article_tutorial_btn" name="article_tutorial_btn" value="<?php echo $article_tutorial_btn++; ?>"><?php print ('modifica '.$tipologia)?></button></td>
+                                        <td><button type="submit" id="article_tutorial_btn" name="article_tutorial_btn" value="<?php print $article_tutorial_btn; ?>"><?php print ('modifica '.$tipologia)?></button></td>
+                                            <form method="post" action="/pages/admin/authorkeywords.php">
+                                                <input type="hidden" name="codice_sessione" value="<?php print $codice_sessione ?>">
+                                                <input type="hidden" name="codice_presentazione" value="<?php print $codice_presentazione ?>">
+                                                <?php if($tipologia=="articolo"){ print('
+                                                    <td><button type="submit" name="auth_key_btn" value="'.$article_tutorial_btn.'">Autori-Parole chiave</button></td>');
+                                                }  ?>
+                                            </form>
                                     </tr>
                                     <?php
+                                    $article_tutorial_btn++;
                                 }
                                 ?>
                                 </thead>
@@ -168,28 +167,6 @@ $article_tutorial_btn = 0;
         <label class="form_articolo" for="pagenum"><b>Numero di pagine:</b></label>
         <input class="form_articolo" type="text" id="pagenum" name="pagenum" pattern="[0-9]+" placeholder="inserisci il numero di pagine">
 
-        <label class="form_articolo" for="paroleChiave"><b>Parole chiave</b></label>
-        <input class="form_articolo" type="text" id="pagenum" name="paroleChiave" pattern='[a-z,a-z]+' placeholder="inserisci le parole chiave">
-
-        <b class="form_articolo">Autore</b>
-        <div class="input-group form_articolo" id="input_group">
-            <div class="input-group-prepend" id="autore_input">
-                <span class="input-group-text">Nome e cognome</span>
-                <input autocomplete="off" type="text" class="form-control" name="nome[]" id="nome_cognome" style="margin: 0!important;">
-                <input autocomplete="off" type="text" class="form-control" name="cognome[]" id="nome_cognome" style="margin: 0!important;">
-            </div>
-        </div>
-        <div class="container form_articolo" style="margin-top: 10px;">
-            <div class="row">
-                <div class="col-sm">
-                </div>
-                <div class="col-sm">
-                </div>
-                <div class="col-sm">
-                    <button type="button" id="aggiungiAutore">Aggiungi Autore</button>
-                </div>
-            </div>
-        </div>
 
         <label for="input_titolo_tutorial" class="form_tutorial"><b>Titolo Tutorial</b></label>
         <input class="form_tutorial" type="text" id="input_titolo_tutorial" name="titolo_tutorial" placeholder="inserisci titolo tutorial">
@@ -199,6 +176,7 @@ $article_tutorial_btn = 0;
         <button name="confirm_btn" type="submit">Conferma</button>
 
         <input type="hidden" id="presentationbtn" name="presentationbtn" value="<?php print $_POST['presentationbtn'] ?>">
+        
         <?php
         $arrayLength = sizeof($_POST['orainizio_sessione']);
         for ($i = 0; $i<$arrayLength; $i++)
@@ -264,14 +242,6 @@ include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUM
     document.getElementById("radius_articolo").onchange = changeForm;
     document.getElementById('radius_tutorial').onchange = changeForm;
     changeForm();
-
-    const rows = '<div class="input-group-prepend" id="autore_input" style="margin-top: 3px;"> <span class="input-group-text">Nome e cognome</span> <input autocomplete="off" type="text" class="form-control" name="nome[]" id="nome_cognome" style="margin: 0!important;"> <input autocomplete="off" type="text" class="form-control" name="cognome[]" id="nome_cognome" style="margin: 0!important;"> </div>';
-
-    $('#aggiungiAutore').on('click', function handleClick() {
-        let template = document.createElement('div');
-        document.getElementById('input_group').appendChild(template);
-        template.innerHTML = rows;
-    });
 </script>
 </body>
 </html>

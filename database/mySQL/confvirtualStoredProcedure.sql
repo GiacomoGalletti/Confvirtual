@@ -581,10 +581,46 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS addAuthor $$
 CREATE PROCEDURE addAuthor(IN in_codicePresentazione int, IN in_codiceSessione int, IN in_nome varchar(50), IN in_cognome varchar(50))
 BEGIN
-    INSERT INTO AUTORE (codicePresentazione, codiceSessione, nome, cognome)
-    SELECT in_codicePresentazione, in_codiceSessione, in_nome, in_cognome
-    WHERE NOT EXISTS (SELECT nome, cognome FROM AUTORE WHERE (codicePresentazione = in_codicePresentazione) AND (codiceSessione = in_codiceSessione)
-                                                         AND (nome = in_nome) AND (cognome = in_cognome));
+    INSERT INTO AUTORE (codicePresentazione, codiceSessione, nome, cognome) VALUES (in_codicePresentazione,in_codiceSessione,in_nome,in_cognome);
 END $$
 DELIMITER ;
 
+DELIMITER $$
+DROP PROCEDURE IF EXISTS addKeyWord $$
+CREATE PROCEDURE addKeyWord(IN in_codicePresentazione int, IN in_codiceSessione int, IN in_parola varchar(20))
+BEGIN
+    INSERT INTO parolachiave (codicePresentazione, codiceSessione, parola) VALUES (in_codicePresentazione,in_codiceSessione,in_parola);
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS getKeyWord $$
+CREATE PROCEDURE getKeyWord(IN in_codicePresentazione int, IN in_codiceSessione int)
+BEGIN
+    select parola from parolachiave where (codiceSessione = in_codiceSessione and codicePresentazione = in_codicePresentazione);
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS getAuthors $$
+CREATE PROCEDURE getAuthors(IN in_codicePresentazione int, IN in_codiceSessione int)
+BEGIN
+    select nome,cognome from autore where (codiceSessione = in_codiceSessione and codicePresentazione = in_codicePresentazione);
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS deleteAuthors $$
+CREATE PROCEDURE deleteAuthors(IN in_codicePresentazione int , IN in_codiceSessione int)
+BEGIN
+    DELETE FROM autore WHERE in_codicePresentazione = autore.codicePresentazione AND in_codiceSessione = autore.codiceSessione;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS deleteKeyWords $$
+CREATE PROCEDURE deleteKeyWords(IN in_codicePresentazione int , IN in_codiceSessione int)
+BEGIN
+    DELETE FROM parolachiave WHERE in_codicePresentazione = parolachiave.codicePresentazione AND in_codiceSessione = parolachiave.codiceSessione;
+END $$
+DELIMITER ;
