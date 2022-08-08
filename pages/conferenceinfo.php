@@ -55,38 +55,83 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
                             <h4 style="display: inline-block; margin-right: 10px">Giorno: </h4>
                             <p style="display: inline-block; margin-right: 80px"><?php print ( $a['giornoData'] ); ?></p>
                             <h4 style="display: inline-block; margin-right: 10px">Link stanza: </h4>
-                            <a style="display: inline-block; margin-right: 80px" href="<?php print ( $a['linkStanza'] ); ?>"> LINK TEAMS</a>
+                            <a style="display: inline-block; margin-right: 80px" href="<?php print ( $a['linkStanza'] ); ?>" target="_blank"> LINK TEAMS</a>
                             <button style="display: inline-block;" type="submit" name="chatbtn" value="<?php print $a['codice'] ?>">vai alla chat</button>
                         </div>
                         <div class="table-wrap">
-                            <table class="table">
-                                <thead class="thead-primary">
-                                <tr>
-                                    <th>Sequenza</th>
-                                    <th>Titolo</th>
-                                    <th>Tipologia</th>
-                                    <th>Ora Inizio</th>
-                                    <th>Ora Fine</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php foreach ($array_presentazione as $presentazione_corrente) {
+                        <table class="table">
+                        <thead class="thead-primary">
+                        <tr>
+                            <th>Sequenza</th>
+                            <th>Titolo</th>
+                            <th>Tipologia</th>
+                            <th>Ora Inizio</th>
+                            <th>Ora Fine</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($array_presentazione as $presentazione_corrente) {
 
-                                    $info_aticolo_tutorial = PresentationQueryController::getPresentationInfo($presentazione_corrente['codice'])[0]; ?>
-                                <tr>
+                            $info_aticolo_tutorial = PresentationQueryController::getPresentationInfo($presentazione_corrente['codice'])[0]; ?>
+                            <tr>
                                 <td><?php  print $presentazione_corrente['numeroSequenza']?></td>
                                 <td><?php  print $info_aticolo_tutorial['titolo']?></td>
                                 <td><?php  print $info_aticolo_tutorial['tipoPresentazione']?></td>
-                                <td><?php  echo DateTime::createFromFormat("H:i:s", $presentazione_corrente['oraInizio'])->format("H:i")?></td>
+                                <td><?php  print DateTime::createFromFormat("H:i:s", $presentazione_corrente['oraInizio'])->format("H:i")?></td>
                                 <td><?php  print DateTime::createFromFormat("H:i:s", $presentazione_corrente['oraFine'])->format("H:i")?></td>
                                 <td></td>
-                                </tr>
-                                <?php } ?>
-                                </tbody>
-                            </table>
+                            </tr>
+                            <?php
+                            if ($info_aticolo_tutorial['tipoPresentazione'] === 'tutorial') {
+                                $abstract = $info_aticolo_tutorial['abstract'];
+                                if ($abstract !== '') {
+                                    print ('<tr><td><b>ABSTRACT: <br></b>' . $abstract . '</td><td></td><td></td><td></td><td></td><td></td></tr>');
+                                }
+                            }
+                            else if ($info_aticolo_tutorial['tipoPresentazione'] === 'articolo') {
+                                $filePDF = $info_aticolo_tutorial['filePdf'];
+                                $num_pag = $info_aticolo_tutorial['numeroPagine'];
+                                $autori = PresentationQueryController::getAuthors($presentazione_corrente['codice'],$a['codice']);
+                                $key_words = PresentationQueryController::getKeyWord($presentazione_corrente['codice'],$a['codice']);
+                                //print ('<br> codice Sessione : ' . $a['codice'] . '<br>codice Presentazione : ' .$presentazione_corrente['codice'] .'<br>');
+                                //print_r(PresentationQueryController::getAuthors($presentazione_corrente['codice'],$a['codice']));
+                                print ('<tr>');
+                                    if ($filePDF !== '') {
+                                        print ('<td>
+                                                    <label><b>File PDF</b></label>
+                                                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                                                    <a type="submit" href="'.$filePDF.'" class="btn btn-outline-primary" target="_blank" style="margin-right: 100px"><i class="fa fa-download" style="font-size:48px;color:#202040"></i></a>
+                                                </td>');
+                                    }
+
+                                    if ($num_pag !== '') {
+                                        print ('<td><b>Numero pagine: </b>' . $num_pag . '</td>');
+                                    }
+                                    if (sizeof($autori)>0) {
+
+                                        print ('<td><b>Autori:  <br></b>');
+                                        foreach ($autori as $auth) {
+                                            print ($auth['nome'] . ' ' . $auth['cognome'] . '<br>');
+                                        }
+                                        print ('</td>');
+                                    }
+
+                                if (sizeof($key_words)>0) {
+
+                                    print ('<td><b>Prole chiave: <br></b>');
+                                    foreach ($key_words as $kw) {
+                                        print ($kw['parola'] . '<br>');
+                                    }
+                                    print ('</td>');
+                                }
+                                print ('</tr>');
+                            } }?>
+                        </tbody>
+                        </table>
                         </div>
-                    <?php }
+                        <?php
+                    }
                 }
             } else {
                 ?> <p>Nessuna sessione in programma al momento!</p> <?php

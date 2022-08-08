@@ -12,5 +12,5 @@ if (isset($_POST['submit']) AND $_POST['messaggio'] != '') {
     unset($_POST['submit']);
 }
 
-//header('HTTP/1.1 307 Temporary Redirect');
-//header('Location: /pages/chat.php');
+header('HTTP/1.1 307 Temporary Redirect');
+header('Location: /pages/chat.php');

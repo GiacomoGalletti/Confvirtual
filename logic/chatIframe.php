@@ -6,11 +6,17 @@ include_once (sprintf("%s/logic/ChatQueryController.php", $_SERVER["DOCUMENT_ROO
 include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 
 Session::start();
-    if(Session::read('post')) {$_POST = Session::read('post'); Session::delete('post');}
-    if(isset($_POST) & count($_POST)) { Session::write('post',$_POST);}
-    global $id;
+if(Session::read('post')) {$_POST = Session::read('post'); Session::delete('post');}
+
+global $id;
     $id = 0;
-    $codice_sessione = $_POST['chatbtn'];
+    if (isset($_POST['chatbtn'])) {
+        $codice_sessione = $_POST['chatbtn'];
+        Session::write('codice_sessione',$codice_sessione);
+    } else {
+        $codice_sessione = Session::read('codice_sessione');
+    }
+
     foreach (ChatQueryController::getMessages($codice_sessione) as $m) {
         $userName_sender = $m['userNameUtente'];
 
@@ -50,20 +56,8 @@ Session::start();
                     </div>
                     ');
         }
-    } ?>
-<script>
-    var nodes = document.querySelectorAll('.messaggio');
-    var last = nodes[nodes.length- 1];
-    window.addEventListener('load', function(e) {
-        last.focus();
-    })
-    setTimeout(function () {
-        window.location.href= '/logic/chatIframe.php'; // the redirect goes here
-
-    },7000);
-</script>
-<?php
- //   header('refresh: 5');
+}
+header("Refresh: 5;");
 
 
 

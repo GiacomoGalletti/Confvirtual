@@ -140,7 +140,6 @@ class DbUser
             $res = DbConn::getInstance() -> query($sql);
             $output = $res -> fetchAll(PDO::FETCH_ASSOC);
             $res -> closeCursor();
-            print 'tipo utente:' . Session::read('type');
 
             if (!isset($output)) {
                 return null;
