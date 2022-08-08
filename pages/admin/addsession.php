@@ -23,7 +23,6 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 <body>
 <!-- PRIMO FORM SOLO PER LA LISTA DELLE SESSIONI E PER SPOSTARSI IN CREAZIONE PRESENTAZIONE -->
 <div class="container">
-    <form method="post" action="adminlist.php">
     <h4 style="display: inline;" class="conferenceInfo">Conferenza selezionata: </h4>
     <p style="display: inline;" class="conferenceInfo">
         <?php print (' acronimo ' . $acronimo . ', edizione ' . $annoEdizione);
@@ -31,9 +30,6 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
         $arrayDate = explode("%", $rawdates);
         ?>
     </p>
-
-        <button style="margin-left: 20px;vertical-align: text-top; display: inline; max-width: 250px;" name = "creaconferenzabtn" id="creaconferenzabtn" type="submit">Aggiungi Amministratore</button>
-    </form>
 <form method="post" action="/pages/admin/addpresentation.php">
     <?php
     try {
