@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html lang="it">
-<form id="iframeForm" target="myFrame"  action="/logic/chatIframe.php" method="POST">
-    <input type="hidden" name="chatbtn" value="<?php print $_POST['chatbtn'] ?>" />
-    <input type="submit">
-</form>
 <?php
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
@@ -14,7 +10,6 @@ include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROO
 <form method="post" action="/logic/sendMessage.php">
     <?php include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     if(isset($_POST) & count($_POST)) { Session::write('post',$_POST);}
-
     ?>
 
     <div class="container">
@@ -28,16 +23,7 @@ include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROO
             <button name = "submit" type="submit">INVIA</button>
 
     </div>
-    <?php include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"])); ?>
 </form>
-<script>
-    $(document).ready(function(){
-        var loginform= document.getElementById("iframeForm");
-        loginform.style.display = "none";
-        loginform.submit();
-    });
-
-</script>
 </body>
 </html>
 <?php

@@ -1,13 +1,13 @@
 <?php
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 ob_start();
-echo '<div class="container">
+print ('<div class="container">
     <div class="row justify-content-between">
         <div class="imgcontainer">
             <img src="/resources/images/confvirtualTitle.png" alt="immagine logo" class="logo">
         </div>
     </div>
-</div>';
+</div>');
 
 if(isset($_POST['logout'])){
     Session::start();
@@ -110,7 +110,7 @@ try {
                                     <a class="dropdown-item" href="#">Conferenze o passate</a>
                                 </div>
                             </li>
-                            <li class="nav-item"><!--suppress HtmlDeprecatedAttribute -->
+                            <li class="nav-item">
                                 <button name='logout' class="nav-link">logout</button>
                         </ul>
                     </div>
@@ -137,7 +137,7 @@ try {
                                     <a class="dropdown-item" href="#">Conferenze passate</a>
                                 </div>
                             </li>
-                            <li class="nav-item"><!--suppress HtmlDeprecatedAttribute -->
+                            <li class="nav-item">
                                 <button name='logout' class="nav-link">logout</button>
                         </ul>
                     </div>
@@ -179,4 +179,4 @@ try {
 }
 include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"]));
 
-?>;
+?>
