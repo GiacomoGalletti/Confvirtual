@@ -73,7 +73,7 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
                     <td><?php print $oraInizio  ?></td>
                     <td><?php print $oraFine  ?></td>
                     <td><?php print $s['titolo']  ?></td>
-                    <td><a href="https://<?php print $s['linkStanza']?>">LINK</a></td>
+                    <td><a target="_blank" href="https://<?php print $s['linkStanza']?>">LINK</a></td>
                     <td><?php print $s['numeroPresentazioni']  ?></td>
                     <td><?php print ($data = $s['giornoData'])  ?></td>
                     <?php
