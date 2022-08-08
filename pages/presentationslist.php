@@ -94,7 +94,7 @@ print_r($_POST);
                                         <td><?php  if ($media_valutazioni_presentazione[0]['mediaVoti'] == null) { print "nessuna valutazione";
                                         } else { print round($media_valutazioni_presentazione[0]['mediaVoti']); }?></td>
                                         <td><?php
-                                            //foreach;
+
                                             if($array_note_presentazione == null){
                                                 print "nessuna valutazione";
                                             }else{

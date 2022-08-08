@@ -516,7 +516,7 @@ BEGIN
 END $$
 DELIMITER ;
 
-call ritornaNoteValutazioniPresentazione(1,1);
+# call ritornaNoteValutazioniPresentazione(1,1);
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS ritornaImmagineProfilo $$
