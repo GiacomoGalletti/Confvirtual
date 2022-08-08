@@ -85,4 +85,8 @@ class PresentationQueryController
     {
         return DbPresentation::deleteAuthors($codicePresentazione,$codiceSessione);
     }
+
+    public static function getNoteValutazioniPresentazione($codice_sessione, $codice_presentazione){
+        return DbPresentation::noteValutazioniPresentazione($codice_sessione, $codice_presentazione);
+    }
 }
