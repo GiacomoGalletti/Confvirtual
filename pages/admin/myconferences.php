@@ -7,7 +7,7 @@ include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 ?>
 <body>
-<form name="myform" method="post">
+<form name="myform" action="addconferencecreator.php" method="post">
     <?php
     include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     Session::start();
@@ -16,7 +16,6 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
     } catch (ExpiredSessionException|Exception $e) {
         $uName = null;
     }
-   // Session::dump();
 
     try {
         if (Session::read('msg_presentazione') != false) {
@@ -45,6 +44,11 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
         global $id;
         ?>
         <tr>
+            <input type="hidden" name="nome[]" value="<?php print $r['nome'] ?>">
+            <input type="hidden" name="acronimo[]" value="<?php print $r['acronimo'] ?>">
+            <input type="hidden" name="annoEdizione[]" value="<?php print $r['annoEdizione'] ?>">
+            <input type="hidden" name="immagineLogo[]" value="<?php print $r['immagineLogo'] ?>">
+            <input type="hidden" name="loggedUser" value="<?php print (Session::read('userName')) ?>">
             <th scope="row" class="scope" ><?php  print ($acronimo = $r['acronimo'])  ?></th>
             <td><?php print $r['nome'] ?></td>
             <td><?php print ($annoEdizione = $r['annoEdizione']) ?></td>
@@ -55,12 +59,21 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
                 $sendDates .= date_format(date_create($r['giorno']), "d-m-Y") . '%';
                 $stringDates .= date_format(date_create($r['giorno']), "d/m") . ' - ';
             } ?>
-            <td><?php print $stringDates  ?></td>
+            <td><?php print $stringDates ?></td>
             <td>
                 <button type="submit" id="btn" name="sessionbtn" onclick="inline(this); EditSession()" value = "<?php print ($id) ?>" state="<?php print $stato ?>"><?php if ($stato==='completata') {print("Vota Conferenza");} else {print("Modifica Sessioni");} ?></button>
                 <input type="hidden" id="array_acronimo" name="array_acronimo[]" value="<?php print $acronimo ?>">
                 <input type="hidden" id="array_annoEdizione" name="array_annoEdizione[]" value="<?php print $annoEdizione ?>">
                 <input type="hidden" id="dates" name="dates[]" value="<?php print $sendDates ?>">
+            </td>
+            <td>
+                <?php
+                if ($stato==='attiva') {
+                    ?>
+                    <button type="submit" id="btn2" name="add_creator_button" value="<?php print $id ?>">Aggiungi creatore</button>
+                    <?php
+                }
+                ?>
             </td>
         </tr>
         <?php
