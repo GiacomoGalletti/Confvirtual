@@ -349,10 +349,10 @@ class DbPresentation
         }
     }
 
-    public static function noteValutazioniPresentazione($codice_sessione, $codice_presentazione)
+    public static function getInfoValutazioni($codice_sessione, $codice_presentazione)
     {
         try {
-            $sql = 'CALL ritornaNoteValutazioniPresentazione(\'' . $codice_sessione . '\',\'' .  $codice_presentazione . '\');';
+            $sql = 'CALL ritornaInfoValutazioni(\'' . $codice_sessione . '\',\'' .  $codice_presentazione . '\');';
             $res = DbConn::getInstance()->query($sql);
             $output = $res -> fetchAll(PDO::FETCH_ASSOC);
             $res -> closeCursor();

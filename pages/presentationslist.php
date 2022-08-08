@@ -6,18 +6,13 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
 include_once (sprintf("%s/logic/SessioneQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/debug.php", $_SERVER["DOCUMENT_ROOT"]));
-
-
 $index = $_POST['presentations_list_btn'];
 $srcImg = $_POST['immagineLogo'][$index];
 $nome = $_POST['nome'][$index];
 $anno_edizione = $_POST['annoEdizione'][$index];
 $acronimo = $_POST['acronimo'][$index];
-
-print_r($_POST);
+//print_r($_POST);
 ?>
-
-
 <body>
 <div class="container">
     <?php
@@ -80,10 +75,8 @@ print_r($_POST);
                                         foreach ($array_presentazione as $presentazione_corrente) {
                                         $info_aticolo_tutorial = PresentationQueryController::getPresentationInfo($presentazione_corrente['codice'])[0];
                                         $media_valutazioni_presentazione = PresentationQueryController::getMediaValutazioniPresentazione($a['codice'], $presentazione_corrente['codice']);
-                                        $array_note_presentazione = PresentationQueryController::getNoteValutazioniPresentazione($a['codice'], $presentazione_corrente['codice']);
-
-                                        pre_r($array_note_presentazione);
-
+                                        $array_info_presentazione = PresentationQueryController::getInfoValutazioni($a['codice'], $presentazione_corrente['codice']);
+                                        //pre_r($array_note_presentazione);
                                     ?>
                                     <tr>
                                         <td><?php  print $presentazione_corrente['numeroSequenza']?></td>
@@ -94,17 +87,13 @@ print_r($_POST);
                                         <td><?php  if ($media_valutazioni_presentazione[0]['mediaVoti'] == null) { print "nessuna valutazione";
                                         } else { print round($media_valutazioni_presentazione[0]['mediaVoti']); }?></td>
                                         <td><?php
-
-                                            if($array_note_presentazione == null){
+                                            if($array_info_presentazione == null){
                                                 print "nessuna valutazione";
                                             }else{
-                                                foreach($array_note_presentazione as $nota_corrente){
-                                                    ?><p> <?php print $nota_corrente['NoteVoto']; ?> </p><?php
+                                                foreach($array_info_presentazione as $info_corrente){
+                                                    ?><p> <?php print '<b>'.$info_corrente['userNameUtente'].'</b> VALUTAZIONE: '.$info_corrente['voto'].'  NOTE: '.$info_corrente['note']; ?> </p><?php
                                                 }
                                             }
-
-
-
                                             ?>
                                         </td>
                                     </tr>

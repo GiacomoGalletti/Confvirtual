@@ -7,7 +7,7 @@ include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROO
 ?>
 <body>
 <?php
-print_r($_POST);
+//print_r($_POST);
 
 if(isset($_POST['add_btn'])) {
     $srcImg = $_POST['immagineLogo'];

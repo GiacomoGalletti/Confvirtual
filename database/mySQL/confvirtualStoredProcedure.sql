@@ -645,10 +645,10 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-DROP PROCEDURE IF EXISTS ritornaNoteValutazioniPresentazione $$
-CREATE PROCEDURE ritornaNoteValutazioniPresentazione(IN in_codiceSessione int, IN in_codicePresentazione int)
+DROP PROCEDURE IF EXISTS ritornaInfoValutazioni $$
+CREATE PROCEDURE ritornaInfoValutazioni(IN in_codiceSessione int, IN in_codicePresentazione int)
 BEGIN
-    SELECT note as NoteVoto
+    SELECT *
     FROM valutazione
     WHERE codiceSessione = in_codiceSessione and codicePresentazione = in_codicePresentazione;
 END $$
