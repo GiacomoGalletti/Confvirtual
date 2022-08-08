@@ -19,6 +19,35 @@ class DbUser
         }
     }
 
+    static function nonCreatorAdminList($username, $annoConferenza, $acronimoConferenza)
+    {
+        try{
+            $sql = 'CALL ritornaAmministratoriNonCreatori(\'' . $username . '\',\'' . $annoConferenza . '\',\'' . $acronimoConferenza . '\');';
+            $res = DbConn::getInstance() -> query($sql);
+            $output = $res -> fetchAll(PDO::FETCH_ASSOC);
+            $res -> closeCursor();
+            return $output;
+        } catch (Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
+    static function addConferenceCreator($username, $annoConferenza, $acronimoConferenza): bool
+    {
+        try{
+            $sql = 'CALL aggiungiCreatoreConferenza(\'' . $username . '\',\'' . $annoConferenza . '\',\'' . $acronimoConferenza . '\');';
+            $res = DbConn::getInstance() -> query($sql);
+            $res -> closeCursor();
+            return true;
+        } catch (Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
     static function promotionToSpeaker($username): bool
     {
         try {
@@ -109,13 +138,12 @@ class DbUser
             Session::start();
             if (self::userExists($username, $password)) {
                 Session::write('userName',$username);
-                Session::commit();
                 $sql = 'CALL checkUserType(\'' . $username . '\');';
                 $res = DbConn::getInstance() -> query($sql);
                 $row = $res -> fetch();
                 Session::write('type',$row['res_type']);
-                Session::commit();
                 $res -> closeCursor();
+                Session::commit();
                 header("Location: /index.php");
                 return true;
             } else {
@@ -140,11 +168,9 @@ class DbUser
             $res = DbConn::getInstance() -> query($sql);
             $output = $res -> fetchAll(PDO::FETCH_ASSOC);
             $res -> closeCursor();
-
             if (!isset($output)) {
                 return null;
             }
-
             if ($output[0]['foto']===''){
                 return null;
             }
@@ -163,21 +189,6 @@ class DbUser
             $res = DbConn::getInstance() -> query($sql);
             $row = $res -> fetch();
             return $row['res_type'];
-        } catch (Exception $e) {
-            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
-            echo $e;
-            return false;
-        }
-    }
-
-    public static function AdministratorList()
-    {
-        try {
-            $sql = 'CALL ritornaAmministratori();';
-            $res = DbConn::getInstance() -> query($sql);
-            $output = $res -> fetchAll(PDO::FETCH_ASSOC);
-            $res -> closeCursor();
-            return $output;
         } catch (Exception $e) {
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
             echo $e;

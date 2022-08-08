@@ -8,6 +8,16 @@ class UserQueryController
         return DbUser::UsersList();
     }
 
+    static function getNonCreatorAdminList($username, $annoConferenza, $acronimoConferenza)
+    {
+        return DbUser::nonCreatorAdminList($username, $annoConferenza, $acronimoConferenza);
+    }
+
+    static function addConferenceCreator($username, $annoConferenza, $acronimoConferenza)
+    {
+        return DbUser::addConferenceCreator($username, $annoConferenza, $acronimoConferenza);
+    }
+
     static function getPresenterList()
     {
         return DbUser::PresenterList();
@@ -16,11 +26,6 @@ class UserQueryController
     static function getSpeakerList()
     {
         return DbUser::SpeakerList();
-    }
-
-    static function getAdministratorList()
-    {
-        return DbUser::AdministratorList();
     }
 
     static function promoteUserToSpeaker($username): bool

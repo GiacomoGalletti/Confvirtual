@@ -291,6 +291,25 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
+DROP PROCEDURE IF EXISTS ritornaAmministratoriNonCreatori $$
+CREATE PROCEDURE ritornaAmministratoriNonCreatori(IN in_userNameUtente varchar(50), IN in_annoEdizioneConferenza year,IN in_acronimoConferenza varchar(50))
+BEGIN
+    select userName, nome, cognome, luogoNascita, dataNascita
+    from utente
+    where username in (select userNameUtente from amministratore where amministratore.userNameUtente <> in_userNameUtente)
+      and username not in (select userNameUtente from creatoriconferenza where annoEdizioneConferenza = in_annoEdizioneConferenza and acronimoConferenza = in_acronimoConferenza);
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS aggiungiCreatoreConferenza $$
+CREATE PROCEDURE aggiungiCreatoreConferenza(IN in_userNameUtente varchar(50), IN in_annoEdizioneConferenza year,IN in_acronimoConferenza varchar(50))
+BEGIN
+    insert into creatoriconferenza(userNameUtente, annoEdizioneConferenza, acronimoConferenza) values (in_userNameUtente, in_annoEdizioneConferenza, in_acronimoConferenza);
+END $$
+DELIMITER ;
+
+DELIMITER $$
 DROP PROCEDURE IF EXISTS promuoviUtenteASpeaker $$
 CREATE PROCEDURE promuoviUtenteASpeaker(IN in_userNameUtente varchar(50))
 BEGIN
