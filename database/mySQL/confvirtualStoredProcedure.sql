@@ -624,3 +624,13 @@ BEGIN
     DELETE FROM parolachiave WHERE in_codicePresentazione = parolachiave.codicePresentazione AND in_codiceSessione = parolachiave.codiceSessione;
 END $$
 DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS ritornaNoteValutazioniPresentazione $$
+CREATE PROCEDURE ritornaNoteValutazioniPresentazione(IN in_codiceSessione int, IN in_codicePresentazione int)
+BEGIN
+    SELECT note as NoteVoto
+    FROM valutazione
+    WHERE codiceSessione = in_codiceSessione and codicePresentazione = in_codicePresentazione;
+END $$
+DELIMITER ;
