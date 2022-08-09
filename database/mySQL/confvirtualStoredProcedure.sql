@@ -590,7 +590,9 @@ BEGIN
     set nomeAutore = (SELECT nome FROM UTENTE WHERE userName = in_userNameUtente);
     set cognomeAutore = (SELECT cognome FROM UTENTE WHERE userName = in_userNameUtente);
     insert into presentazionepresenter (userNameUtente, titoloArticolo, codicePresentazione, codiceSessione) values (in_userNameUtente, in_titoloArticolo, in_codicePresentazione, in_codiceSessione);
-    insert into AUTORE (codicePresentazione, codiceSessione, nome, cognome) values (in_codicePresentazione, in_codiceSessione, nomeAutore, cognomeAutore);
+    if not exists (select * from autore where codicePresentazione = in_codicePresentazione and codiceSessione = in_codiceSessione and nome = nomeAutore and cognome = cognomeAutore) then
+		insert into AUTORE (codicePresentazione, codiceSessione, nome, cognome) values (in_codicePresentazione, in_codiceSessione, nomeAutore, cognomeAutore);
+	end if;
     SELECT 'OK' AS risultato;
     COMMIT;
 END $$
