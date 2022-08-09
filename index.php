@@ -47,14 +47,14 @@ include_once(sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
                 echo '<p>Nessuna Valutazione Disponibile</p>';
             } ?>
         </div>
-        <div style="display: inline">
+        <div style="display: inline;">
             <p>Presenter/Articolo </p>
-            <?php $speakers_rank = StatsQueryController::getRankingPresenter();
-            if(sizeof($speakers_rank) >0 ) {
+            <?php $presenters_rank = StatsQueryController::getRankingPresenter();
+            if(sizeof($presenters_rank) >0 ) {
                 echo '<ol>';
                     for($i = 0;$i<4;$i++) {
-                        if (isset($speakers_rank[$i])) {
-                            echo '<li>'.$speakers_rank[$i]['userName'].'<span class="tab">     </span>'.$speakers_rank[$i]['mediaVoti'].'</li>';
+                        if (isset($presenters_rank[$i])) {
+                            echo '<li>utente: <b>'.$presenters_rank[$i]['userName'].'</b> media valutazioni: <b>'. round($presenters_rank[$i]['mediaVoti'],2).'</b></li>';
                         }
                     }
                 echo '</ol>';
