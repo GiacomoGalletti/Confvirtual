@@ -23,7 +23,7 @@ global $id;
         if (Session::read('userName') != $m['userNameUtente']) {
 
             $type_sender = UserQueryController::getUserType($userName_sender);
-            if ($type_sender !== 'amministratore') {
+            if ($type_sender !== 'amministratore' AND $type_sender !== 'utente') {
                 $foto = UserQueryController::getUserImgProfile($userName_sender,$type_sender);
                 if ($foto == null OR $foto == '') {
                     $foto = '/resources/images/noImgDefault.jpg';
