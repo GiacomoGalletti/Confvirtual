@@ -3,23 +3,12 @@ include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
-$index =  $_POST['article_tutorial_btn'];
-if (isset($_POST['download_btn'])) {
-    $file = basename($_POST['filePDF'][$index]);
-    if(file_exists(sprintf("%s/uploads/pdf/", $_SERVER["DOCUMENT_ROOT"]) . $file)){
-        //echo('<div class="container" style="background-color: red;opacity: 50"> <h4>file non trovato.</h4> </div>');
-        header("Content-type:application/pdf");
-        header("Content-Disposition:attachment;filename=$file");
-        readfile(sprintf("%s/uploads/pdf/", $_SERVER["DOCUMENT_ROOT"]) . $file);
-        readfile($file);
-    }
-}
-?>
+//print_r($_POST);
+$index =  $_POST['article_tutorial_btn']; ?>
     <body>
 <form method="post" action="/logic/delete_update_presentation.php">
 <?php
 include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
-
 
 switch ($_POST['tipologia'][$index]) {
     case 'articolo':
@@ -29,7 +18,7 @@ switch ($_POST['tipologia'][$index]) {
             <p class="conferenceInfo">
                 <?php
                 print ('giorno: ' . $_POST['data'] . ' numero di sequenza: ' . $_POST['numeroSequenza'][$index] . ', inizio: ' . $_POST['orainizio_presentazione'][$index]
-                    . ', fine: ' . $_POST['orafine_presentazione'][$index] . '</p>');
+                    . ', fine: ' . $_POST['orafine_presentazione'][$index] . '<br>codice presentazione: ' . $_POST['codice_presentazione'] . ' codice sessione: ' . $_POST['codice_sessione'].'</p>');
                 sendData();
                 ?>
 
@@ -45,7 +34,7 @@ switch ($_POST['tipologia'][$index]) {
                     <td>
                         <label class="form_articolo"><b>File PDF</b></label>
                         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                        <button type="submit" class="btn" name="download_btn" style="margin-right: 100px"><i class="fa fa-download" style="font-size:48px;color:#202040"></i>
+                        <a type="submit" target="_blank" href="<?php print $_POST['filePDF'][$index] ?>" class="btn btn-outline-primary" name="download_btn" style="margin-right: 100px"><i class="fa fa-download" style="font-size:48px;color:#202040"></i>
                     </td>
                     <td>
                         <label for="fileToUpload">Seleziona il file PDF da caricare:</label><br>
