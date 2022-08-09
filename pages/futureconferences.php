@@ -71,7 +71,8 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"])); ?>
         switch (Session::read('type')) {
             case 'amministratore':
             case 'speaker':
-            case 'presenter': ?>
+            case 'presenter':
+            case 'utente': ?>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">

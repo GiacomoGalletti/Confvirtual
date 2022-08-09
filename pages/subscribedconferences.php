@@ -45,7 +45,8 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
         switch (Session::read('type')) {
             case 'amministratore':
             case 'speaker':
-            case 'presenter': ?>
+            case 'presenter':
+            case 'utente': ?>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">

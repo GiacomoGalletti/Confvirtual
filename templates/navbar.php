@@ -79,11 +79,12 @@ try {
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="false">Conferenze</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                    <a class="dropdown-item" href="#">Prossime confereze</a>
-                                    <a class="dropdown-item" href="#">Conferenze passate</a>
+                                    <a class="dropdown-item" href="/pages/futureconferences.php">Prossime confereze</a>
+                                    <a class="dropdown-item" href="/pages/pastconferences.php">Conferenze passate</a>
+                                    <a class="dropdown-item" href="/pages/subscribedconferences.php">Iscrizioni</a>
                                 </div>
                             </li>
-                            <li class="nav-item"><!--suppress HtmlDeprecatedAttribute -->
+                            <li class="nav-item">
                                 <button name='logout' class="nav-link">logout</button>
                         </ul>
                     </div>
@@ -106,8 +107,9 @@ try {
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="false">Conferenze</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                    <a class="dropdown-item" href="#">Prossime confereze</a>
-                                    <a class="dropdown-item" href="#">Conferenze o passate</a>
+                                    <a class="dropdown-item" href="/pages/futureconferences.php">Prossime confereze</a>
+                                    <a class="dropdown-item" href="/pages/pastconferences.php">Conferenze passate</a>
+                                    <a class="dropdown-item" href="/pages/subscribedconferences.php">Iscrizioni</a>
                                 </div>
                             </li>
                             <li class="nav-item">
@@ -133,8 +135,9 @@ try {
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="false">Conferenze</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                    <a class="dropdown-item" href="#">Prossime confereze</a>
-                                    <a class="dropdown-item" href="#">Conferenze passate</a>
+                                    <a class="dropdown-item" href="/pages/futureconferences.php">Prossime confereze</a>
+                                    <a class="dropdown-item" href="/pages/pastconferences.php">Conferenze passate</a>
+                                    <a class="dropdown-item" href="/pages/subscribedconferences.php">Iscrizioni</a>
                                 </div>
                             </li>
                             <li class="nav-item">
