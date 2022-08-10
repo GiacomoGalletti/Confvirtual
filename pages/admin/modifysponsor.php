@@ -5,7 +5,7 @@ include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 
-print_r($_POST);
+//print_r($_POST);
 $index  = $_POST['sponsor_btn'];
 
 ?>

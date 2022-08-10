@@ -655,3 +655,19 @@ BEGIN
     WHERE codiceSessione = in_codiceSessione and codicePresentazione = in_codicePresentazione;
 END $$
 DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS ritornaInfoUtente $$
+CREATE PROCEDURE ritornaInfoUtente(IN in_userName varchar(50))
+BEGIN
+    if exists (select userNameUtente from speaker where userNameUtente = in_userName) then
+		select nome, cognome, pswd, luogoNascita, dataNascita, curriculum, foto, nomeUniversita, nomeDipartimento
+        from utente inner join speaker on utente.userName = speaker.userNameUtente
+        where userNameUtente = in_userName;
+	elseif exists (select userNameUtente from presenter where userNameUtente = in_userName) then
+        select nome, cognome, pswd, luogoNascita, dataNascita, curriculum, foto, nomeUniversita, nomeDipartimento
+        from utente inner join presenter on utente.userName = presenter.userNameUtente
+        where userNameUtente = in_userName;
+	end if;
+END $$
+DELIMITER ;

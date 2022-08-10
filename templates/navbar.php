@@ -84,6 +84,13 @@ try {
                                     <a class="dropdown-item" href="/pages/subscribedconferences.php">Iscrizioni</a>
                                 </div>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">Profilo utente</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                    <a class="dropdown-item" href="/pages/editprofile.php">Modifica profilo</a>
+                                </div>
+                            </li>
                             <li class="nav-item">
                                 <button name='logout' class="nav-link">logout</button>
                         </ul>
@@ -112,6 +119,13 @@ try {
                                     <a class="dropdown-item" href="/pages/subscribedconferences.php">Iscrizioni</a>
                                 </div>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">Profilo utente</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                    <a class="dropdown-item" href="/pages/editprofile.php">Modifica profilo</a>
+                                </div>
+                            </li>
                             <li class="nav-item">
                                 <button name='logout' class="nav-link">logout</button>
                         </ul>
@@ -121,7 +135,7 @@ try {
             <?php
             break;
         case 'utente':
-             ?>
+            ?>
             <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
                 <div class="container">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"

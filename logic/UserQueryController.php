@@ -62,4 +62,9 @@ class UserQueryController
     {
         return DbUser::getUserType($userName);
     }
+
+    public static function getInfoUser($userName)
+    {
+        return DbUser::getInfoUser($userName);
+    }
 }

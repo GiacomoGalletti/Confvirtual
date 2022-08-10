@@ -196,4 +196,17 @@ class DbUser
             return false;
         }
     }
+
+    public static function getInfoUser($userName)
+    {
+        try {
+            $sql = 'CALL ritornaInfoUtente(\'' . $userName . '\');';
+            $res = DbConn::getInstance() -> query($sql);
+            return $res -> fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
 }
