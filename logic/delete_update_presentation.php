@@ -1,52 +1,80 @@
 <?php
 include_once (sprintf("%s/logic/FileTypeEnum.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/Upload.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 $index = $_POST['article_tutorial_btn'];
 print_r($_POST);
-header('HTTP/1.1 307 Temporary Redirect');
-header('Location: /pages/admin/modifypresentation.php');
+
 // modifica delle informazioni della presentazione
 if (isset($_POST['confirm_mod_btn'])) {
+
+    $tipologia = $_POST['tipologia'][$index];
+    $codice_presentazione = $_POST['codice_presentazione'][$index];
+    $codice_sessione = $_POST['codice_sessione'][$_POST['presentationbtn']];
+    $titolo_new = $_POST['titolo_new'];
+    $_n_pagine = $_POST['n_pagine_tb'];
+    $abstract_new = $_POST['input_abstract_tutorial'];
+
     if ((!isset($_POST['titolo_new']) || $_POST['titolo_new'] == '')){
-        $_POST['titolo_new'] = $_POST['titolo'][$index];
-    }
-    if ((!isset($_POST['n_pagine_tb']) || $_POST['n_pagine_tb'] == '')){
-        $_POST['n_pagine_tb'] = $_POST['numeroPagine'][$index];
+        $titolo_new = $_POST['titolo'][$index];
     }
 
-    if ($_POST['tipologia'][$index]=='tutorial') {
-        $_POST['fileToUpload'] = 'placeholder';
-        //$_FILES['fileToUpload'] = 'placeholder';
+    if ((!isset($_n_pagine) || $_n_pagine == '')){
+        $_n_pagine = $_POST['numeroPagine'][$index];
     }
-    if ((!isset($_POST['fileToUpload']) || $_POST['fileToUpload'] != '') && ($_POST['tipologia'][$index]!='tutorial')){
+
+    if ($tipologia=='tutorial') {
+        $_POST['fileToUpload'] = 'placeholder';
+    }
+
+    $filePath = '';
+
+    if ((!isset($_POST['fileToUpload']) || $_POST['fileToUpload'] != '') && ($tipologia!='tutorial')){
         try {
             $upload = new Upload($_FILES['fileToUpload'], FileTypeEnum::PDF);
+            $filePath = $upload->getFilePath();
         } catch (Exception $e) {
             echo '<div class="container" style="background-color: red;opacity: 50"> <h4>Upload fallito.</h4> </div>';
         }
-    } else {
-        $_POST['fileToUpload'] = $_POST['filePDF'][$index];
     }
 
-    if ((!isset($_POST['input_abstract_tutorial'][$index]) || $_POST['input_abstract_tutorial'][$index] == '')){
-        $_POST['input_abstract_tutorial'] = $_POST['abstract'][$index];
+    if ((!isset($abstract_new) || $abstract_new == '')){
+        $abstract_new = $_POST['abstract'][$index];
     }
-    PresentationQueryController::updatePresentation($_POST['tipologia'][$index],$_POST['codice_presentazione'][$index], $_POST['codice_sessione'],$_POST['titolo_new'],$_POST['fileToUpload'],$_POST['n_pagine_tb'],$_POST['input_abstract_tutorial']);
-    $debug = "TIPOLOGIA: ".$_POST['tipologia'][$index]
-        ."<br>CODICE PRESENTAZIONE: ".$_POST['codice_presentazione'][$index]
-        ."<br>CODICE SESSIONE:  ".$_POST['codice_sessione']
-        ."<br>TITOLO NUOVO:  ".$_POST['titolo_new']
-        ."<br>PDF:  ".$_POST['filePDF'][$index]
-        ."<br>NUM PAG NUOVO: ".$_POST['n_pagine_tb']
-        ."<br>ABSTRACT NUOVO:  ".$_POST['input_abstract_tutorial'];
+
+    if (PresentationQueryController::updatePresentation($tipologia,$codice_presentazione, $codice_sessione,$titolo_new,$filePath,$_n_pagine,$abstract_new))
+    {
+        Session::write('msg_modifica', '
+                        <div class="container" style="background-color: limegreen;opacity: 50"> <h4>
+                            Modifiche salvate con successo.
+                        </h4> </div>');
+
+    } else {
+        Session::write('msg_modifica', '
+                        <div class="container" style="background-color: red;opacity: 50"> <h4>
+                            Nessuna modifica eseguita.
+                        </h4> </div>');
+
+    }
+
+    $debug = "TIPOLOGIA: ".$tipologia
+        ."<br>CODICE PRESENTAZIONE: ".$codice_presentazione
+        ."<br>CODICE SESSIONE:  ".$codice_sessione
+        ."<br>TITOLO NUOVO:  ".$titolo_new
+        ."<br>PDF:  ".$filePath
+        ."<br>NUM PAG NUOVO: ".$_n_pagine
+        ."<br>ABSTRACT NUOVO:  ".$abstract_new;
     header('HTTP/1.1 307 Temporary Redirect');
+    //header('Location: /pages/admin/modifypresentation.php');
     header('Location: /pages/admin/addpresentation.php');
+
 }
 
 // eliminazione della presentazione
 if(isset($_POST['delete_btn'])) {
-    PresentationQueryController::deletePresentation($_POST['codice_presentazione'][$index], $_POST['codice_sessione']);
+    PresentationQueryController::deletePresentation($_POST['codice_presentazione'][$index], $_POST['codice_sessione'][$_POST['presentationbtn']]);
+    PresentationQueryController::orderPresentation();
     header('HTTP/1.1 307 Temporary Redirect');
     header('Location: /pages/admin/addpresentation.php');
 }

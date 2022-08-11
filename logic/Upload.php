@@ -39,21 +39,24 @@ class Upload
                 $relative_path = '/uploads/pdf/';
                 $target_dir = sprintf("%s".$relative_path, $_SERVER["DOCUMENT_ROOT"]);
                 $target_file = $target_dir . basename($file_name["name"]);
-                $uploadOk = 1;
+                $uploadOk = 0; // se è 0 il file va bene altrimenti viene gestito in base al valore
                 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
                 if (file_exists($target_file)) {
                     echo "il file è già presente sul db.";
-                    $uploadOk = 0;
+                    $uploadOk = 1;
                 }
 
                 if($imageFileType != "pdf") {
                     echo "caricare solo file pdf.";
-                    $uploadOk = 0;
+                    $uploadOk = 2;
                 }
 
-                if ($uploadOk == 0) {
+                if ($uploadOk == 2) {
                     echo "file NON caricato.";
+                } else if ($uploadOk == 1) {
+                    echo "file NON caricato.";
+                    $this->target_file_to_save = $relative_path . $file_name["name"];
                 } else {
                     if (move_uploaded_file($file_name["tmp_name"], $target_file)) {
                         $this->target_file_to_save = $relative_path . $file_name["name"];
@@ -75,9 +78,9 @@ class Upload
             $relative_path = '/uploads/img/';
             $target_dir = sprintf("%s".$relative_path, $_SERVER["DOCUMENT_ROOT"]);
             $target_file = $target_dir . basename($file_name["name"]);
-            $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
             $check = getimagesize($file_name["tmp_name"]);
+
             if($check !== false) {
                 $uploadOk = 1;
             }else{

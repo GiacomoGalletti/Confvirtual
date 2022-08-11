@@ -79,11 +79,11 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
                     <?php
                     if (strtotime($data) >= strtotime('now')) {
                         ?>
-                        <input type="hidden" id="orainizio_sessione" name="orainizio_sessione[]" value="<?php print $oraInizio ?>">
-                        <input type="hidden" id="orafine_sessione" name="orafine_sessione[]" value="<?php print $oraFine ?>">
-                        <input type="hidden" id="data" name="data[]" value="<?php print $data ?>">
-                        <input type="hidden" id="codice_sessione" name="codice_sessione[]" value="<?php print $codice ?>">
-                        <td><button type="submit" id="presentationbtn" name="presentationbtn" value = "<?php print ($id)?>">Presentazioni</button></td>
+                        <input type="hidden" name="orainizio_sessione[]" value="<?php print $oraInizio ?>">
+                        <input type="hidden" name="orafine_sessione[]" value="<?php print $oraFine ?>">
+                        <input type="hidden" name="data[]" value="<?php print $data ?>">
+                        <input type="hidden" name="codice_sessione[]" value="<?php print $codice ?>">
+                        <td><button type="submit" name="presentationbtn" value = "<?php print ($id)?>">Presentazioni</button></td>
                         <?php
                         $id++;
                     } else

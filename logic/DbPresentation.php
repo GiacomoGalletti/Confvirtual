@@ -359,19 +359,8 @@ class DbPresentation
             if  (sizeof($output) > 0)
             {
                 return $output;
-            } else
-            {
-                echo '<pre>
-
-
-
-               <p>nessuna valutazione disponibile!</p>
-
-
-
-               </pre>';
-                return null;
             }
+                return null;
         } catch (Exception $e) {
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
             echo $e;

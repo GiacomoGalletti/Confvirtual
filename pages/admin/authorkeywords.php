@@ -5,6 +5,10 @@ include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+print_r($_POST);
+$index = $_POST['article_tutorial_btn'];
+$codice_sessione = $_POST['codice_sessione'][$_POST['presentationbtn']];
+$codice_presentazione = $_POST['codice_presentazione'][$index];
 
 ?>
     <body>
@@ -30,13 +34,13 @@ include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCU
             <div class="container">
 
                 <h4 class="conferenceInfo">Presentazione selezionata: </h4>
-                <p class="conferenceInfo"> <?php print ('codice: ' . $_POST['codice_presentazione'][0]); ?> </p>
+                <p class="conferenceInfo"> <?php print ('codice: ' . $codice_presentazione); ?> </p>
                 <h4 class="conferenceInfo">Sessione: </h4>
-                <p class="conferenceInfo"> <?php print ('codice: ' . $_POST['codice_sessione']); ?> </p>
+                <p class="conferenceInfo"> <?php print ('codice: ' . $codice_sessione); ?> </p>
                 <br>
                 <?php
-                $authors_previous = PresentationQueryController::getAuthors($_POST['codice_presentazione'],$_POST['codice_sessione']);
-                $key_words_previous = PresentationQueryController::getKeyWord($_POST['codice_presentazione'],$_POST['codice_sessione']);
+                $authors_previous = PresentationQueryController::getAuthors($codice_presentazione,$codice_sessione);
+                $key_words_previous = PresentationQueryController::getKeyWord($codice_presentazione,$codice_sessione);
 
                 if (sizeof($key_words_previous) > 0)
                 {
@@ -72,10 +76,7 @@ include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCU
                         <button type="button" id="aggiungiAutore">Aggiungi campo autore</button>
                     </div>
                 </div>
-
-                <input type="hidden" name="codice_sessione" value="<?php print $_POST['codice_sessione'] ?>">
-                <input type="hidden" name="codice_presentazione" value="<?php print $_POST['codice_presentazione']?>">
-
+                <?php  sendData(); ?>
                 <button name="auth_keywords_btn" type="submit">Conferma</button>
             </div>
         </form>
@@ -92,4 +93,33 @@ include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCU
 include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"]));
 ?>
     </body>
-</html>
+</html> <?php
+
+function sendData(): void
+{
+    for ($i = 0; $i<sizeof($_POST['codice_sessione']); $i++) {
+        print('<input type="hidden" name="codice_sessione[]" value="'.$_POST['codice_sessione'][$i].'">');
+        print('<input type="hidden" name="data[]" value="'.$_POST['data'][$i].'">');
+    }
+
+    for ($i = 0; $i<sizeof($_POST['orainizio_sessione']); $i++) {
+        print('<input type="hidden" name="orainizio_sessione[]" value="'.$_POST['orainizio_sessione'][$i].'">');
+        print('<input type="hidden" name="orafine_sessione[]" value="'.$_POST['orafine_sessione'][$i].'">');
+    }
+
+    for ($i = 0; $i< sizeof($_POST['tipologia']); $i++) {
+        ?>
+        <input type="hidden" name="tipologia[]" value="<?php print $_POST['tipologia'][$i] ?>">
+        <input type="hidden" name="numeroSequenza[]" value="<?php print $_POST['numeroSequenza'][$i] ?>">
+        <input type="hidden" name="orafine_presentazione[]" value="<?php print $_POST['orafine_presentazione'][$i] ?>">
+        <input type="hidden" name="orainizio_presentazione[]" value="<?php print $_POST['orainizio_presentazione'][$i] ?>">
+        <input type="hidden" name="titolo[]" value="<?php print $_POST['titolo'][$i] ?>">
+        <input type="hidden" name="codice_presentazione[]" value="<?php print $_POST['codice_presentazione'][$i] ?>">
+        <input type="hidden" name="numeroPagine[]" value="<?php print $_POST['numeroPagine'][$i] ?>">
+        <input type="hidden" name="filePDF[]" value="<?php print $_POST['filePDF'][$i] ?>">
+        <input type="hidden" name="abstract[]" value="<?php print $_POST['abstract'][$i] ?>">
+    <?php } ?>
+    <input type="hidden" name="article_tutorial_btn" value="<?php print $_POST['article_tutorial_btn'] ?>">
+    <input type="hidden" id="presentationbtn" name="presentationbtn" value="<?php print $_POST['presentationbtn'] ?>">
+    <?php
+}

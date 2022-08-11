@@ -1,20 +1,14 @@
 <?php
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
-
+print_r($_POST);
 header('HTTP/1.1 307 Temporary Redirect');
 header('Location: /pages/admin/authorkeywords.php');
 
-$codice_presentazione = $_POST['codice_presentazione'];
-$codice_sessione = $_POST['codice_sessione'];
+$index = $_POST['article_tutorial_btn'];
+$codice_sessione = $_POST['codice_sessione'][$_POST['presentationbtn']];
+$codice_presentazione = $_POST['codice_presentazione'][$index];
 
-//if (isset($_POST['sostituisci_parolechiave'])) {
-//    PresentationQueryController::deleteKeyWords($codice_presentazione,$codice_sessione);
-//}
-//
-//if (isset($_POST['sostituisci_autori'])) {
-//    PresentationQueryController::deleteAuthors($codice_presentazione,$codice_sessione);
-//}
 if (isset($_POST['auth_keywords_btn'])) {
     $array_nome_cognome = [];
     for ($i = 0; $i<sizeof($_POST['nome']); $i++) {

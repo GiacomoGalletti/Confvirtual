@@ -21,8 +21,24 @@ DROP TRIGGER IF EXISTS contatorePresentazioni $$
 CREATE TRIGGER contatorePresentazioni AFTER INSERT ON presentazione
 FOR EACH ROW
 BEGIN
-UPDATE sessione
-SET numeroPresentazioni = (SELECT count(codiceSessione) FROM presentazione WHERE sessione.codice = presentazione.codiceSessione GROUP BY codiceSessione);
+    UPDATE sessione
+    SET numeroPresentazioni = (
+        SELECT count(codiceSessione)
+        FROM presentazione
+        WHERE sessione.codice = presentazione.codiceSessione GROUP BY codiceSessione);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+DROP TRIGGER IF EXISTS contatorePresentazioni $$
+CREATE TRIGGER contatorePresentazioni AFTER DELETE ON presentazione
+    FOR EACH ROW
+BEGIN
+    UPDATE sessione
+    SET numeroPresentazioni = (
+        SELECT count(codiceSessione)
+        FROM presentazione
+        WHERE sessione.codice = presentazione.codiceSessione GROUP BY codiceSessione);
 END$$
 DELIMITER ;
 
