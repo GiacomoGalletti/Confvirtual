@@ -17,28 +17,28 @@ END$$
 DELIMITER ;
 
 DELIMITER $$
-DROP TRIGGER IF EXISTS contatorePresentazioni $$
-CREATE TRIGGER contatorePresentazioni AFTER INSERT ON presentazione
+DROP TRIGGER IF EXISTS contatorePresentazioniOnInsert $$
+CREATE TRIGGER contatorePresentazioniOnInsert AFTER INSERT ON presentazione
 FOR EACH ROW
 BEGIN
     UPDATE sessione
     SET numeroPresentazioni = (
         SELECT count(codiceSessione)
         FROM presentazione
-        WHERE sessione.codice = presentazione.codiceSessione GROUP BY codiceSessione);
+        WHERE sessione.codice = presentazione.codiceSessione);
 END$$
 DELIMITER ;
 
 DELIMITER $$
-DROP TRIGGER IF EXISTS contatorePresentazioni $$
-CREATE TRIGGER contatorePresentazioni AFTER DELETE ON presentazione
+DROP TRIGGER IF EXISTS contatorePresentazioniOnDelete $$
+CREATE TRIGGER contatorePresentazioniOnDelete AFTER DELETE ON presentazione
     FOR EACH ROW
 BEGIN
     UPDATE sessione
     SET numeroPresentazioni = (
         SELECT count(codiceSessione)
         FROM presentazione
-        WHERE sessione.codice = presentazione.codiceSessione GROUP BY codiceSessione);
+        WHERE sessione.codice = presentazione.codiceSessione);
 END$$
 DELIMITER ;
 
