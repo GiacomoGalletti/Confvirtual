@@ -13,13 +13,14 @@ function checkSessionHour(): bool
 {
     $orainizio_sessione = $_POST['orainizio_sessione'][$_POST['presentationbtn']];
     $orafine_sessione = $_POST['orafine_sessione'][$_POST['presentationbtn']];
+
     if ($_POST['oraini'] < $orainizio_sessione || $_POST['orafin'] > $orafine_sessione) {
         return true;
     } else {
         return false;
     }
 }
-if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H:i"),DateTime::createFromFormat("H:i", $_POST['orafin'])->format("H:i"),$_POST['arrayHours'])) || checkSessionHour())
+if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H:i"),DateTime::createFromFormat("H:i", $_POST['orafin'])->format("H:i"),$_POST['arrayHours'])) OR checkSessionHour())
 {
     Session::start();
     Session::write('msg_presentazione', '
@@ -40,13 +41,12 @@ if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H
             if (PresentationQueryController::createArticle($_POST['codice_sessione'][$index],$_POST['oraini'],$_POST['orafin'],$_POST['titolo_articolo'],$upload->getFilePath(),$_POST['pagenum'])) {
                 try {
                     Session::write('msg_presentazione',
-                    '<div class="container" style="background-color: limegreen;opacity: 50"> <h4>
-                    Articolo creato con successo.
-                    </h4> </div>');
+                        '<div class="container" style="background-color: limegreen;opacity: 50"> <h4>
+                        Articolo creato con successo.
+                        </h4> </div>');
                     PresentationQueryController::orderPresentation();
                     exit;
-                } catch (ExpiredSessionException|Exception $e) {
-                }
+                } catch (ExpiredSessionException|Exception $e) {}
             } else {
                 Session::write('msg_presentazione', '
                     <div class="container" style="background-color: red;opacity: 50"> <h4>

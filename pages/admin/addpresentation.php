@@ -209,7 +209,6 @@ $article_tutorial_btn = 0;
 <?php
 include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"]));
 ?>
-
 <script>
 
     function goToAuthor() {

@@ -2,6 +2,14 @@
 
 function hourAviable($start_time,$end_time,$arrayhours): bool
 {
+    if ($start_time === $end_time) {
+        return false;
+    }
+
+    if ($start_time > $end_time) {
+        return false;
+    }
+
     $arrayBool = [
         '8' => 0,
         '9' => 0,
@@ -20,7 +28,7 @@ function hourAviable($start_time,$end_time,$arrayhours): bool
         '22' => 0
     ];
     if (count($arrayhours) == 0) {
-        print 'ESCO SUBITO';
+        //print 'ESCO SUBITO';
         return true;
     }
     $start_time = (int) date('H',strtotime($start_time));
