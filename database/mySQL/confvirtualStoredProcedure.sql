@@ -385,40 +385,27 @@ DELIMITER ;
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS ordinamentoSequenzePresentazioni $$
-CREATE PROCEDURE ordinamentoSequenzePresentazioni()
+CREATE PROCEDURE ordinamentoSequenzePresentazioni(IN in_codiceSessione int)
 BEGIN
     DECLARE done INT DEFAULT 0;
-    DECLARE ora INT;
-    DECLARE sessioncode INT;
-    DECLARE oldsessioncode INT;
-    #DECLARE nseq INT;
-    DECLARE getora CURSOR FOR SELECT presentazione.oraFine FROM presentazione INNER JOIN sessione ON presentazione.codiceSessione = sessione.codice
-                              ORDER BY presentazione.oraFine AND presentazione.codiceSessione;
-    DECLARE getsessioncode CURSOR FOR SELECT presentazione.codiceSessione FROM presentazione INNER JOIN sessione ON presentazione.codiceSessione = sessione.codice
-                                      ORDER BY presentazione.oraFine AND presentazione.codiceSessione;
+    DECLARE orafin INT;
+    DECLARE nseq INT;
+    DECLARE orafinale CURSOR FOR SELECT presentazione.oraFine FROM presentazione WHERE presentazione.codiceSessione = in_codiceSessione ORDER BY presentazione.oraFine;
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
 
-    OPEN getora;
-    OPEN getsessioncode;
+    OPEN orafinale;
 
-    FETCH getora INTO ora;
-    FETCH getsessioncode INTO sessioncode;
+    FETCH orafinale INTO orafin;
 
-    SET @nseq = 1;
-    SET oldsessioncode = sessioncode;
+    SET nseq = 1;
 
     REPEAT
-        IF (sessioncode > oldsessioncode) THEN SET @nseq = 1;
-        END IF;
-        UPDATE presentazione SET numeroSequenza = @nseq WHERE presentazione.oraFine = ora AND presentazione.codiceSessione = sessioncode;
-        SET @nseq = @nseq + 1;
-        SET oldsessioncode = sessioncode;
-        FETCH getora INTO ora;
-        FETCH getsessioncode INTO sessioncode;
+        UPDATE presentazione SET numeroSequenza = nseq WHERE presentazione.oraFine = orafin AND presentazione.codiceSessione = in_codiceSessione;
+        FETCH orafinale INTO orafin;
+        SET nseq = nseq + 1;
     UNTIL done = 1 END REPEAT;
 
-    CLOSE getora;
-    CLOSE getsessioncode;
+    CLOSE orafinale;
 END $$
 DELIMITER ;
 

@@ -32,9 +32,9 @@ class PresentationQueryController
         return DbPresentation::tutorialsList($userName);
     }
 
-    public static function orderPresentation(): bool
+    public static function orderPresentation($codiceSessione): bool
     {
-        return DbPresentation::ordinamentoSequenzePresentazioni();
+        return DbPresentation::ordinamentoSequenzePresentazioni($codiceSessione);
     }
 
     public static function deletePresentation($codice_presentazione, $codice_sessione): bool

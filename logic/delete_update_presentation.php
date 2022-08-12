@@ -74,7 +74,7 @@ if (isset($_POST['confirm_mod_btn'])) {
 // eliminazione della presentazione
 if(isset($_POST['delete_btn'])) {
     PresentationQueryController::deletePresentation($_POST['codice_presentazione'][$index], $_POST['codice_sessione'][$_POST['presentationbtn']]);
-    PresentationQueryController::orderPresentation();
+    PresentationQueryController::orderPresentation($_POST['codice_sessione'][$_POST['presentationbtn']]);
     header('HTTP/1.1 307 Temporary Redirect');
     header('Location: /pages/admin/addpresentation.php');
 }

@@ -44,7 +44,7 @@ if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H
                         '<div class="container" style="background-color: limegreen;opacity: 50"> <h4>
                         Articolo creato con successo.
                         </h4> </div>');
-                    PresentationQueryController::orderPresentation();
+                    PresentationQueryController::orderPresentation($_POST['codice_sessione'][$index]);
                     exit;
                 } catch (ExpiredSessionException|Exception $e) {}
             } else {
@@ -61,7 +61,7 @@ if ((!hourAviable(DateTime::createFromFormat("H:i", $_POST['oraini'])->format("H
                     <div class="container" style="background-color: limegreen;opacity: 50"> <h4>
                     Tutorial creato con successo.
                     </h4> </div>');
-                PresentationQueryController::orderPresentation();
+                PresentationQueryController::orderPresentation($_POST['codice_sessione'][$index]);
                 exit;
             } else {
                 Session::write('msg_presentazione', '

@@ -165,10 +165,10 @@ class DbPresentation
         }
     }
 
-    public static function ordinamentoSequenzePresentazioni(): bool
+    public static function ordinamentoSequenzePresentazioni($codiceSessione): bool
     {
         try {
-            $sql = 'CALL ordinamentoSequenzePresentazioni();';
+            $sql = 'CALL ordinamentoSequenzePresentazioni(\'' . $codiceSessione . '\');';
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
             return true;
