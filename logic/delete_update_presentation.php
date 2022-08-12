@@ -30,7 +30,16 @@ if (isset($_POST['confirm_mod_btn'])) {
 
     $filePath = '';
 
-    if ((!isset($_POST['fileToUpload']) || $_POST['fileToUpload'] != '') && ($tipologia!='tutorial')){
+//    if ((!isset($_POST['fileToUpload']) || $_POST['fileToUpload'] != '') && ($tipologia!='tutorial')){
+//        try {
+//            $upload = new Upload($_FILES['fileToUpload'], FileTypeEnum::PDF);
+//            $filePath = $upload->getFilePath();
+//        } catch (Exception $e) {
+//            echo '<div class="container" style="background-color: red;opacity: 50"> <h4>Upload fallito.</h4> </div>';
+//        }
+//    }
+
+    if ($tipologia === 'articolo'){
         try {
             $upload = new Upload($_FILES['fileToUpload'], FileTypeEnum::PDF);
             $filePath = $upload->getFilePath();

@@ -107,7 +107,7 @@ if ($userInfo['foto'] == null OR $userInfo['foto'] == '') {
             </table>
             <table style="margin: 20px;">
                 <tr>
-                    <td><button type="submit" id="confirm_btn" name="confirm_btn">Conferma modifiche</button></td>
+                    <td><button type="submit" name="confirm_btn">Conferma modifiche</button></td>
                 </tr>
             </table>
         </div>

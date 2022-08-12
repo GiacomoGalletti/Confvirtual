@@ -1,17 +1,16 @@
 <?php
-
 include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 print_r($_POST);
 $index =  $_POST['article_tutorial_btn'];
-$data = $_POST['data'][$index];
 $numeroSequenza = $_POST['numeroSequenza'][$index];
 $orainizio_presentazione = $_POST['orainizio_presentazione'][$index];
 $orafine_presentazione = $_POST['orafine_presentazione'][$index];
 $codice_presentazione = $_POST['codice_presentazione'][$index];
 $codice_sessione = $_POST['codice_sessione'][$_POST['presentationbtn']];
+$data = $_POST['data'][$_POST['presentationbtn']];
 $titolo = $_POST['titolo'][$index];
 $filePDF = $_POST['filePDF'][$index];
 $numeroPagine = $_POST['numeroPagine'][$index];
