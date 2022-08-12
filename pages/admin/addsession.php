@@ -12,13 +12,12 @@ $index = $_POST['sessionbtn'];
 $acronimo = $_POST['array_acronimo'][$index];
 $annoEdizione = $_POST['array_annoEdizione'][$index];
 $rawdates = $_POST['dates'][$index];
-
 if (isset($_POST['presentationbtn']))
 {
     header("Location:/pages/admin/addpresentation.php");
 }
+print ('<form method="post" action="/pages/admin/addpresentation.php">');
 include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
-
 ?>
 <body>
 <!-- PRIMO FORM SOLO PER LA LISTA DELLE SESSIONI E PER SPOSTARSI IN CREAZIONE PRESENTAZIONE -->
@@ -30,7 +29,6 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
         $arrayDate = explode("%", $rawdates);
         ?>
     </p>
-<form method="post" action="/pages/admin/addpresentation.php">
     <?php
     try {
         Session::start();

@@ -1,4 +1,5 @@
 <?php
+include_once (sprintf("%s/logic/permission/SessionPresenterSpeakerPermission.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 
