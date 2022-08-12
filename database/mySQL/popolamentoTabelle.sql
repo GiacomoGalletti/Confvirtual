@@ -4,7 +4,7 @@ use CONFVIRTUAL;
 
 insert into CONFERENZA(annoEdizione,acronimo,totaleSponsorizzazioni,immagineLogo,statoSvolgimento,nome)
 values('2020','ces20','0','/uploads/img/logostock.jpg','completata','consumer electronic show 20'),
-      ( '2021','ces21','0','/uploads/img/logostock.jpg','completata','consumer electronics show 21'),
+      ('2021','ces21','0','/uploads/img/logostock.jpg','completata','consumer electronics show 21'),
       ('2022','ces22','0','/uploads/img/logostock.jpg','attiva','consumer electronics show 22'),
       ('2022','mlfuture','0','/uploads/img/logostock.jpg','attiva','studio di machine learning futura'),
       ('2022','mlpast','0','/uploads/img/logostock.jpg','completata','studio di machine learning passata'),
@@ -15,8 +15,7 @@ values('2020','ces20','0','/uploads/img/logostock.jpg','completata','consumer el
 
 insert into DATACONFERENZA(giorno,annoEdizioneConferenza,acronimoConferenza)
 values('2020-09-01','2020','ces20'),
-      ('2020-09-02','2020','ces20'),
-      ('2020-09-03','2020','ces20'),
+#       ('2020-09-02','2020','ces20'),
       ('2021-09-01','2021','ces21'),
       ('2021-09-02','2021','ces21'),
       ('2021-09-03','2021','ces21'),
@@ -55,7 +54,11 @@ values('1','08:00:00','12:00:00','sessione giorno 1 mattina','link','2','2022-09
       ('10','08:00:00','23:00:00','sesione giornaliera prova chat' ,'link','1','2022-08-06','2022','prvcht'),
       ('11','08:00:00','23:00:00','sesione giornaliera prova chat' ,'link','1','2022-08-07','2022','prvcht'),
 
-      ('12','08:00:00','23:00:00','sesione giornaliera ces23' ,'link','1','2023-09-01','2023','ces23');
+      ('12','08:00:00','23:00:00','sesione giornaliera ces23' ,'link','1','2023-09-01','2023','ces23'),
+
+      ('13','08:00:00','23:00:00','sesione giornaliera ces20' ,'link','1','2020-09-01','2020','ces20');
+#       ('14','08:00:00','23:00:00','sesione giornaliera ces20' ,'link','1','2020-09-02','2020','ces20');
+
 
 
 
@@ -156,35 +159,17 @@ values('1','1','08:00:00','09:00:00','1'),        #tutorial
       ('81','12','13:00:00','14:00:00','6'),
       ('82','12','14:00:00','15:00:00','7'),
       ('83','12','15:00:00','16:00:00','8'),
-      ('84','12','16:00:00','17:00:00','9');
+      ('84','12','16:00:00','17:00:00','9'),
 
-
-
-
-
-#                  --------------------------------------------------------------old
-#
-#                           ('','8','09:00:00','11:00:00','1'),
-#                           ('','8','12:00:00','14:00:00','2'),
-#
-#                           ('','9','09:00:00','11:00:00','1'),
-#                           ('','9','12:00:00','14:00:00','2'),
-#
-#                           ('','10','09:00:00','11:00:00','1'),
-#                           ('','10','12:00:00','14:00:00','2'),
-#
-#                           ('','11','09:00:00','11:00:00','1'),
-#                           ('','11','12:00:00','14:00:00','2'),
-#                                                                       #articoli
-#                           ('','10','09:00:00','11:00:00','1'),
-#                           ('','10','12:00:00','14:00:00','2'),
-#
-#                           ('','11','09:00:00','11:00:00','1'),
-#                           ('','11','12:00:00','14:00:00','2'),
-#
-#                           ('','14','12:00:00','14:00:00','1');
-
-
+      ('85','13','08:00:00','09:00:00','1'),        #tutorial                           #ces 20
+      ('86','13','09:00:00','10:00:00','2'),
+      ('87','13','10:00:00','11:00:00','3'),
+      ('88','13','11:00:00','12:00:00','4'),
+      ('89','13','12:00:00','13:00:00','5'),        #articoli
+      ('90','13','13:00:00','14:00:00','6'),
+      ('91','13','14:00:00','15:00:00','7'),
+      ('92','13','15:00:00','16:00:00','8'),
+      ('93','13','16:00:00','17:00:00','9');
 
 
 
@@ -192,9 +177,15 @@ values('1','1','08:00:00','09:00:00','1'),        #tutorial
 
 
 insert into CREATORICONFERENZA(userNameUtente, annoEdizioneConferenza, acronimoConferenza)
-values('admin1','2022','ces22'),
-      ('admin1','2020','ces20'),
-      ('admin2','2022','prvcht');
+values('admin1','2020','ces20'),
+      ('admin1','2021','ces21'),
+      ('admin1','2022','ces22'),
+      ('admin1','2022','mlfuture'),
+      ('admin1','2022','mlpast'),
+      ('admin1','2022','ss1'),
+      ('admin1','2022','prvcht'),
+      ('admin1','2023','ces23');
+
 
 insert into SPEAKER(userNameUtente, curriculum, foto, nomeUniversita, nomeDipartimento)
 values('buzz', 'descrizione del curriculum','/uploads/img/avatar.jpg','unibo','dip informatica'),
@@ -210,7 +201,7 @@ values('buzz', 'descrizione del curriculum','/uploads/img/avatar.jpg','unibo','d
       ('userpaperclips', 'descrizione del curriculum','/uploads/img/avatar.jpg','unibo','dip informatica'),
       ('userbottle', 'descrizione del curriculum','/uploads/img/avatar.jpg','unibo','dip informatica');
 
-insert into AUTORE(codicePresentazione, codiceSessione, nome, cognome)
+insert into AUTORE(codicePresentazione, codiceSessione, nome, cognome)      #per gli ARTICOLI
 values('1','1','enzo','Rossi'),
       ('2','1','Jadon','Ward'),
       ('3','1','Layne','Bins'),
@@ -295,18 +286,15 @@ values('1','1','enzo','Rossi'),
       ('81','12','Orlo','Koch'),
       ('82','12','Freda','Jerde'),
       ('83','12','Tanya','Veum'),
-      ('84','12','Mara','Howe');
+      ('84','12','Mara','Howe'),
 
 
-#                   ('85','13','Ana','Jerde'),
-#                   ('86','13','Emie','Senger'),
-#                   ('87','13','Leora','Robel'),
-#                   ('88','13','Robb','Dach'),
-#                   ('89','13','Garry','Crona'),
-#                   ('90','13','Bette','Feil'),
-#                   ('91','13','Tony','Roob'),
-#                   ('92','13','Kolby','Kutch'),
-#                   ('93','13','Oliver','Hane');
+
+      ('89','13','Garry','Crona'),              #ces 20
+      ('90','13','Bette','Feil'),
+      ('91','13','Tony','Roob'),
+      ('92','13','Kolby','Kutch'),
+      ('93','13','Oliver','Hane');
 
 
 
@@ -333,12 +321,14 @@ values('sponsorone','/uploads/img/logostock.jpg'),
       ('magneti marelli','/uploads/img/logostock.jpg');
 
 insert into SPONSORIZZAZIONI(importo, annoEdizioneConferenza, acronimoConferenza, nomeSponsor)
-values('250000','2020','ces20','sponsorone'),
-      ('350000','2021','ces21','nokia'),
-      ('18000','2022','ces22','apple'),
-      ('400','2022','mlfuture','samsung'),
-      ('1000','2022','mlpast','olivetti'),
-      ('4500','2023','ces23','olivetti');
+values('350000','2020','ces20','sponsorone'),
+      ('540800','2021','ces21','nokia'),
+      ('789900','2022','ces22','apple'),
+      ('6700','2022','mlfuture','samsung'),
+      ('900','2022','mlpast','olivetti'),
+      ('200','2022','ss1','nokia'),
+      ('5300','2022','prvcht','apple'),
+      ('5400','2023','ces23','olivetti');
 
 insert into UTENTEREGISTRATO(userNameUtente, annoEdizioneconferenza, acronimoConferenza)
 values('userone','2020', 'ces20'),
@@ -421,7 +411,13 @@ values('1','1','come vendere elettronica','vendita elettronica al dettaglio'),
       ('76','12','come programmare','vendita elettronica al dettaglio'),
       ('77','12','come programmare','vendita elettronica al dettaglio'),
       ('78','12','come programmare','vendita elettronica al dettaglio'),
-      ('79','12','come programmare','vendita elettronica al dettaglio');
+      ('79','12','come programmare','vendita elettronica al dettaglio'),
+      #ces20
+      ('85','13','come programmare','vendita elettronica al dettaglio'),
+      ('86','13','come programmare','vendita elettronica al dettaglio'),
+      ('87','13','come programmare','vendita elettronica al dettaglio'),
+      ('88','13','come programmare','vendita elettronica al dettaglio');
+
 
 
 insert into ARTICOLO(codicePresentazione, codiceSessione, titolo, filePdf, numeroPagine,statoSvolgimento)
@@ -482,7 +478,13 @@ values('3','1','electronic consumers','/uploads/pdf/Sample.pdf','1','non coperto
       ('81','12','electronic consumers','/uploads/pdf/Sample.pdf','1','non coperto'),
       ('82','12','electronic consumers','/uploads/pdf/Sample.pdf','1','non coperto'),
       ('83','12','electronic consumers','/uploads/pdf/Sample.pdf','1','non coperto'),
-      ('84','12','electronic consumers','/uploads/pdf/Sample.pdf','1','non coperto');
+      ('84','12','electronic consumers','/uploads/pdf/Sample.pdf','1','non coperto'),
+     #ces20
+      ('89','13','electronic consumers','/uploads/pdf/Sample.pdf','1','non coperto'),
+      ('90','13','electronic consumers','/uploads/pdf/Sample.pdf','1','non coperto'),
+      ('91','13','electronic consumers','/uploads/pdf/Sample.pdf','1','non coperto'),
+      ('92','13','electronic consumers','/uploads/pdf/Sample.pdf','1','non coperto'),
+      ('93','13','electronic consumers','/uploads/pdf/Sample.pdf','1','non coperto');
 
 
 insert into PRESENTAZIONESPEAKER(userNameUtente, titoloTutorial, codicePresentazione, codiceSessione, linkWeb, descrizione)         # TUTORIAL     -------scrivere con selezioone verticale mouse
@@ -522,7 +524,11 @@ values('buzz','come vendere elettronica','1','1','link','lorem ipsum'),
       ('fishuser','come programmare','76','12','link','lorem ipsum'),
       ('userflick','come programmare','77','12','link','lorem ipsum'),
       ('userpanties','come programmare','78','12','link','lorem ipsum'),
-      ('relishuser','come programmare','79','12','link','lorem ipsum');
+      ('relishuser','come programmare','79','12','link','lorem ipsum'),
+      ('wearyuser','come programmare','85','13','link','lorem ipsum'),
+      ('userpaperclips','come programmare','86','13','link','lorem ipsum'),
+      ('userbottle','come programmare','87','13','link','lorem ipsum'),
+      ('codgeruser','come programmare','88','13','link','lorem ipsum');
 
 
 
@@ -573,7 +579,12 @@ values('lightyear','electronic consumers','3','1'),
       ('userurn','electronic consumers','81','12'),
       ('usermarbled','electronic consumers','82','12'),
       ('lightyear','electronic consumers','83','12'),
-      ('usereastern','electronic consumers','84','12');
+      ('usereastern','electronic consumers','84','12'),
+      ('usereastern','electronic consumers','89','13'),
+      ('dogwatchuser','electronic consumers','90','13'),
+      ('userjapan','electronic consumers','91','13'),
+      ('spanishuser','electronic consumers','92','13'),
+      ('userfeisty','electronic consumers','93','13');
 
 
 # insert into PAROLACHIAVE(parola, codicePresentazione, codiceSessione)
@@ -662,5 +673,14 @@ values ('admin1','1','1','4','recensione lorem ipsum'),
        ('admin2','81','12','9','recensione lorem ipsum'),
        ('admin3','82','12','3','recensione lorem ipsum'),
        ('admin2','83','12','6','recensione lorem ipsum'),
-       ('admin3','84','12','9','recensione lorem ipsum');
+       ('admin3','84','12','9','recensione lorem ipsum'),
+       ('admin3','85','13','3','recensione lorem ipsum'),
+       ('admin2','86','13','6','recensione lorem ipsum'),
+       ('admin3','87','13','9','recensione lorem ipsum'),
+       ('admin4','88','13','3','recensione lorem ipsum'),
+       ('admin1','89','13','6','recensione lorem ipsum'),
+       ('admin2','90','13','9','recensione lorem ipsum'),
+       ('admin3','91','13','3','recensione lorem ipsum'),
+       ('admin2','92','13','6','recensione lorem ipsum'),
+       ('admin3','93','13','9','recensione lorem ipsum');
 
