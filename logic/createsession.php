@@ -2,6 +2,14 @@
 include_once (sprintf("%s/logic/SessioneQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 
+function validateHours($oraini,$orafin): bool
+{
+    if ($orafin === $oraini OR $orafin < $oraini){
+        return false;
+    }
+
+    return true;
+}
 function validateDate($date, $format = 'd-m-Y'): bool
 {
     $d = DateTime::createFromFormat($format, $date);
@@ -10,7 +18,7 @@ function validateDate($date, $format = 'd-m-Y'): bool
 if (isset($_POST['creaconferenzabtn']))
 {
     print_r($_POST);
-    if ($_POST['ttl'] != '' && $_POST['stanza'] != '' && isset($_POST['giorno']) && validateDate($_POST['giorno'])) {
+    if ($_POST['ttl'] != '' && $_POST['stanza'] != '' && isset($_POST['giorno']) && validateDate($_POST['giorno']) && validateHours($_POST['oraini'],$_POST['orafin'])) {
         if (
             SessioneQueryController::createSession($_POST['oraini'],$_POST['orafin'],$_POST['ttl'],$_POST['stanza'],$_POST['giorno'],$_POST['annoEdizione'],$_POST['acronimo'])
         ) {
