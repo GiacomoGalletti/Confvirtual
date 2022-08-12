@@ -5,6 +5,7 @@ include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/SessioneQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 
 global $id;
 $id = 0;
@@ -16,9 +17,8 @@ if (isset($_POST['presentationbtn']))
 {
     header("Location:/pages/admin/addpresentation.php");
 }
-print ('<form method="post" action="/pages/admin/addpresentation.php">');
-include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 ?>
+<form method="post" action="/pages/admin/addpresentation.php">
 <body>
 <!-- PRIMO FORM SOLO PER LA LISTA DELLE SESSIONI E PER SPOSTARSI IN CREAZIONE PRESENTAZIONE -->
 <div class="container">

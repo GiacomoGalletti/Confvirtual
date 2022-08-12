@@ -7,7 +7,6 @@ include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/Upload.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/FileTypeEnum.php", $_SERVER["DOCUMENT_ROOT"]));
-print_r($_POST);
 $index = $_POST['presentationbtn'];
 $orainizio_sessione = $_POST['orainizio_sessione'][$index];
 $orafine_sessione = $_POST['orafine_sessione'][$index];
@@ -15,12 +14,11 @@ $data=$_POST['data'][$index];
 $codice_sessione = $_POST['codice_sessione'][$index];
 $arrayHours = array();
 $article_tutorial_btn = 0;
-
+include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 ?>
 <body>
 <form name="myform" method="post" action="/pages/admin/modifypresentation.php">
     <?php
-    include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     try {
         Session::start();
         if (Session::read('msg_presentazione') != false) {

@@ -7,14 +7,14 @@ include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/SponsorQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
-
+include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 global $id;
 $id = 0;
 ?>
 <body>
 <!-- PRIMO FORM SOLO PER LA LISTA DEGLI SPONSOR -->
 <form method="post" action="/pages/admin/modifysponsor.php">
-    <?php include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+    <?php
     try {
         Session::start();
         if (Session::read('msg_sessione') != false) {

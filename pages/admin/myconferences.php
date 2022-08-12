@@ -5,11 +5,11 @@ include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 ?>
 <body>
 <form name="myform" action="addconferencecreator.php" method="post">
     <?php
-    include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     Session::start();
     try {
         $uName = Session::read('userName');
@@ -77,55 +77,34 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
             </td>
         </tr>
         <?php
-    }
-
-    try {
-        switch (Session::read('type')) {
-            case 'amministratore': ?>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4 class="text-center mb-4">Le mie conferenze</h4>
-                            <div class="table-wrap">
-                                <table class="table">
-                                    <thead class="thead-primary">
-                                    <tr>
-                                        <th>Acronimo</th>
-                                        <th>Nome</th>
-                                        <th>Anno</th>
-                                        <th>Stato</th>
-                                        <th>Giorni</th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-                                    getConferencesAdmin($uName);
-                                    ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+    }  ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="text-center mb-4">Le mie conferenze</h4>
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead class="thead-primary">
+                        <tr>
+                            <th>Acronimo</th>
+                            <th>Nome</th>
+                            <th>Anno</th>
+                            <th>Stato</th>
+                            <th>Giorni</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        getConferencesAdmin($uName);
+                        ?>
+                        </tbody>
+                    </table>
                 </div>
-                <?php
-                break;
-            case 'speaker':
-                ?>
-                <p>// robe 1</p>
-                <?php
-                break;
-            case 'presenter': ?>
-                <p>// robe 2</p>
-                <?php
-                break;
-            default:
-                header("Location: /index.php");
-                break;
-        }
-    } catch (ExpiredSessionException $e) {
-    }
-    ?>
+            </div>
+        </div>
+    </div>
+
     <?php
     include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"]));
     ?>

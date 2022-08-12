@@ -7,7 +7,7 @@ include_once(sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once(sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 require (sprintf("%s/logic/Upload.php", $_SERVER["DOCUMENT_ROOT"]));
 require (sprintf("%s/logic/FileTypeEnum.php", $_SERVER["DOCUMENT_ROOT"]));
-
+include_once(sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 if(isset($_POST['submit'])){
     try {
         $upload = new Upload($_FILES['fileToUpload'], FileTypeEnum::IMG);
@@ -23,9 +23,6 @@ if(isset($_POST['submit'])){
 ?>
 <body>
 <form action="createconference.php" method="post" autocomplete="off" enctype="multipart/form-data">
-    <?php
-        include_once(sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
-    ?>
     <div class="container">
         <h3>Creazione conferenza</h3>
         <div class="container">

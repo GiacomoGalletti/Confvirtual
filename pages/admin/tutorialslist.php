@@ -5,11 +5,12 @@ include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+
 ?>
 <body>
 <form action="/logic/association_article_tutorial.php" method="post">
     <?php
-    include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 
     try {
         Session::start();
@@ -90,10 +91,6 @@ include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCU
             </div>
         </div>
     </div>
-
-    <?php
-    include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"]));
-    ?>
 </form>
 </body>
 </html>

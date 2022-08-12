@@ -6,17 +6,15 @@ include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/SessioneQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
-
-?><body><?php
+include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 $index = $_POST['conferencebtn'];
 $srcImg = $_POST['immagineLogo'][$index];
 $nome = $_POST['nome'][$index];
 $anno_edizione = $_POST['annoEdizione'][$index];
 $acronimo = $_POST['acronimo'][$index];
-
-include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 // all'inizio bisogna reperire tutti i codici delle sessioni riferiti alla conferenza selezionata
-?><div class="container"><?php
+?><body>
+<div class="container"><?php
     $array_sessioni = SessioneQueryController::getSessions($acronimo,$anno_edizione);
     // ora posso andare a reperire gli articoli ed i tutorial di tutte le sessioni trovate
     ?>

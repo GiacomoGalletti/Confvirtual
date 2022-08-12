@@ -5,6 +5,7 @@ include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 
 if(isset($_POST['promotion_btn1'])) {
     UserQueryController::promoteUserToSpeaker($_POST['username'][$_POST['promotion_btn1']]);
@@ -17,7 +18,6 @@ else if (isset($_POST['promotion_btn2'])) {
 <title>Promozione utente</title>
 <form action="promoteuser.php" method="post">
     <?php
-    include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 
     function getUsers()
     {

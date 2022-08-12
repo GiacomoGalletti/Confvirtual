@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<?php include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"])); ?>
+<?php include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+?>
 <body>
 <form>
-    <?php include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"])); ?>
-
     <div class="container">
         <h2>Confvirtual</h2>
         <h3>progetto basi di dati creato da:</h3>

@@ -6,12 +6,12 @@ include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUME
 include_once (sprintf("%s/logic/SessioneQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/debug.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 $index = $_POST['presentations_list_btn'];
 $srcImg = $_POST['immagineLogo'][$index];
 $nome = $_POST['nome'][$index];
 $anno_edizione = $_POST['annoEdizione'][$index];
 $acronimo = $_POST['acronimo'][$index];
-//print_r($_POST);
 ?>
 <body>
 <div class="container">
@@ -19,10 +19,7 @@ $acronimo = $_POST['acronimo'][$index];
     $array_sessioni = SessioneQueryController::getSessions($acronimo,$anno_edizione);
     ?>
 </div>
-<form method="post" action="">
-    <?php
-    include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
-    ?>
+<form method="post">
     <div class="container">
         <div style="margin-top: 40px">
             <div style="display: block">

@@ -5,11 +5,11 @@ include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+
 ?>
 <body>
 <?php
-//print_r($_POST);
-
 if(isset($_POST['add_btn'])) {
     $srcImg = $_POST['immagineLogo'];
     $nome = $_POST['nome'];
@@ -28,10 +28,6 @@ if(isset($_POST['add_btn'])) {
 ?>
 <title>Aggiunta creatori conferenza</title>
 <form action="addconferencecreator.php" method="post">
-    <?php
-    include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
-
-    ?>
     <input type="hidden" name="nome" value="<?php print $nome ?>">
     <input type="hidden" name="acronimo" value="<?php print $acronimo ?>">
     <input type="hidden" name="annoEdizione" value="<?php print $anno_edizione ?>">

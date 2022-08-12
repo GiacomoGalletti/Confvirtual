@@ -14,7 +14,7 @@ if (isset($_POST['confirm_mod_btn'])) {
     $codice_sessione = $_POST['codice_sessione'][$_POST['presentationbtn']];
     $titolo_new = $_POST['titolo_new'];
     $_n_pagine = $_POST['n_pagine_tb'];
-    $abstract_new = $_POST['input_abstract_tutorial'];
+    $filePDF_original = $_POST['filePDF'][$index];
 
     if ((!isset($_POST['titolo_new']) || $_POST['titolo_new'] == '')){
         $titolo_new = $_POST['titolo'][$index];
@@ -24,25 +24,20 @@ if (isset($_POST['confirm_mod_btn'])) {
         $_n_pagine = $_POST['numeroPagine'][$index];
     }
 
-    if ($tipologia=='tutorial') {
-        $_POST['fileToUpload'] = 'placeholder';
+    if ($tipologia === 'tutorial') {
+        $abstract_new = $_POST['input_abstract_tutorial'];
+        $_FILES['fileToUpload'] = 'placeholder';
     }
-
     $filePath = '';
 
-//    if ((!isset($_POST['fileToUpload']) || $_POST['fileToUpload'] != '') && ($tipologia!='tutorial')){
-//        try {
-//            $upload = new Upload($_FILES['fileToUpload'], FileTypeEnum::PDF);
-//            $filePath = $upload->getFilePath();
-//        } catch (Exception $e) {
-//            echo '<div class="container" style="background-color: red;opacity: 50"> <h4>Upload fallito.</h4> </div>';
-//        }
-//    }
-
     if ($tipologia === 'articolo'){
+        $abstract_new = 'placeholder';
         try {
             $upload = new Upload($_FILES['fileToUpload'], FileTypeEnum::PDF);
             $filePath = $upload->getFilePath();
+            if ($filePath === '' OR !isset($filePath)) {
+                $filePath = $filePDF_original;
+            }
         } catch (Exception $e) {
             echo '<div class="container" style="background-color: red;opacity: 50"> <h4>Upload fallito.</h4> </div>';
         }
@@ -75,7 +70,6 @@ if (isset($_POST['confirm_mod_btn'])) {
         ."<br>NUM PAG NUOVO: ".$_n_pagine
         ."<br>ABSTRACT NUOVO:  ".$abstract_new;
     header('HTTP/1.1 307 Temporary Redirect');
-    //header('Location: /pages/admin/modifypresentation.php');
     header('Location: /pages/admin/addpresentation.php');
 
 }

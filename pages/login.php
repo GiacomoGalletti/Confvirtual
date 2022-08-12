@@ -3,6 +3,8 @@
 <?php
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+
 ?>
 <body>
 <form method="post" >
@@ -10,7 +12,6 @@ include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROO
 if(isset($_POST['submit'])) {
      UserQueryController::login($_POST["uname"], $_POST["psw"]);
 }
-include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 try {
     Session::start();
     if (Session::read('msg_user') != false) {

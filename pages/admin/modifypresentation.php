@@ -3,7 +3,7 @@ include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
-print_r($_POST);
+include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 $index =  $_POST['article_tutorial_btn'];
 $numeroSequenza = $_POST['numeroSequenza'][$index];
 $orainizio_presentazione = $_POST['orainizio_presentazione'][$index];
@@ -16,11 +16,9 @@ $filePDF = $_POST['filePDF'][$index];
 $numeroPagine = $_POST['numeroPagine'][$index];
 $abstract = $_POST['abstract'][$index];
 ?>
-    <body>
+<body>
 <form method="post" action="/logic/delete_update_presentation.php" autocomplete="off" enctype="multipart/form-data">
 <?php
-include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
-
 switch ($_POST['tipologia'][$index]) {
     case 'articolo':
         ?>

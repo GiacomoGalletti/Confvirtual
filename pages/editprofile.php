@@ -2,7 +2,7 @@
 include_once (sprintf("%s/logic/permission/SessionPresenterSpeakerPermission.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
-
+include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 $loggedUser = (Session::read('userName'));
 
 $userInfo = UserQueryController::getInfoUser($loggedUser)[0];
@@ -14,7 +14,7 @@ if ($userInfo['foto'] == null OR $userInfo['foto'] == '') {
 ?>
     <body>
     <form method="post" action="/logic/update_user.php" autocomplete="off">
-        <?php include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+        <?php
         try {
             Session::start();
             if (Session::read('msg_sessione') != false) {

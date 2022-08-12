@@ -3,7 +3,7 @@ include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/SponsorQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
-
+include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 if (isset($_POST['delete_btn'])) {
     SponsorQueryController::deleteSponsorization($_POST['nomeSponsor'][$_POST['delete_btn']],$_POST['acronimoConferenza'][$_POST['delete_btn']],$_POST['annoEdizioneConferenza'][$_POST['delete_btn']]);
 }
@@ -51,7 +51,6 @@ function rowSponsorizationInfo($r)
 }?>
 <form method="post">
     <body>
-    <?php include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"])); ?>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -78,8 +77,5 @@ function rowSponsorizationInfo($r)
             </div>
         </div>
     </div>
-    <?php
-    include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"]));
-    ?>
     </body>
 </form>

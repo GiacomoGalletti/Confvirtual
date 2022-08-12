@@ -5,7 +5,7 @@ include_once (sprintf("%s/logic/permission/SessionAdminPermission.php", $_SERVER
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
-print_r($_POST);
+include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 $index = $_POST['article_tutorial_btn'];
 $codice_sessione = $_POST['codice_sessione'][$_POST['presentationbtn']];
 $codice_presentazione = $_POST['codice_presentazione'][$index];
@@ -13,7 +13,7 @@ $codice_presentazione = $_POST['codice_presentazione'][$index];
 ?>
     <body>
         <form method="post" method="post" action="/logic/addAuthorKeywords.php" autocomplete="off">
-            <?php include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+            <?php
 
             try {
                 Session::start();

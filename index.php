@@ -37,7 +37,7 @@ include_once(sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
             <?php $speakers_rank = StatsQueryController::getRankingSpeaker();
             if(sizeof($speakers_rank) >0 ) {
                 echo '<ol>';
-                    for($i = 0;$i<4;$i++) {
+                    for($i = 0;$i<5;$i++) {
                         if (isset($speakers_rank[$i])) {
                             echo '<li>utente: <b>'.$speakers_rank[$i]['userName'].'</b> media valutazioni: <b>'. round($speakers_rank[$i]['mediaVoti'],2).'</b></li>';
                         }
@@ -52,7 +52,7 @@ include_once(sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
             <?php $presenters_rank = StatsQueryController::getRankingPresenter();
             if(sizeof($presenters_rank) >0 ) {
                 echo '<ol>';
-                    for($i = 0;$i<4;$i++) {
+                    for($i = 0;$i<5;$i++) {
                         if (isset($presenters_rank[$i])) {
                             echo '<li>utente: <b>'.$presenters_rank[$i]['userName'].'</b> media valutazioni: <b>'. round($presenters_rank[$i]['mediaVoti'],2).'</b></li>';
                         }
