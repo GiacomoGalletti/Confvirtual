@@ -8,6 +8,11 @@ values ('admin1','Gianni','Verdi','admin1','Bologna','2000/12/31'),             
        ('admin3','Piero','Gialli','admin3','Bologna','2000/12/20'),
        ('admin4','Nonni','Rosi','admin4','Bologna','2000/10/19'),
 
+       ('admin5','Giannino','Verdi','admin5','Bologna','2000/12/31'),
+       ('admin6','Enzino','Rossi','admin6','Bologna','2000/11/21'),
+       ('admin7','Pierino','Gialli','admin7','Bologna','2000/12/20'),
+       ('admin8','Nonnino','Rosi','admin8','Bologna','2000/10/19'),
+
        ('userone','Giacomo','Neri','userone','Bologna','2001/12/31'),                   #generici
        ('usertwo','Edoardo','Bianchi','usertwo','Bologna','2002/12/31'),
        ('userthree','Stefano','Rovi','userthree','Bologna','2003/12/31'),
@@ -48,4 +53,9 @@ insert into amministratore(userNameUtente)
 values ('admin1'),
        ('admin2'),
        ('admin3'),
-       ('admin4');
+       ('admin4'),
+
+       ('admin5'),
+       ('admin6'),
+       ('admin7'),
+       ('admin8');

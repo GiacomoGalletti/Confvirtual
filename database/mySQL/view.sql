@@ -1,3 +1,6 @@
+use CONFVIRTUAL;
+
+
 DROP VIEW IF EXISTS conferenzevalide;
 create view conferenzevalide as ( select * from CONFERENZA where (CONFERENZA.statoSvolgimento = 'attiva'));
 DELIMITER $$
