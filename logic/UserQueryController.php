@@ -67,4 +67,9 @@ class UserQueryController
     {
         return DbUser::getInfoUser($userName);
     }
+
+    public static function updateUser($nomeUtente, $curriculum, $nomeDipartimento, $nomeUniversita, $filePath): bool
+    {
+        return DbUser::updateUser($nomeUtente, $curriculum, $nomeDipartimento, $nomeUniversita, $filePath);
+    }
 }

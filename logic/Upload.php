@@ -82,29 +82,32 @@ class Upload
             $check = getimagesize($file_name["tmp_name"]);
 
             if($check !== false) {
-                $uploadOk = 1;
+                $uploadOk = 0;
             }else{
                 echo "File non è un'immagine.";
-                $uploadOk = 0;
+                $uploadOk = 1;
             }
 
             if (file_exists($target_file)) {
-                echo "File già presente.";
-                $uploadOk = 0;
+                echo "il file è già presente sul db.";
+                $uploadOk = 1;
             }
 
             if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
                 echo "caricare solo immagini.";
-                $uploadOk = 0;
+                $uploadOk = 2;
             }
 
-            if ($uploadOk == 0) {
-                echo "<p><b>File NON CARICATO</b></p>";
+            if ($uploadOk == 2) {
+                echo "file NON caricato.";
+            } else if ($uploadOk == 1) {
+                echo "file NON caricato.";
+                $this->target_file_to_save = $relative_path . $file_name["name"];
             } else {
                 if (move_uploaded_file($file_name["tmp_name"], $target_file)) {
                     $this->target_file_to_save = $relative_path . $file_name["name"];
                 } else {
-                    echo "<p><b>error: uploading fallito.</b></p>";
+                    echo "error: uploading fallito.";
                 }
             }
         }

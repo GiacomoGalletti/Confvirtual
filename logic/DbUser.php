@@ -209,4 +209,20 @@ class DbUser
             return false;
         }
     }
+
+    public static function updateUser($nomeUtente, $curriculum, $nomeDipartimento, $nomeUniversita, $filePath): bool
+    {
+        try {
+            $tipo_utente = Session::read('type');
+            $sql = 'CALL modificaUtente(\'' . $nomeUtente . '\',\'' . $tipo_utente . '\',\'' . $curriculum . '\',\'' . $nomeDipartimento  . '\',\'' . $nomeUniversita  . '\',\'' . $filePath  . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $res -> closeCursor();
+            return true;
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
 }

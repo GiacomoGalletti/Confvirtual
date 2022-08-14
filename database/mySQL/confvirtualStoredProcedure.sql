@@ -658,3 +658,20 @@ BEGIN
 	end if;
 END $$
 DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS modificaUtente $$
+CREATE PROCEDURE modificaUtente(IN in_username varchar(50),IN tipo varchar(20) , IN in_curriculum varchar(30), IN in_nomeDipartimento varchar(50),IN in_nomeUniversita varchar(50),IN in_foto varchar(260))
+BEGIN
+    IF (tipo = 'presenter') THEN
+        UPDATE presenter
+        SET curriculum = in_curriculum, nomeDipartimento = in_nomeDipartimento, nomeUniversita = in_nomeUniversita, foto = in_foto
+        WHERE userNameUtente = in_username;
+    ELSE IF (tipo = 'speaker') THEN
+        UPDATE speaker
+        SET curriculum = in_curriculum, nomeDipartimento = in_nomeDipartimento, nomeUniversita = in_nomeUniversita, foto = in_foto
+        WHERE userNameUtente = in_username;
+    END IF;
+    END IF;
+END $$
+DELIMITER ;

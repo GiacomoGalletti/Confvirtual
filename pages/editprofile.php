@@ -3,30 +3,27 @@ include_once (sprintf("%s/logic/permission/SessionPresenterSpeakerPermission.php
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
-$loggedUser = (Session::read('userName'));
 
-$userInfo = UserQueryController::getInfoUser($loggedUser)[0];
-if ($userInfo['foto'] == null OR $userInfo['foto'] == '') {
-    $foto = '/resources/images/noImgDefault.jpg';
-} else {
-    $foto = $userInfo['foto'];
-}
-?>
+try {
+    Session::start();
+    if (Session::read('msg_modifica') != false) {
+        echo Session::read('msg_modifica');
+        Session::delete('msg_modifica');
+        Session::commit();
+    }
+
+    $loggedUser = (Session::read('userName'));
+    $userInfo = UserQueryController::getInfoUser($loggedUser)[0];
+
+    if ($userInfo['foto'] == null OR $userInfo['foto'] == '') {
+        $foto = '/resources/images/noImgDefault.jpg';
+    } else {
+        $foto = $userInfo['foto'];
+    }
+
+    ?>
     <body>
-    <form method="post" action="/logic/update_user.php" autocomplete="off">
-        <?php
-        try {
-            Session::start();
-            if (Session::read('msg_sessione') != false) {
-                echo Session::read('msg_sessione');
-                Session::delete('msg_sessione');
-                Session::commit();
-            }
-        } catch (ExpiredSessionException|Exception $e) {
-            echo $e;
-        }
-        print_r($userInfo);
-        ?>
+    <form method="post" action="/logic/update_user.php" autocomplete="off" enctype="multipart/form-data">
         <div class="container">
             <div style="margin: 20px">
                 <div style="margin-top: 20px">
@@ -59,7 +56,14 @@ if ($userInfo['foto'] == null OR $userInfo['foto'] == '') {
                     </td>
                     <td>
                         <div>
-                            <input type="text" maxlength="30" name="curriculum"  placeholder="<?php print $userInfo['curriculum']; ?>">
+                            <?php
+                            if ($userInfo['curriculum'] !== '') {
+                                print ('<input type="text" maxlength="50" name="curriculum"  placeholder="' . $userInfo['curriculum'] . '">');
+                            } else {
+                                print ('<input type="text" maxlength="50" name="curriculum"  placeholder="curriculum non inserito.">');
+                            }
+                            ?>
+                            <input type="hidden" name="curriculum_original" value="<?php print($userInfo['curriculum']) ?>">
                         </div>
                     </td>
                 </tr>
@@ -77,6 +81,7 @@ if ($userInfo['foto'] == null OR $userInfo['foto'] == '') {
                     <td>
                         <div>
                             <input type="file" name="fileToUpload" id="fileToUpload">
+                            <input type="hidden" name="fileToUpload_original" value="<?php print($userInfo['foto']) ?>">
                         </div>
                     </td>
                 </tr>
@@ -88,7 +93,14 @@ if ($userInfo['foto'] == null OR $userInfo['foto'] == '') {
                     </td>
                     <td>
                         <div>
-                            <input type="text" maxlength="50" name="curriculum"  placeholder="<?php print $userInfo['nomeUniversita']; ?>">
+                            <?php
+                            if ($userInfo['nomeUniversita'] !== '') {
+                                print ('<input type="text" maxlength="50" name="nomeUniversita"  placeholder="' . $userInfo['nomeUniversita'] . '">');
+                            } else {
+                                print ('<input type="text" maxlength="50" name="nomeUniversita"  placeholder="università non inserita.">');
+                            }
+                            ?>
+                            <input type="hidden" name="nomeUniversita_original" value="<?php print($userInfo['nomeUniversita']) ?>">
                         </div>
                     </td>
                 </tr>
@@ -100,7 +112,15 @@ if ($userInfo['foto'] == null OR $userInfo['foto'] == '') {
                     </td>
                     <td>
                         <div>
-                            <input type="text" maxlength="50" name="curriculum"  placeholder="<?php print $userInfo['nomeDipartimento']; ?>">
+                            <?php
+                            if ($userInfo['nomeDipartimento'] !== '') {
+                                print ('<input type="text" maxlength="50" name="nomeDipartimento"  placeholder="' . $userInfo['nomeDipartimento'] . '">');
+                            } else {
+                                print ('<input type="text" maxlength="50" name="nomeDipartimento"  placeholder="dipartimento non inserito.">');
+                            }
+                            ?>
+                            <input type="hidden" name="nomeDipartimento_original" value="<?php print($userInfo['nomeDipartimento']) ?>">
+
                         </div>
                     </td>
                 </tr>
@@ -113,4 +133,7 @@ if ($userInfo['foto'] == null OR $userInfo['foto'] == '') {
         </div>
     </form>
     </body>
-<?php
+    <?php
+} catch (ExpiredSessionException|Exception $e) {
+    header('Location: /index.php');
+}
