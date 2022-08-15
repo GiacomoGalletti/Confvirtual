@@ -3,7 +3,7 @@ include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/ChatQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 if (isset($_POST['submit']) AND $_POST['messaggio'] != '') {
-    if(ChatQueryController::sendMessage($_POST['chatbtn'],$_POST['messaggio'],date('Y-m-d'))) {
+    if(ChatQueryController::sendMessage($_POST['codice_sessione'][$_POST['chatbtn']],$_POST['messaggio'],date('Y-m-d'))) {
         Session::write('server_message','<p style="background-color: lime; max-width: 25%"> invio messaggio riuscito</p>');
 
     } else {

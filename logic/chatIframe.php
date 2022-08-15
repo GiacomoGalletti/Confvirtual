@@ -4,18 +4,19 @@ include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/ChatQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
-
 Session::start();
 if(Session::read('post')) {$_POST = Session::read('post'); Session::delete('post');}
 
 global $id;
 $id = 0;
 if (isset($_POST['chatbtn'])) {
-    $codice_sessione = $_POST['chatbtn'];
+    $codice_sessione = $_POST['codice_sessione'][$_POST['chatbtn']];
     Session::write('codice_sessione',$codice_sessione);
 } else {
     $codice_sessione = Session::read('codice_sessione');
 }
+
+if(isset($_POST)) { Session::write('post',$_POST); Session::commit();}
 
 foreach (ChatQueryController::getMessages($codice_sessione) as $m) {
     $userName_sender = $m['userNameUtente'];

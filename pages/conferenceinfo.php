@@ -43,18 +43,25 @@ $acronimo = $_POST['acronimo'][$index];
             <?php
             if (isset($array_sessioni)) {
                 ?> <h4 class="text-center mb-4">Sessioni della conferenza: </h4> <?php
+                $btn_value = 0;
                 foreach ($array_sessioni as $a) {
                     $array_presentazione = PresentationQueryController::getAllPresentationInfo($a['codice']);
                     if (isset($array_presentazione)) {?>
-
                         <div style="display: block">
                             <h4 style="display: inline-block; margin-right: 10px">Codice Sessione: </h4>
                             <p style="display: inline-block; margin-right: 80px"><?php print ( $a['codice'] ); ?></p>
                             <h4 style="display: inline-block; margin-right: 10px">Giorno: </h4>
-                            <p style="display: inline-block; margin-right: 80px"><?php print ( $a['giornoData'] ); ?></p>
+                            <p style="display: inline-block; margin-right: 60px"><?php print ( $a['giornoData'] ); ?></p>
+                            <h4 style="display: inline-block; margin-right: 10px">Orario: </h4>
+                            <p style="display: inline-block; margin-right: 80px"><?php print 'dalle ' . DateTime::createFromFormat("H:i:s", $a['oraInizio'])->format("H:i") . ' alle ' . DateTime::createFromFormat("H:i:s", $a['oraFine'])->format("H:i") ?></p>
                             <h4 style="display: inline-block; margin-right: 10px">Link stanza: </h4>
-                            <a style="display: inline-block; margin-right: 80px" href="<?php print ( $a['linkStanza'] ); ?>" target="_blank"> LINK TEAMS</a>
-                            <button style="display: inline-block;" type="submit" name="chatbtn" value="<?php print $a['codice'] ?>">vai alla chat</button>
+                            <a style="display: inline-block;" href="<?php print ( $a['linkStanza'] ); ?>" target="_blank"> LINK TEAMS</a>
+
+                            <input type="hidden" name="oraInizio[]" value="<?php print $a['oraInizio'] ?>">
+                            <input type="hidden" name="oraFine[]" value="<?php print $a['oraFine'] ?>">
+                            <input type="hidden" name="codice_sessione[]" value="<?php print $a['codice'] ?>">
+
+                            <button style="display: inline-block;" type="submit" name="chatbtn" value="<?php print $btn_value ?>">vai alla chat</button>
                         </div>
                         <div class="table-wrap">
                         <table class="table">
@@ -69,7 +76,9 @@ $acronimo = $_POST['acronimo'][$index];
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($array_presentazione as $presentazione_corrente) {
+                        <?php
+                            $btn_value++;
+                            foreach ($array_presentazione as $presentazione_corrente) {
 
                             $info_aticolo_tutorial = PresentationQueryController::getPresentationInfo($presentazione_corrente['codice'])[0]; ?>
                             <tr>
