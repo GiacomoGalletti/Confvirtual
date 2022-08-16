@@ -1,6 +1,7 @@
 <?php
 include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/DbConn.php");
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/Logger.php");
 
 class DbConference
 {
@@ -72,6 +73,9 @@ class DbConference
                 $res = DbConn::getInstance() -> query($sql);
                 $res -> closeCursor();
             }
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),time());
+
             header("refresh:3;url= " . "/pages/admin/createconference.php");
             echo '<link rel="stylesheet" href="/style/css/style.css">
               <div class="container"> </div>
@@ -99,6 +103,7 @@ class DbConference
           <div class="container"> </div>
           <h4>Valutazione Inserita</h4> 
           ';
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),time());
             return true;
         } catch (PDOException|ExpiredSessionException|Exception $e) {
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
@@ -114,6 +119,7 @@ class DbConference
             $sql = 'CALL iscriviUtente(\''.Session::read('userName').'\',\''.$annoEdizione.'\',\''.$acronimoConferenza.'\')';
             $res = DbConn::getInstance() -> query($sql);
             $res -> closeCursor();
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),time());
             return true;
         } catch (PDOException|ExpiredSessionException|Exception $e) {
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';

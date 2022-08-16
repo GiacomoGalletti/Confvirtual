@@ -87,8 +87,8 @@ function receivePresentations($acronimo,$annoEdizione)
         }
         print('
         </select>
-        <h3> inserire valutazione:</h3>
         <input type="hidden" name="sessionbtn" value="'.$_POST['sessionbtn'].'">
+        <h3> inserire valutazione:</h3>
         <fieldset class="rate">
             <input type="radio" id="rating10" name="voto" value="10" /><label for="rating10" title="5 stars"></label>
             <input type="radio" id="rating9" name="voto" value="9" /><label class="half" for="rating9" title="4 1/2 stars"></label>
