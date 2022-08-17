@@ -55,7 +55,7 @@ $acronimo = $_POST['acronimo'][$index];
                             <h4 style="display: inline-block; margin-right: 10px">Orario: </h4>
                             <p style="display: inline-block; margin-right: 80px"><?php print 'dalle ' . DateTime::createFromFormat("H:i:s", $a['oraInizio'])->format("H:i") . ' alle ' . DateTime::createFromFormat("H:i:s", $a['oraFine'])->format("H:i") ?></p>
                             <h4 style="display: inline-block; margin-right: 10px">Link stanza: </h4>
-                            <a style="display: inline-block;" href="<?php print ( $a['linkStanza'] ); ?>" target="_blank"> LINK TEAMS</a>
+                            <a style="display: inline-block;" href="https://<?php print ( $a['linkStanza'] ); ?>" target="_blank"> LINK </a>
 
                             <input type="hidden" name="oraInizio[]" value="<?php print $a['oraInizio'] ?>">
                             <input type="hidden" name="oraFine[]" value="<?php print $a['oraFine'] ?>">
