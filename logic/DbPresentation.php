@@ -1,6 +1,7 @@
 <?php
 include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/DbConn.php");
 include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/Presentation.php");
+include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/Logger.php");
 
 class DbPresentation
 {
@@ -36,6 +37,9 @@ class DbPresentation
             $sql = 'CALL createPresentation(\'' . $codice_sessione . '\',\'' . $orainizio . '\',\'' . $orafine . '\');';
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (Exception $e)
         {
@@ -55,6 +59,9 @@ class DbPresentation
             $sql = 'CALL addPresentationArticle(\'' . $codice_sessione . '\',\'' . $orainizio . '\',\'' . $orafine . '\',\'' . $titolo . '\',\'' . $filePDF . '\',\'' . $numero_pagine . '\');';
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (Exception $e)
         {
@@ -76,6 +83,9 @@ class DbPresentation
 
             if ($res->fetch(PDO::FETCH_ASSOC)['risultato'] != 'ERROR') {
                 $res -> closeCursor();
+
+                Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
                 return true;
             }
             $res -> closeCursor();
@@ -186,6 +196,9 @@ class DbPresentation
             $sql = 'CALL eliminaPresentazione(\'' . $codice_presentazione . '\',\'' . $codice_sessione . '\');';
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (Exception $e)
         {
@@ -201,6 +214,9 @@ class DbPresentation
             $sql = 'CALL modificaPresentazione(\'' . $tipologia . '\',\'' . $codice_presentazione . '\',\'' . $codice_sessione  . '\',\'' . $titolo  . '\',\'' . $filePDF  . '\',\'' . $numero_pagine  . '\',\'' .  $abstract . '\');';
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (Exception $e)
         {
@@ -263,6 +279,9 @@ class DbPresentation
             $sql = 'CALL addAuthor(\'' . $codicePresentazione . '\',\'' .$codiceSessione . '\',\'' . $nome . '\',\'' . $cognome . '\');';
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (Exception $e)
         {
@@ -278,6 +297,9 @@ class DbPresentation
             $sql = 'CALL addKeyWord(\'' . $codicePresentazione . '\',\'' . $codiceSessione . '\',\'' . $word . '\');';
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (Exception $e)
         {
@@ -325,6 +347,9 @@ class DbPresentation
             $sql = 'CALL deleteKeyWords(\'' . $codicePresentazione . '\',\'' . $codiceSessione . '\');';
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (Exception $e)
         {
@@ -340,6 +365,9 @@ class DbPresentation
             $sql = 'CALL deleteAuthors(\'' . $codicePresentazione . '\',\'' . $codiceSessione . '\');';
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (Exception $e)
         {

@@ -1,5 +1,6 @@
 <?php
 include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/DbConn.php");
+include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/Logger.php");
 
 class DbPresentazionePresenterSpeaker
 {
@@ -11,6 +12,9 @@ class DbPresentazionePresenterSpeaker
             $sql = 'CALL associateSpeaker(\'' . $username . '\',\'' . $titolo_tutorial . '\',\'' . $codice_presentazione  . '\',\'' . $codice_sessione . '\');';
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (Exception $e)
         {
@@ -27,6 +31,9 @@ class DbPresentazionePresenterSpeaker
             $sql = 'CALL associatePresenter(\'' . $username . '\',\'' . $titolo_tutorial . '\',\'' . $codice_presentazione  . '\',\'' . $codice_sessione . '\');';
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (Exception $e)
         {
@@ -45,6 +52,9 @@ class DbPresentazionePresenterSpeaker
 
             if ($res->fetch(PDO::FETCH_ASSOC)['risultato'] != 'ERROR') {
                 $res -> closeCursor();
+
+                Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
                 return true;
             }
             $res -> closeCursor();

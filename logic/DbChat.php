@@ -1,5 +1,6 @@
 <?php
 include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/DbConn.php");
+include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/Logger.php");
 
 class DbChat {
 
@@ -27,6 +28,9 @@ class DbChat {
             $sql = 'CALL creaMessaggio(\'' . $codice_sessione . '\',\'' . $username_mittente . '\',\'' . $testo . '\',\'' . $timestamp . '\');';
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (Exception $e)
         {

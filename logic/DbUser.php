@@ -2,6 +2,7 @@
 include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/DbConn.php");
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/debug.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/Logger.php");
 
 class DbUser
 {
@@ -41,6 +42,9 @@ class DbUser
             $sql = 'CALL aggiungiCreatoreConferenza(\'' . $username . '\',\'' . $annoConferenza . '\',\'' . $acronimoConferenza . '\');';
             $res = DbConn::getInstance() -> query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (Exception $e) {
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
@@ -55,6 +59,9 @@ class DbUser
             $sql = 'CALL promuoviUtenteASpeaker(\'' . $username . '\');';
             $res = DbConn::getInstance() -> query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (Exception $e) {
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
@@ -69,6 +76,9 @@ class DbUser
             $sql = 'CALL promuoviUtenteAPresenter(\'' . $username . '\');';
             $res = DbConn::getInstance() -> query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (Exception $e) {
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
@@ -113,6 +123,9 @@ class DbUser
             $sql = 'CALL register(\'' . $username . '\',\'' . $name . '\',\'' . $surname . '\',\'' . $password . '\',\'' . $luogoNascita . '\',\'' . $dataNascita . '\');';
             $res = DbConn::getInstance() -> query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (PDOException $e) {
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
@@ -217,6 +230,9 @@ class DbUser
             $sql = 'CALL modificaUtente(\'' . $nomeUtente . '\',\'' . $tipo_utente . '\',\'' . $curriculum . '\',\'' . $nomeDipartimento  . '\',\'' . $nomeUniversita  . '\',\'' . $filePath  . '\');';
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (Exception $e)
         {

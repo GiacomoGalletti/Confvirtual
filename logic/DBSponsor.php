@@ -1,5 +1,6 @@
 <?php
 include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/DbConn.php");
+include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/Logger.php");
 
 class DBSponsor
 {
@@ -54,6 +55,9 @@ class DBSponsor
                 \'' . $logo_sponsor . '\');';
             $res = DbConn::getInstance() -> query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (PDOException $e) {
             echo '<h1> ERRORE CREAZIONE SPONSOR </h1> <p2>';
@@ -77,6 +81,9 @@ class DBSponsor
                 \'' . $nome_sponsor . '\');';
             $res = DbConn::getInstance() -> query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (PDOException $e) {
             echo '<h1> ERRORE CREAZIONE SPONSOR </h1> <p2>';
@@ -98,6 +105,9 @@ class DBSponsor
                 \'' . $name . '\');';
             $res = DbConn::getInstance() -> query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (PDOException $e) {
             echo '<h1> ERRORE CREAZIONE SPONSOR </h1> <p2>';
@@ -167,6 +177,9 @@ class DBSponsor
             $sql = 'DELETE FROM SPONSORIZZAZIONI WHERE nomeSponsor ='.'\''.$nomeSponsor.'\'' . ' AND acronimoConferenza =' . '\'' . $acronimoConferenza . '\''. ' AND annoEdizioneConferenza =' . '\'' . $annoEdizioneConferenza . '\'';
             $res = DbConn::getInstance() -> query($sql);
             $res -> closeCursor();
+
+            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             return true;
         } catch (PDOException $e) {
             echo '<h1> ERRORE CREAZIONE SPONSOR </h1> <p2>';

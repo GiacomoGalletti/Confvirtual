@@ -5,10 +5,6 @@ class Session
 {
     protected static $SESSION_AGE = 1000;
 
-    /**
-     * @throws ExpiredSessionException
-     * @throws Exception
-     */
     public static function write($key, $value)
     {
         if ( !is_string($key) ) {
@@ -29,10 +25,6 @@ class Session
         }
     }
 
-    /**
-     * @throws ExpiredSessionException
-     * @throws Exception
-     */
     public static function read($key)
     {
         if ( !is_string($key) ) {
@@ -46,10 +38,6 @@ class Session
         return false;
     }
 
-    /**
-     * @throws ExpiredSessionException
-     * @throws Exception
-     */
     public static function delete($key)
     {
         if ( !is_string($key) ) {
@@ -71,9 +59,6 @@ class Session
         return self::_init();
     }
 
-    /**
-     * @throws ExpiredSessionException
-     */
     private static function _age()
     {
         $last = $_SESSION['LAST_ACTIVE'] ?? false;

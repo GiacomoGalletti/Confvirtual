@@ -15,7 +15,10 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     $oraFine = $_POST['oraFine'][$index];
     $codice_sessione = $_POST['codice_sessione'][$index];
 
-if (time()>=$oraInizio AND time()<$oraFine) {
+    // CONTROLLO ORARIO E GIORNO DELLA SESSIONE:
+// if(strtotime(date('Y-m-d H:i:s'))<=strtotime($oraInizio)) {
+    // CONTROLLO DEL SOLO ORARIO DELLA SESSIONE:
+if (strtotime(date('H:i:s'))>=strtotime($oraInizio) AND strtotime(date('H:i:s'))<strtotime($oraFine)) {
     ?>
 <body>
 <form method="post" action="/logic/sendMessage.php">
