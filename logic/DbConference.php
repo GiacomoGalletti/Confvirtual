@@ -75,6 +75,7 @@ class DbConference
             }
 
             Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
             header("refresh:3;url= " . "/pages/admin/createconference.php");
             echo '<link rel="stylesheet" href="/style/css/style.css">
               <div class="container"> </div>
