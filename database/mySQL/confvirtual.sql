@@ -150,6 +150,16 @@ CREATE TABLE TUTORIAL(
                              ON DELETE CASCADE
 )engine = 'InnoDB';
 
+CREATE TABLE RISORSATUTORIAL (
+                              link varchar(260),
+                              descrizione varchar(100),
+                              codicePresentazione int,
+                              codiceSessione int,
+                              primary key(link, codicePresentazione, codiceSessione),
+                              foreign key (codicePresentazione,codiceSessione) references PRESENTAZIONE(codice,codiceSessione)
+                                  ON DELETE CASCADE
+)engine = 'InnoDB';
+
 CREATE TABLE ARTICOLO(
                          codicePresentazione int,
                          codiceSessione int,

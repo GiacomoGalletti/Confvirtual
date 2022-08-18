@@ -349,7 +349,11 @@ CREATE PROCEDURE ritornaArticoli()
 BEGIN
     select *
     from articolo
-    where (articolo.statoSvolgimento = 'non coperto');
+    where (articolo.statoSvolgimento = 'non coperto') AND articolo.codiceSessione IN (
+        select codice
+        from sessione,conferenza
+        where sessione.acronimoConferenza = conferenza.acronimo and conferenza.statoSvolgimento = 'attiva'
+    );
 END $$
 DELIMITER ;
 
@@ -367,11 +371,33 @@ CREATE PROCEDURE ritornaTutorial(IN in_userNameUtente varchar(50))
 BEGIN
     select *
     from TUTORIAL
+    where (TUTORIAL.codicePresentazione,TUTORIAL.codiceSessione) in (
+        select codicePresentazione,codiceSessione
+        from PRESENTAZIONESPEAKER
+        where PRESENTAZIONESPEAKER.userNameUtente = in_userNameUtente
+    ) AND TUTORIAL.codiceSessione IN (
+        select codice
+        from sessione,conferenza
+        where sessione.acronimoConferenza = conferenza.acronimo and conferenza.statoSvolgimento = 'attiva'
+    );
+END$$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS ritornaTutorialAssegnabile $$
+CREATE PROCEDURE ritornaTutorialAssegnabile(IN in_userNameUtente varchar(50))
+BEGIN
+    select *
+    from TUTORIAL
     where (TUTORIAL.codicePresentazione,TUTORIAL.codiceSessione) not in (
         select codicePresentazione,codiceSessione
         from PRESENTAZIONESPEAKER
         where PRESENTAZIONESPEAKER.userNameUtente = in_userNameUtente
-    );
+    ) AND TUTORIAL.codiceSessione IN (
+        select codice
+        from sessione,conferenza
+        where sessione.acronimoConferenza = conferenza.acronimo and conferenza.statoSvolgimento = 'attiva'
+        );
 END$$
 DELIMITER ;
 
@@ -673,5 +699,15 @@ BEGIN
         WHERE userNameUtente = in_username;
     END IF;
     END IF;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS ritornaRisorseTutorial $$
+CREATE PROCEDURE ritornaRisorseTutorial(IN in_codiceSessione int, IN in_codicePresentazione int)
+BEGIN
+    SELECT *
+    FROM risorsatutorial
+    WHERE codiceSessione = in_codiceSessione and codicePresentazione = in_codicePresentazione;
 END $$
 DELIMITER ;

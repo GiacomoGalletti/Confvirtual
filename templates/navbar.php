@@ -68,6 +68,40 @@ try {
             <?php
             break;
         case 'presenter':
+            ?>
+            <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                            aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="fa fa-bars"></span> Menu
+                    </button>
+                    <div class="collapse navbar-collapse" id="ftco-nav">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item"><a href="/index.php" class="nav-link">Home</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">Conferenze</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                    <a class="dropdown-item" href="/pages/futureconferences.php">Prossime confereze</a>
+                                    <a class="dropdown-item" href="/pages/pastconferences.php">Conferenze passate</a>
+                                    <a class="dropdown-item" href="/pages/subscribedconferences.php">Iscrizioni</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">Profilo utente</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                    <a class="dropdown-item" href="/pages/editprofile.php">Modifica profilo</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <button name='logout' style="background-color: transparent !important;" class="nav-link">logout</button>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <?php
+            break;
         case 'speaker':
             ?>
             <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -86,6 +120,7 @@ try {
                                     <a class="dropdown-item" href="/pages/futureconferences.php">Prossime confereze</a>
                                     <a class="dropdown-item" href="/pages/pastconferences.php">Conferenze passate</a>
                                     <a class="dropdown-item" href="/pages/subscribedconferences.php">Iscrizioni</a>
+                                    <a class="dropdown-item" href="/pages/speaker/tutorialslistspeaker.php">I miei Tutorial</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">

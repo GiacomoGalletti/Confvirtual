@@ -28,8 +28,12 @@ class PresentationQueryController
         return DbPresentation::uncoveredArticlesList();
     }
 
+    public static function ritornaTutorialAssegnabile($userName){
+        return DbPresentation::ritornaTutorialAssegnabile($userName);
+    }
+
     public static function getTutorialsList($userName){
-        return DbPresentation::tutorialsList($userName);
+        return DbPresentation::getTutorialsList($userName);
     }
 
     public static function orderPresentation($codiceSessione): bool
@@ -88,5 +92,10 @@ class PresentationQueryController
 
     public static function getInfoValutazioni($codice_sessione, $codice_presentazione){
         return DbPresentation::getInfoValutazioni($codice_sessione, $codice_presentazione);
+    }
+
+    public static function getTutorialResources($codice_sessione, $codice_presentazione)
+    {
+        return DbPresentation::getTutorialResources($codice_sessione, $codice_presentazione);
     }
 }
