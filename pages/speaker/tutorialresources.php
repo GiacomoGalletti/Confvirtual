@@ -1,31 +1,23 @@
 <!DOCTYPE html>
 <html lang="it">
 <?php
+include_once (sprintf("%s/logic/debug.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/permission/SessionSpeakerPermission.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
-$index =  $_POST['article_tutorial_btn'];
-$numeroSequenza = $_POST['numeroSequenza'][$index];
-$orainizio_presentazione = $_POST['orainizio_presentazione'][$index];
-$orafine_presentazione = $_POST['orafine_presentazione'][$index];
-$codice_presentazione = $_POST['codice_presentazione'][$index];
-$codice_sessione = $_POST['codice_sessione'][$_POST['presentationbtn']];
-$data = $_POST['data'][$_POST['presentationbtn']];
 
-$risorse_tutorial = PresentationQueryController::getTutorialResources($codice_sessione,$codice_presentazione);
+//print_r($_POST);
+$index =  $_POST['modificabtn'];
+$codice_presentazione = $_POST['codicepresentazione'][$index];
+$codice_sessione = $_POST['codicesessione'][$index];
 
 try {
     Session::start();
-    if (Session::read('msg_presentazione_1') != false) {
-        echo Session::read('msg_presentazione_1');
-        Session::delete('msg_presentazione_1');
-        Session::commit();
-    }
-    if (Session::read('msg_presentazione_2') != false) {
-        echo Session::read('msg_presentazione_2');
-        Session::delete('msg_presentazione_2');
+    if (Session::read('msg_tutorial_resources') != false) {
+        echo Session::read('msg_tutorial_resources');
+        Session::delete('msg_tutorial_resources');
         Session::commit();
     }
 } catch (ExpiredSessionException|Exception $e) {
@@ -35,67 +27,67 @@ try {
 ?>
 <body>
 <form method="post" action="/logic/upload_resources.php" autocomplete="off">
-        <div class="container">
-            <h4 class="conferenceInfo">Tutorial selezionato: </h4>
-            <p class="conferenceInfo">
-                <?php
-                print ('giorno: ' . $data . ' numero di sequenza: ' . $numeroSequenza . ', inizio: ' . $orainizio_presentazione
-                    . ', fine: ' . $orafine_presentazione . '<br>codice presentazione: ' . $codice_presentazione . ' codice sessione: ' . $codice_sessione.'</p>');
-                sendData();
-                ?>
-            <table style="margin: 20px">
-                <tr>
-                    <td>
-                        <h3><b>Link risorsa</b></h3>
-                            <input type="text" name="titolo_new" maxlength="260" placeholder="<?php  print $risorse_tutorial['link']; ?>" >
-                        </label>
-                    </td>
-                </tr>
+    <div class="container">
 
-                <tr>
-                    <td>
-                        <h3><b>Descrizione</b></h3><br>
-                        <textarea id="input_abstract_tutorial" class="form_tutorial" maxlength="100" name="input_abstract_tutorial" rows="2" cols="50" placeholder="<?php print $risorse_tutorial['descrizione'] ?>"></textarea>
-                    </td>
-                </tr>
-            </table>
+        <h4 class="conferenceInfo">Presentazione selezionata: </h4>
+        <p class="conferenceInfo"> <?php print ('codice: ' . $codice_presentazione); ?> </p>
+        <h4 class="conferenceInfo">Sessione: </h4>
+        <p class="conferenceInfo"> <?php print ('codice: ' . $codice_sessione); ?> </p>
+        <br>
+        <?php
+        $risorse_tutorial = PresentationQueryController::getTutorialResources($codice_sessione,$codice_presentazione);
+        if ($risorse_tutorial !== null AND sizeof($risorse_tutorial) > 0)
+        {
+            print ('<h3>Risorse già inserite:</h3>');
+            foreach ($risorse_tutorial as $a) { print('<p><b>Link: </b><a target="_blank" href="'.$a['link'].'">'.$a['link'].'</a> <b> Descrizione: </b> '.$a['descrizione'].'  <br>');}
+            ?><input type="hidden" name="sostituisci_risorsa"><?php
+        }
+        ?>
+        <br>
+        <b class="form_articolo">Link Risorse</b>
+        <div class="input-group form_articolo" id="input_group">
+            <div class="input-group-prepend" id="risorsa_input">
+                <span class="input-group-text">Link e Descrizione</span>
+                <input autocomplete="off" type="url" class="form-control" name="link[]" id="link_descrizione" style="margin: 0!important;">
+                <input autocomplete="off" type="text" class="form-control" name="descrizione[]" id="link_descrizione" style="margin: 0!important;">
+            </div>
         </div>
-        <div class="container">
-            <table style="margin: 20px">
-                <tr>
-                    <td><button type="submit" id="confirm_mod_btn" name="confirm_mod_btn">Conferma modifica</button></td>
-                    <td><button type="submit" id="delete_btn" name="delete_btn" style="background-color: red;opacity: 50" value="">Elimina tutorial</button></td>
-                </tr>
-            </table>
+        <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
+            <div class="col-sm">
+            </div>
+            <div class="col-sm">
+            </div>
+            <div class="col-sm">
+                <button type="button" id="aggiungiRisorsa">Aggiungi risorsa</button>
+            </div>
         </div>
-        </form>
+        <?php  sendData(); ?>
+    </div>
+    <div class="container">
+        <table style="margin: 20px">
+            <tr>
+                <td><button type="submit" id="confirm_mod_btn" name="confirm_mod_btn">Conferma modifica</button></td>
+            </tr>
+        </table>
+    </div>
+</form>
+<script>
+    const rows = '<div class="input-group-prepend" id="risorsa_input" style="margin-top: 3px;"> <span class="input-group-text">Link e Descrizione</span> <input autocomplete="off" type="url" class="form-control" name="link[]" id="link_descrizione" style="margin: 0!important;"> <input autocomplete="off" type="text" class="form-control" name="descrizione[]" id="link_descrizione" style="margin: 0!important;"> </div>';
+
+    $('#aggiungiRisorsa').on('click', function handleClick() {
+        let template = document.createElement('div');
+        document.getElementById('input_group').appendChild(template);
+        template.innerHTML = rows;
+    });
+</script>
+</body>
 <?php
 
 function sendData(): void
 {
-    for ($i = 0; $i<sizeof($_POST['codice_sessione']); $i++) {
-        print('<input type="hidden" name="codice_sessione[]" value="'.$_POST['codice_sessione'][$i].'">');
-        print('<input type="hidden" name="data[]" value="'.$_POST['data'][$i].'">');
+    for ($i = 0; $i<sizeof($_POST['codicesessione']); $i++) {
+        print('<input type="hidden" name="codicesessione[]" value="'.$_POST['codicesessione'][$i].'">');
+        print('<input type="hidden" name="codicepresentazione[]" value="'.$_POST['codicepresentazione'][$i].'">');
     }
-
-    for ($i = 0; $i<sizeof($_POST['orainizio_sessione']); $i++) {
-        print('<input type="hidden" name="orainizio_sessione[]" value="'.$_POST['orainizio_sessione'][$i].'">');
-        print('<input type="hidden" name="orafine_sessione[]" value="'.$_POST['orafine_sessione'][$i].'">');
-    }
-
-    for ($i = 0; $i< sizeof($_POST['tipologia']); $i++) {
-        ?>
-        <input type="hidden" name="tipologia[]" value="<?php print $_POST['tipologia'][$i] ?>">
-        <input type="hidden" name="numeroSequenza[]" value="<?php print $_POST['numeroSequenza'][$i] ?>">
-        <input type="hidden" name="orafine_presentazione[]" value="<?php print $_POST['orafine_presentazione'][$i] ?>">
-        <input type="hidden" name="orainizio_presentazione[]" value="<?php print $_POST['orainizio_presentazione'][$i] ?>">
-        <input type="hidden" name="titolo[]" value="<?php print $_POST['titolo'][$i] ?>">
-        <input type="hidden" name="codice_presentazione[]" value="<?php print $_POST['codice_presentazione'][$i] ?>">
-        <input type="hidden" name="numeroPagine[]" value="<?php print $_POST['numeroPagine'][$i] ?>">
-        <input type="hidden" name="filePDF[]" value="<?php print $_POST['filePDF'][$i] ?>">
-        <input type="hidden" name="abstract[]" value="<?php print $_POST['abstract'][$i] ?>">
-    <?php } ?>
-    <input type="hidden" name="article_tutorial_btn" value="<?php print $_POST['article_tutorial_btn'] ?>">
-    <input type="hidden" id="presentationbtn" name="presentationbtn" value="<?php print $_POST['presentationbtn'] ?>">
-    <?php
+    print('<input type="hidden" name="modificabtn" value="'.$_POST['modificabtn'].'">');
 }

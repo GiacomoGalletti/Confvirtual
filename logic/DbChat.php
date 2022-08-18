@@ -29,7 +29,7 @@ class DbChat {
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
 
-            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
 
             return true;
         } catch (Exception $e)

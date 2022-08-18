@@ -1,46 +1,37 @@
 <?php
-
 class Logger {
-    private static $instances = [];
-    private static $bulk;
-    private static $manager;
+    private static $instance;
+    private $managerMongoDB;
 
-    private function __construct() {
-        self::$bulk = new MongoDB\Driver\BulkWrite;
-        self::$manager = new MongoDB\Driver\Manager('mongodb://localhost:27017');
-    }
+    private function __construct() {}
 
-    private static function getInstance()
-    {
-        $cls = static::class;
-        if (!isset(self::$instances[$cls])) {
-            self::$instances[$cls] = new static();
+    public static function getInstance() {
+        if (!self::$instance) {
+            self::$instance = new Logger();
         }
-        return self::$instances[$cls];
+        return self::$instance;
     }
 
-    private static function getBulk(): \MongoDB\Driver\BulkWrite
-    {
-        return self::$bulk;
-    }
+    function writeMongo($nome_utente,$query,$data,$orario) {
+        if (empty($this->managerMongoDB)) {
+            $this->managerMongoDB = new MongoDB\Driver\Manager();
+        }
+        $writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY, 1000);
+        $bulk = new MongoDB\Driver\BulkWrite();
 
-    private static function getManager(): \MongoDB\Driver\Manager
-    {
-        return self::$manager;
-    }
-
-    public static function putLog($nome_utente,$query,$data,$orario)
-    {
         $log = [
             'utente' => $nome_utente,
             'operazione' => $query,
             'data' => $data,
             'ora' => $orario
         ];
-        self::getInstance()::getBulk()->insert($log);
-        self::getInstance()::getManager()->executeBulkWrite('logger.confvirtual_logs', self::getInstance()::getBulk());
+
+        $bulk->insert($log);
+        try {
+            $result = $this->managerMongoDB->executeBulkWrite('logger.confvirtual_logs', $bulk, $writeConcern);
+        } catch (MongoDB\Driver\Exception\BulkWriteException|MongoDB\Driver\Exception\Exception $e) {
+            echo $e;
+        }
+        return $result->getInsertedCount() > 0;
     }
-
-
-
 }

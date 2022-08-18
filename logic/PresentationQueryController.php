@@ -32,10 +32,6 @@ class PresentationQueryController
         return DbPresentation::ritornaTutorialAssegnabile($userName);
     }
 
-    public static function getTutorialsList($userName){
-        return DbPresentation::getTutorialsList($userName);
-    }
-
     public static function orderPresentation($codiceSessione): bool
     {
         return DbPresentation::ordinamentoSequenzePresentazioni($codiceSessione);
@@ -97,5 +93,19 @@ class PresentationQueryController
     public static function getTutorialResources($codice_sessione, $codice_presentazione)
     {
         return DbPresentation::getTutorialResources($codice_sessione, $codice_presentazione);
+    }
+
+    public static function getTutorialsList($userName){
+        return DbPresentation::getTutorialsList($userName);
+    }
+
+    public static function deleteResources($codice_presentazione, $codice_sessione)
+    {
+        return DbPresentation::deleteResources($codice_presentazione, $codice_sessione);
+    }
+
+    public static function addResources($codice_presentazione, $codice_sessione, $link, $descrizione)
+    {
+        return DbPresentation::addResources($codice_presentazione, $codice_sessione, $link, $descrizione);
     }
 }

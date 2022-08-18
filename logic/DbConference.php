@@ -74,7 +74,7 @@ class DbConference
                 $res -> closeCursor();
             }
 
-            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
 
             header("refresh:3;url= " . "/pages/admin/createconference.php");
             echo '<link rel="stylesheet" href="/style/css/style.css">
@@ -103,7 +103,7 @@ class DbConference
           <div class="container"> </div>
           <h4>Valutazione Inserita</h4> 
           ';
-            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
             return true;
         } catch (PDOException|ExpiredSessionException|Exception $e) {
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
@@ -119,7 +119,7 @@ class DbConference
             $sql = 'CALL iscriviUtente(\''.Session::read('userName').'\',\''.$annoEdizione.'\',\''.$acronimoConferenza.'\')';
             $res = DbConn::getInstance() -> query($sql);
             $res -> closeCursor();
-            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
             return true;
         } catch (PDOException|ExpiredSessionException|Exception $e) {
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';

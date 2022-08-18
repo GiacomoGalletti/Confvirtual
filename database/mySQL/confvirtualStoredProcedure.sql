@@ -711,3 +711,19 @@ BEGIN
     WHERE codiceSessione = in_codiceSessione and codicePresentazione = in_codicePresentazione;
 END $$
 DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS deleteResources $$
+CREATE PROCEDURE deleteResources(IN in_codicePresentazione int , IN in_codiceSessione int)
+BEGIN
+    DELETE FROM risorsatutorial WHERE in_codicePresentazione = risorsatutorial.codicePresentazione AND in_codiceSessione = risorsatutorial.codiceSessione;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS addResources $$
+CREATE PROCEDURE addResources(IN in_codicePresentazione int, IN in_codiceSessione int, IN in_link varchar(260), IN in_descrizione varchar(100))
+BEGIN
+    INSERT INTO risorsatutorial (codicePresentazione, codiceSessione, link, descrizione) VALUES (in_codicePresentazione,in_codiceSessione,in_link,in_descrizione);
+END $$
+DELIMITER ;

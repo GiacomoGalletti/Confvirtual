@@ -89,12 +89,9 @@ $codice_presentazione = $_POST['codice_presentazione'][$index];
                 template.innerHTML = rows;
             });
         </script>
-<?php
-include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"]));
-?>
     </body>
-</html> <?php
-
+</html>
+<?php
 function sendData(): void
 {
     for ($i = 0; $i<sizeof($_POST['codice_sessione']); $i++) {

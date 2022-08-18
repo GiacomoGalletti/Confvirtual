@@ -38,7 +38,7 @@ class DbPresentation
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
 
-            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
 
             return true;
         } catch (Exception $e)
@@ -60,7 +60,7 @@ class DbPresentation
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
 
-            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
 
             return true;
         } catch (Exception $e)
@@ -84,7 +84,7 @@ class DbPresentation
             if ($res->fetch(PDO::FETCH_ASSOC)['risultato'] != 'ERROR') {
                 $res -> closeCursor();
 
-                Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+                Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
 
                 return true;
             }
@@ -197,7 +197,7 @@ class DbPresentation
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
 
-            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
 
             return true;
         } catch (Exception $e)
@@ -215,7 +215,7 @@ class DbPresentation
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
 
-            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
 
             return true;
         } catch (Exception $e)
@@ -280,7 +280,7 @@ class DbPresentation
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
 
-            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
 
             return true;
         } catch (Exception $e)
@@ -298,7 +298,7 @@ class DbPresentation
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
 
-            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
 
             return true;
         } catch (Exception $e)
@@ -348,7 +348,7 @@ class DbPresentation
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
 
-            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
 
             return true;
         } catch (Exception $e)
@@ -366,7 +366,7 @@ class DbPresentation
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
 
-            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
 
             return true;
         } catch (Exception $e)
@@ -403,11 +403,7 @@ class DbPresentation
             $res = DbConn::getInstance()->query($sql);
             $output = $res -> fetchAll(PDO::FETCH_ASSOC);
             $res -> closeCursor();
-            if  (sizeof($output) > 0)
-            {
-                return $output;
-            }
-            return null;
+            return $output;
         } catch (Exception $e) {
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
             echo $e;
@@ -438,6 +434,42 @@ class DbPresentation
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
             echo $e;
             return null;
+        }
+    }
+
+    public static function deleteResources($codice_presentazione, $codice_sessione)
+    {
+        try {
+            $sql = 'CALL deleteResources(\'' . $codice_presentazione . '\',\'' . $codice_sessione . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $res -> closeCursor();
+
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
+            return true;
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
+    public static function addResources($codice_presentazione, $codice_sessione, $link, $descrizione)
+    {
+        try {
+            $sql = 'CALL addResources(\'' . $codice_presentazione . '\',\'' .$codice_sessione . '\',\'' . $link . '\',\'' . $descrizione . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $res -> closeCursor();
+
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+
+            return true;
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
         }
     }
 }

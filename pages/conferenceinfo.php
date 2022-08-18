@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="it">
 <?php
+if(!isset($_POST['conferencebtn'])){
+    header("Location: /index.php");
+}
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMENT_ROOT"]));

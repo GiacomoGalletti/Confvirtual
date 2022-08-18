@@ -13,7 +13,7 @@ class DbPresentazionePresenterSpeaker
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
 
-            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
 
             return true;
         } catch (Exception $e)
@@ -32,7 +32,7 @@ class DbPresentazionePresenterSpeaker
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
 
-            Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
 
             return true;
         } catch (Exception $e)
@@ -53,7 +53,7 @@ class DbPresentazionePresenterSpeaker
             if ($res->fetch(PDO::FETCH_ASSOC)['risultato'] != 'ERROR') {
                 $res -> closeCursor();
 
-                Logger::putLog(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+                Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
 
                 return true;
             }
