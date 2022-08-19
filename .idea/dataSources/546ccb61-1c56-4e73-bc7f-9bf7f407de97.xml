@@ -1528,10 +1528,9 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
     </routine>
     <scheduled-event id="405" parent="324" name="cambioStatoConferenza">
       <Definer>root@localhost</Definer>
-      <Interval>&apos;1&apos; SECOND</Interval>
-      <LastExecuted>2022-08-19.12:30:16</LastExecuted>
+      <Interval>&apos;1&apos; DAY</Interval>
       <SourceTextLength>382</SourceTextLength>
-      <Starts>&apos;2022-08-19 10:29:58&apos;</Starts>
+      <Starts>&apos;2015-06-21 12:23:00&apos;</Starts>
       <Status>enabled</Status>
     </scheduled-event>
     <table id="406" parent="324" name="amministratore">

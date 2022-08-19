@@ -15,6 +15,7 @@ class Logger {
 
     function writeMongo($nome_utente,$query,$data,$orario): bool
     {
+        try {
         if (empty($this->managerMongoDB)) {
             $this->managerMongoDB = new MongoDB\Driver\Manager();
         }
@@ -29,11 +30,13 @@ class Logger {
         ];
 
         $bulk->insert($log);
-        try {
+
             $result = $this->managerMongoDB->executeBulkWrite('logger.confvirtual_logs', $bulk, $writeConcern);
-        } catch (MongoDB\Driver\Exception\BulkWriteException|MongoDB\Driver\Exception\Exception $e) {
-            echo $e;
-        }
+
         return $result->getInsertedCount() > 0;
+        } catch (MongoDB\Driver\Exception\BulkWriteException|MongoDB\Driver\Exception\Exception $e) {
+            header('Location: /templates/Error500.php');
+            exit();
+        }
     }
 }

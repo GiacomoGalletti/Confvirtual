@@ -5,7 +5,7 @@ SET GLOBAL EVENT_SCHEDULER = ON;
 DELIMITER $$
 DROP EVENT IF EXISTS cambioStatoConferenza $$
 CREATE EVENT cambioStatoConferenza
-ON SCHEDULE EVERY 1 second
+ON SCHEDULE EVERY 1 DAY STARTS '2015-06-21 00:20:00'
 DO
 BEGIN
 UPDATE conferenza INNER JOIN dataconferenza ON conferenza.annoEdizione = dataconferenza.annoEdizioneConferenza AND conferenza.acronimo = dataconferenza.acronimoConferenza
