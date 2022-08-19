@@ -5,14 +5,16 @@ class Logger {
 
     private function __construct() {}
 
-    public static function getInstance() {
+    public static function getInstance(): Logger
+    {
         if (!self::$instance) {
             self::$instance = new Logger();
         }
         return self::$instance;
     }
 
-    function writeMongo($nome_utente,$query,$data,$orario) {
+    function writeMongo($nome_utente,$query,$data,$orario): bool
+    {
         if (empty($this->managerMongoDB)) {
             $this->managerMongoDB = new MongoDB\Driver\Manager();
         }

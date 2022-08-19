@@ -96,16 +96,27 @@ $acronimo = $_POST['acronimo'][$index];
                             if ($info_aticolo_tutorial['tipoPresentazione'] === 'tutorial') {
                                 $abstract = $info_aticolo_tutorial['abstract'];
                                 if ($abstract !== '') {
-                                    print ('<tr><td><b>ABSTRACT: <br></b>' . $abstract . '</td><td></td><td></td><td></td><td></td><td></td></tr>');
+                                    print ('<tr><td><b>ABSTRACT: <br></b>' . $abstract . '<td>');
                                 }
+                                $risorse = PresentationQueryController::getTutorialResources($a['codice'],$presentazione_corrente['codice']);
+
+                                if (sizeof($risorse)>0) {
+
+                                    print ('<td><p><b>Risorse:  </b></p>');
+                                    foreach ($risorse as $r) {
+                                        print ('<p><b>Link: </b><span><a href="' .$r['link'] . '">'.$r['link'].'</a><br><b>Descrizione: </b> ' . $r['descrizione'] . '</p>');
+                                    }
+                                    print ('</td>');
+                                }
+                                print ('</tr>');
+
                             }
                             else if ($info_aticolo_tutorial['tipoPresentazione'] === 'articolo') {
                                 $filePDF = $info_aticolo_tutorial['filePdf'];
                                 $num_pag = $info_aticolo_tutorial['numeroPagine'];
                                 $autori = PresentationQueryController::getAuthors($presentazione_corrente['codice'],$a['codice']);
                                 $key_words = PresentationQueryController::getKeyWord($presentazione_corrente['codice'],$a['codice']);
-                                //print ('<br> codice Sessione : ' . $a['codice'] . '<br>codice Presentazione : ' .$presentazione_corrente['codice'] .'<br>');
-                                //print_r(PresentationQueryController::getAuthors($presentazione_corrente['codice'],$a['codice']));
+
                                 print ('<tr>');
                                     if ($filePDF !== '') {
                                         print ('<td>

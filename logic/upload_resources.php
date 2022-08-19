@@ -2,8 +2,8 @@
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 print_r($_POST);
-//header('HTTP/1.1 307 Temporary Redirect');
-//header('Location: /pages/speaker/tutorialresources.php');
+header('HTTP/1.1 307 Temporary Redirect');
+header('Location: /pages/speaker/tutorialresources.php');
 
 $index = $_POST['modificabtn'];
 $codice_sessione = $_POST['codicesessione'][$index];
