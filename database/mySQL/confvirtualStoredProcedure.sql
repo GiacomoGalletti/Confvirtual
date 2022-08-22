@@ -179,8 +179,31 @@ DELIMITER //
 drop procedure if exists createPresentation //
 CREATE PROCEDURE createPresentation(IN in_codiceSessione int,IN in_oraInizio time,IN in_oraFine time)
 BEGIN
-    insert into presentazione(codiceSessione,oraInizio,oraFine) values (in_codiceSessione,in_oraInizio,in_oraFine);
-END;
+    declare validity int default 1;
+    declare currentInizio int;
+    declare currentFine int;
+    declare done int default 0;
+
+    declare cursorOraInizio cursor for select oraInizio from presentazione where codiceSessione = in_codiceSessione;
+    declare cursorOraFine cursor for select oraFine from presentazione where codiceSessione = in_codiceSessione;
+    declare continue handler for not found set done=1;
+
+    open cursorOraFine; open cursorOraInizio;
+    repeat
+        fetch cursorOraInizio into currentInizio;
+        fetch cursorOraFine into currentFine;
+
+       if (in_oraFine = currentFine or in_oraInizio = currentInizio) then set validity = 0; end if;
+       if (in_oraInizio >= currentInizio and in_oraInizio < currentFine) then  set validity = 0; end if;
+       if (in_oraFine > currentInizio and in_oraFine <= currentFine) then set validity = 0; end if;
+       if (in_oraInizio < currentInizio and in_oraFine > currentFine) then set validity = 0; end if;
+    until done=1 end repeat;
+    close cursorOraInizio; close cursorOraFine;
+
+    if (validity = 1)
+        then insert into presentazione(codiceSessione,oraInizio,oraFine) values (in_codiceSessione,in_oraInizio,in_oraFine);
+    end if;
+    END;
 //
 DELIMITER ;
 
@@ -193,13 +216,12 @@ BEGIN
     DECLARE EXIT HANDLER FOR SQLEXCEPTION
         BEGIN
             ROLLBACK;
-            SELECT 'ERROR' AS risultato;
+            select 'ERROR' AS validity;
         END;
     start transaction;
     call createPresentation(in_codiceSessione,in_oraInizio,in_oraFine);
     SET codice_presentazione = (select max(codice) from presentazione where codiceSessione =  in_codiceSessione);
     call createArticolo (codice_presentazione,in_codiceSessione,in_titolo,in_filePdf,in_numeroPagine);
-    SELECT 'OK' AS risultato;
     commit;
 END
 //
@@ -214,13 +236,12 @@ BEGIN
     DECLARE EXIT HANDLER FOR SQLEXCEPTION
         BEGIN
             ROLLBACK;
-            SELECT 'ERROR' AS risultato;
+            select 'ERROR' AS validity;
         END;
     start transaction;
     call createPresentation(in_codiceSessione,in_oraInizio,in_oraFine);
     SET codice_presentazione = (select max(codice) from presentazione where codiceSessione =  in_codiceSessione);
     call createTutorial(codice_presentazione,in_codiceSessione,in_titolo,in_abstract);
-    SELECT 'OK' AS risultato;
     commit;
 END
 //

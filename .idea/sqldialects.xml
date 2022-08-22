@@ -8,7 +8,6 @@
     <file url="file://$PROJECT_DIR$/database/mySQL/popolamentoUtenti.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/database/mySQL/statsStoredProcedure.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/database/mySQL/view.sql" dialect="MariaDB" />
-    <file url="file://$PROJECT_DIR$/logic/DBSponsor.php" dialect="GenericSQL" />
     <file url="PROJECT" dialect="MySQL" />
   </component>
 </project>
