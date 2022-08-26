@@ -50,6 +50,9 @@ $acronimo = $_POST['acronimo'][$index];
                 foreach ($array_sessioni as $a) {
                     $array_presentazioni_favorite = PresentationQueryController::getFavorites(Session::read('userName'),$a['codice']);
                     print_r($array_presentazioni_favorite);
+                    for ($i=0; $i<count($array_presentazioni_favorite); $i++) {
+                        $presentazioni_favorite = $array_presentazioni_favorite[$i];
+                    }
                     if ($array_presentazioni_favorite == null) {
                         $array_presentazioni_favorite = [];
                     }

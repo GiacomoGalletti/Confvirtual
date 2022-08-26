@@ -475,7 +475,7 @@ class DbPresentation
         try {
             $sql = 'CALL ritornaFavoriti(\'' . $userName . '\',\'' . $codice_sessione . '\');';
             $res = DbConn::getInstance()->query($sql);
-            $output = $res -> fetch();
+            $output = $res -> fetchAll(PDO::FETCH_ASSOC);
             $res -> closeCursor();
             return $output;
         } catch (Exception $e) {
