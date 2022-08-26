@@ -49,10 +49,12 @@ $acronimo = $_POST['acronimo'][$index];
                 $btn_value = 0;
                 foreach ($array_sessioni as $a) {
                     $array_presentazioni_favorite = PresentationQueryController::getFavorites(Session::read('userName'),$a['codice']);
-                    print_r($array_presentazioni_favorite);
+                    //print_r($array_presentazioni_favorite);
+                    $presentazioni_favorite = [];
                     for ($i=0; $i<count($array_presentazioni_favorite); $i++) {
-                        $presentazioni_favorite = $array_presentazioni_favorite[$i];
+                        array_push($presentazioni_favorite, $array_presentazioni_favorite[$i]['codicePresentazione']);
                     }
+                    print_r($presentazioni_favorite);
                     if ($array_presentazioni_favorite == null) {
                         $array_presentazioni_favorite = [];
                     }
@@ -119,11 +121,10 @@ $acronimo = $_POST['acronimo'][$index];
                                     print ('</td>');
                                 }
                                 print ('<td></td><td></td>');
-
-                                if (!in_array($presentazione_corrente['codice'],$array_presentazioni_favorite) OR $array_presentazioni_favorite == null) {
-                                    print ('<td><button type="submit" class="btn btn-success"><span><i class="bi bi-heart"></i></span> Aggiungi ai favoriti</button></td>');
+                                if (!in_array($presentazione_corrente['codice'],$presentazioni_favorite) OR $presentazioni_favorite == null) {
+                                    print ('<td><button type="submit" class="btn btn-success"><span><i class="bi bi-heart"></i></span>Aggiungi ai favoriti</button></td>');
                                 } else {
-                                    print ('<td><button disabled type="submit" class="btn btn-danger"><span><i class="bi bi-heart"></i></span> favorito!</button></td>');
+                                    print ('<td><button disabled type="submit" class="btn btn-danger"><span><i class="bi bi-heart"></i></span>favorito!</button></td>');
                                 }
                                 print ('</tr>');
 
@@ -163,10 +164,10 @@ $acronimo = $_POST['acronimo'][$index];
                                     }
                                     print ('</td>');
                                 }
-                                if (!in_array($presentazione_corrente['codice'],$array_presentazioni_favorite) OR $array_presentazioni_favorite == null) {
-                                    print ('<td><button type="submit" class="btn btn-success"><span><i class="bi bi-heart"></i></span> Aggiungi ai favoriti</button></td>');
+                                if (!in_array($presentazione_corrente['codice'],$presentazioni_favorite) OR $presentazioni_favorite == null) {
+                                    print ('<td><button type="submit" class="btn btn-success"><span><i class="bi bi-heart"></i></span>Aggiungi ai favoriti</button></td>');
                                 } else {
-                                    print ('<td><button disabled type="submit" class="btn btn-danger"><span><i class="bi bi-heart"></i></span> favorito!</button></td>');
+                                    print ('<td><button disabled type="submit" class="btn btn-danger"><span><i class="bi bi-heart"></i></span>favorito!</button></td>');
                                 }
                                 print ('</tr>');
                             } }?>
