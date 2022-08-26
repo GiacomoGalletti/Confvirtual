@@ -39,6 +39,7 @@ try {
                                     <a class="dropdown-item" href="/pages/admin/createconference.php">Crea una
                                         conferenza</a>
                                     <a class="dropdown-item" href="/pages/admin/myconferences.php">Le mie conferenze</a>
+                                    <a class="dropdown-item" href="/pages/favouritesPresentations.php">Le mie presentazioni Favorite</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -85,6 +86,7 @@ try {
                                     <a class="dropdown-item" href="/pages/futureconferences.php">Prossime confereze</a>
                                     <a class="dropdown-item" href="/pages/pastconferences.php">Conferenze passate</a>
                                     <a class="dropdown-item" href="/pages/subscribedconferences.php">Iscrizioni</a>
+                                    <a class="dropdown-item" href="/pages/favouritesPresentations.php">Le mie presentazioni Favorite</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -121,6 +123,8 @@ try {
                                     <a class="dropdown-item" href="/pages/pastconferences.php">Conferenze passate</a>
                                     <a class="dropdown-item" href="/pages/subscribedconferences.php">Iscrizioni</a>
                                     <a class="dropdown-item" href="/pages/speaker/tutorialslistspeaker.php">I miei Tutorial</a>
+                                    <a class="dropdown-item" href="/pages/favouritesPresentations.php">Le mie presentazioni Favorite</a>
+
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -156,6 +160,8 @@ try {
                                     <a class="dropdown-item" href="/pages/futureconferences.php">Prossime confereze</a>
                                     <a class="dropdown-item" href="/pages/pastconferences.php">Conferenze passate</a>
                                     <a class="dropdown-item" href="/pages/subscribedconferences.php">Iscrizioni</a>
+                                    <a class="dropdown-item" href="/pages/favouritesPresentations.php">Le mie presentazioni Favorite</a>
+
                                 </div>
                             </li>
                             <li class="nav-item">
