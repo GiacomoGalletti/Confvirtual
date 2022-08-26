@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@localhost" uuid="546ccb61-1c56-4e73-bc7f-9bf7f407de97">
+    <data-source source="LOCAL" name="@localhost" uuid="ac2ff1c2-2c72-41b7-929c-682785f997d3">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="@localhost [2]" uuid="ebc1fe3a-de8c-40f2-8ffa-31ca5202cd4c">
+    <data-source source="LOCAL" name="@localhost [2]" uuid="893846c9-bb2b-46d3-8af3-a278f3dd98a3">
       <driver-ref>mongo</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.dbschema.MongoJdbcDriver</jdbc-driver>

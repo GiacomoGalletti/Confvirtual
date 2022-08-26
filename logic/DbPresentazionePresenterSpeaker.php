@@ -5,11 +5,11 @@ include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/Logger.php");
 class DbPresentazionePresenterSpeaker
 {
 
-    public static function associateSpeaker($username, $titolo_tutorial, $codice_presentazione, $codice_sessione) :bool
+    public static function associateSpeaker($username, $codice_presentazione, $codice_sessione) :bool
     {
         try
         {
-            $sql = 'CALL associateSpeaker(\'' . $username . '\',\'' . $titolo_tutorial . '\',\'' . $codice_presentazione  . '\',\'' . $codice_sessione . '\');';
+            $sql = 'CALL associateSpeaker(\'' . $username . '\',\'' . $codice_presentazione  . '\',\'' . $codice_sessione . '\');';
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
 
@@ -24,11 +24,11 @@ class DbPresentazionePresenterSpeaker
         }
     }
 
-    public static function associatePresenter($username, $titolo_tutorial, $codice_presentazione, $codice_sessione) : bool
+    public static function associatePresenter($username, $codice_presentazione, $codice_sessione) : bool
     {
         try
         {
-            $sql = 'CALL associatePresenter(\'' . $username . '\',\'' . $titolo_tutorial . '\',\'' . $codice_presentazione  . '\',\'' . $codice_sessione . '\');';
+            $sql = 'CALL associatePresenter(\'' . $username . '\',\'' . $codice_presentazione  . '\',\'' . $codice_sessione . '\');';
             $res = DbConn::getInstance()->query($sql);
             $res -> closeCursor();
 
@@ -43,11 +43,11 @@ class DbPresentazionePresenterSpeaker
         }
     }
 
-    public static function addAuthorAndAssociatePresenter($username, $titolo_tutorial, $codice_presentazione, $codice_sessione)
+    public static function addAuthorAndAssociatePresenter($username, $codice_presentazione, $codice_sessione)
     {
         try
         {
-            $sql = 'CALL addAuthorAndAssociatePresenter(\'' . $username . '\',\'' . $titolo_tutorial . '\',\'' . $codice_presentazione  . '\',\'' . $codice_sessione . '\');';
+            $sql = 'CALL addAuthorAndAssociatePresenter(\'' . $username . '\',\'' . $codice_presentazione  . '\',\'' . $codice_sessione . '\');';
             $res = DbConn::getInstance()->query($sql);
 
             if ($res->fetch(PDO::FETCH_ASSOC)['risultato'] != 'ERROR') {

@@ -173,7 +173,6 @@ CREATE TABLE ARTICOLO(
 
 CREATE TABLE PRESENTAZIONESPEAKER(
                                      userNameUtente varchar(50),
-                                     titoloTutorial varchar(50),
                                      codicePresentazione int,
                                      codiceSessione int,
                                      linkWeb varchar(260),
@@ -187,7 +186,6 @@ CREATE TABLE PRESENTAZIONESPEAKER(
 
 CREATE TABLE PRESENTAZIONEPRESENTER(
                               userNameUtente varchar(50),
-                              titoloArticolo varchar(50),
                               codicePresentazione int,
                               codiceSessione int,
                               primary key (codicePresentazione, codiceSessione),
@@ -213,6 +211,18 @@ CREATE TABLE VALUTAZIONE(
                             constraint validazioneVoto check (voto>=0 and voto <= 10),
                             note varchar(50),
                             primary key (userNameUtente, codicePresentazione, codiceSessione),
+                            foreign key (userNameUtente) references AMMINISTRATORE(userNameUtente) ON DELETE CASCADE,
                             foreign key (codicePresentazione,codiceSessione) references PRESENTAZIONE(codice,codiceSessione)
                                 ON DELETE CASCADE
+)engine = 'InnoDB';
+
+CREATE TABLE PRESENTAZIONEFAVORITA(
+                                      userNameUtente varchar(50),
+                                      codicePresentazione int,
+                                      codiceSessione int,
+                                      primary key (userNameUtente, codicePresentazione, codiceSessione),
+                                      foreign key (userNameUtente) references UTENTE(userName)
+                                          ON DELETE CASCADE,
+                                      foreign key (codicePresentazione, codiceSessione) references PRESENTAZIONE(codice,codiceSessione)
+                                          ON DELETE CASCADE
 )engine = 'InnoDB';

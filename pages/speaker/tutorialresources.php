@@ -48,7 +48,7 @@ try {
         <div class="input-group form_articolo" id="input_group">
             <div class="input-group-prepend" id="risorsa_input">
                 <span class="input-group-text">Link e Descrizione</span>
-                <input autocomplete="off" type="url" class="form-control" name="link[]" id="link_descrizione" style="margin: 0!important;">
+                <input autocomplete="off" type="url" placeholder="https://www.example.com" class="form-control" name="link[]" id="link_descrizione" style="margin: 0!important;">
                 <input autocomplete="off" type="text" class="form-control" name="descrizione[]" id="link_descrizione" style="margin: 0!important;">
             </div>
         </div>
@@ -72,7 +72,7 @@ try {
     </div>
 </form>
 <script>
-    const rows = '<div class="input-group-prepend" id="risorsa_input" style="margin-top: 3px;"> <span class="input-group-text">Link e Descrizione</span> <input autocomplete="off" type="url" class="form-control" name="link[]" id="link_descrizione" style="margin: 0!important;"> <input autocomplete="off" type="text" class="form-control" name="descrizione[]" id="link_descrizione" style="margin: 0!important;"> </div>';
+    const rows = '<div class="input-group-prepend" id="risorsa_input" style="margin-top: 3px;"> <span class="input-group-text">Link e Descrizione</span> <input autocomplete="off" type="url" pattern="www..*" placeholder="www.example.com" class="form-control" name="link[]" id="link_descrizione" style="margin: 0!important;"> <input autocomplete="off" type="text" class="form-control" name="descrizione[]" id="link_descrizione" style="margin: 0!important;"> </div>';
 
     $('#aggiungiRisorsa').on('click', function handleClick() {
         let template = document.createElement('div');

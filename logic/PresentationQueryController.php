@@ -108,4 +108,8 @@ class PresentationQueryController
     {
         return DbPresentation::addResources($codice_presentazione, $codice_sessione, $link, $descrizione);
     }
+
+    public static function getFavorites($userName,$codice_sessione) {
+        return DbPresentation::getFavorites($userName,$codice_sessione);
+    }
 }

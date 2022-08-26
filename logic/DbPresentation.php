@@ -80,18 +80,15 @@ class DbPresentation
         {
             $sql = 'CALL addPresentationTutorial(\'' . $codice_sessione . '\',\'' . $orainizio . '\',\'' . $orafine . '\',\'' . $titolo . '\',\'' . $abstract . '\');';
             $res = DbConn::getInstance()->query($sql);
-
-            if ($res->fetch(PDO::FETCH_ASSOC)['risultato'] != 'ERROR') {
-                $res -> closeCursor();
-
+            $res = $res->fetch(PDO::FETCH_ASSOC);
+            print_r($res);
+            if (!isset($res['validity'])) {
                 Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
-
                 return true;
+            } else {
+                echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+                return false;
             }
-            $res -> closeCursor();
-            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
-
-            return false;
         } catch (Exception $e)
         {
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
@@ -470,6 +467,21 @@ class DbPresentation
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
             echo $e;
             return false;
+        }
+    }
+
+    public static function getFavorites($userName,$codice_sessione)
+    {
+        try {
+            $sql = 'CALL ritornaFavoriti(\'' . $userName . '\',\'' . $codice_sessione . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $output = $res -> fetch();
+            $res -> closeCursor();
+            return $output;
+        } catch (Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return null;
         }
     }
 }

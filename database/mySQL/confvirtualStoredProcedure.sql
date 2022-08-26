@@ -179,8 +179,31 @@ DELIMITER //
 drop procedure if exists createPresentation //
 CREATE PROCEDURE createPresentation(IN in_codiceSessione int,IN in_oraInizio time,IN in_oraFine time)
 BEGIN
-    insert into presentazione(codiceSessione,oraInizio,oraFine) values (in_codiceSessione,in_oraInizio,in_oraFine);
-END;
+    declare validity int default 1;
+    declare currentInizio int;
+    declare currentFine int;
+    declare done int default 0;
+
+    declare cursorOraInizio cursor for select oraInizio from presentazione where codiceSessione = in_codiceSessione;
+    declare cursorOraFine cursor for select oraFine from presentazione where codiceSessione = in_codiceSessione;
+    declare continue handler for not found set done=1;
+
+    open cursorOraFine; open cursorOraInizio;
+    repeat
+        fetch cursorOraInizio into currentInizio;
+        fetch cursorOraFine into currentFine;
+
+       if (in_oraFine = currentFine or in_oraInizio = currentInizio) then set validity = 0; end if;
+       if (in_oraInizio >= currentInizio and in_oraInizio < currentFine) then  set validity = 0; end if;
+       if (in_oraFine > currentInizio and in_oraFine <= currentFine) then set validity = 0; end if;
+       if (in_oraInizio < currentInizio and in_oraFine > currentFine) then set validity = 0; end if;
+    until done=1 end repeat;
+    close cursorOraInizio; close cursorOraFine;
+
+    if (validity = 1)
+        then insert into presentazione(codiceSessione,oraInizio,oraFine) values (in_codiceSessione,in_oraInizio,in_oraFine);
+    end if;
+    END;
 //
 DELIMITER ;
 
@@ -193,13 +216,12 @@ BEGIN
     DECLARE EXIT HANDLER FOR SQLEXCEPTION
         BEGIN
             ROLLBACK;
-            SELECT 'ERROR' AS risultato;
+            select 'ERROR' AS validity;
         END;
     start transaction;
     call createPresentation(in_codiceSessione,in_oraInizio,in_oraFine);
     SET codice_presentazione = (select max(codice) from presentazione where codiceSessione =  in_codiceSessione);
     call createArticolo (codice_presentazione,in_codiceSessione,in_titolo,in_filePdf,in_numeroPagine);
-    SELECT 'OK' AS risultato;
     commit;
 END
 //
@@ -214,13 +236,12 @@ BEGIN
     DECLARE EXIT HANDLER FOR SQLEXCEPTION
         BEGIN
             ROLLBACK;
-            SELECT 'ERROR' AS risultato;
+            select 'ERROR' AS validity;
         END;
     start transaction;
     call createPresentation(in_codiceSessione,in_oraInizio,in_oraFine);
     SET codice_presentazione = (select max(codice) from presentazione where codiceSessione =  in_codiceSessione);
     call createTutorial(codice_presentazione,in_codiceSessione,in_titolo,in_abstract);
-    SELECT 'OK' AS risultato;
     commit;
 END
 //
@@ -359,9 +380,9 @@ DELIMITER ;
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS associaPresenter $$
-CREATE PROCEDURE associaPresenter(IN in_userNameUtente varchar(50),IN in_titoloArticolo varchar(50), IN in_codicePresentazione int , IN in_codiceSessione int)
+CREATE PROCEDURE associaPresenter(IN in_userNameUtente varchar(50), IN in_codicePresentazione int , IN in_codiceSessione int)
 BEGIN
-    INSERT INTO PRESENTAZIONEPRESENTER(userNameUtente,titoloArticolo,codicePresentazione,codiceSessione) values(in_userNameUtente,in_titoloArticolo,in_codicePresentazione,in_codiceSessione);
+    INSERT INTO PRESENTAZIONEPRESENTER(userNameUtente,codicePresentazione,codiceSessione) values(in_userNameUtente,in_codicePresentazione,in_codiceSessione);
 END $$
 DELIMITER ;
 
@@ -403,9 +424,9 @@ DELIMITER ;
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS associaSpeaker $$
-CREATE PROCEDURE associaSpeaker(IN in_userNameUtente varchar(50),IN in_titoloTutorial varchar(50), IN in_codicePresentazione int , IN in_codiceSessione int)
+CREATE PROCEDURE associaSpeaker(IN in_userNameUtente varchar(50),IN in_codicePresentazione int , IN in_codiceSessione int)
 BEGIN
-    INSERT INTO PRESENTAZIONESPEAKER(userNameUtente,titoloTutorial,codicePresentazione,codiceSessione) values(in_userNameUtente,in_titoloTutorial,in_codicePresentazione,in_codiceSessione);
+    INSERT INTO PRESENTAZIONESPEAKER(userNameUtente,codicePresentazione,codiceSessione) values(in_userNameUtente,in_codicePresentazione,in_codiceSessione);
 END $$
 DELIMITER ;
 
@@ -503,17 +524,17 @@ DELIMITER ;
 
 DELIMITER //
 drop procedure if exists associateSpeaker //
-CREATE PROCEDURE associateSpeaker(IN in_userNameUtente varchar(50),IN in_titoloTutorial varchar(50), IN in_codicePresentazione int, IN in_codiceSessione int)
+CREATE PROCEDURE associateSpeaker(IN in_userNameUtente varchar(50), IN in_codicePresentazione int, IN in_codiceSessione int)
 BEGIN
-    insert into presentazionespeaker (userNameUtente, titoloTutorial, codicePresentazione, codiceSessione) values (in_userNameUtente, in_titoloTutorial, in_codicePresentazione, in_codiceSessione);
+    insert into presentazionespeaker (userNameUtente, codicePresentazione, codiceSessione) values (in_userNameUtente, in_codicePresentazione, in_codiceSessione);
 END //
 DELIMITER ;
 
 DELIMITER //
 drop procedure if exists associatePresenter //
-CREATE PROCEDURE associatePresenter(IN in_userNameUtente varchar(50),IN in_titoloArticolo varchar(50), IN in_codicePresentazione int, IN in_codiceSessione int)
+CREATE PROCEDURE associatePresenter(IN in_userNameUtente varchar(50), IN in_codicePresentazione int, IN in_codiceSessione int)
 BEGIN
-    insert into presentazionepresenter (userNameUtente, titoloArticolo, codicePresentazione, codiceSessione) values (in_userNameUtente, in_titoloArticolo, in_codicePresentazione, in_codiceSessione);
+    insert into presentazionepresenter (userNameUtente, codicePresentazione, codiceSessione) values (in_userNameUtente, in_codicePresentazione, in_codiceSessione);
 END //
 DELIMITER ;
 
@@ -590,7 +611,7 @@ DELIMITER ;
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS addAuthorAndAssociatePresenter $$
-CREATE PROCEDURE addAuthorAndAssociatePresenter(IN in_userNameUtente varchar(50),  IN in_titoloArticolo varchar(50), IN in_codicePresentazione int, IN in_codiceSessione int)
+CREATE PROCEDURE addAuthorAndAssociatePresenter(IN in_userNameUtente varchar(50), IN in_codicePresentazione int, IN in_codiceSessione int)
 BEGIN
     DECLARE nomeAutore varchar(50);
     DECLARE cognomeAutore varchar(50);
@@ -602,7 +623,7 @@ BEGIN
     START TRANSACTION;
     set nomeAutore = (SELECT nome FROM UTENTE WHERE userName = in_userNameUtente);
     set cognomeAutore = (SELECT cognome FROM UTENTE WHERE userName = in_userNameUtente);
-    insert into presentazionepresenter (userNameUtente, titoloArticolo, codicePresentazione, codiceSessione) values (in_userNameUtente, in_titoloArticolo, in_codicePresentazione, in_codiceSessione);
+    insert into presentazionepresenter (userNameUtente, codicePresentazione, codiceSessione) values (in_userNameUtente, in_codicePresentazione, in_codiceSessione);
     if not exists (select * from autore where codicePresentazione = in_codicePresentazione and codiceSessione = in_codiceSessione and nome = nomeAutore and cognome = cognomeAutore) then
 		insert into AUTORE (codicePresentazione, codiceSessione, nome, cognome) values (in_codicePresentazione, in_codiceSessione, nomeAutore, cognomeAutore);
 	end if;
@@ -725,5 +746,15 @@ DROP PROCEDURE IF EXISTS addResources $$
 CREATE PROCEDURE addResources(IN in_codicePresentazione int, IN in_codiceSessione int, IN in_link varchar(260), IN in_descrizione varchar(100))
 BEGIN
     INSERT INTO risorsatutorial (codicePresentazione, codiceSessione, link, descrizione) VALUES (in_codicePresentazione,in_codiceSessione,in_link,in_descrizione);
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS ritornaFavoriti $$
+CREATE PROCEDURE ritornaFavoriti (IN in_userNameUtente varchar(50), IN in_codiceSessione int)
+BEGIN
+    SELECT codicePresentazione
+    FROM presentazionefavorita
+    WHERE (userNameUtente = in_userNameUtente AND codiceSessione = in_codiceSessione);
 END $$
 DELIMITER ;

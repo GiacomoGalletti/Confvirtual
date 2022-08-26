@@ -48,6 +48,11 @@ $acronimo = $_POST['acronimo'][$index];
                 ?> <h4 class="text-center mb-4">Sessioni della conferenza: </h4> <?php
                 $btn_value = 0;
                 foreach ($array_sessioni as $a) {
+                    $array_presentazioni_favorite = PresentationQueryController::getFavorites(Session::read('userName'),$a['codice']);
+                    print_r($array_presentazioni_favorite);
+                    if ($array_presentazioni_favorite == null) {
+                        $array_presentazioni_favorite = [];
+                    }
                     $array_presentazione = PresentationQueryController::getAllPresentationInfo($a['codice']);
                     if (isset($array_presentazione)) {?>
                         <div style="display: block">
@@ -71,6 +76,7 @@ $acronimo = $_POST['acronimo'][$index];
                         <thead class="thead-primary">
                         <tr>
                             <th>Sequenza</th>
+                            <th>Codice Presentazione</th>
                             <th>Titolo</th>
                             <th>Tipologia</th>
                             <th>Ora Inizio</th>
@@ -86,6 +92,7 @@ $acronimo = $_POST['acronimo'][$index];
                             $info_aticolo_tutorial = PresentationQueryController::getPresentationInfo($presentazione_corrente['codice'])[0]; ?>
                             <tr>
                                 <td><?php  print $presentazione_corrente['numeroSequenza']?></td>
+                                <td><?php  print $presentazione_corrente['codice']?></td>
                                 <td><?php  print $info_aticolo_tutorial['titolo']?></td>
                                 <td><?php  print $info_aticolo_tutorial['tipoPresentazione']?></td>
                                 <td><?php  print DateTime::createFromFormat("H:i:s", $presentazione_corrente['oraInizio'])->format("H:i")?></td>
@@ -107,6 +114,13 @@ $acronimo = $_POST['acronimo'][$index];
                                         print ('<p><b>Link: </b><span><a href="' .$r['link'] . '">'.$r['link'].'</a><br><b>Descrizione: </b> ' . $r['descrizione'] . '</p>');
                                     }
                                     print ('</td>');
+                                }
+                                print ('<td></td><td></td>');
+
+                                if (!in_array($presentazione_corrente['codice'],$array_presentazioni_favorite) OR $array_presentazioni_favorite == null) {
+                                    print ('<td><button type="submit" class="btn btn-success"><span><i class="bi bi-heart"></i></span> Aggiungi ai favoriti</button></td>');
+                                } else {
+                                    print ('<td><button disabled type="submit" class="btn btn-danger"><span><i class="bi bi-heart"></i></span> favorito!</button></td>');
                                 }
                                 print ('</tr>');
 
@@ -145,6 +159,11 @@ $acronimo = $_POST['acronimo'][$index];
                                         print ($kw['parola'] . '<br>');
                                     }
                                     print ('</td>');
+                                }
+                                if (!in_array($presentazione_corrente['codice'],$array_presentazioni_favorite) OR $array_presentazioni_favorite == null) {
+                                    print ('<td><button type="submit" class="btn btn-success"><span><i class="bi bi-heart"></i></span> Aggiungi ai favoriti</button></td>');
+                                } else {
+                                    print ('<td><button disabled type="submit" class="btn btn-danger"><span><i class="bi bi-heart"></i></span> favorito!</button></td>');
                                 }
                                 print ('</tr>');
                             } }?>
