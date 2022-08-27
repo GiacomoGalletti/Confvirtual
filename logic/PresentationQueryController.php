@@ -112,4 +112,8 @@ class PresentationQueryController
     public static function getFavorites($userName,$codice_sessione) {
         return DbPresentation::getFavorites($userName,$codice_sessione);
     }
+
+    public static function getFavoritesGlobal($userName) {
+        return DbPresentation::getFavoritesGlobal($userName);
+    }
 }

@@ -758,3 +758,15 @@ BEGIN
     WHERE (userNameUtente = in_userNameUtente AND codiceSessione = in_codiceSessione);
 END $$
 DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS ritornaFavoritiGlobale $$
+CREATE PROCEDURE ritornaFavoritiGlobale (IN in_userNameUtente varchar(50))
+BEGIN
+    SELECT codicePresentazione
+    FROM presentazionefavorita
+    WHERE (userNameUtente = in_userNameUtente);
+END $$
+DELIMITER ;
+
+#call ritornaFavoritiGlobale('admin1');

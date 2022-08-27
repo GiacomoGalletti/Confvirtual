@@ -1,95 +1,65 @@
 <!DOCTYPE html>
-<html lang="it">
 <?php
-include_once (sprintf("%s/logic/permission/SessionLoggedUserPermission.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/logic/SessioneQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/logic/debug.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
+?>
+
+<?php
+$userNameUtente = $_SESSION['userName'];
+$presentazioni_favorite = PresentationQueryController::getFavoritesGlobal($userNameUtente);
+//print_r($presentazioni_favorite);
 
 ?>
-<body>
 
-<!---->
-<!---->
-<!--<form method="post" action="/pages/conferenceinfo.php">-->
-<!--    --><?php
-//    function getConferences()
-//    {
-//        global $id;
-//        $id = 0;
-//        foreach (ConferenceQueryController::getConferenceSubscribed() as $c) {
-//            $srcImg = $c['immagineLogo'];
-//
-//            echo '
-//                                <input type="hidden" name="nome[]" value="'.$c['nome'].'">
-//                                <input type="hidden" name="acronimo[]" value="'.$c['acronimo'].'">
-//                                <input type="hidden" name="annoEdizione[]" value="'.$c['annoEdizione'].'">
-//                                <input type="hidden" name="immagineLogo[]" value="'.$c['immagineLogo'].'">
-//                                <tr>
-//                                <th>' . $c['acronimo'] . '</th>
-//                                <td>' . $c['nome'] . '</td>
-//                                <td>' . $c['annoEdizione'] . '</td>';
-//            $string = '';
-//            foreach (ConferenceQueryController::getDaysConference($c['acronimo'], $c['annoEdizione']) as $r) {
-//                $string .= date_format(date_create($r['giorno']), "d/m") . ' - ';
-//            }
-//            echo '<td>' . $string . '</td>';
-//            if(!empty($srcImg)){
-//                echo '<td><img id="currentPhoto" title="userImg personalizzata" width="60" height="80" src="'.$srcImg.'" alt="img personale"> </td>';
-//            } else { echo '<td><img title="no img" width="60" height="80" src="/resources/images/noImgDefault.jpg" alt="default_img"></td>';}
-//
-//            echo '<td><button type="submit" id="btn" name="conferencebtn" value ="'.$id.'">Seleziona</button></td>';
-//
-//            $id++;
-//        }
-//    }
-//
-    try {
-        switch (Session::read('type')) {
-            case 'amministratore':
-            case 'speaker':
-            case 'presenter':
-            case 'utente': ?>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4 class="text-center mb-4">Le tue presentazioni favorite</h4>
-                            <div class="table-wrap">
-                                <table class="table">
-                                    <thead class="thead-primary">
-                                    <tr>
-                                        <th>Titolo</th>
-                                        <th>Tipologia</th>
-                                        <th>Ora Inizio</th>
-                                        <th>Ora Fine</th>
-                                        <th>Sessione di appartenenza</th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-                                    getConferences();
-                                    ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php
-                break;
-            default:
-                header('Location: ');
-        }
-    } catch (ExpiredSessionException|Exception $e) {
-        echo $e;
-    }
-    ?>
-    <?php
-    include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"]));
-    ?>
-</form>
-</body>
-</html>
+
 <?php
+if (isset($presentazioni_favorite) && sizeof($presentazioni_favorite) >0 ) {
+?>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="text-center mb-4">Le tue presentazioni favorite</h4>
+
+            <div class="table-wrap">
+                <table class="table">
+                    <thead class="thead-primary">
+                    <tr>
+                        <th>Codice Presentazione</th>
+                        <th>Titolo</th>
+                        <th>Tipologia</th>
+                        <th>Ora Inizio</th>
+                        <th>Ora Fine</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    foreach ($presentazioni_favorite as $presentazione_corrente) {
+                        $info_presentazione = PresentationQueryController::getPresentationInfo($presentazione_corrente['codicePresentazione'])[0];
+                        //pre_r($presentazione_corrente);
+                        ?>
+                        <tr>
+                            <td><?php  print $info_presentazione['codice']?></td>
+                            <td><?php  print $info_presentazione['titolo']?></td>
+                            <td><?php  print $info_presentazione['tipoPresentazione']?></td>
+                            <td><?php  print DateTime::createFromFormat("H:i:s",$info_presentazione['oraInizio'])->format("H:i")?></td>
+                            <td><?php  print DateTime::createFromFormat("H:i:s",$info_presentazione['oraFine'])->format("H:i")?></td>
+
+                        </tr>
+                    <?php   }  ?>
+
+                    </tbody>
+                </table>
+            </div>
+            <?php   } else {
+                ?>             <h4 class="text-center mb-4">Al momento non ci sono Presentazioni aggiunte alle Presentazioni Favorite !</h4>
+                <?php
+            } ?>
+
