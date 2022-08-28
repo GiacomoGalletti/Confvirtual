@@ -8,17 +8,8 @@ include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCU
 include_once (sprintf("%s/logic/debug.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
-?>
-
-<?php
 $userNameUtente = $_SESSION['userName'];
 $presentazioni_favorite = PresentationQueryController::getFavoritesGlobal($userNameUtente);
-//print_r($presentazioni_favorite);
-
-?>
-
-
-<?php
 if (isset($presentazioni_favorite) && sizeof($presentazioni_favorite) >0 ) {
 ?>
 
@@ -43,7 +34,6 @@ if (isset($presentazioni_favorite) && sizeof($presentazioni_favorite) >0 ) {
                     <?php
                     foreach ($presentazioni_favorite as $presentazione_corrente) {
                         $info_presentazione = PresentationQueryController::getPresentationInfo($presentazione_corrente['codicePresentazione'])[0];
-                        //pre_r($presentazione_corrente);
                         ?>
                         <tr>
                             <td><?php  print $info_presentazione['codice']?></td>

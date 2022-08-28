@@ -769,4 +769,20 @@ BEGIN
 END $$
 DELIMITER ;
 
+DELIMITER $$
+DROP PROCEDURE IF EXISTS rimuoviFavorito $$
+CREATE PROCEDURE rimuoviFavorito (IN in_userNameUtente varchar(50), IN in_codiceSessione int, IN in_codicePresentazione int)
+BEGIN
+    DELETE FROM presentazionefavorita WHERE (userNameUtente = in_userNameUtente AND codiceSessione = in_codiceSessione AND codicePresentazione = in_codicePresentazione);
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS aggiungiFavorito $$
+CREATE PROCEDURE aggiungiFavorito (IN in_userNameUtente varchar(50), IN in_codiceSessione int, IN in_codicePresentazione int)
+BEGIN
+    INSERT INTO presentazionefavorita(userNameUtente, codicePresentazione, codiceSessione)  VALUES (in_userNameUtente,in_codicePresentazione,in_codiceSessione);
+END $$
+DELIMITER ;
+
 #call ritornaFavoritiGlobale('admin1');

@@ -22,7 +22,18 @@ $acronimo = $_POST['acronimo'][$index];
     // ora posso andare a reperire gli articoli ed i tutorial di tutte le sessioni trovate
     ?>
 </div>
-<form method="post" action="/pages/chat.php">
+<form name="myform" method="post" action="/pages/chat.php">
+    <?php
+        try {
+            if (Session::read('msg_fav') != false) {
+                echo Session::read('msg_fav');
+                Session::delete('msg_fav');
+                Session::commit();
+            }
+        } catch (ExpiredSessionException|Exception $e) {
+            echo $e;
+        }
+    ?>
     <div class="container">
         <div style="margin-top: 40px">
             <div style="display: block">
@@ -47,6 +58,7 @@ $acronimo = $_POST['acronimo'][$index];
             if (isset($array_sessioni)) {
                 ?> <h4 class="text-center mb-4">Sessioni della conferenza: </h4> <?php
                 $btn_value = 0;
+                $fav_value =0;
                 foreach ($array_sessioni as $a) {
                     $array_presentazioni_favorite = PresentationQueryController::getFavorites(Session::read('userName'),$a['codice']);
                     $presentazioni_favorite = [];
@@ -89,91 +101,95 @@ $acronimo = $_POST['acronimo'][$index];
                         </thead>
                         <tbody>
                         <?php
-                            $btn_value++;
                             foreach ($array_presentazione as $presentazione_corrente) {
 
-                            $info_aticolo_tutorial = PresentationQueryController::getPresentationInfo($presentazione_corrente['codice'])[0]; ?>
-                            <tr>
-                                <td><?php  print $presentazione_corrente['numeroSequenza']?></td>
-                                <td><?php  print $presentazione_corrente['codice']?></td>
-                                <td><?php  print $info_aticolo_tutorial['titolo']?></td>
-                                <td><?php  print $info_aticolo_tutorial['tipoPresentazione']?></td>
-                                <td><?php  print DateTime::createFromFormat("H:i:s", $presentazione_corrente['oraInizio'])->format("H:i")?></td>
-                                <td><?php  print DateTime::createFromFormat("H:i:s", $presentazione_corrente['oraFine'])->format("H:i")?></td>
-                                <td></td>
-                            </tr>
-                            <?php
-                            if ($info_aticolo_tutorial['tipoPresentazione'] === 'tutorial') {
-                                $abstract = $info_aticolo_tutorial['abstract'];
-                                if ($abstract !== '') {
-                                    print ('<tr><td><b>ABSTRACT: <br></b>' . $abstract . '<td>');
-                                }
-                                $risorse = PresentationQueryController::getTutorialResources($a['codice'],$presentazione_corrente['codice']);
+                                $info_aticolo_tutorial = PresentationQueryController::getPresentationInfo($presentazione_corrente['codice'])[0]; ?>
+                                    <input type="hidden" name="codice_presentazione[]" value="<?php print $presentazione_corrente['codice'] ?>">
 
-                                if (sizeof($risorse)>0) {
-
-                                    print ('<td><p><b>Risorse:  </b></p>');
-                                    foreach ($risorse as $r) {
-                                        print ('<p><b>Link: </b><span><a href="' .$r['link'] . '">'.$r['link'].'</a><br><b>Descrizione: </b> ' . $r['descrizione'] . '</p>');
+                                    <tr>
+                                        <td><?php  print $presentazione_corrente['numeroSequenza']?></td>
+                                        <td><?php  print $presentazione_corrente['codice']?></td>
+                                        <td><?php  print $info_aticolo_tutorial['titolo']?></td>
+                                        <td><?php  print $info_aticolo_tutorial['tipoPresentazione']?></td>
+                                        <td><?php  print DateTime::createFromFormat("H:i:s", $presentazione_corrente['oraInizio'])->format("H:i")?></td>
+                                        <td><?php  print DateTime::createFromFormat("H:i:s", $presentazione_corrente['oraFine'])->format("H:i")?></td>
+                                        <td></td>
+                                    </tr>
+                                <?php
+                                if ($info_aticolo_tutorial['tipoPresentazione'] === 'tutorial') {
+                                    $abstract = $info_aticolo_tutorial['abstract'];
+                                    if ($abstract !== '') {
+                                        print ('<tr><td><b>ABSTRACT: <br></b>' . $abstract . '<td>');
                                     }
-                                    print ('</td>');
-                                }
-                                print ('<td></td><td></td>');
-                                if (!in_array($presentazione_corrente['codice'],$presentazioni_favorite) OR $presentazioni_favorite == null) {
-                                    print ('<td><button type="submit" class="btn btn-success"><span><i class="bi bi-heart"></i></span>Aggiungi ai favoriti</button></td>');
-                                } else {
-                                    print ('<td><button type="submit" class="btn btn-danger"><span><i class="bi bi-heart"></i></span>favorito!</button></td>');
-                                }
-                                print ('</tr>');
+                                    $risorse = PresentationQueryController::getTutorialResources($a['codice'],$presentazione_corrente['codice']);
 
-                            }
-                            else if ($info_aticolo_tutorial['tipoPresentazione'] === 'articolo') {
-                                $filePDF = $info_aticolo_tutorial['filePdf'];
-                                $num_pag = $info_aticolo_tutorial['numeroPagine'];
-                                $autori = PresentationQueryController::getAuthors($presentazione_corrente['codice'],$a['codice']);
-                                $key_words = PresentationQueryController::getKeyWord($presentazione_corrente['codice'],$a['codice']);
+                                    if (sizeof($risorse)>0) {
 
-                                print ('<tr>');
-                                    if ($filePDF !== '') {
-                                        print ('<td>
-                                                    <label><b>File PDF</b></label>
-                                                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                                                    <a type="submit" href="'.$filePDF.'" class="btn btn-outline-primary" target="_blank" style="margin-right: 100px"><i class="fa fa-download" style="font-size:48px;color:#202040"></i></a>
-                                                </td>');
-                                    }
-
-                                    if ($num_pag !== '') {
-                                        print ('<td><b>Numero pagine: </b>' . $num_pag . '</td>');
-                                    }
-                                    if (sizeof($autori)>0) {
-
-                                        print ('<td><b>Autori:  <br></b>');
-                                        foreach ($autori as $auth) {
-                                            print ($auth['nome'] . ' ' . $auth['cognome'] . '<br>');
+                                        print ('<td><p><b>Risorse:  </b></p>');
+                                        foreach ($risorse as $r) {
+                                            print ('<p><b>Link: </b><span><a href="' .$r['link'] . '">'.$r['link'].'</a><br><b>Descrizione: </b> ' . $r['descrizione'] . '</p>');
                                         }
                                         print ('</td>');
                                     }
-
-                                if (sizeof($key_words)>0) {
-
-                                    print ('<td><b>Prole chiave: <br></b>');
-                                    foreach ($key_words as $kw) {
-                                        print ($kw['parola'] . '<br>');
+                                    print ('<td></td><td></td>');
+                                    if (!in_array($presentazione_corrente['codice'],$presentazioni_favorite) OR $presentazioni_favorite == null) {
+                                        print ('<td><button name="fav_btn_add" type="submit" class="btn btn-success" value="'.$btn_value.','.$fav_value.'"><span><i class="bi bi-heart"></i></span>Aggiungi ai favoriti</button></td>');
+                                    } else {
+                                        print ('<td><button name="fav_btn_remove" type="submit" class="btn btn-danger" value="'.$btn_value.','.$fav_value.'"><span><i class="bi bi-heart"></i></span>favorito!</button></td>');
                                     }
-                                    print ('</td>');
+                                    print ('</tr>');
+
                                 }
-                                if (!in_array($presentazione_corrente['codice'],$presentazioni_favorite) OR $presentazioni_favorite == null) {
-                                    print ('<td><button type="submit" class="btn btn-success"><span><i class="bi bi-heart"></i></span>Aggiungi ai favoriti</button></td>');
-                                } else {
-                                    print ('<td><button type="submit" class="btn btn-danger"><span><i class="bi bi-heart"></i></span>favorito!</button></td>');
+                                else if ($info_aticolo_tutorial['tipoPresentazione'] === 'articolo') {
+                                    $filePDF = $info_aticolo_tutorial['filePdf'];
+                                    $num_pag = $info_aticolo_tutorial['numeroPagine'];
+                                    $autori = PresentationQueryController::getAuthors($presentazione_corrente['codice'],$a['codice']);
+                                    $key_words = PresentationQueryController::getKeyWord($presentazione_corrente['codice'],$a['codice']);
+
+                                    print ('<tr>');
+                                        if ($filePDF !== '') {
+                                            print ('<td>
+                                                        <label><b>File PDF</b></label>
+                                                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                                                        <a type="submit" href="'.$filePDF.'" class="btn btn-outline-primary" target="_blank" style="margin-right: 100px"><i class="fa fa-download" style="font-size:48px;color:#202040"></i></a>
+                                                    </td>');
+                                        }
+
+                                        if ($num_pag !== '') {
+                                            print ('<td><b>Numero pagine: </b>' . $num_pag . '</td>');
+                                        }
+                                        if (sizeof($autori)>0) {
+
+                                            print ('<td><b>Autori:  <br></b>');
+                                            foreach ($autori as $auth) {
+                                                print ($auth['nome'] . ' ' . $auth['cognome'] . '<br>');
+                                            }
+                                            print ('</td>');
+                                        }
+
+                                    if (sizeof($key_words)>0) {
+
+                                        print ('<td><b>Prole chiave: <br></b>');
+                                        foreach ($key_words as $kw) {
+                                            print ($kw['parola'] . '<br>');
+                                        }
+                                        print ('</td>');
+                                    }
+                                    if (!in_array($presentazione_corrente['codice'],$presentazioni_favorite) OR $presentazioni_favorite == null) {
+                                        print ('<td><button name="fav_btn_add" type="submit" class="btn btn-success" value="'.$btn_value.','.$fav_value.'"><span><i class="bi bi-heart"></i></span>Aggiungi ai favoriti</button></td>');
+                                    } else {
+                                        print ('<td><button name="fav_btn_remove" type="submit" class="btn btn-danger" value="'.$btn_value.','.$fav_value.'"><span><i class="bi bi-heart"></i></span>favorito!</button></td>');
+                                    }
+                                    print ('</tr>');
                                 }
-                                print ('</tr>');
-                            } }?>
+                                $fav_value++;
+                            }?>
                         </tbody>
                         </table>
                         </div>
                         <?php
                     }
+                    $btn_value++;
                 }
             } else {
                 ?> <p>Nessuna sessione in programma al momento!</p> <?php
@@ -181,6 +197,24 @@ $acronimo = $_POST['acronimo'][$index];
         </div>
     </div>
 </form>
+<script>
+
+    var favoritebtn = document.getElementsByName('fav_btn_add');
+
+    for (let i of favoritebtn) {
+        i.onclick = function() {
+            document.myform.action ="/logic/add_remove_favorite.php";
+        }
+    }
+
+    favoritebtn = document.getElementsByName('fav_btn_remove');
+
+    for (let i of favoritebtn) {
+        i.onclick = function() {
+            document.myform.action ="/logic/add_remove_favorite.php";
+        }
+    }
+</script>
 </body>
 <?php
 

@@ -499,4 +499,36 @@ class DbPresentation
             return null;
         }
     }
+
+    public static function addFavorite($userName, $codice_sessione, $codice_presentazione)
+    {
+        try {
+            $sql = 'CALL aggiungiFavorito(\'' . $userName . '\',\'' .$codice_sessione . '\',\'' . $codice_presentazione . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $res -> closeCursor();
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+            return true;
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
+    public static function removeFavorite($userName, $codice_sessione, $codice_presentazione)
+    {
+        try {
+            $sql = 'CALL rimuoviFavorito(\'' . $userName . '\',\'' .$codice_sessione . '\',\'' . $codice_presentazione . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            $res -> closeCursor();
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
+            return true;
+        } catch (Exception $e)
+        {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
 }

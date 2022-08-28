@@ -116,4 +116,13 @@ class PresentationQueryController
     public static function getFavoritesGlobal($userName) {
         return DbPresentation::getFavoritesGlobal($userName);
     }
+
+    public static function addFavorite($userName,$codice_sessione,$codice_presentazione): bool
+    {
+        return DbPresentation::addFavorite($userName,$codice_sessione,$codice_presentazione);
+    }
+    public static function removeFavorite($userName,$codice_sessione,$codice_presentazione): bool
+    {
+        return DbPresentation::removeFavorite($userName,$codice_sessione,$codice_presentazione);
+    }
 }
