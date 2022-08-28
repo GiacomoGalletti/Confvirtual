@@ -17,6 +17,22 @@ END$$
 DELIMITER ;
 
 DELIMITER $$
+DROP EVENT IF EXISTS eliminaFavoritiPassati $$
+CREATE EVENT eliminaFavoritiPassati
+    ON SCHEDULE EVERY 1 hour STARTS '2015-06-21 00:01:00'
+    DO
+    BEGIN
+        DELETE FROM presentazionefavorita
+        WHERE presentazionefavorita.codiceSessione
+        IN (
+            SELECT sessione.codice
+            FROM sessione,presentazione
+            where sessione.codice = presentazione.codiceSessione and presentazione.oraFine < CURRENT_TIME AND sessione.giornoData <= CURRENT_DATE
+        );
+    END $$
+DELIMITER ;
+
+DELIMITER $$
 DROP TRIGGER IF EXISTS contatorePresentazioniOnInsert $$
 CREATE TRIGGER contatorePresentazioniOnInsert AFTER INSERT ON presentazione
 FOR EACH ROW

@@ -758,3 +758,29 @@ BEGIN
     WHERE (userNameUtente = in_userNameUtente AND codiceSessione = in_codiceSessione);
 END $$
 DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS ritornaFavoritiGlobale $$
+CREATE PROCEDURE ritornaFavoritiGlobale (IN in_userNameUtente varchar(50))
+BEGIN
+    SELECT codicePresentazione
+    FROM presentazionefavorita
+    WHERE (userNameUtente = in_userNameUtente);
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS rimuoviFavorito $$
+CREATE PROCEDURE rimuoviFavorito (IN in_userNameUtente varchar(50), IN in_codiceSessione int, IN in_codicePresentazione int)
+BEGIN
+    DELETE FROM presentazionefavorita WHERE (userNameUtente = in_userNameUtente AND codiceSessione = in_codiceSessione AND codicePresentazione = in_codicePresentazione);
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS aggiungiFavorito $$
+CREATE PROCEDURE aggiungiFavorito (IN in_userNameUtente varchar(50), IN in_codiceSessione int, IN in_codicePresentazione int)
+BEGIN
+    INSERT INTO presentazionefavorita(userNameUtente, codicePresentazione, codiceSessione)  VALUES (userNameUtente = in_userNameUtente,codiceSessione = in_codiceSessione,codicePresentazione = in_codicePresentazione);
+END $$
+DELIMITER ;
