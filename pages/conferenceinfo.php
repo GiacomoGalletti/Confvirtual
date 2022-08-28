@@ -23,7 +23,18 @@ $acronimo = $_POST['acronimo'][$index];
     ?>
 </div>
 <form name="myform" method="post" action="/pages/chat.php">
+    <input type="hidden" name="conferencebtn" value="<?php print $_POST['conferencebtn'] ?>">
     <?php
+
+        for ($i = 0; $i<sizeof($_POST["nome"]); $i++){
+            ?>
+                <input type="hidden" name="immagineLogo[]" value="<?php print $_POST["immagineLogo"][$i] ?>">
+                <input type="hidden" name="nome[]" value="<?php print $_POST["nome"][$i] ?>">
+                <input type="hidden" name="annoEdizione[]" value="<?php print $_POST["annoEdizione"][$i] ?>">
+                <input type="hidden" name="acronimo[]" value="<?php print $_POST["acronimo"][$i] ?>">
+            <?php
+        }
+
         try {
             if (Session::read('msg_fav') != false) {
                 echo Session::read('msg_fav');

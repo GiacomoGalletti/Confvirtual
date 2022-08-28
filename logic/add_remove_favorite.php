@@ -46,6 +46,5 @@ if(isset($_POST["fav_btn_add"])) {
         }
     }
 }
-
 header('HTTP/1.1 307 Temporary Redirect');
 header('Location: /pages/conferenceinfo.php');
