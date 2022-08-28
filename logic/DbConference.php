@@ -65,17 +65,16 @@ class DbConference
             $sql='no query';
             $sql = 'CALL createConference(\''.$arrayYears[0].'\',\''.$acronimo.'\',\''.$immagine.'\',\''. $nome .'\',\''.Session::read('userName').'\');';
             $res = DbConn::getInstance() -> query($sql);
+            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
             $res -> closeCursor();
             foreach ($arrayDate as $a)
             {
                 $date = DateTime::createFromFormat("Y-m-d", $a);
                 $sql = 'CALL aggiungiData(\'' . $date->format("Y-m-d") . '\',\'' . $date->format("Y") . '\',\''. $acronimo . '\')';
                 $res = DbConn::getInstance() -> query($sql);
+                Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
                 $res -> closeCursor();
             }
-
-            Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
-
             header("refresh:3;url= " . "/pages/admin/createconference.php");
             echo '<link rel="stylesheet" href="/style/css/style.css">
               <div class="container"> </div>
