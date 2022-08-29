@@ -12,10 +12,9 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     <?php
     function getUsers()
     {
-        global $id;
         $id = 0;
-
-        foreach (UserQueryController::getPresenterList() as $r) {
+        $lista_presenter = UserQueryController::getPresenterList();
+        foreach ($lista_presenter as $r) {
             rowUsersInfo($r, $id);
             $id++;
         }
@@ -68,10 +67,6 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
             </div>
         </div>
     </div>
-
-    <?php
-    include_once (sprintf("%s/templates/navbarScriptReference.html", $_SERVER["DOCUMENT_ROOT"]));
-    ?>
 </form>
 </body>
 </html>

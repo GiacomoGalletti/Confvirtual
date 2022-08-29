@@ -173,7 +173,6 @@ CREATE TABLE ARTICOLO(
 
 CREATE TABLE PRESENTAZIONESPEAKER(
                                      userNameUtente varchar(50),
-                                     titoloTutorial varchar(50),
                                      codicePresentazione int,
                                      codiceSessione int,
                                      linkWeb varchar(260),
@@ -187,7 +186,6 @@ CREATE TABLE PRESENTAZIONESPEAKER(
 
 CREATE TABLE PRESENTAZIONEPRESENTER(
                               userNameUtente varchar(50),
-                              titoloArticolo varchar(50),
                               codicePresentazione int,
                               codiceSessione int,
                               primary key (codicePresentazione, codiceSessione),

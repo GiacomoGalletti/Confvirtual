@@ -6,6 +6,10 @@ include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+print '<br>';
+print_r($_POST);
+print '<br>';
+
 ?>
 <body>
 <form action="/logic/association_article_tutorial.php" method="post">
@@ -26,11 +30,19 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     $cognome = $_POST['cognome'][$index];
     $username = $_POST['username'][$index];
 
+    for ( $i=0; $i<sizeof($_POST['username']); $i++) {
+        echo '
+        <input type="hidden" name="username[]" value="' . $_POST['username'][$i] . '">
+        <input type="hidden" name="nome[]" value="' . $_POST['nome'][$i] . '">
+        <input type="hidden" name="cognome[]" value="' . $_POST['cognome'][$i] . '">';
+    }
+
     function getArticles()
     {
         global $id;
         $id = 0;
-        if (($tutorials = PresentationQueryController::getArticlesListUncovered()) != null ) {
+        $tutorials = PresentationQueryController::getArticlesListUncovered();
+        if ( $tutorials != null ) {
             foreach ($tutorials as $r) {
                 rowArticlesInfo($r, $id);
                 $id++;
@@ -48,13 +60,12 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
               <td><button type="submit" id="btn" name="associationbtn" value="' . $id . '">ASSOCIA PRESENTER</button></td>
         ';
 
-        for ( $i=0; $i<sizeof($_POST['username']); $i++) {
-            //echo '<h4>valore di $i: '. $i .'</h4>';
-            echo '
-                <input type="hidden" name="username[]" value="' . $_POST['username'][$i] . '"> 
-                <input type="hidden" name="nome[]" value="' . $_POST['nome'][$i] . '">
-                <input type="hidden" name="cognome[]" value="' . $_POST['cognome'][$i] . '">';
-        }
+//        for ( $i=0; $i<sizeof($_POST['username']); $i++) {
+//            echo '
+//                <input type="hidden" name="username[]" value="' . $_POST['username'][$i] . '">
+//                <input type="hidden" name="nome[]" value="' . $_POST['nome'][$i] . '">
+//                <input type="hidden" name="cognome[]" value="' . $_POST['cognome'][$i] . '">';
+//        }
     }
     ?>
 

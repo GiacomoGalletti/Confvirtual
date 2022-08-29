@@ -4,8 +4,6 @@ include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 
 print_r($_POST);
 $index = $_POST['sponsor_btn'];
-
-
 if (isset($_POST['confirm_mod_btn'])) {
     if (isset($_POST['dati_conferenza']) && $_POST['dati_conferenza'] != 'Scegli conferenza' && isset($_POST['importo']) && $_POST['importo'] != '') {
         $data_conference = explode(',',$_POST['dati_conferenza']);
@@ -29,8 +27,6 @@ if (isset($_POST['confirm_mod_btn'])) {
                             Campi inseriti non validi o mancanti.
                         </h4> </div>');
     }
-    header('HTTP/1.1 307 Temporary Redirect');
-    header('Location: /pages/admin/modifysponsor.php');
 }
 
 if (isset($_POST['delete_btn']) and isset($_POST['check'])) {
@@ -51,7 +47,7 @@ if (isset($_POST['delete_btn']) and isset($_POST['check'])) {
         }
     header('HTTP/1.1 307 Temporary Redirect');
     header('Location: /pages/admin/managesponsor.php');
-} else {
-    header('HTTP/1.1 307 Temporary Redirect');
-    header('Location: /pages/admin/modifysponsor.php');
 }
+
+header('HTTP/1.1 307 Temporary Redirect');
+header('Location: /pages/admin/managesponsor.php');

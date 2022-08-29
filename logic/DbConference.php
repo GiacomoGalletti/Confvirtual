@@ -65,6 +65,15 @@ class DbConference
             $sql='no query';
             $sql = 'CALL createConference(\''.$arrayYears[0].'\',\''.$acronimo.'\',\''.$immagine.'\',\''. $nome .'\',\''.Session::read('userName').'\');';
             $res = DbConn::getInstance() -> query($sql);
+
+            if(isset($res->fetch(PDO::FETCH_ASSOC)['validity'])) {
+                Session::write('msg_conferenza', '
+                        <div class="container" style="background-color: red;opacity: 50"> <h4>
+                            Campi inseriti non validi o già presenti.
+                        </h4> </div>');
+                $res -> closeCursor();
+                return false;
+            }
             Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
             $res -> closeCursor();
             foreach ($arrayDate as $a)
@@ -75,11 +84,10 @@ class DbConference
                 Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
                 $res -> closeCursor();
             }
-            header("refresh:3;url= " . "/pages/admin/createconference.php");
-            echo '<link rel="stylesheet" href="/style/css/style.css">
-              <div class="container"> </div>
-              <h1>Conferenza Inserita</h1> 
-              </div> <div class="container" </div>';
+            Session::write('msg_conferenza', '
+                        <div class="container" style="background-color: limegreen;opacity: 50"> <h4>
+                            Conferenza Creata con successo.
+                        </h4> </div>');
             return true;
         } catch (PDOException|ExpiredSessionException|Exception $e) {
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';

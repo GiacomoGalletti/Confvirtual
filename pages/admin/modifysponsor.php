@@ -27,7 +27,7 @@ $index  = $_POST['sponsor_btn'];
         <div class="container">
             <div style="margin-top: 40px">
                 <h4 style="display: inline-block; margin-right: 10px">Sponsor selezionato: </h4>
-                <p style="display: inline-block; margin-right: 80px"><?php print ( $_POST['nome'][0]); ?></p>
+                <p style="display: inline-block; margin-right: 80px"><?php print ( $_POST['nome'][$index]); ?></p>
                 <?php if(!empty($_POST['immagineLogo'][$index])){
                     echo '<img id="currentPhoto" title="userImg personalizzata" width="120" height="160" src="' .  $_POST['immagineLogo'][$index] . '">';}
                 else { echo '<img title="no img" width="120" height="160" src="/resources/images/noImgDefault.jpg" alt="no_img">';} ?>

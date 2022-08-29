@@ -6,9 +6,7 @@ if(isset($_POST['associationbtn'])) {
     $index = $_POST['associationbtn'];
     $index_btn = $_POST['btn'];
     print('Value of index: '.$index);
-print_r($_POST);
     if (!isset($_POST['tipo_presentazione'])) {
-        // esci senza fare nulla
         exit();
     }
     if ($_POST['tipo_presentazione']==='tutorial') {
@@ -54,6 +52,3 @@ print_r($_POST);
         header('Location: /pages/admin/listarticle.php');
     }
 }
-
-header('HTTP/1.1 307 Temporary Redirect');
-header('Location: /index.php');

@@ -9,20 +9,28 @@ require (sprintf("%s/logic/Upload.php", $_SERVER["DOCUMENT_ROOT"]));
 require (sprintf("%s/logic/FileTypeEnum.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once(sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
 if(isset($_POST['submit'])){
+    unset($_POST['submit']);
     try {
         $upload = new Upload($_FILES['fileToUpload'], FileTypeEnum::IMG);
     } catch (Exception $e) {
         echo '<h4>Upload fallito</h4>' . '<p>'. $e .'</p>';
     }
-    if (!empty($upload)) {
-        ConferenceQueryController::createConference($_POST["name"],$_POST["acronimo"],$upload->getFilePath(),$_POST["date"]);
-    } else {
-        echo '<h4>Conferenza non creata</h4>';
-    }
+    ConferenceQueryController::createConference($_POST["name"],$_POST["acronimo"],$upload->getFilePath(),$_POST["date"]);
 }
 ?>
 <body>
 <form action="createconference.php" method="post" autocomplete="off" enctype="multipart/form-data">
+    <?php
+        try {
+            if (Session::read('msg_conferenza') != false) {
+                echo Session::read('msg_conferenza');
+                Session::delete('msg_conferenza');
+                Session::commit();
+            }
+        } catch (ExpiredSessionException|Exception $e) {
+            echo $e;
+        }
+    ?>
     <div class="container">
         <h3>Creazione conferenza</h3>
         <div class="container">

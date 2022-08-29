@@ -68,3 +68,13 @@ BEGIN
     SET articolo.statoSvolgimento = 'coperto' WHERE articolo.codiceSessione = presentazionepresenter.codiceSessione AND articolo.codicePresentazione = presentazionepresenter.codicePresentazione;
 END$$
 DELIMITER ;
+
+DELIMITER $$
+DROP TRIGGER IF EXISTS incrementaTotSponsorizzazioni $$
+CREATE TRIGGER incrementaTotSponsorizzazioni AFTER INSERT ON sponsorizzazioni
+    FOR EACH ROW
+BEGIN
+    UPDATE conferenza, sponsorizzazioni
+    SET totaleSponsorizzazioni = totaleSponsorizzazioni + 1 WHERE annoEdizione = annoEdizioneConferenza AND acronimo = acronimoConferenza;
+END$$
+DELIMITER ;

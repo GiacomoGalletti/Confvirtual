@@ -14,8 +14,9 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     {
         global $id;
         $id = 0;
+        $lista_speaker = UserQueryController::getPresenterList();
 
-        foreach (UserQueryController::getSpeakerList() as $r) {
+        foreach ($lista_speaker as $r) {
             rowUsersInfo($r, $id);
             $id++;
         }

@@ -89,7 +89,6 @@ class Upload
             }
 
             if (file_exists($target_file)) {
-                echo "il file è già presente sul db.";
                 $uploadOk = 1;
             }
 
@@ -101,7 +100,6 @@ class Upload
             if ($uploadOk == 2) {
                 echo "file NON caricato.";
             } else if ($uploadOk == 1) {
-                echo "file NON caricato.";
                 $this->target_file_to_save = $relative_path . $file_name["name"];
             } else {
                 if (move_uploaded_file($file_name["tmp_name"], $target_file)) {

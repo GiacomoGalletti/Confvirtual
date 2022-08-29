@@ -60,9 +60,17 @@ DELIMITER //
 drop procedure if exists createConference//
 CREATE PROCEDURE createConference(IN in_annoEdizione year,IN in_acronimo varchar(10),IN in_immagineLogo varchar(260),IN in_nome varchar(50),IN in_userName varchar(50))
 BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+        BEGIN
+            ROLLBACK;
+            select 'ERROR' AS validity;
+        END;
+    start transaction;
     insert into CONFERENZA(annoEdizione,acronimo,immagineLogo,nome) values (in_annoEdizione,in_acronimo,in_immagineLogo,in_nome);
     insert into CREATORICONFERENZA (userNameUtente,annoEdizioneConferenza,acronimoConferenza) values (in_userName, in_annoEdizione, in_acronimo);
-END;
+    insert into UTENTEREGISTRATO (userNameUtente,annoEdizioneconferenza,acronimoConferenza) values (in_userName, in_annoEdizione, in_acronimo);
+    commit ;
+    END;
 //
 DELIMITER ;
 
@@ -326,7 +334,15 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS aggiungiCreatoreConferenza $$
 CREATE PROCEDURE aggiungiCreatoreConferenza(IN in_userNameUtente varchar(50), IN in_annoEdizioneConferenza year,IN in_acronimoConferenza varchar(50))
 BEGIN
-    insert into creatoriconferenza(userNameUtente, annoEdizioneConferenza, acronimoConferenza) values (in_userNameUtente, in_annoEdizioneConferenza, in_acronimoConferenza);
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+        BEGIN
+            ROLLBACK;
+            select 'ERROR' AS validity;
+        END;
+    start transaction;
+    insert into CREATORICONFERENZA (userNameUtente,annoEdizioneConferenza,acronimoConferenza) values (in_userNameUtente, in_annoEdizioneConferenza, in_acronimoConferenza);
+    insert into UTENTEREGISTRATO (userNameUtente,annoEdizioneconferenza,acronimoConferenza) values (in_userNameUtente, in_annoEdizioneConferenza, in_acronimoConferenza);
+    commit ;
 END $$
 DELIMITER ;
 
