@@ -643,7 +643,6 @@ BEGIN
     if not exists (select * from autore where codicePresentazione = in_codicePresentazione and codiceSessione = in_codiceSessione and nome = nomeAutore and cognome = cognomeAutore) then
 		insert into AUTORE (codicePresentazione, codiceSessione, nome, cognome) values (in_codicePresentazione, in_codiceSessione, nomeAutore, cognomeAutore);
 	end if;
-    SELECT 'OK' AS risultato;
     COMMIT;
 END $$
 DELIMITER ;
@@ -800,5 +799,3 @@ BEGIN
     INSERT INTO presentazionefavorita(userNameUtente, codicePresentazione, codiceSessione)  VALUES (in_userNameUtente,in_codicePresentazione,in_codiceSessione);
 END $$
 DELIMITER ;
-
-#call ritornaFavoritiGlobale('admin1');

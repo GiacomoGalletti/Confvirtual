@@ -8,8 +8,8 @@ class PresentazionePresenterSpeakerController
         return DbPresentazionePresenterSpeaker::associateSpeaker($username,$codice_presentazione,$codice_sessione);
     }
 
-    public static function addAuthorAndAssociatePresenter($username,$titolo_tutorial,$codice_presentazione,$codice_sessione): bool
+    public static function addAuthorAndAssociatePresenter($username,$codice_presentazione,$codice_sessione): bool
     {
-        return DbPresentazionePresenterSpeaker::addAuthorAndAssociatePresenter($username,$titolo_tutorial,$codice_presentazione,$codice_sessione);
+        return DbPresentazionePresenterSpeaker::addAuthorAndAssociatePresenter($username,$codice_presentazione,$codice_sessione);
     }
 }

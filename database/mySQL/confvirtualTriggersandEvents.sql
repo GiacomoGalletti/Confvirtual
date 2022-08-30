@@ -74,7 +74,7 @@ DROP TRIGGER IF EXISTS incrementaTotSponsorizzazioni $$
 CREATE TRIGGER incrementaTotSponsorizzazioni AFTER INSERT ON sponsorizzazioni
     FOR EACH ROW
 BEGIN
-    UPDATE conferenza, sponsorizzazioni
-    SET totaleSponsorizzazioni = totaleSponsorizzazioni + 1 WHERE annoEdizione = annoEdizioneConferenza AND acronimo = acronimoConferenza;
+    UPDATE conferenza
+    SET totaleSponsorizzazioni = (SELECT count(*) from conferenza inner join sponsorizzazioni on annoEdizione = annoEdizioneConferenza and acronimo = acronimoConferenza group by annoEdizione and acronimo);
 END$$
 DELIMITER ;

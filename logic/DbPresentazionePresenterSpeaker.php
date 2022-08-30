@@ -50,7 +50,7 @@ class DbPresentazionePresenterSpeaker
             $sql = 'CALL addAuthorAndAssociatePresenter(\'' . $username . '\',\'' . $codice_presentazione  . '\',\'' . $codice_sessione . '\');';
             $res = DbConn::getInstance()->query($sql);
 
-            if ($res->fetch(PDO::FETCH_ASSOC)['risultato'] != 'ERROR') {
+            if (!isset($res->fetch(PDO::FETCH_ASSOC)['risultato'])) {
                 $res -> closeCursor();
 
                 Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));

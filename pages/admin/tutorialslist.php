@@ -28,6 +28,13 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     $cognome = $_POST['cognome'][$index];
     $username = $_POST['username'][$index];
 
+    for ( $i=0; $i<sizeof($_POST['username']); $i++) {
+        echo '
+                <input type="hidden" name="username[]" value="' . $_POST['username'][$i] . '"> 
+                <input type="hidden" name="nome[]" value="' . $_POST['nome'][$i] . '">
+                <input type="hidden" name="cognome[]" value="' . $_POST['cognome'][$i] . '">';
+    }
+
     function getTutorials($username)
     {
         global $id;
@@ -49,14 +56,6 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
                                 <td><input type="hidden" name="titolo[]" value="' . $r['titolo'] . '">' . $r['titolo'] . '</td>
                                 <td><button type="submit" id="btn" name="associationbtn" value="' . $id . '">ASSOCIA SPEAKER</button></td>
                             ';
-
-        for ( $i=0; $i<sizeof($_POST['username']); $i++) {
-            //echo '<h4>valore di $i: '. $i .'</h4>';
-            echo '
-                <input type="hidden" name="username[]" value="' . $_POST['username'][$i] . '"> 
-                <input type="hidden" name="nome[]" value="' . $_POST['nome'][$i] . '">
-                <input type="hidden" name="cognome[]" value="' . $_POST['cognome'][$i] . '">';
-        }
     }
     ?>
 

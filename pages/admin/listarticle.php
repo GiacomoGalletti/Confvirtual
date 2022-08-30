@@ -6,10 +6,6 @@ include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
-print '<br>';
-print_r($_POST);
-print '<br>';
-
 ?>
 <body>
 <form action="/logic/association_article_tutorial.php" method="post">
@@ -59,13 +55,6 @@ print '<br>';
               <td><input type="hidden" name="titolo[]" value="' . $r['titolo'] . '">' . $r['titolo'] . '</td>
               <td><button type="submit" id="btn" name="associationbtn" value="' . $id . '">ASSOCIA PRESENTER</button></td>
         ';
-
-//        for ( $i=0; $i<sizeof($_POST['username']); $i++) {
-//            echo '
-//                <input type="hidden" name="username[]" value="' . $_POST['username'][$i] . '">
-//                <input type="hidden" name="nome[]" value="' . $_POST['nome'][$i] . '">
-//                <input type="hidden" name="cognome[]" value="' . $_POST['cognome'][$i] . '">';
-//        }
     }
     ?>
 
