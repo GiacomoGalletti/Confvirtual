@@ -799,3 +799,14 @@ BEGIN
     INSERT INTO presentazionefavorita(userNameUtente, codicePresentazione, codiceSessione)  VALUES (in_userNameUtente,in_codicePresentazione,in_codiceSessione);
 END $$
 DELIMITER ;
+
+# DELIMITER $$
+# DROP PROCEDURE IF EXISTS aggiornaTotSponsorizzazioni $$
+# CREATE PROCEDURE aggiornaTotSponsorizzazioni (IN in_annoEdizioneConferenza year, IN in_acronimoConferenza varchar(10))
+# BEGIN
+# 	UPDATE conferenza
+#     SET totaleSponsorizzazioni = (SELECT count(*) FROM sponsorizzazioni inner join conferenza on annoEdizioneConferenza = annoEdizione and acronimoConferenza = acronimo
+# 								  WHERE annoEdizione = in_annoEdizioneConferenza and acronimo = in_acronimoConferenza
+#                                   GROUP BY annoEdizione and acronimo);
+# END $$
+# DELIMITER ;

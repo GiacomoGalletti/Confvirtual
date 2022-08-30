@@ -48,7 +48,7 @@ DELIMITER ;
 DELIMITER $$
 DROP TRIGGER IF EXISTS contatorePresentazioniOnDelete $$
 CREATE TRIGGER contatorePresentazioniOnDelete AFTER DELETE ON presentazione
-    FOR EACH ROW
+FOR EACH ROW
 BEGIN
     UPDATE sessione
     SET numeroPresentazioni = (
@@ -70,11 +70,61 @@ END$$
 DELIMITER ;
 
 DELIMITER $$
-DROP TRIGGER IF EXISTS incrementaTotSponsorizzazioni $$
-CREATE TRIGGER incrementaTotSponsorizzazioni AFTER INSERT ON sponsorizzazioni
-    FOR EACH ROW
+DROP TRIGGER IF EXISTS aggiornaTotSponsorizzazioniOnInsert $$
+CREATE TRIGGER aggiornaTotSponsorizzazioniOnInsert AFTER INSERT ON sponsorizzazioni
+FOR EACH ROW
 BEGIN
-    UPDATE conferenza
-    SET totaleSponsorizzazioni = (SELECT count(*) from conferenza inner join sponsorizzazioni on annoEdizione = annoEdizioneConferenza and acronimo = acronimoConferenza group by annoEdizione and acronimo);
+	declare anno year;
+    declare acr varchar(10);
+    declare done int default 0;
+    
+    declare cursoreAnnoEdizione cursor for select annoEdizione from conferenza;
+    declare cursoreAcronimo cursor for select acronimo from conferenza;
+    declare continue handler for not found set done=1;
+    
+    open cursoreAnnoEdizione;
+    open cursoreAcronimo;
+    
+    repeat
+		fetch cursoreAnnoEdizione into anno;
+        fetch cursoreAcronimo into acr;
+        
+        update conferenza
+		set totaleSponsorizzazioni = (select count(*) from sponsorizzazioni where annoEdizioneConferenza = anno and acronimoConferenza = acr)
+		where conferenza.annoEdizione = anno and conferenza.acronimo = acr;
+    until done=1 end repeat;
+    
+    close cursoreAnnoEdizione;
+    close cursoreAcronimo;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+DROP TRIGGER IF EXISTS aggiornaTotSponsorizzazioniOnDelete $$
+CREATE TRIGGER aggiornaTotSponsorizzazioniOnDelete AFTER DELETE ON sponsorizzazioni
+FOR EACH ROW
+BEGIN
+	declare anno year;
+    declare acr varchar(10);
+    declare done int default 0;
+    
+    declare cursoreAnnoEdizione cursor for select annoEdizione from conferenza;
+    declare cursoreAcronimo cursor for select acronimo from conferenza;
+    declare continue handler for not found set done=1;
+    
+    open cursoreAnnoEdizione;
+    open cursoreAcronimo;
+    
+    repeat
+		fetch cursoreAnnoEdizione into anno;
+        fetch cursoreAcronimo into acr;
+        
+        update conferenza
+		set totaleSponsorizzazioni = (select count(*) from sponsorizzazioni where annoEdizioneConferenza = anno and acronimoConferenza = acr)
+		where conferenza.annoEdizione = anno and conferenza.acronimo = acr;
+    until done=1 end repeat;
+    
+    close cursoreAnnoEdizione;
+    close cursoreAcronimo;
 END$$
 DELIMITER ;
