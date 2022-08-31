@@ -255,8 +255,8 @@ END
 //
 DELIMITER ;
 DELIMITER //
-DROP PROCEDURE IF EXISTS getAllPresentationInfo //
-CREATE PROCEDURE getAllPresentationInfo(IN in_codiceSessione int)
+DROP PROCEDURE IF EXISTS getAllPresentationsInfoFromSession //
+CREATE PROCEDURE getAllPresentationsInfoFromSession(IN in_codiceSessione int)
 BEGIN
     select *
     from presentazione
@@ -274,15 +274,38 @@ BEGIN
             FROM ARTICOLO
             WHERE ARTICOLO.codicePresentazione = in_codicePresentazione
         ) THEN (
-                   SELECT *, 'articolo' AS tipoPresentazione
-                   FROM PRESENTAZIONE,ARTICOLO
+                   SELECT
+                          presentazione.oraInizio,
+                          presentazione.oraFine,
+                          presentazione.numeroSequenza,
+                          presentazione.codice,
+                          presentazione.codiceSessione,
+                          sessione.annoEdizioneConferenza,
+                          sessione.acronimoConferenza,
+                          sessione.giornoData,
+                          articolo.statoSvolgimento,
+                          articolo.filePdf,
+                          articolo.numeroPagine,
+                          articolo.titolo,
+                          'articolo' AS tipoPresentazione
+                   FROM PRESENTAZIONE,ARTICOLO,SESSIONE
                    WHERE (PRESENTAZIONE.codice = ARTICOLO.codicePresentazione)  and
-                           PRESENTAZIONE.codice = in_codicePresentazione
+                           PRESENTAZIONE.codice = in_codicePresentazione and presentazione.codiceSessione = sessione.codice
                );ELSE (
-                          SELECT *, 'tutorial' AS tipoPresentazione
-                          FROM PRESENTAZIONE,TUTORIAL
+                          SELECT presentazione.oraInizio,
+                                 presentazione.oraFine,
+                                 presentazione.numeroSequenza,
+                                 presentazione.codice,
+                                 presentazione.codiceSessione,
+                                 sessione.annoEdizioneConferenza,
+                                 sessione.acronimoConferenza,
+                                 sessione.giornoData,
+                                 tutorial.titolo,
+                                 tutorial.abstract,
+                                  'tutorial' AS tipoPresentazione
+                          FROM PRESENTAZIONE,TUTORIAL,SESSIONE
                           WHERE (PRESENTAZIONE.codice = TUTORIAL.codicePresentazione) AND
-                                  PRESENTAZIONE.codice = in_codicePresentazione
+                                  PRESENTAZIONE.codice = in_codicePresentazione and presentazione.codiceSessione = sessione.codice
                       );
     END IF;
 END//
@@ -385,7 +408,7 @@ DROP PROCEDURE IF EXISTS ritornaArticoli $$
 CREATE PROCEDURE ritornaArticoli()
 BEGIN
     select *
-    from articolo
+    from articolo INNER JOIN sessione on articolo.codiceSessione = sessione.codice
     where (articolo.statoSvolgimento = 'non coperto') AND articolo.codiceSessione IN (
         select codice
         from sessione,conferenza
@@ -425,7 +448,7 @@ DROP PROCEDURE IF EXISTS ritornaTutorialAssegnabile $$
 CREATE PROCEDURE ritornaTutorialAssegnabile(IN in_userNameUtente varchar(50))
 BEGIN
     select *
-    from TUTORIAL
+    from TUTORIAL INNER JOIN SESSIONE ON tutorial.codiceSessione = sessione.codice
     where (TUTORIAL.codicePresentazione,TUTORIAL.codiceSessione) not in (
         select codicePresentazione,codiceSessione
         from PRESENTAZIONESPEAKER
@@ -434,7 +457,7 @@ BEGIN
         select codice
         from sessione,conferenza
         where sessione.acronimoConferenza = conferenza.acronimo and conferenza.statoSvolgimento = 'attiva'
-        );
+        ) ;
 END$$
 DELIMITER ;
 

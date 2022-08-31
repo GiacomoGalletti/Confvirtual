@@ -34,10 +34,11 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
                             ';
 
         $string = '';
-        foreach (ConferenceQueryController::getDaysConference($r['acronimo'], $r['annoEdizione']) as $r) {
-            $string .= date_format(date_create($r['giorno']), "d/m") . ' - ';
+        foreach (ConferenceQueryController::getDaysConference($r['acronimo'], $r['annoEdizione']) as $d) {
+            $string .= date_format(date_create($d['giorno']), "d/m") . ' - ';
         }
         echo '<td>' . $string . '</td>';
+        echo '<td>' . $r['totaleSponsorizzazioni'] . '</td>';
 
         if(!empty($srcImg)){
             echo '<td><img id="currentPhoto" title="userImg personalizzata" width="60" height="80" src="'.$srcImg.'" alt="img personale"> </td>';
@@ -57,6 +58,7 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
                             <th>Nome</th>
                             <th>Anno</th>
                             <th>Giorni</th>
+                            <th>Totale Sponsorizzazioni</th>
                             <th>Logo</th>
                             <th></th>
                         </tr>

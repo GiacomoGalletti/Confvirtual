@@ -44,7 +44,7 @@ $acronimo = $_POST['acronimo'][$index];
             if (isset($array_sessioni)) {
                 ?> <h4 class="text-center mb-4">Sessioni della conferenza: </h4> <?php
                 foreach ($array_sessioni as $a) {
-                    $array_presentazione = PresentationQueryController::getAllPresentationInfo($a['codice']);
+                    $array_presentazione = PresentationQueryController::getAllPresentationsInfoFromSession($a['codice']);
                     if (isset($array_presentazione)) {?>
 
                         <div style="display: block">

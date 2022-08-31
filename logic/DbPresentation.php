@@ -5,10 +5,10 @@ include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/Logger.php");
 
 class DbPresentation
 {
-    public static function getAllPresentationInfo($codice_sessione)
+    public static function getAllPresentationsInfoFromSession($codice_sessione)
     {
         try {
-            $sql = 'CALL getAllPresentationInfo(\'' . $codice_sessione . '\');';
+            $sql = 'CALL getAllPresentationsInfoFromSession(\'' . $codice_sessione . '\');';
             $res = DbConn::getInstance()->query($sql);
             $output = $res -> fetchAll(PDO::FETCH_ASSOC);
             $res -> closeCursor();

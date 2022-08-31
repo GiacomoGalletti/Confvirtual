@@ -79,7 +79,7 @@ $acronimo = $_POST['acronimo'][$index];
                     if ($array_presentazioni_favorite == null) {
                         $array_presentazioni_favorite = [];
                     }
-                    $array_presentazione = PresentationQueryController::getAllPresentationInfo($a['codice']);
+                    $array_presentazione = PresentationQueryController::getAllPresentationsInfoFromSession($a['codice']);
                     if (isset($array_presentazione)) {?>
                         <div style="display: block">
                             <h4 style="display: inline-block; margin-right: 10px">Codice Sessione: </h4>

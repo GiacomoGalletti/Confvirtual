@@ -60,23 +60,14 @@ function receivePresentations($acronimo,$annoEdizione)
 {
     $codici_sessioni = SessioneQueryController::getSessions($acronimo,$annoEdizione);
     if ($codici_sessioni != null){
-        //print('<h3>Codici sessioni:</h3>');
-        //print_r($codici_sessioni);
         print('<option selected>Scegli la presentazione</option>');
         foreach ($codici_sessioni as $cs) {
-            //print('<h3>CS:</h3>');
-            //print_r($cs);
-            $codici_presentazioni = PresentationQueryController::getAllPresentationInfo($cs['codice']);
-            //print('<h3>Codici presentazioni:</h3>');
-            //print_r($codici_presentazioni);
+            $codici_presentazioni = PresentationQueryController::getAllPresentationsInfoFromSession($cs['codice']);
             foreach ($codici_presentazioni as $cp) {
-                //print('<h3>CP:</h3>');
-                //print_r($cp);
                 $info_presentazione = PresentationQueryController::getPresentationInfo($cp['codice'])[0];
                 print('<h3>info_presentazione:</h3>');
-                print_r($info_presentazione);
-                if (PresentationQueryController::checkCoveredPresentation($info_presentazione['codicePresentazione'], $info_presentazione['codiceSessione'],$info_presentazione['tipoPresentazione'])) {
-                    print('<option value="'. $info_presentazione['codicePresentazione'].','.$info_presentazione['codiceSessione'] .'">'. '<b>TIPO: </b>' .$info_presentazione['tipoPresentazione'] . ' <b>  TITOLO: </b>' . $info_presentazione['titolo'] .'</option>');
+                if (PresentationQueryController::checkCoveredPresentation($info_presentazione['codice'], $info_presentazione['codiceSessione'],$info_presentazione['tipoPresentazione'])) {
+                    print('<option value="'. $info_presentazione['codice'].','.$info_presentazione['codiceSessione'] .'">'. '<b>TIPO: </b>' .$info_presentazione['tipoPresentazione'] . ' <b>  TITOLO: </b>' . $info_presentazione['titolo'] . ' <b>  GIORNO: </b>' . $info_presentazione['giornoData'] . ' <b>  CODICE PRESENTAZIONE: </b>' . $info_presentazione['codice'] .'</option>');
                 }
             }
         }

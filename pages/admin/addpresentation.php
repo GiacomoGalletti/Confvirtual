@@ -51,7 +51,7 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
             ?>
         </p>
         <?php
-        if (($presentations = PresentationQueryController::getAllPresentationInfo($codice_sessione)) != null)
+        if (($presentations = PresentationQueryController::getAllPresentationsInfoFromSession($codice_sessione)) != null)
         {
             ?>
             <h4>Presentazioni create: </h4>

@@ -27,6 +27,8 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"])); ?>
                 $string .= date_format(date_create($r['giorno']), "d/m") . ' - ';
             }
             echo '<td>' . $string . '</td>';
+            echo '<td>' . $c['totaleSponsorizzazioni'] . '</td>';
+
             if(!empty($srcImg)){
                 echo '<td><img id="currentPhoto" title="userImg personalizzata" width="60" height="80" src="'.$srcImg.'" alt=""> </td>';
             } else { echo '<td><img title="no img" width="60" height="80" src="/resources/images/noImgDefault.jpg" alt="default_img"></td>';}
@@ -46,7 +48,6 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"])); ?>
         $id = 0;
         foreach (ConferenceQueryController::getConferenceFuture() as $c) {
             $srcImg = $c['immagineLogo'];
-
             echo '
                                 <input type="hidden" name="acronimo[]" value="'.$c['acronimo'].'">
                                 <input type="hidden" name="annoEdizione[]" value="'.$c['annoEdizione'].'">
@@ -55,10 +56,12 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"])); ?>
                                 <td>' . $c['nome'] . '</td>
                                 <td>' . $c['annoEdizione'] . '</td>';
             $string = '';
-            foreach (ConferenceQueryController::getDaysConference($c['acronimo'], $c['annoEdizione']) as $r) {
-                $string .= date_format(date_create($r['giorno']), "d/m") . ' - ';
+            foreach (ConferenceQueryController::getDaysConference($c['acronimo'], $c['annoEdizione']) as $d) {
+                $string .= date_format(date_create($d['giorno']), "d/m") . ' - ';
             }
             echo '<td>' . $string . '</td>';
+            echo '<td>' . $c['totaleSponsorizzazioni'] . '</td>';
+
             if(!empty($srcImg)){
                 echo '<td><img id="currentPhoto" title="userImg personalizzata" width="60" height="80" src="'.$srcImg.'"> </td>';
             } else { echo '<td><img title="no img" width="60" height="80" src="/resources/images/noImgDefault.jpg" alt="default_img"></td>';}
@@ -84,6 +87,7 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"])); ?>
                                         <th>Nome</th>
                                         <th>Anno</th>
                                         <th>Giorni</th>
+                                        <th>Totale Sponsorizzazioni</th>
                                         <th>Logo</th>
                                         <th></th>
                                     </tr>
@@ -113,6 +117,7 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"])); ?>
                                         <th>Nome</th>
                                         <th>Anno</th>
                                         <th>Giorni</th>
+                                        <th>Totale Sponsorizzazioni</th>
                                         <th></th>
                                     </tr>
                                     </thead>

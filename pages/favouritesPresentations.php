@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
+include_once (sprintf("%s/logic/permission/SessionLoggedUserPermission.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/ConferenceQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/SessioneQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
@@ -22,6 +23,9 @@ if (isset($presentazioni_favorite) && sizeof($presentazioni_favorite) >0 ) {
                 <table class="table">
                     <thead class="thead-primary">
                     <tr>
+                        <th>Acronimo</th>
+                        <th>Edizione</th>
+                        <th>Giorno</th>
                         <th>Codice Presentazione</th>
                         <th>Titolo</th>
                         <th>Tipologia</th>
@@ -36,6 +40,9 @@ if (isset($presentazioni_favorite) && sizeof($presentazioni_favorite) >0 ) {
                         $info_presentazione = PresentationQueryController::getPresentationInfo($presentazione_corrente['codicePresentazione'])[0];
                         ?>
                         <tr>
+                            <td><?php  print $info_presentazione['acronimoConferenza'] ?></td>
+                            <td><?php  print $info_presentazione['annoEdizioneConferenza'] ?></td>
+                            <td><?php  print $info_presentazione['giornoData'] ?></td>
                             <td><?php  print $info_presentazione['codice']?></td>
                             <td><?php  print $info_presentazione['titolo']?></td>
                             <td><?php  print $info_presentazione['tipoPresentazione']?></td>

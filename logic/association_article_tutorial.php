@@ -6,7 +6,7 @@ if(isset($_POST['associationbtn'])) {
     $index = $_POST['associationbtn'];
     $index_btn = $_POST['btn'];
 //    print('Value of index: '.$index);
-    print_r($_POST);
+//    print_r($_POST);
     if (!isset($_POST['tipo_presentazione'])) {
         exit();
     }

@@ -50,6 +50,11 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     {
         echo '
               <tr>
+                  <td>' . $r['acronimoConferenza'] . '</td>
+                  <td>' . $r['annoEdizioneConferenza'] . '</td>
+                  <td>' . $r['giornoData'] . '</td> 
+                  <td>' . $r['titolo'] . '</td> 
+                                
               <td><input type="hidden" name="codicepresentazione[]" value="' . $r['codicePresentazione'] . '">' . $r['codicePresentazione'] . '</td> 
               <td><input type="hidden" name="codicesessione[]" value="' . $r['codiceSessione'] . '">' . $r['codiceSessione'] . '</td>
               <td><input type="hidden" name="titolo[]" value="' . $r['titolo'] . '">' . $r['titolo'] . '</td>
@@ -71,6 +76,10 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
                     <table class="table">
                         <thead class="thead-primary">
                         <tr>
+                            <th>Acronimo</th>
+                            <th>Edizione</th>
+                            <th>Giorno</th>
+                            <th>Titolo Sessione</th>
                             <th>codice Presentazione</th>
                             <th>codice Sessione</th>
                             <th>titolo</th>
