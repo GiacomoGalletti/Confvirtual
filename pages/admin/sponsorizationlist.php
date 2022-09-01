@@ -27,12 +27,12 @@ function getSponsorizations()
     }
 }
 
-$id = 0;
 
 function rowSponsorizationInfo($r)
 {
     sendData($r['nomeSponsor'],$r['acronimoConferenza'],$r['annoEdizioneConferenza']);
     global $id;
+    $id = 0;
     $srcImg = SponsorQueryController::getSponsorImg($r['nomeSponsor'])['immagine'];
     echo '
                                 <tr>

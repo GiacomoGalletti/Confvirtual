@@ -9,6 +9,7 @@ include_once (sprintf("%s/logic/SessioneQueryController.php", $_SERVER["DOCUMENT
 include_once (sprintf("%s/logic/PresentationQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/debug.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
+
 global $id;
 $id = 0;
 $index = $_POST['sessionbtn'];
@@ -17,6 +18,9 @@ $annoEdizione = $_POST['array_annoEdizione'][$index];
 $rawdates = $_POST['dates'][$index];
 $arrayDate = array();
 $arrayDate = explode("%", $rawdates);
+
+//pre_r($_POST);
+print $index;
 ?>
 <body>
 <form method="post">

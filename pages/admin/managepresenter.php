@@ -12,6 +12,7 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     <?php
     function getUsers()
     {
+        global $id;
         $id = 0;
         $lista_presenter = UserQueryController::getPresenterList();
         foreach ($lista_presenter as $r) {

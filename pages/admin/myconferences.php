@@ -30,6 +30,7 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
     {
         if ($uName != null) {
 
+            global $id;
             $id = 0;
             foreach (ConferenceQueryController::getMyConference($uName) as $r)
             {

@@ -175,8 +175,8 @@ DELIMITER ;
 
 #crea articolo con la call a create presentation
 DELIMITER //
-drop procedure if exists createArticolo //
-CREATE PROCEDURE createArticolo(IN in_codicePresentazione int, IN in_codiceSessione int, IN in_titolo varchar(50), IN in_filePdf varchar(260) , IN in_numeroPagine int)
+drop procedure if exists createArticle //
+CREATE PROCEDURE createArticle(IN in_codicePresentazione int, IN in_codiceSessione int, IN in_titolo varchar(50), IN in_filePdf varchar(260) , IN in_numeroPagine int)
 BEGIN
     INSERT INTO  articolo(codicePresentazione,codiceSessione,titolo,filePDF,numeroPagine)VALUES(in_codicePresentazione,in_codiceSessione, in_titolo, in_filePdf, in_numeroPagine);
 END;
@@ -240,7 +240,7 @@ BEGIN
     start transaction;
     call createPresentation(in_codiceSessione,in_oraInizio,in_oraFine);
     SET codice_presentazione = (select max(codice) from presentazione where codiceSessione =  in_codiceSessione);
-    call createArticolo (codice_presentazione,in_codiceSessione,in_titolo,in_filePdf,in_numeroPagine);
+    call createArticle (codice_presentazione,in_codiceSessione,in_titolo,in_filePdf,in_numeroPagine);
     commit;
 END
 //
@@ -331,17 +331,17 @@ BEGIN
 END;
 //
 
-DELIMITER //
-drop procedure if exists checkRatingExists//
-CREATE PROCEDURE checkRatingExists(
-    IN in_userNameUtente varchar(50), IN in_codicePresentazione int , IN in_codiceSessione int)
-BEGIN
-
-    SELECT *
-    FROM valutazione
-    WHERE in_userNameUtente = userNameUtente AND in_codicePresentazione = codicePresentazione AND in_codiceSessione = codiceSessione;
-
-END;
+# DELIMITER //
+# drop procedure if exists checkRatingExists//
+# CREATE PROCEDURE checkRatingExists(
+#     IN in_userNameUtente varchar(50), IN in_codicePresentazione int , IN in_codiceSessione int)
+# BEGIN
+#
+#     SELECT *
+#     FROM valutazione
+#     WHERE in_userNameUtente = userNameUtente AND in_codicePresentazione = codicePresentazione AND in_codiceSessione = codiceSessione;
+#
+# END;
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS ritornaUtenti $$
