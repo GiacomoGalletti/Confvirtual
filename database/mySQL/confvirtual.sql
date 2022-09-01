@@ -67,8 +67,8 @@ CREATE TABLE CREATORICONFERENZA(
                                    annoEdizioneConferenza year,
                                    acronimoConferenza varchar (50),
                                    primary key(userNameUtente,annoEdizioneConferenza,acronimoConferenza),
-                                   foreign key (annoEdizioneConferenza,acronimoConferenza) references CONFERENZA(annoEdizione,acronimo),
-                                   foreign key (userNameUtente) references AMMINISTRATORE(userNameUtente)
+                                   foreign key (annoEdizioneConferenza,acronimoConferenza) references CONFERENZA(annoEdizione,acronimo) ON DELETE CASCADE,
+                                   foreign key (userNameUtente) references AMMINISTRATORE(userNameUtente) ON DELETE CASCADE
 )engine='InnoDB';
 
 CREATE TABLE SPEAKER (
@@ -123,7 +123,7 @@ CREATE TABLE UTENTEREGISTRATO(
                                  annoEdizioneconferenza year,
                                  acronimoConferenza varchar(50),
                                  primary key(userNameUtente,annoEdizioneconferenza,acronimoConferenza),
-                                 foreign key (userNameUtente) references UTENTE(userName),
+                                 foreign key (userNameUtente) references UTENTE(userName) ON DELETE CASCADE,
                                  foreign key (annoEdizioneConferenza,acronimoConferenza) references CONFERENZA(annoEdizione,acronimo)
                                      ON DELETE CASCADE
 )engine = 'InnoDB';
@@ -135,7 +135,7 @@ CREATE TABLE MESSAGGIO(
                           testo varchar(500),
                           dataInvio date,
                           primary key(id,codiceSessione,userNameUtente),
-                          foreign key (codiceSessione) references SESSIONE(codice),
+                          foreign key (codiceSessione) references SESSIONE(codice) ON DELETE CASCADE,
                           foreign key (userNameUtente) references UTENTE(userName)
                               ON DELETE CASCADE
 )engine = 'InnoDB';
@@ -211,7 +211,7 @@ CREATE TABLE VALUTAZIONE(
                             constraint validazioneVoto check (voto>=0 and voto <= 10),
                             note varchar(50),
                             primary key (userNameUtente, codicePresentazione, codiceSessione),
-                            foreign key (codicePresentazione,codiceSessione) references PRESENTAZIONE(codice,codiceSessione),
+                            foreign key (codicePresentazione,codiceSessione) references PRESENTAZIONE(codice,codiceSessione) ON DELETE CASCADE,
                             foreign key (userNameUtente) references AMMINISTRATORE(userNameUtente)
                                 ON DELETE CASCADE
 )engine = 'InnoDB';
