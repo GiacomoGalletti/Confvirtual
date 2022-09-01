@@ -567,8 +567,15 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS verificaIscrizione $$
 CREATE PROCEDURE verificaIscrizione(IN in_userNameUtente varchar(50), IN in_acronimoConferenza varchar(50),IN in_annoEdizioneconferenza year)
 BEGIN
-    SELECT * FROM utenteregistrato
-    WHERE in_userNameUtente = userNameUtente AND in_acronimoConferenza=acronimoConferenza AND in_annoEdizioneconferenza=annoEdizioneconferenza;
+    IF EXISTS(
+            SELECT *
+            FROM utenteregistrato
+            WHERE in_userNameUtente = userNameUtente
+              AND in_acronimoConferenza = acronimoConferenza
+              AND in_annoEdizioneconferenza = annoEdizioneconferenza
+    )THEN (SELECT 'ok');
+    END IF;
+
 END $$
 DELIMITER ;
 
@@ -647,13 +654,21 @@ drop procedure if exists controlloCoperturaPresentazioni $$
 CREATE PROCEDURE controlloCoperturaPresentazioni(IN in_codice_presentazione int, IN in_codice_sessione int, IN in_tipo varchar(20))
 BEGIN
     IF (in_tipo = 'articolo') THEN
-        SELECT *
-        FROM PRESENTAZIONEPRESENTER
-        WHERE in_codice_presentazione = PRESENTAZIONEPRESENTER.codicePresentazione AND in_codice_sessione = PRESENTAZIONEPRESENTER.codiceSessione;
+        IF EXISTS(
+                SELECT *
+                FROM PRESENTAZIONEPRESENTER
+                WHERE in_codice_presentazione = PRESENTAZIONEPRESENTER.codicePresentazione
+                  AND in_codice_sessione = PRESENTAZIONEPRESENTER.codiceSessione
+        )THEN (SELECT 'ok');
+            END IF;
     ELSE IF (in_tipo = 'tutorial') THEN
-        SELECT *
-        FROM PRESENTAZIONESPEAKER
-        WHERE in_codice_presentazione = PRESENTAZIONESPEAKER.codicePresentazione AND in_codice_sessione = PRESENTAZIONESPEAKER.codiceSessione;
+        IF EXISTS(
+                SELECT *
+                FROM PRESENTAZIONESPEAKER
+                WHERE in_codice_presentazione = PRESENTAZIONESPEAKER.codicePresentazione
+                  AND in_codice_sessione = PRESENTAZIONESPEAKER.codiceSessione
+        )THEN (SELECT 'ok');
+            END IF;
     END IF;
     END IF;
 END $$
