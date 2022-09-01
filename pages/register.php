@@ -19,7 +19,12 @@ try {
 
 if(isset($_POST['submit'])) {
     if (!UserQueryController::userExists($_POST["userName"],$_POST["psw"])) {
-        if(UserQueryController::registerUser($_POST["userName"], $_POST["name"], $_POST["surname"], $_POST["psw"], $_POST["luogoNascita"], $_POST["dataNascita"])) {
+        if(isset($_POST['luogoNascita'])){
+            $luogoNascita = $_POST['luogoNascita'] ;
+        } else{
+            $luogoNascita ='';
+        }
+        if(UserQueryController::registerUser($_POST["userName"], $_POST["name"], $_POST["surname"], $_POST["psw"], $luogoNascita, $_POST["dataNascita"])) {
             try {
                 Session::write('msg_user', '<div class="container" style="background-color: green;opacity: 50"> <h4>Utente registrato correttamente.</h4> </div>');
                 header("Location: /pages/login.php");

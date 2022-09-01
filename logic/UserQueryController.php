@@ -48,9 +48,9 @@ class UserQueryController
         return DbUser::login($username, $password);
     }
 
-    static function userExists($userName, $psw): bool
+    static function userExists($userName): bool
     {
-        return DbUser::userExists($userName, $psw);
+        return DbUser::userExists($userName);
     }
 
     static function getUserImgProfile($userName,$type)

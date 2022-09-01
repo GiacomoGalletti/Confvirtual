@@ -38,20 +38,31 @@ DELIMITER ;
 
 DELIMITER //
 drop procedure if exists  checkUserExists //
-CREATE PROCEDURE checkUserExists(IN nomeUtente varchar(50),IN pswd varchar(50))
+CREATE PROCEDURE checkUserExists(IN nomeUtente varchar(50))
 BEGIN
     SELECT userName
     FROM UTENTE
-    WHERE UTENTE.userName = nomeUtente AND UTENTE.pswd = pswd;
+    WHERE UTENTE.userName = nomeUtente;
+END;
+//
+DELIMITER ;
+
+DELIMITER //
+drop procedure if exists  loginUser //
+CREATE PROCEDURE loginUser(IN nomeUtente varchar(50),pswd varchar(50))
+BEGIN
+    SELECT userName
+    FROM UTENTE
+    WHERE UTENTE.userName = nomeUtente AND utente.pswd = pswd;
 END;
 //
 DELIMITER ;
 
 DELIMITER //
 drop procedure if exists register//
-CREATE PROCEDURE register(IN inUnserName varchar(50),IN inName varchar(50),IN inSurname varchar(50),IN inPswd varchar(50),IN inBirthPlace varchar(50),IN inBirthday date)
+CREATE PROCEDURE register(IN inUserName varchar(50),IN inName varchar(50),IN inSurname varchar(50),IN inPswd varchar(50),IN inBirthPlace varchar(50),IN inBirthday date)
 BEGIN
-    insert into UTENTE(userName,nome,cognome,pswd,luogoNascita,dataNascita) values (inUnserName,inName,inSurname,inPswd,inBirthPlace,inBirthday);
+    insert into UTENTE(userName,nome,cognome,pswd,luogoNascita,dataNascita) values (inUserName,inName,inSurname,inPswd,inBirthPlace,inBirthday);
 END;
 //
 DELIMITER ;
@@ -149,7 +160,7 @@ DELIMITER ;
 
 DELIMITER //
 drop procedure if exists getAdminConferences //
-CREATE PROCEDURE getAdminConferences(IN userName int)
+CREATE PROCEDURE getAdminConferences(IN userName varchar(50))
 BEGIN
     select *
     from conferenza

@@ -134,23 +134,29 @@ class DbUser
         }
     }
 
-    public static function userExists($username, $password): bool
+    public static function userExists($username): bool
     {
-        $sql = 'CALL checkUserExists(\'' . $username . '\',\'' . $password . '\');';
-        $res = DbConn::getInstance() -> query($sql);
-        if ($res->fetch()) {
-            $res -> closeCursor();
-            return true;
+        try {
+            $sql = 'CALL checkUserExists(\'' . $username . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            if ($res->fetch()) {
+                $res->closeCursor();
+                return true;
+            }
+            $res->closeCursor();
+            return false;
+        }catch (PDOException $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql . '</b></p>';
+            echo $e;
+            return false;
         }
-        $res -> closeCursor();
-        return false;
     }
 
     public static function login($username, $password): bool
     {
         try {
             Session::start();
-            if (self::userExists($username, $password)) {
+            if (DbUser::loginUser($username, $password)) {
                 Session::write('userName',$username);
                 $sql = 'CALL checkUserType(\'' . $username . '\');';
                 $res = DbConn::getInstance() -> query($sql);
@@ -237,6 +243,24 @@ class DbUser
         } catch (Exception $e)
         {
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
+            echo $e;
+            return false;
+        }
+    }
+
+    private static function loginUser($username, $password)
+    {
+        try {
+            $sql = 'CALL loginUser(\'' . $username . '\',\'' . $password . '\');';
+            $res = DbConn::getInstance()->query($sql);
+            if ($res->fetch()) {
+                $res->closeCursor();
+                return true;
+            }
+            $res->closeCursor();
+            return false;
+        } catch (Exception $e) {
+            echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql . '</b></p>';
             echo $e;
             return false;
         }
