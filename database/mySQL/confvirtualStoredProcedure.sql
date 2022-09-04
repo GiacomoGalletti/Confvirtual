@@ -375,7 +375,12 @@ BEGIN
         END;
     start transaction;
     insert into CREATORICONFERENZA (userNameUtente,annoEdizioneConferenza,acronimoConferenza) values (in_userNameUtente, in_annoEdizioneConferenza, in_acronimoConferenza);
+    IF NOT EXISTS(
+        SELECT userNameUtente FROM utenteregistrato WHERE userNameUtente = in_userNameUtente AND annoEdizioneconferenza = in_annoEdizioneConferenza AND acronimoConferenza = in_acronimoConferenza
+        )
+    THEN
     insert into UTENTEREGISTRATO (userNameUtente,annoEdizioneconferenza,acronimoConferenza) values (in_userNameUtente, in_annoEdizioneConferenza, in_acronimoConferenza);
+    END IF;
     commit ;
 END $$
 DELIMITER ;
