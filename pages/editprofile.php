@@ -80,7 +80,7 @@ try {
                     </td>
                     <td>
                         <div>
-                            <input type="file" name="fileToUpload" id="fileToUpload">
+                            <input type="file" name="fileToUpload" id="fileToUpload" value="<?php print($userInfo['foto']) ?>">
                             <input type="hidden" name="fileToUpload_original" value="<?php print($userInfo['foto']) ?>">
                         </div>
                     </td>
