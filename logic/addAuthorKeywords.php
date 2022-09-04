@@ -18,10 +18,10 @@ if (isset($_POST['auth_keywords_btn'])) {
     foreach ($array_nome_cognome as $a) {
         $singolo_nome_cognome = explode('*',$a);
         if ($singolo_nome_cognome[0] != '' AND $singolo_nome_cognome[1] != '') {
-            if (isset($_POST['sostituisci_autori'])) {
-                PresentationQueryController::deleteAuthors($codice_presentazione,$codice_sessione);
-                unset($_POST['sostituisci_autori']);
-            }
+//            if (isset($_POST['sostituisci_autori'])) {
+//                PresentationQueryController::deleteAuthors($codice_presentazione,$codice_sessione);
+//                unset($_POST['sostituisci_autori']);
+//            }
             if(!PresentationQueryController::addAuthor($codice_presentazione,$codice_sessione,$singolo_nome_cognome[0],$singolo_nome_cognome[1])) {
                 Session::write('msg_presentazione_1', '
                     <div class="container" style="background-color: red;opacity: 50"> <h4>

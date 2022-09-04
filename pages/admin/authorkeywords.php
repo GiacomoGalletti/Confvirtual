@@ -53,7 +53,7 @@ $codice_presentazione = $_POST['codice_presentazione'][$index];
                 {
                     print ('<h3>Autori già inseriti:</h3>');
                     foreach ($authors_previous as $a) { print('<p style="display: inline"> '.$a['nome'].' '.$a['cognome'].'  </p><br>');}
-                    ?><input type="hidden" name="sostituisci_autori"><?php
+//                    ?><!--<input type="hidden" name="sostituisci_autori">--><?php
                 }
                 ?>
                 <br>

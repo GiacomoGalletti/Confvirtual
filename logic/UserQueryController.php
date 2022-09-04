@@ -5,7 +5,7 @@ class UserQueryController
 {
     static function getUsersList()
     {
-        return DbUser::UsersList();
+        return DbUser::getUsersList();
     }
 
     static function getNonCreatorAdminList($username, $annoConferenza, $acronimoConferenza)

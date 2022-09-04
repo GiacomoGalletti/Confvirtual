@@ -6,18 +6,22 @@ include_once (sprintf("%s/logic/Session.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/head.html", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/logic/UserQueryController.php", $_SERVER["DOCUMENT_ROOT"]));
 include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
-
-if(isset($_POST['promotion_btn1'])) {
-    UserQueryController::promoteUserToSpeaker($_POST['username'][$_POST['promotion_btn1']]);
-}
-else if (isset($_POST['promotion_btn2'])) {
-    UserQueryController::promoteUserToPresenter($_POST['username'][$_POST['promotion_btn2']]);
-}
 ?>
 <body>
 <title>Promozione utente</title>
-<form action="promoteuser.php" method="post">
+<form action="/logic/promote_user_presenter_speaker.php" method="post">
     <?php
+
+    try {
+        Session::start();
+        if (Session::read('msg') != false) {
+            echo Session::read('msg');
+            Session::delete('msg');
+            Session::commit();
+        }
+    } catch (ExpiredSessionException|Exception $e) {
+        echo $e;
+    }
 
     function getUsers()
     {

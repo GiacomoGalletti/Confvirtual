@@ -349,7 +349,9 @@ CREATE PROCEDURE ritornaUtenti()
 BEGIN
     select userName, nome, cognome, luogoNascita, dataNascita
     from utente
-    where username not in (select userNameUtente from speaker) and username not in (select userNameUtente from presenter);
+    where username not in (select userNameUtente from speaker)
+      AND username not in (select userNameUtente from presenter)
+        AND username not in (select userNameUtente from amministratore);
 END $$
 DELIMITER ;
 
@@ -389,7 +391,10 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS promuoviUtenteASpeaker $$
 CREATE PROCEDURE promuoviUtenteASpeaker(IN in_userNameUtente varchar(50))
 BEGIN
-    insert into speaker(userNameUtente) values (in_userNameUtente);
+    if NOT EXISTS(select * from presenter where userNameUtente = in_userNameUtente)
+    then
+        insert into speaker(userNameUtente) values (in_userNameUtente);
+    end if;
 END $$
 DELIMITER ;
 
@@ -397,7 +402,10 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS promuoviUtenteAPresenter $$
 CREATE PROCEDURE promuoviUtenteAPresenter(IN in_userNameUtente varchar(50))
 BEGIN
-    insert into presenter(userNameUtente) values (in_userNameUtente);
+    if NOT EXISTS(select * from presenter where userNameUtente = in_userNameUtente)
+    then
+        insert into presenter(userNameUtente) values (in_userNameUtente);
+    end if;
 END $$
 DELIMITER ;
 

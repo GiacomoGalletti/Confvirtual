@@ -6,7 +6,7 @@ include_once($_SERVER["DOCUMENT_ROOT"] . "/logic/Logger.php");
 
 class DbUser
 {
-    static function UsersList()
+    static function getUsersList()
     {
         try{
             $sql = 'CALL ritornaUtenti();';
@@ -61,7 +61,6 @@ class DbUser
             $res -> closeCursor();
 
             Logger::getInstance()->writeMongo(Session::read('userName'),$sql,date("Y-m-d"),date("h:i:sa"));
-
             return true;
         } catch (Exception $e) {
             echo '<h1>HO PROVATO AD ESEGUIRE:</h1><p><b>' . $sql .'</b></p>';
