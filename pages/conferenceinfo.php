@@ -74,7 +74,7 @@ $acronimo = $_POST['acronimo'][$index];
                     $array_presentazioni_favorite = PresentationQueryController::getFavorites(Session::read('userName'),$a['codice']);
                     $presentazioni_favorite = [];
                     for ($i=0; $i<count($array_presentazioni_favorite); $i++) {
-                        array_push($presentazioni_favorite, $array_presentazioni_favorite[$i]['codicePresentazione']);
+                        $presentazioni_favorite[] = $array_presentazioni_favorite[$i]['codicePresentazione'];
                     }
                     if ($array_presentazioni_favorite == null) {
                         $array_presentazioni_favorite = [];
@@ -141,8 +141,13 @@ $acronimo = $_POST['acronimo'][$index];
                                             print ('<p><b>Link: </b><span><a href="' .$r['link'] . '">'.$r['link'].'</a><br><b>Descrizione: </b> ' . $r['descrizione'] . '</p>');
                                         }
                                         print ('</td>');
+                                        print ('<td></td>');
+                                        print ('<td></td>');
+                                    } else {
+                                        print ('<td></td>');
+                                        print ('<td></td>');
+                                        print ('<td></td>');
                                     }
-                                    print ('<td></td><td></td>');
                                     if (!in_array($presentazione_corrente['codice'],$presentazioni_favorite) OR $presentazioni_favorite == null) {
                                         print ('<td><button name="fav_btn_add" type="submit" class="btn btn-success" value="'.$btn_value.','.$fav_value.'"><span><i class="bi bi-heart"></i></span>Aggiungi ai favoriti</button></td>');
                                     } else {
@@ -164,10 +169,14 @@ $acronimo = $_POST['acronimo'][$index];
                                                         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                                                         <a type="submit" href="'.$filePDF.'" class="btn btn-outline-primary" target="_blank" style="margin-right: 100px"><i class="fa fa-download" style="font-size:48px;color:#202040"></i></a>
                                                     </td>');
+                                        } else {
+                                            print ('<td></td>');
                                         }
 
                                         if ($num_pag !== '') {
                                             print ('<td><b>Numero pagine: </b>' . $num_pag . '</td>');
+                                        } else {
+                                            print ('<td></td>');
                                         }
                                         if (sizeof($autori)>0) {
 
@@ -176,8 +185,9 @@ $acronimo = $_POST['acronimo'][$index];
                                                 print ($auth['nome'] . ' ' . $auth['cognome'] . '<br>');
                                             }
                                             print ('</td>');
+                                        } else {
+                                            print ('<td></td>');
                                         }
-
                                     if (sizeof($key_words)>0) {
 
                                         print ('<td><b>Prole chiave: <br></b>');
@@ -185,7 +195,12 @@ $acronimo = $_POST['acronimo'][$index];
                                             print ($kw['parola'] . '<br>');
                                         }
                                         print ('</td>');
+                                    } else {
+                                        print ('<td></td>');
                                     }
+
+                                    print ('<td></td>');
+
                                     if (!in_array($presentazione_corrente['codice'],$presentazioni_favorite) OR $presentazioni_favorite == null) {
                                         print ('<td><button name="fav_btn_add" type="submit" class="btn btn-success" value="'.$btn_value.','.$fav_value.'"><span><i class="bi bi-heart"></i></span>Aggiungi ai favoriti</button></td>');
                                     } else {

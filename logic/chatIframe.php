@@ -36,9 +36,10 @@ print '<style>
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
-
 }
-</style>';
+</style>
+<body style="overflow-x: hidden; overflow-y: auto">
+';
 foreach (ChatQueryController::getMessages($codice_sessione) as $m) {
     $userName_sender = $m['userNameUtente'];
     $type_sender = UserQueryController::getUserType($userName_sender);
@@ -74,6 +75,7 @@ foreach (ChatQueryController::getMessages($codice_sessione) as $m) {
                     ');
     }
 }
+print '</body>';
 header("Refresh: 5;");
 
 function imagesSetter($type_sender, $userName_sender) {
