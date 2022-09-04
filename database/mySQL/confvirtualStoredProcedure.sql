@@ -445,8 +445,18 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS ritornaTutorial $$
 CREATE PROCEDURE ritornaTutorial(IN in_userNameUtente varchar(50))
 BEGIN
-    select *
+    select
+        tutorial.codiceSessione,
+        tutorial.abstract,
+        tutorial.codicePresentazione,
+        tutorial.titolo,
+        sessione.giornoData,
+        sessione.acronimoConferenza,
+        sessione.annoEdizioneConferenza,
+        presentazione.numeroSequenza
     from TUTORIAL
+        INNER JOIN SESSIONE ON sessione.codice = tutorial.codiceSessione
+        INNER JOIN PRESENTAZIONE ON presentazione.codice = tutorial.codicePresentazione
     where (TUTORIAL.codicePresentazione,TUTORIAL.codiceSessione) in (
         select codicePresentazione,codiceSessione
         from PRESENTAZIONESPEAKER
@@ -455,7 +465,7 @@ BEGIN
         select codice
         from sessione,conferenza
         where sessione.acronimoConferenza = conferenza.acronimo and conferenza.statoSvolgimento = 'attiva'
-    );
+    ) ORDER BY sessione.codice;
 END$$
 DELIMITER ;
 

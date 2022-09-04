@@ -43,6 +43,13 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
                                 <tr>
                                 <td><input type="hidden" name="codicepresentazione[]" value="' . $r['codicePresentazione'] . '">' . $r['codicePresentazione'] . '</td>
                                 <td><input type="hidden" name="codicesessione[]" value="' . $r['codiceSessione'] . '">' . $r['codiceSessione'] . '</td>
+                                
+                                <td>'. $r['acronimoConferenza'] . '</td>
+                                <td>'. $r['annoEdizioneConferenza'] . '</td>
+                                <td>'. $r['giornoData'] . '</td>
+                                <td>'. $r['numeroSequenza'] . '</td>
+
+                                
                                 <td><input type="hidden" name="titolo[]" value="' . $r['titolo'] . '">' . $r['titolo'] . '</td>
                                 <td><button type="submit" id="btn" name="modificabtn" value="' . $id . '">MODIFICA RISORSE</button></td>
                             ';
@@ -57,9 +64,15 @@ include_once (sprintf("%s/templates/navbar.php", $_SERVER["DOCUMENT_ROOT"]));
                     <table class="table">
                         <thead class="thead-primary">
                         <tr>
-                            <th>codice Presentazione</th>
-                            <th>codice Sessione</th>
-                            <th>titolo</th>
+                            <th>Codice Presentazione</th>
+                            <th>Codice Sessione</th>
+
+                            <th>Acronimo Conferenza</th>
+                            <th>Anno Conferenza</th>
+                            <th>Data</th>
+                            <th>Numero Sequenza</th>
+
+                            <th>Titolo</th>
                             <th></th>
                         </tr>
                         </thead>
